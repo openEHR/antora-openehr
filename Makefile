@@ -26,6 +26,9 @@ ADL_ANTLR_SRC  := $(ADL_ANTLR_DIR)/src/main/antlr/adl
 OPENEHR_ANTLR4_REPO := https://github.com/openEHR/openEHR-antlr4.git
 OPENEHR_ANTLR4_DIR  := $(REPOS_DIR)/openEHR-antlr4
 OPENEHR_ANTLR4_SRC  := $(OPENEHR_ANTLR4_DIR)/reader_common/src/main/antlr
+# update-grammars only refreshes these branches; release/* keep the grammar of their release
+GRAMMAR_BRANCHES := development
+on_grammar_branch = { case " $(GRAMMAR_BRANCHES) " in *" $$(git -C "$(1)" rev-parse --abbrev-ref HEAD) "*) true;; *) echo "$(CYAN)Skipping $(1): not on $(GRAMMAR_BRANCHES)$(NC)"; false;; esac; }
 
 ##@ General
 
@@ -75,7 +78,7 @@ update-grammars: ## Clone/update grammar repos, copy .g4 into spec repos, git co
 	fi
 	@for module in ADL1.4 ADL2 OPT2; do \
 		dir="$(REPOS_DIR)/specifications-AM/modules/$$module/partials"; \
-		if [ -d "$$dir" ]; then \
+		if [ -d "$$dir" ] && $(call on_grammar_branch,$$dir); then \
 			echo "$(CYAN)Copying g4 files to AM/$$module/partials...$(NC)"; \
 			cp $(ADL_ANTLR_SRC)/*.g4 "$$dir/"; \
 		fi \
@@ -90,21 +93,21 @@ update-grammars: ## Clone/update grammar repos, copy .g4 into spec repos, git co
 	fi
 	@for module in EL; do \
 		dir="$(REPOS_DIR)/specifications-LANG/modules/$$module/partials"; \
-		if [ -d "$$dir" ]; then \
+		if [ -d "$$dir" ] && $(call on_grammar_branch,$$dir); then \
 			echo "$(CYAN)Copying g4 files to LANG/$$module/partials...$(NC)"; \
 			cp $(OPENEHR_ANTLR4_SRC)/El*.g4 "$$dir/" 2>/dev/null || true; \
 		fi \
 	done
 	@for module in odin BEL; do \
 		dir="$(REPOS_DIR)/specifications-LANG/modules/$$module/partials"; \
-		if [ -d "$$dir" ]; then \
+		if [ -d "$$dir" ] && $(call on_grammar_branch,$$dir); then \
 			echo "$(CYAN)Copying adl-antlr g4 files to LANG/$$module/partials...$(NC)"; \
 			cp $(ADL_ANTLR_SRC)/*.g4 "$$dir/"; \
 		fi \
 	done
 	@for module in decision_language; do \
 		dir="$(REPOS_DIR)/specifications-PROC/modules/$$module/partials"; \
-		if 		[ -d "$$dir" ]; then \
+		if [ -d "$$dir" ] && $(call on_grammar_branch,$$dir); then \
 			echo "$(CYAN)Copying adl-antlr g4 files to PROC/$$module/partials...$(NC)"; \
 			cp $(ADL_ANTLR_SRC)/*.g4 "$$dir/"; \
 		fi \
@@ -114,7 +117,7 @@ update-grammars: ## Clone/update grammar repos, copy .g4 into spec repos, git co
 
 commit-updated-grammars: ## Stage and commit updated .g4 files under repos/specifications-*
 	@echo "$(GREEN)Staging grammar commits in specification repos...$(NC)"
-	@./scripts/commit-updated-grammars.sh $(REPOS_DIR)
+	@GRAMMAR_BRANCHES="$(GRAMMAR_BRANCHES)" ./scripts/commit-updated-grammars.sh $(REPOS_DIR)
 
 list-repos: ## List all specification repositories
 	@echo "$(CYAN)OpenEHR Specification Repositories:$(NC)"

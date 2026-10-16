@@ -16,6 +16,14 @@ commit_g4_in_repo() {
   repo_root="$(cd "$repo_root" && pwd)"
   [ -d "$repo_root/.git" ] || return 0
 
+  # release/* keep the grammar of their release; never commit or force-push them here
+  local branch
+  branch="$(git -C "$repo_root" rev-parse --abbrev-ref HEAD)"
+  case " ${GRAMMAR_BRANCHES:-development} " in
+    *" $branch "*) ;;
+    *) echo "  • Skipping $repo_root: on $branch"; return 0 ;;
+  esac
+
   local files=()
   local f rel
   while IFS= read -r -d '' f; do
