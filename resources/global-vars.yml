@@ -1244,13 +1244,14 @@ class_assignment: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_a
 
 # ===== PROC - task_planning =====
 page_proc_task_planning_overview: "PROC:task_planning:model_overview.adoc"
-page_proc_task_planning_plan: "PROC:task_planning:2-definition_plan.adoc"
-page_proc_task_planning_task_plan: "PROC:task_planning:3-definition_task_plan.adoc"
-page_proc_task_planning_task_semantics: "PROC:task_planning:4-definition_task_semantics.adoc"
-page_proc_task_planning_task_actions: "PROC:task_planning:5-definition_task_actions.adoc"
-page_proc_task_planning_data_sets: "PROC:task_planning:6-definition_data_sets.adoc"
-page_proc_task_planning_conditional: "PROC:task_planning:7-definition_conditional.adoc"
-page_proc_task_planning_events: "PROC:task_planning:9-definition_events.adoc"
+# The task_planning chapters are partials included by 1-definition_overview.adoc.
+page_proc_task_planning_plan: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_plan: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_semantics: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_actions: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_data_sets: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_conditional: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_events: "PROC:task_planning:1-definition_overview.adoc"
 page_proc_task_planning_history: "PROC:task_planning:model_history.adoc"
 page_proc_task_planning_materialised: "PROC:task_planning:model_materialised.adoc"
 
@@ -1584,8 +1585,8 @@ class_tracked_state_variable: "{page_proc_decision_language_dlm_model}#_tracked_
 class_value_snapshot: "{page_proc_decision_language_dlm_model}#_value_snapshot_class"
 
 # ===== PROC - task_planning additions =====
-page_proc_task_planning_order_tracking: "PROC:task_planning:8-definition_order_tracking.adoc"
-page_proc_task_planning_cost: "PROC:task_planning:10-definition_cost.adoc"
+page_proc_task_planning_order_tracking: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_cost: "PROC:task_planning:1-definition_overview.adoc"
 
 class_order_ref: "{page_proc_task_planning_order_tracking}#_order_ref_class"
 class_task_costing: "{page_proc_task_planning_cost}#_task_costing_class"

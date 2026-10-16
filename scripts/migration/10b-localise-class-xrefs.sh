@@ -21,6 +21,8 @@ set -euo pipefail
 # Run from repo root (inside the target specification repo), after step 10.
 
 CLASSES_DIR="modules/ROOT/partials/classes"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+GLOBAL_VARS="${GLOBAL_VARS_FILE:-$SCRIPT_DIR/../../resources/global-vars.yml}"
 
 echo "Step 10b: Localising class xrefs in generated partials..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -75,6 +77,10 @@ fi
 # First page wins when a class partial is included on several pages.
 sort -t $'\t' -k1,1 -s -u -o "$MAP_FILE" "$MAP_FILE"
 
+KEYS_FILE="$(mktemp)"
+trap 'rm -f "$MAP_FILE" "$KEYS_FILE"' EXIT
+[ -f "$GLOBAL_VARS" ] && grep -oE '^class_[a-z0-9_]+:' "$GLOBAL_VARS" | tr -d ':' > "$KEYS_FILE" || true
+
 changed=0
 for f in modules/ROOT/partials/definitions/*.adoc modules/ROOT/partials/effective/*.adoc; do
   [ -f "$f" ] || continue
@@ -84,6 +90,26 @@ for f in modules/ROOT/partials/definitions/*.adoc modules/ROOT/partials/effectiv
     prefix="${stem%.*}."
   fi
   tmp="${f}.tmp"
+  # Dead `link:/classes/<Type>[<Type>]` links (types no loadable schema defines, step 3a
+  # allowlist): link the global class_<type> entry when there is one (LANG's C_OBJECT is
+  # the AM class), else keep the name as plain text (BASE 1.0.4 BMM_OPEN_TYPE).
+  if grep -q 'link:/classes/' "$f"; then
+    awk -v keysfile="$KEYS_FILE" '
+      BEGIN { while ((getline k < keysfile) > 0) known[k] = 1 }
+      {
+        out = ""; rest = $0
+        while (match(rest, /link:\/classes\/[A-Za-z0-9_]*\[[^]]*\] ?/)) {
+          seg = substr(rest, RSTART, RLENGTH)
+          type = seg; sub(/^link:\/classes\//, "", type); sub(/\[.*$/, "", type)
+          text = seg; sub(/^[^[]*\[/, "", text); sub(/\] ?$/, "", text)
+          key = "class_" tolower(type)
+          repl = (type != "" && (key in known)) ? "xref:{" key "}[" text "]" : text
+          out = out substr(rest, 1, RSTART - 1) repl
+          rest = substr(rest, RSTART + RLENGTH)
+        }
+        print out rest
+      }' "$f" > "$tmp" && mv -f "$tmp" "$f"
+  fi
   awk -v prefix="$prefix" -v mapfile="$MAP_FILE" '
     BEGIN {
       FS = "\t"
