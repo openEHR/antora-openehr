@@ -273,6 +273,9 @@ known_unresolved_types() {
   case "$1" in
     # C_OBJECT is an AM class; LANG cannot depend on AM.
     openehr_lang_1.0.0) echo "C_OBJECT" ;;
+    # P_BMM_SINGLE_PROPERTY_OPEN.bmm_property: BMM_PROPERTY<BMM_OPEN_TYPE>; BASE 1.0.4
+    # never defined BMM_OPEN_TYPE (unlinked in the legacy UML table too).
+    openehr_base_1.0.4) echo "BMM_OPEN_TYPE" ;;
     *) echo "" ;;
   esac
 }
