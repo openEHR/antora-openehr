@@ -151,6 +151,9 @@ commit_checkpoint \
 # Step 10: Rewrite internal class cross-references to Antora xrefs
 "$SCRIPT_DIR/10-rewrite-class-xrefs.sh"
 
+# Step 10c: Resolve <<...>> cross references that point to another page
+"$SCRIPT_DIR/10c-resolve-cross-references.sh"
+
 # Step 11: Tag untagged listing blocks in QUERY/AQL pages with [source, sql]
 "$SCRIPT_DIR/11-tag-query-source-blocks.sh" "$COMPONENT_NAME"
 
