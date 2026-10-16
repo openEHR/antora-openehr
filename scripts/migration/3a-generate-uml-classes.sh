@@ -578,6 +578,10 @@ for MAIN_ID in "${MAIN_IDS[@]}"; do
     docker_run+=(-v "${BMM_RESOURCES_MERGED_DIR}:/app/resources")
   fi
   docker_run+=("$DOCKER_IMAGE" asciidoc "$MAIN_ID")
+  # Hand-written examples in modules/ROOT/partials/examples/ get an Example tab (bmm-publisher 0.13.0+).
+  if [[ -d "modules/ROOT/partials/examples" ]]; then
+    docker_run+=(--examples-dir /app/output/examples)
+  fi
   for dep in $DEP_IDS; do
     docker_run+=(-d "$dep")
   done
