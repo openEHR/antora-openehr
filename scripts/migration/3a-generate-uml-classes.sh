@@ -491,6 +491,12 @@ else
       MAIN_IDS=("openehr_am_1.4.0" "$MAIN_ID")
     fi
   fi
+  # RM 1.0.2 / 1.0.3 still document the foundation types (String, List, Iso8601_date, ...)
+  # on their own pages, so their class partials come from BASE 1.0.4. BASE runs first:
+  # on a shared class name (OBJECT_ID, ...) the RM run overwrites it with RM's own table.
+  if [[ "$MAIN_ID" == "openehr_rm_1.0.2" || "$MAIN_ID" == "openehr_rm_1.0.3" ]]; then
+    MAIN_IDS=("openehr_base_1.0.4" "$MAIN_ID")
+  fi
   if [ -n "$BRANCH_VERSION" ]; then
     RESOLUTION_MODE="branch-name"
   else
