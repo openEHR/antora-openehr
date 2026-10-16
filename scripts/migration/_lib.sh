@@ -81,6 +81,17 @@ list_chapter_includes() {
 # is_master_include <target>
 #   Returns success if target matches master chapter naming.
 # -------------------------------------------------------------------
+# is_attribute_include <target>
+#   True for master.adoc includes that only define attributes for the chapters after them
+#   (e.g. TERM's terminology_vocabularies_vars.adoc). They become partials, not pages.
+is_attribute_include() {
+  case "$(basename "$1")" in
+    manifest_vars.adoc) return 1 ;;
+    *_vars.adoc)        return 0 ;;
+    *)                  return 1 ;;
+  esac
+}
+
 is_master_include() {
   local target="$1"
   case "$target" in

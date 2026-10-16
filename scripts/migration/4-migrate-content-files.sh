@@ -135,7 +135,40 @@ copy_included_non_master() {
 
   [ -f "$master_file" ] || return 0
 
+  # Attribute-only includes, collected until the next chapter that needs them
+  local pending_attr_includes=()
+
   list_chapter_includes "$master_file" | while read -r target; do
+    if is_attribute_include "$target"; then
+      local attr_src="docs/$module/$target"
+      if [ -f "$attr_src" ]; then
+        echo "  • $target → partials/$target (attribute definitions)"
+        mkdir -p "modules/$module/partials"
+        git_move_preserve_history "$attr_src" "modules/$module/partials/$target"
+        pending_attr_includes+=("$target")
+      fi
+      continue
+    fi
+
+    # Include pending attribute partials at the top of the chapter that follows them in master.adoc
+    if [ "${#pending_attr_includes[@]}" -gt 0 ]; then
+      local chapter chapter_path inc lines=""
+      chapter="$(strip_master_prefix "$(basename "$target")")"
+      chapter_path="modules/$module/pages/$chapter"
+      [ -f "$chapter_path" ] || chapter_path="modules/$module/partials/$chapter"
+      if [ -f "$chapter_path" ]; then
+        for inc in "${pending_attr_includes[@]}"; do
+          echo "  • include partials/$inc in ${chapter_path#modules/$module/}"
+          lines+="include::partial\$$inc[]"$'\n'
+        done
+        { printf '%s\n' "$lines"; cat -- "$chapter_path"; } > "$chapter_path.tmp"
+        mv -- "$chapter_path.tmp" "$chapter_path"
+      else
+        echo "  ⚠ no chapter after ${pending_attr_includes[*]} in master.adoc; not included anywhere"
+      fi
+      pending_attr_includes=()
+    fi
+
     # Skip master-prefixed files (handled by copy_master_numbered)
     is_master_include "$target" && continue
 
