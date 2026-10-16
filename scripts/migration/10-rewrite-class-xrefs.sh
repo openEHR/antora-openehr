@@ -28,6 +28,10 @@ rewrite_xrefs_in_file() {
   # Pattern 1b: <<_foo_bar_class>>  →  xref:{class_foo_bar}[foo_bar]
   sed -i 's/<<_\([a-z0-9_]*\)_class>>/xref:{class_\1}[\1]/g' "$f"
 
+  # Pattern 1c/1d: the same for enumerations (legacy UML class tables, step 3b)
+  sed -i 's/<<_\([a-z0-9_]*\)_enumeration,\([^>]*\)>>/xref:{class_\1}[\2]/g' "$f"
+  sed -i 's/<<_\([a-z0-9_]*\)_enumeration>>/xref:{class_\1}[\1]/g' "$f"
+
   # Pattern 2: link:/releases/.../spec.html#_foo_bar_class[Text^]  →  xref:{class_foo_bar}[Text]
   sed -i 's|link:/releases/[^#]*#_\([a-z0-9_]*\)_class\[\([^\^]*\)\^\]|xref:{class_\1}[\2]|g' "$f"
 
