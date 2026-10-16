@@ -1543,7 +1543,8 @@ class_bmm_indexed_container_property: "{page_lang_bmm_persistence_model}#_bmm_in
 
 # ===== LANG - BEL additions =====
 class_statement_set: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_statement_set_class"
-class_expr_value_ref: "{page_lang_bel_eom}#_expr_value_ref_class"
+# EXPR_VALUE_REF has no class table on any page; link the BASE 1.0.4 expression page.
+class_expr_value_ref: "Release-1.0.4@BASE:expression:expression_object_model.adoc"
 
 # LANG - bmm expressions (additions)
 class_el_type_def: "{page_lang_bmm_expressions}#_el_type_def_class"

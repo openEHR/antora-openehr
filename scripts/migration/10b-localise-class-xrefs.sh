@@ -34,6 +34,19 @@ fi
 MAP_FILE="$(mktemp)"
 trap 'rm -f "$MAP_FILE"' EXIT
 
+# class_stems_of <file> <module> <depth>
+#   Class partial stems a file includes, directly or through the module partials it
+#   includes (PROC pages include partial$2-definition_plan.adoc, which includes the classes).
+class_stems_of() {
+  local file="$1" module="$2" depth="$3" p
+  grep -oE 'include::ROOT:partial\$classes/[^[]+\.adoc' "$file" 2>/dev/null \
+    | sed -E 's#^.*classes/##; s#\.adoc$##' || true
+  [ "$depth" -gt 0 ] || return 0
+  while IFS= read -r p; do
+    [ -f "modules/${module}/partials/${p}" ] && class_stems_of "modules/${module}/partials/${p}" "$module" $((depth - 1))
+  done < <(grep -oE 'include::partial\$[^[]+\.adoc' "$file" 2>/dev/null | sed -E 's#^include::partial\$##' || true)
+}
+
 # Map: <stem> TAB <module>:<page>.adoc#<anchor>
 while IFS= read -r page; do
   module="${page#modules/}"
@@ -50,8 +63,7 @@ while IFS= read -r page; do
       }' "$partial")"
     [ -n "$anchor" ] || continue
     printf '%s\t%s:%s#%s\n' "$stem" "$module" "$rel" "$anchor" >> "$MAP_FILE"
-  done < <(grep -oE 'include::ROOT:partial\$classes/[^[]+\.adoc' "$page" 2>/dev/null \
-    | sed -E 's#^.*classes/##; s#\.adoc$##')
+  done < <(class_stems_of "$page" "$module" 2)
 done < <(find modules -path '*/pages/*' -name '*.adoc' 2>/dev/null | sort)
 
 if [ ! -s "$MAP_FILE" ]; then
