@@ -151,6 +151,9 @@ commit_checkpoint \
 # Step 10: Rewrite internal class cross-references to Antora xrefs
 "$SCRIPT_DIR/10-rewrite-class-xrefs.sh"
 
+# Step 10b: Point class xrefs in generated partials at this component version's own pages
+"$SCRIPT_DIR/10b-localise-class-xrefs.sh"
+
 # Step 11: Tag untagged listing blocks in QUERY/AQL pages with [source, sql]
 "$SCRIPT_DIR/11-tag-query-source-blocks.sh" "$COMPONENT_NAME"
 

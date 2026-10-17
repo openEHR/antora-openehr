@@ -741,6 +741,22 @@ class_iso8601_date_time: "{page_base_foundation_types_time_types}#_iso8601_date_
 class_iso8601_duration: "{page_base_foundation_types_time_types}#_iso8601_duration_class"
 class_iso8601_timezone: "{page_base_foundation_types_time_types}#_iso8601_timezone_class"
 
+# BASE 1.0.4 only: types removed or renamed in later BASE releases, used by BASE 1.0.4
+# and RM 1.0.2 class tables. Pinned to Release-1.0.4, the only version with these anchors.
+class_date: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_date_class"
+class_time: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_time_class"
+class_date_time: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_date_time_class"
+class_duration: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_duration_class"
+class_timezone: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_timezone_class"
+class_idate: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_idate_class"
+class_itime: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_itime_class"
+class_idate_time: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_idate_time_class"
+class_iduration: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_iduration_class"
+class_itimezone: "Release-1.0.4@BASE:foundation_types:time_types.adoc#_itimezone_class"
+class_aggregate: "Release-1.0.4@BASE:foundation_types:structure_types.adoc#_aggregate_class"
+class_operator_def: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_operator_def_class"
+class_bmm_entity: "Release-1.0.4@BASE:bmm:core-entities.adoc#_bmm_entity_class"
+
 # BASE - foundation_types - terminology
 class_terminology_term: "{page_base_foundation_types_terminology}#_terminology_term_class"
 class_terminology_code: "{page_base_foundation_types_terminology}#_terminology_code_class"
@@ -1213,27 +1229,29 @@ class_p_bmm_indexed_container_property: "{page_lang_bmm_persistence_model}#_p_bm
 # ===== LANG - BEL =====
 page_lang_bel_eom: "LANG:BEL:expression_object_model.adoc"
 
-class_expression: "{page_lang_bel_eom}#_expression_class"
+# No LANG release renders the expression classes yet; BASE 1.0.4 is the only page with them.
+class_expression: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_expression_class"
 class_expression_item: "{page_lang_bel_eom}#_expression_item_class"
-class_expr_type_def: "{page_lang_bel_eom}#_expr_type_def_class"
+class_expr_type_def: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_expr_type_def_class"
 class_expr_item: "{page_lang_bel_eom}#_expr_item_class"
-class_expr_leaf: "{page_lang_bel_eom}#_expr_leaf_class"
-class_expr_value: "{page_lang_bel_eom}#_expr_value_class"
-class_expr_operator: "{page_lang_bel_eom}#_expr_operator_class"
-class_assertion: "{page_lang_bel_eom}#_assertion_class"
-class_statement: "{page_lang_bel_eom}#_statement_class"
-class_variable_declaration: "{page_lang_bel_eom}#_variable_declaration_class"
-class_assignment: "{page_lang_bel_eom}#_assignment_class"
+class_expr_leaf: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_expr_leaf_class"
+class_expr_value: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_expr_value_class"
+class_expr_operator: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_expr_operator_class"
+class_assertion: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_assertion_class"
+class_statement: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_statement_class"
+class_variable_declaration: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_variable_declaration_class"
+class_assignment: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_assignment_class"
 
 # ===== PROC - task_planning =====
 page_proc_task_planning_overview: "PROC:task_planning:model_overview.adoc"
-page_proc_task_planning_plan: "PROC:task_planning:2-definition_plan.adoc"
-page_proc_task_planning_task_plan: "PROC:task_planning:3-definition_task_plan.adoc"
-page_proc_task_planning_task_semantics: "PROC:task_planning:4-definition_task_semantics.adoc"
-page_proc_task_planning_task_actions: "PROC:task_planning:5-definition_task_actions.adoc"
-page_proc_task_planning_data_sets: "PROC:task_planning:6-definition_data_sets.adoc"
-page_proc_task_planning_conditional: "PROC:task_planning:7-definition_conditional.adoc"
-page_proc_task_planning_events: "PROC:task_planning:9-definition_events.adoc"
+# The task_planning chapters are partials included by 1-definition_overview.adoc.
+page_proc_task_planning_plan: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_plan: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_semantics: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_task_actions: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_data_sets: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_conditional: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_events: "PROC:task_planning:1-definition_overview.adoc"
 page_proc_task_planning_history: "PROC:task_planning:model_history.adoc"
 page_proc_task_planning_materialised: "PROC:task_planning:model_materialised.adoc"
 
@@ -1525,8 +1543,9 @@ class_bmm_enumeration_integer: "{page_lang_bmm_core_classes}#_bmm_enumeration_in
 class_bmm_indexed_container_property: "{page_lang_bmm_persistence_model}#_bmm_indexed_container_property_class"
 
 # ===== LANG - BEL additions =====
-class_statement_set: "{page_lang_bel_eom}#_statement_set_class"
-class_expr_value_ref: "{page_lang_bel_eom}#_expr_value_ref_class"
+class_statement_set: "Release-1.0.4@BASE:expression:expression_object_model.adoc#_statement_set_class"
+# EXPR_VALUE_REF has no class table on any page; link the BASE 1.0.4 expression page.
+class_expr_value_ref: "Release-1.0.4@BASE:expression:expression_object_model.adoc"
 
 # LANG - bmm expressions (additions)
 class_el_type_def: "{page_lang_bmm_expressions}#_el_type_def_class"
@@ -1566,8 +1585,8 @@ class_tracked_state_variable: "{page_proc_decision_language_dlm_model}#_tracked_
 class_value_snapshot: "{page_proc_decision_language_dlm_model}#_value_snapshot_class"
 
 # ===== PROC - task_planning additions =====
-page_proc_task_planning_order_tracking: "PROC:task_planning:8-definition_order_tracking.adoc"
-page_proc_task_planning_cost: "PROC:task_planning:10-definition_cost.adoc"
+page_proc_task_planning_order_tracking: "PROC:task_planning:1-definition_overview.adoc"
+page_proc_task_planning_cost: "PROC:task_planning:1-definition_overview.adoc"
 
 class_order_ref: "{page_proc_task_planning_order_tracking}#_order_ref_class"
 class_task_costing: "{page_proc_task_planning_cost}#_task_costing_class"
