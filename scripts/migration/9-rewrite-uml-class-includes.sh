@@ -15,12 +15,29 @@ remove_missing_class_includes() {
   local tmp
   tmp="$(mktemp)"
 
-  while IFS= read -r line; do
+  # `|| [ -n "$line" ]` keeps a last line without a trailing newline (it was dropped
+  # before, e.g. the closing `--------` of a listing block); printf keeps lines like `-n`.
+  while IFS= read -r line || [ -n "$line" ]; do
     if [[ "$line" =~ include::ROOT:partial\$classes/([^[]+)\[ ]]; then
-      local class_partial="modules/ROOT/partials/classes/${BASH_REMATCH[1]}"
+      local name="${BASH_REMATCH[1]}"
+      local class_partial="modules/ROOT/partials/classes/${name}"
+      if [ ! -f "$class_partial" ] && [[ "$name" == *.*.adoc ]]; then
+        # The schema may name the package differently from the page: AM 2.2.0 puts
+        # AOM_PROFILE in package aom2_profile (aom2_profile.aom_profile.adoc) while the
+        # page includes aom2.aom_profile.adoc. Use the single <prefix>_*.<class> match.
+        local prefix="${name%%.*}" cls="${name#*.}" cands=()
+        local c
+        for c in modules/ROOT/partials/classes/"${prefix}"_*."${cls}"; do
+          [ -f "$c" ] && cands+=("$c")
+        done
+        if [ "${#cands[@]}" -eq 1 ]; then
+          line="${line/classes\/${name}/classes\/$(basename "${cands[0]}")}"
+          class_partial="${cands[0]}"
+        fi
+      fi
       [ -f "$class_partial" ] || continue
     fi
-    echo "$line"
+    printf '%s\n' "$line"
   done < "$file" > "$tmp"
 
   mv "$tmp" "$file"
@@ -72,16 +89,31 @@ rewrite_uml_refs_for_module() {
     # UML DIAGRAMS — all known diagram URI attributes → ROOT:uml/
     #
     sed -i 's|image::{uml_diagrams_uri}/|image::ROOT:uml/|g' "$f"
-    sed -i 's|image::{uml_aom14_diagrams_uri}/|image::ROOT:uml/|g' "$f"
-    sed -i 's|image::{uml_aom2_diagrams_uri}/|image::ROOT:uml/|g' "$f"
+    # {uml_aom14_diagrams_uri} / {uml_aom2_diagrams_uri} are UML/AOM1.4|AOM2/diagrams; use the
+    # uml/<SUBDIR>/ copy step 3 kept on a name clash, else the flat file.
+    perl -i -pe 's{image::\{uml_aom(14|2)_diagrams_uri\}/([^\[]+)}{my $d = $1 eq "14" ? "AOM1.4" : "AOM2"; -e "modules/ROOT/images/uml/$d/$2" ? "image::ROOT:uml/$d/$2" : "image::ROOT:uml/$2"}ge' "$f"
+    # AM release/1.4.0 writes the export dir directly: image::{uml_export_dir}/diagrams/X.svg
+    sed -i 's|image::{uml_export_dir}/diagrams/|image::ROOT:uml/|g' "$f"
+    # Another component's diagrams: image::{rm_uml_export_dir}/diagrams/X → image::RM:ROOT:uml/X
+    perl -i -pe 's{image::\{([a-z]+)_uml_export_dir\}/diagrams/}{"image::" . uc($1) . ":ROOT:uml/"}ge' "$f"
 
     #
     # UML DIAGRAMS — bare paths: UML/diagrams/X.svg and UML/AOM*/diagrams/X.svg → ROOT:uml/
+    # A UML/<SUBDIR>/diagrams/X that step 3 kept under uml/<SUBDIR>/ (name clash) links there.
     #
     sed -i 's|image::UML/diagrams/|image::ROOT:uml/|g' "$f"
-    perl -i -pe 's|image::UML/([^/]+)/diagrams/|image::ROOT:uml/|g' "$f"
     sed -i 's|image::../UML/diagrams/|image::ROOT:uml/|g' "$f"
-    perl -i -pe 's|image::\.\./UML/([^/]+)/diagrams/|image::ROOT:uml/|g' "$f"
+    perl -i -pe 's{image::(?:\{uml_export_dir\}|\.\./UML|UML)/([^/\[]+)/diagrams/([^\[]+)}{-e "modules/ROOT/images/uml/$1/$2" ? "image::ROOT:uml/$1/$2" : "image::ROOT:uml/$2"}ge' "$f"
+
+    #
+    # Module images written with an images/ prefix: image::images/X.png → image::X.png
+    #
+    sed -i 's|image::images/|image::|g' "$f"
+
+    #
+    # Include lines with a doubled closing bracket (PROC): include::X[leveloffset=+1]] → [leveloffset=+1]
+    #
+    sed -i 's|^\(include::[^[]*\[[^]]*\]\)\]\(\r\?\)$|\1\2|' "$f"
 
     #
     # LEGACY diagrams_uri — image::{diagrams_uri}/X.png → image::diagrams/X.png
@@ -93,7 +125,7 @@ rewrite_uml_refs_for_module() {
     # FIX wrong image extension: image::ROOT:uml/X.png → image::ROOT:uml/X.svg
     # when X.svg exists in ROOT/images/uml/ but X.png does not
     #
-    while IFS= read -r line; do
+    while IFS= read -r line || [ -n "$line" ]; do
       if [[ "$line" =~ image::ROOT:uml/([^[]+)\.png ]]; then
         base="${BASH_REMATCH[1]}"
         if [ -f "modules/ROOT/images/uml/${base}.svg" ] && [ ! -f "modules/ROOT/images/uml/${base}.png" ]; then

@@ -117,6 +117,9 @@ MODULES="$("$SCRIPT_DIR/1-analyze-structure.sh")"
 # Step 3a: Generate Antora-ready UML class partials via bmm-publisher
 "$SCRIPT_DIR/3a-generate-uml-classes.sh" "$COMPONENT_NAME"
 
+# Step 3b: Class partials from legacy UML class tables when no BMM exists (SM, PROC, CDS)
+"$SCRIPT_DIR/3b-legacy-classes-to-partials.sh"
+
 # Checkpoint: generated class partials + legacy UML/class cleanup.
 commit_checkpoint \
   "chore(migration): regenerate uml classes and retire legacy class files" \

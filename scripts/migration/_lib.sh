@@ -182,7 +182,9 @@ resolve_module_master_source() {
 strip_legacy_master_index_lines() {
   local f="$1"
   [ -f "$f" ] || return 0
-  sed -i '/^include::/d;/^image::{openehr_logo}/d' "$f"
+  # The logo comes as {openehr_logo} or, in older releases (AM 1.4.0), as a hard-coded URL;
+  # left in place it pushes the title below it, which then renders as a part, not the title.
+  sed -i '/^include::/d;/^image::{openehr_logo}/d;/^image::https\?:\/\/[^[]*openehr_logo/d' "$f"
   sed -i '/^:sectnums:/d' "$f"
 }
 

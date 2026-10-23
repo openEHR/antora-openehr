@@ -102,6 +102,13 @@ update-grammars: ## Clone/update grammar repos, copy .g4 into spec repos, git co
 			cp $(ADL_ANTLR_SRC)/*.g4 "$$dir/"; \
 		fi \
 	done
+	@for module in odin expression; do \
+		dir="$(REPOS_DIR)/specifications-BASE/modules/$$module/partials"; \
+		if [ -d "$$dir" ]; then \
+			echo "$(CYAN)Copying adl-antlr g4 files to BASE/$$module/partials...$(NC)"; \
+			cp $(ADL_ANTLR_SRC)/*.g4 "$$dir/"; \
+		fi \
+	done
 	@for module in decision_language; do \
 		dir="$(REPOS_DIR)/specifications-PROC/modules/$$module/partials"; \
 		if 		[ -d "$$dir" ]; then \
