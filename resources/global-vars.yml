@@ -1574,3 +1574,5 @@ class_task_costing: "{page_proc_task_planning_cost}#_task_costing_class"
 class_reminder: "{page_proc_task_planning_events}#_reminder_class"
 class_task_plan_event_record: "{page_proc_task_planning_history}#_task_plan_event_record_class"
 
+# Literal "_" for xref fragments written by migration step 10c (#{underscore}id).
+underscore: "_"
