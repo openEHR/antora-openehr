@@ -1,7 +1,7 @@
 .PHONY: help build build-local build-github clean preview all \
         install create-branches migrate-repo validate-structure clone-repos \
         generate-uml-classes-repo generate-uml-classes-all \
-        commit-updated-grammars
+        commit-updated-grammars check-class-map
 
 # Default target
 .DEFAULT_GOAL := help
@@ -214,6 +214,9 @@ validate-structure: ## Validate Antora structure in a repository (usage: make va
 	fi
 	@echo "$(GREEN)Validating Antora structure in $(REPO)...$(NC)"
 	@./scripts/validate-structure.sh $(REPOS_DIR)/$(REPO)
+
+check-class-map: ## Check class_* in global-vars.yml against the class partials each repo's latest release includes
+	@python3 scripts/check-class-map.py --repos $(REPOS_DIR)
 
 
 validate-all: ## Validate Antora structure in all repositories

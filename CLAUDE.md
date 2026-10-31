@@ -53,6 +53,7 @@ make create-all-branches  # Tags → release/*; master tip → development branc
 make migrate-all          # Migrate all repositories to Antora structure
 make generate-uml-classes-all  # Regenerate ROOT UML class partials via bmm-publisher (Docker)
 make validate-all         # Validate all repositories
+make check-class-map      # Check class_* in global-vars.yml against the spec repos' class includes
 make build-local          # Build the site using antora-playbook-local.yml
 make preview              # Start local server at http://localhost:8080
 
@@ -103,6 +104,7 @@ There are **no automated tests**. Verification is manual:
 1. Run `make build-local` and check for build errors (also review `build.log`).
 2. Run `make preview` and inspect the generated HTML at `http://localhost:8080`.
 3. Run `make validate-structure REPO=<repo>` to validate Antora directory structure.
+4. After changing `class_*` entries in `resources/global-vars.yml`, or after a new release, run `make check-class-map`. It reads each repo's newest `release/*` branch, where unversioned xrefs go, and reports entries that miss the page including the class partial, with a suggested entry.
 
 ---
 
@@ -130,6 +132,7 @@ antora-openehr/
 │   │   ├── 13-finalise-landing-pages.sh   # Landing pages + abstract injection
 │   │   └── 14-remove-legacy-docs-html.sh
 │   ├── resources/abstracts/     # Per-component landing-page abstracts (BASE.adoc, RM.adoc, …) consumed by step 13
+│   ├── check-class-map.py       # Checks class_* in global-vars.yml against the pages that include each class partial
 │   ├── commit-updated-grammars.sh
 │   ├── create-release-branches.sh
 │   └── validate-structure.sh
