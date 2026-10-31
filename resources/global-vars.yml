@@ -778,11 +778,11 @@ class_validity_kind: "{page_base_base_types_definitions}#_validity_kind_enumerat
 class_version_status: "{page_base_base_types_definitions}#_version_status_enumeration"
 
 # BASE - base_types - builtins
-class_env: "{page_base_base_types_builtins}#_env_class"
-class_locale: "{page_base_base_types_builtins}#_locale_class"
-class_statistical_evaluator: "{page_base_base_types_builtins}#_statistical_evaluator_class"
-class_math: "{page_base_base_types_builtins}#_math_class"
-class_quantity_converter: "{page_base_base_types_builtins}#_quantity_converter_class"
+class_env: "{page_base_base_types_builtins}#_env_interface"
+class_locale: "{page_base_base_types_builtins}#_locale_interface"
+class_statistical_evaluator: "{page_base_base_types_builtins}#_statistical_evaluator_interface"
+class_math: "{page_base_base_types_builtins}#_math_interface"
+class_quantity_converter: "{page_base_base_types_builtins}#_quantity_converter_interface"
 
 # BASE - resource (canonical source for shared classes)
 class_authored_resource: "{page_base_resource}#_authored_resource_class"
@@ -852,7 +852,7 @@ class_dv_amount: "{page_rm_data_types_quantity}#_dv_amount_class"
 class_dv_quantity: "{page_rm_data_types_quantity}#_dv_quantity_class"
 class_dv_count: "{page_rm_data_types_quantity}#_dv_count_class"
 class_dv_proportion: "{page_rm_data_types_quantity}#_dv_proportion_class"
-class_proportion_kind: "{page_rm_data_types_quantity}#_proportion_kind_class"
+class_proportion_kind: "{page_rm_data_types_quantity}#_proportion_kind_enumeration"
 class_dv_absolute_quantity: "{page_rm_data_types_quantity}#_dv_absolute_quantity_class"
 
 # RM - data_types - text
@@ -927,8 +927,8 @@ class_agent: "{page_rm_demographic}#_agent_class"
 class_measurement_service: "{page_rm_support_measurement}#_measurement_service_class"
 class_external_environment_access: "{page_rm_support_package}#_external_environment_access_class"
 class_terminology_service: "{page_rm_support_terminology}#_terminology_service_class"
-class_terminology_access: "{page_rm_support_terminology}#_terminology_access_class"
-class_code_set_access: "{page_rm_support_terminology}#_code_set_access_class"
+class_terminology_access: "{page_rm_support_terminology}#_terminology_access_interface"
+class_code_set_access: "{page_rm_support_terminology}#_code_set_access_interface"
 class_openehr_terminology_group_identifiers: "{page_rm_support_terminology}#_openehr_terminology_group_identifiers_class"
 class_openehr_code_set_identifiers: "{page_rm_support_terminology}#_openehr_code_set_identifiers_class"
 
@@ -988,7 +988,7 @@ class_aom14_expr_operator: "{page_am_aom14_assertion}#_expr_operator_class"
 class_aom14_expr_unary_operator: "{page_am_aom14_assertion}#_expr_unary_operator_class"
 class_aom14_expr_binary_operator: "{page_am_aom14_assertion}#_expr_binary_operator_class"
 class_aom14_assertion_variable: "{page_am_aom14_assertion}#_assertion_variable_class"
-class_aom14_operator_kind: "{page_am_aom14_assertion}#_operator_kind_class"
+class_aom14_operator_kind: "{page_am_aom14_assertion}#_operator_kind_enumeration"
 class_aom14_c_ordinal: "{page_am_aom14_domain_extension}#_c_ordinal_class"
 class_aom14_ordinal: "{page_am_aom14_domain_extension}#_ordinal_class"
 class_aom14_c_quantity: "{page_am_aom14_domain_extension}#_c_quantity_class"
@@ -1035,7 +1035,7 @@ class_aom2_c_time: "{page_am_aom2_constraint_model}#_c_time_class"
 class_aom2_c_date_time: "{page_am_aom2_constraint_model}#_c_date_time_class"
 class_aom2_c_duration: "{page_am_aom2_constraint_model}#_c_duration_class"
 class_aom2_c_terminology_code: "{page_am_aom2_constraint_model}#_c_terminology_code_class"
-class_aom2_constraint_status: "{page_am_aom2_constraint_model}#_constraint_status_class"
+class_aom2_constraint_status: "{page_am_aom2_constraint_model}#_constraint_status_enumeration"
 class_aom2_c_second_order: "{page_am_aom2_constraint_model}#_c_second_order_class"
 class_aom2_c_primitive_tuple: "{page_am_aom2_constraint_model}#_c_primitive_tuple_class"
 class_aom2_c_attribute_tuple: "{page_am_aom2_constraint_model}#_c_attribute_tuple_class"
@@ -1045,7 +1045,7 @@ class_aom2_aom_type_mapping: "{page_am_aom2_rm_adaptation}#_aom_type_mapping_cla
 class_aom2_aom_property_mapping: "{page_am_aom2_rm_adaptation}#_aom_property_mapping_class"
 class_aom2_rm_overlay: "{page_am_aom2_rm_overlay}#_rm_overlay_class"
 class_aom2_rm_attribute_visibility: "{page_am_aom2_rm_overlay}#_rm_attribute_visibility_class"
-class_aom2_visibility_type: "{page_am_aom2_rm_overlay}#_visibility_type_class"
+class_aom2_visibility_type: "{page_am_aom2_rm_overlay}#_visibility_type_enumeration"
 class_aom2_expr_constraint: "{page_am_aom2_rules}#_expr_constraint_class"
 class_aom2_expr_archetype_id_constraint: "{page_am_aom2_rules}#_expr_archetype_id_constraint_class"
 class_aom2_expr_archetype_ref: "{page_am_aom2_rules}#_expr_archetype_ref_class"
@@ -1064,6 +1064,7 @@ page_lang_bmm_expressions: "LANG:bmm:expressions.adoc"
 page_lang_bmm_statements: "LANG:bmm:statements.adoc"
 page_lang_bmm_model_access: "LANG:bmm:model_access.adoc"
 page_lang_bmm_packages: "LANG:bmm:packages.adoc"
+page_lang_bmm_overview: "LANG:bmm:overview.adoc"
 
 # LANG - bmm - model
 class_bmm_model: "{page_lang_bmm_core_model}#_bmm_model_class"
@@ -1121,6 +1122,10 @@ class_bmm_routine_definition: "{page_lang_bmm_core_features}#_bmm_routine_defini
 class_bmm_writable_variable: "{page_lang_bmm_core_features}#_bmm_writable_variable_class"
 class_bmm_readonly_variable: "{page_lang_bmm_core_features}#_bmm_readonly_variable_class"
 class_bmm_parameter: "{page_lang_bmm_core_features}#_bmm_parameter_class"
+class_bmm_operator_position: "{page_lang_bmm_core_features}#_bmm_operator_position_enumeration"
+class_bmm_parameter_direction: "{page_lang_bmm_core_features}#_bmm_parameter_direction_enumeration"
+class_bmm_indexed_container_property: "{page_lang_bmm_core_features}#_bmm_indexed_container_property_class"
+class_bmm_routine_external: "{page_lang_bmm_core_features}#_bmm_routine_external_class"
 
 # LANG - bmm - values
 class_bmm_container_value: "{page_lang_bmm_core_values}#_bmm_container_value_class"
@@ -1129,6 +1134,9 @@ class_bmm_primitive_value: "{page_lang_bmm_core_values}#_bmm_primitive_value_cla
 class_bmm_string_value: "{page_lang_bmm_core_values}#_bmm_string_value_class"
 class_bmm_integer_value: "{page_lang_bmm_core_values}#_bmm_integer_value_class"
 class_bmm_unitary_value: "{page_lang_bmm_core_values}#_bmm_unitary_value_class"
+class_bmm_boolean_value: "{page_lang_bmm_core_values}#_bmm_boolean_value_class"
+class_bmm_interval_value: "{page_lang_bmm_core_values}#_bmm_interval_value_class"
+class_bmm_indexed_container_value: "{page_lang_bmm_core_values}#_bmm_indexed_container_value_class"
 
 # LANG - bmm - expressions (EL)
 class_el_expression: "{page_lang_bmm_expressions}#_el_expression_class"
@@ -1158,6 +1166,13 @@ class_el_tuple: "{page_lang_bmm_expressions}#_el_tuple_class"
 class_el_tuple_item: "{page_lang_bmm_expressions}#_el_tuple_item_class"
 class_el_constrained: "{page_lang_bmm_expressions}#_el_constrained_class"
 class_el_boolean_expression: "{page_lang_bmm_expressions}#_el_boolean_expression_class"
+class_el_attached: "{page_lang_bmm_expressions}#_el_attached_class"
+class_el_binary_operator: "{page_lang_bmm_expressions}#_el_binary_operator_class"
+class_el_unary_operator: "{page_lang_bmm_expressions}#_el_unary_operator_class"
+class_el_condition_chain: "{page_lang_bmm_expressions}#_el_condition_chain_class"
+class_el_defined: "{page_lang_bmm_expressions}#_el_defined_class"
+class_el_self_ref: "{page_lang_bmm_expressions}#_el_self_ref_class"
+class_el_type_ref: "{page_lang_bmm_expressions}#_el_type_ref_class"
 
 # LANG - bmm - statements
 class_bmm_conditional_action: "{page_lang_bmm_statements}#_bmm_conditional_action_class"
@@ -1168,18 +1183,19 @@ class_bmm_statement_block: "{page_lang_bmm_statements}#_bmm_statement_block_clas
 class_bmm_assertion: "{page_lang_bmm_statements}#_bmm_assertion_class"
 class_bmm_assignment: "{page_lang_bmm_statements}#_bmm_assignment_class"
 class_bmm_action_decision_table: "{page_lang_bmm_statements}#_bmm_action_decision_table_class"
+class_bmm_action_table: "{page_lang_bmm_statements}#_bmm_action_table_class"
+class_bmm_procedure_call: "{page_lang_bmm_statements}#_bmm_procedure_call_class"
 
 # LANG - bmm - model access
 class_bmm_schema: "{page_lang_bmm_model_access}#_bmm_schema_class"
 class_bmm_schema_descriptor: "{page_lang_bmm_model_access}#_bmm_schema_descriptor_class"
 class_bmm_model_metadata: "{page_lang_bmm_model_access}#_bmm_model_metadata_class"
 class_bmm_include_spec: "{page_lang_bmm_model_access}#_bmm_include_spec_class"
-class_bmm_schema_state: "{page_lang_bmm_model_access}#_bmm_schema_state_class"
-class_bmm_operator_position: "{page_lang_bmm_model_access}#_bmm_operator_position_class"
-class_bmm_parameter_direction: "{page_lang_bmm_model_access}#_bmm_parameter_direction_class"
+class_bmm_model_access: "{page_lang_bmm_model_access}#_bmm_model_access_class"
+class_bmm_schema_state: "{page_lang_bmm_model_access}#_bmm_schema_state_enumeration"
 
-# LANG - bmm - packages
-class_bmm_definitions: "{page_lang_bmm_packages}#_bmm_definitions_class"
+# LANG - bmm - overview
+class_bmm_definitions: "{page_lang_bmm_overview}#_bmm_definitions_class"
 
 # ===== TERM - Support Terminology =====
 page_term_support_representation: "TERM:SupportTerminology:representation.adoc"
@@ -1187,7 +1203,8 @@ class_code_set: "{page_term_support_representation}#_code_set_class"
 class_code: "{page_term_support_representation}#_code_class"
 class_terminology_group: "{page_term_support_representation}#_terminology_group_class"
 class_terminology_concept: "{page_term_support_representation}#_terminology_concept_class"
-class_terminology_status: "{page_term_support_representation}#_terminology_status_class"
+class_terminology_status: "{page_term_support_representation}#_terminology_status_enumeration"
+class_terminology: "{page_term_support_representation}#_terminology_class"
 
 # ===== LANG - BMM_PERSISTENCE =====
 page_lang_bmm_persistence_model: "LANG:bmm_persistence:model.adoc"
@@ -1209,6 +1226,11 @@ class_p_bmm_enumeration: "{page_lang_bmm_persistence_model}#_p_bmm_enumeration_c
 class_p_bmm_generic_parameter: "{page_lang_bmm_persistence_model}#_p_bmm_generic_parameter_class"
 class_p_bmm_container_property: "{page_lang_bmm_persistence_model}#_p_bmm_container_property_class"
 class_p_bmm_indexed_container_property: "{page_lang_bmm_persistence_model}#_p_bmm_indexed_container_property_class"
+class_p_bmm_enumeration_string: "{page_lang_bmm_persistence_model}#_p_bmm_enumeration_string_class"
+class_p_bmm_enumeration_integer: "{page_lang_bmm_persistence_model}#_p_bmm_enumeration_integer_class"
+class_p_bmm_single_property: "{page_lang_bmm_persistence_model}#_p_bmm_single_property_class"
+class_p_bmm_single_property_open: "{page_lang_bmm_persistence_model}#_p_bmm_single_property_open_class"
+class_p_bmm_generic_property: "{page_lang_bmm_persistence_model}#_p_bmm_generic_property_class"
 
 # ===== LANG - BEL =====
 page_lang_bel_eom: "LANG:BEL:expression_object_model.adoc"
@@ -1411,7 +1433,7 @@ class_constant: "{page_cds_gdl2_model}#_constant_class"
 class_variable: "{page_cds_gdl2_model}#_variable_class"
 class_operator: "{page_cds_gdl2_model}#_operator_class"
 class_term: "{page_cds_gdl2_model}#_term_class"
-class_terminology: "{page_cds_gdl2_model}#_terminology_class"
+# GDL2 TERMINOLOGY has no attribute: class_terminology is the TERM class (partial terminology.adoc).
 class_term_binding: "{page_cds_gdl2_model}#_term_binding_class"
 
 # ===== AM - AOM2 unprefixed aliases =====
@@ -1520,9 +1542,6 @@ class_bmm_visibility: "{page_lang_bmm_core_features}#_bmm_visibility_class"
 class_bmm_value_set_spec: "{page_lang_bmm_core_classes}#_bmm_value_set_spec_class"
 class_bmm_enumeration_string: "{page_lang_bmm_core_classes}#_bmm_enumeration_string_class"
 class_bmm_enumeration_integer: "{page_lang_bmm_core_classes}#_bmm_enumeration_integer_class"
-
-# LANG - bmm_persistence (additions)
-class_bmm_indexed_container_property: "{page_lang_bmm_persistence_model}#_bmm_indexed_container_property_class"
 
 # ===== LANG - BEL additions =====
 class_statement_set: "{page_lang_bel_eom}#_statement_set_class"
