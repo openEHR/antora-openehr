@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -437,7 +465,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Each attribute name is the name of an attribute in an implied or actual object or relational model. Each "value" is either a literal value of a primitive type (see section <a href="#Primitive Types">[Primitive Types]</a>) or a further nesting of attribute names and values, terminating in leaf nodes of primitive type values. Where sibling attribute nodes occur, the attribute identifiers must be unique, just as in a standard object or relational model.</p>
+<p>Each attribute name is the name of an attribute in an implied or actual object or relational model. Each "value" is either a literal value of a primitive type (see section <a href="../leaf_data/#_primitive_types" class="xref page">Primitive Types</a>) or a further nesting of attribute names and values, terminating in leaf nodes of primitive type values. Where sibling attribute nodes occur, the attribute identifiers must be unique, just as in a standard object or relational model.</p>
 </div>
 <div class="paragraph">
 <p>The following shows a typical structure.</p>
@@ -460,7 +488,7 @@ attr_8 = &lt;...&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the above structure, each "&lt;&gt;" encloses an instance of some type. The hierarchical structure corresponds to the part-of relationship between objects, otherwise known as composition and <em>aggregation</em> relationships in object-oriented formalisms such as UML (the difference between the two is usually described as being "sub-objects related by aggregation can have independent lifetimes, whereas sub-objects related by composition have co-terminal lifetimes and are always destroyed with the parent"; ODIN does not differentiate between the two, since it is the business of a model, not the data, to express such semantics). Associations between instances in ODIN are also representable by references, and are described in the section <a href="#Associations and Shared Objects">[Associations and Shared Objects]</a>.</p>
+<p>In the above structure, each "&lt;&gt;" encloses an instance of some type. The hierarchical structure corresponds to the part-of relationship between objects, otherwise known as composition and <em>aggregation</em> relationships in object-oriented formalisms such as UML (the difference between the two is usually described as being "sub-objects related by aggregation can have independent lifetimes, whereas sub-objects related by composition have co-terminal lifetimes and are always destroyed with the parent"; ODIN does not differentiate between the two, since it is the business of a model, not the data, to express such semantics). Associations between instances in ODIN are also representable by references, and are described in the section <a href="../references/#_associations_and_shared_objects" class="xref page">Associations and Shared Objects</a>.</p>
 </div>
 <div class="paragraph">
 <p>Validity rules for object-structuring of ODIN are as follows:</p>
@@ -490,7 +518,7 @@ attr_8 = &lt;...&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The path syntax used with ODIN maps trivially to W3C Xpath and Xquery paths, and is described in section <a href="#Path Syntax">[Path Syntax]</a>.</p>
+<p>The path syntax used with ODIN maps trivially to W3C Xpath and Xquery paths, and is described in section <a href="../path_syntax/" class="xref page">Path Syntax</a>.</p>
 </div>
 </div>
 </div>
@@ -520,7 +548,7 @@ some_primes = &lt;1, 2, 3, 5&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#Lists of Built-in Types">[Lists of Built-in Types]</a> for the complete description of list leaf types.</p>
+<p>See <a href="../leaf_data/#_lists_of_built_in_types" class="xref page">Lists of Built-in Types</a> for the complete description of list leaf types.</p>
 </div>
 <div class="paragraph">
 <p>However for containers holding non-primitive values, including more container objects, a different syntax is needed. Consider by way of example that an instance of the container <code>List&lt;Person&gt;</code> could in theory be expressed as follows.</p>

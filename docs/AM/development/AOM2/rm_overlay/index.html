@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -645,7 +618,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_visibility</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_overlay/#_rm_attribute_visibility_class" class="xref page">RM_ATTRIBUTE_VISIBILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_visibility</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_rm_attribute_visibility_class">RM_ATTRIBUTE_VISIBILITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional structure in which visibility and aliasing of reference model elements can be specified. Key is path to an RM attribute, which is typically formed from a path to an archetyped node concatenated with a further pure RM attribute path; may also refer to a non-archetyped attribute.</p>
 </div></div></td>
@@ -674,7 +647,7 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_visibility</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_overlay/#_rm_attribute_visibility_class" class="xref page">RM_ATTRIBUTE_VISIBILITY</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_visibility</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_rm_attribute_visibility_class">RM_ATTRIBUTE_VISIBILITY</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional structure in which visibility and aliasing of reference model elements can be specified. Key is path to an RM attribute, which is typically formed from a path to an archetyped node concatenated with a further pure RM attribute path; may also refer to a non-archetyped attribute.</p>
 </div></div></td>
@@ -761,7 +734,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>visibility</strong>: <code><a href="../../../Release-2.3.0/AOM2/rm_overlay/#_visibility_type_enumeration" class="xref page">VISIBILITY_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>visibility</strong>: <code><a href="#_visibility_type_enumeration">VISIBILITY_TYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Visibility setting of a non-archetyped RM attribute (RM attributes that are constrained or within the archetyped structure are visible by default).</p>
 </div></div></td>
@@ -803,7 +776,7 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>visibility</strong>: <code><a href="../../../Release-2.3.0/AOM2/rm_overlay/#_visibility_type_enumeration" class="xref page">VISIBILITY_TYPE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>visibility</strong>: <code><a href="#_visibility_type_enumeration">VISIBILITY_TYPE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Visibility setting of a non-archetyped RM attribute (RM attributes that are constrained or within the archetyped structure are visible by default).</p>
 </div></div></td>
@@ -1015,7 +988,7 @@ other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> <em>alias</em> "&#8656;", "≤" (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> <em>alias</em> "&lt;=", "≤" (<br>
 other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>

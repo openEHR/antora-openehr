@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -1351,6 +1324,9 @@ fragment TERM_CODE_CHAR: NAME_CHAR | '.';
 // URI recogniser based on https://tools.ietf.org/html/rfc3986 and
 // http://www.w3.org/Addressing/URL/5_URI_BNF.html
 EMBEDDED_URI: '&lt;' ([ \t\r\n]|CMT_LINE)* URI ([ \t\r\n]|CMT_LINE)* '&gt;';
+
+// block in another syntax, e.g. (json) &lt;# ... #&gt;, as used in ADL2 default values
+INCLUDED_LANGUAGE_FRAGMENT: '(' ALPHANUM_CHAR+ ')' [ \t\r\n]* '&lt;#' .*? '#&gt;';
 
 fragment URI : URI_SCHEME ':' URI_HIER_PART ( '?' URI_QUERY )? ('#' URI_FRAGMENT)? ;
 

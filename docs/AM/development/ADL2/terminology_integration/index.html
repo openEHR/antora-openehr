@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -603,7 +576,7 @@
 <h2 id="_term_constraint_basics"><a class="anchor" href="#_term_constraint_basics"></a><a class="link" href="#_term_constraint_basics">Term Constraint Basics</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Expressing terminology constraints in cADL was briefly described in <a href="#cADL_Terminology_Constraints">[cADL_Terminology_Constraints]</a>. Constraints in the <code>definition</code> section of an archetype are only a small part of the picture. The targets of the at- and ac- codes are defined in the archetype <code>terminology</code> section, potentially with bindings to external terminology. In order to illustrate the approach clearly, the cADL example from earlier is repeated here, minus the node containing the assumed value, and this time with an extract from the terminology section.</p>
+<p>Expressing terminology constraints in cADL was briefly described in <a href="../cadl_overview/#cADL_Terminology_Constraints" class="xref page">Terminology Constraints</a>. Constraints in the <code>definition</code> section of an archetype are only a small part of the picture. The targets of the at- and ac- codes are defined in the archetype <code>terminology</code> section, potentially with bindings to external terminology. In order to illustrate the approach clearly, the cADL example from earlier is repeated here, minus the node containing the assumed value, and this time with an extract from the terminology section.</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-loading">
 <div class="content">
@@ -1054,7 +1027,7 @@ it is quite common that only <em>some</em> of the local at-codes have equivalent
 <p>The upshot of these considerations is that the choice of which kind of term to use (internal or external) in a given deployment or situation is deferrable to a later stage than archetype authoring. The approach ADL takes is that 'source form' archetypes and templates always use internal coding and optionally binding, and that if external codes are to be directly substituted for the internal codes for some deployment situation for certain fields in an archetype or template, this is specified as an option at the point of operational template generation.</p>
 </div>
 <div class="paragraph">
-<p>As described in <a href="#cADL_Terminology_Constraints">[cADL_Terminology_Constraints]</a>, constraints of the form <code>[acN]</code> and <code>[atN]</code> are replaced by <code>[acN@ttttt]</code> and <code>[atN@ttttt]</code>. A generated operational template that includes the above archetype, with the choice to use the <code>snomed_ct</code> binding&#8217;s external terms made on some nodes, could include the following content.</p>
+<p>As described in <a href="../cadl_overview/#cADL_Terminology_Constraints" class="xref page">Terminology Constraints</a>, constraints of the form <code>[acN]</code> and <code>[atN]</code> are replaced by <code>[acN@ttttt]</code> and <code>[atN@ttttt]</code>. A generated operational template that includes the above archetype, with the choice to use the <code>snomed_ct</code> binding&#8217;s external terms made on some nodes, could include the following content.</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-loading">
 <div class="content">

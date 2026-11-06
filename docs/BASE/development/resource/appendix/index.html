@@ -6,6 +6,7 @@
     <title>Appendix :: openEHR Specifications (Local Build)</title>
     <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/BASE/Release-1.2.0/resource/appendix/">
     <link rel="prev" href="../resource_package/">
+    <link rel="next" href="../../artefact_identification/">
     <meta name="description" content="openEHR Resource Model specification">
     <meta name="keywords" content="openehr, resources">
     <meta name="generator" content="Antora 3.1.15">
@@ -208,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -225,6 +229,46 @@
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="./">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -481,11 +525,26 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.10.0</p></td>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.3.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.10.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-48" target="_blank" rel="noopener">SPECBASE-48</a>: Add <code>RESOURCE_DESCRIPTION</code> invariants (<code>Original_author_valid</code>, <code>Lifecycle_state_valid</code>, <code>Parent_resource_valid</code>) that were missing from the source BMM.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Jun 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add BMM definition of BASE and render class asciidoc files (<a href="https://specifications.openehr.org/tickets/SPECBASE-48" target="_blank" rel="noopener">SPECBASE-48</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 May 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-6" target="_blank" rel="noopener">SPECBASE-6</a>: Specify language attributes of <code>RESOURCE_DESCRIPTION_ITEM</code> and <code>TRANSLATION_DETAILS</code> as being coded by a subset of RFC 5646 language tag standard.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
 S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Jan 2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jan 2025</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -513,7 +572,7 @@ S Iancu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.8.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-23" target="_blank" rel="noopener">SPECBASE-23</a>: Add <code><em>other_contributors</em></code> to <code>TRANSLATION_DETAILS</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[22 Feb 2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Feb 2021</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -605,6 +664,7 @@ S Iancu</p></td>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../resource_package/">Resource Package</a></span>
+  <span class="next"><a href="../../artefact_identification/">Artefact Identification</a></span>
 </nav>
 </article>
   </div>

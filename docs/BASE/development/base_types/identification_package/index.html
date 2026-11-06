@@ -6,7 +6,7 @@
     <title>Identification Package :: openEHR Specifications (Local Build)</title>
     <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/BASE/Release-1.2.0/base_types/identification_package/">
     <link rel="prev" href="../builtins_package/">
-    <link rel="next" href="../appendix/">
+    <link rel="next" href="../terminology_package/">
     <meta name="description" content="openEHR Base Types specification">
     <meta name="keywords" content="openehr, identifiers, types">
     <meta name="generator" content="Antora 3.1.15">
@@ -209,6 +209,9 @@
     <a class="nav-link" href="./">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -593,7 +636,7 @@ UUIDs are also commonly known as GUIDs, which may be used as a synonym within im
 <div class="sect3">
 <h4 id="_archetype_identifiers"><a class="anchor" href="#_archetype_identifiers"></a><a class="link" href="#_archetype_identifiers">Archetype Identifiers</a></h4>
 <div class="paragraph">
-<p>The <code>ARCHETYPE_ID</code> subtype defines a multi-axial identifier for archetypes, meaning that each identifier instance denotes a single archetype within a multi-dimensional space. The space is can be thought of as 3-dimensional, or as a versioned 2-dimensional space, consisting of the following axes:</p>
+<p>The <code>ARCHETYPE_ID</code> subtype defines a multi-axial identifier for archetypes, meaning that each identifier instance denotes a single archetype within a multi-dimensional space. The space can be thought of as 3-dimensional, or as a versioned 2-dimensional space, consisting of the following axes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -622,10 +665,10 @@ UUIDs are also commonly known as GUIDs, which may be used as a synonym within im
 </ul>
 </div>
 <div class="paragraph">
-<p>The three outer sections are delimited by '.' characters, while the parts of the first section are delimited by <code>-</code> characters. As with any multi-axial identifier, the underlying principle of an archetype identifier is that all parts of the identifier must be able to be considered immutable. This means that no variable characteristic of an archetype (e.g. accrediting authority, which might change due to later accreditation by another authority, or may be multiple) can be included in its identifier. The explicit inclusion of version as part of the identifier means that two 'versions' of an archetype are actually two distinct archetypes. (The rules for archetype versions, revisions and other variants are given in the <a href="https://specifications.openehr.org/releases/AM/latest/Identification.html">openEHR Archetype Identification specification</a>.)</p>
+<p>The three outer sections are delimited by '.' characters, while the parts of the first section are delimited by <code>-</code> characters. As with any multi-axial identifier, the underlying principle of an archetype identifier is that all parts of the identifier must be able to be considered immutable. This means that no variable characteristic of an archetype (e.g. accrediting authority, which might change due to later accreditation by another authority, or may be multiple) can be included in its identifier. The explicit inclusion of version as part of the identifier means that two 'versions' of an archetype are actually two distinct archetypes. (The rules for archetype versions, revisions and other variants are given in the {openehr_base_artefact_identification}[openEHR Artefact Identification specification^].)</p>
 </div>
 <div class="paragraph">
-<p>Besides used as full physical artefact identifier, an ARCHETYPE_ID can also act as a reference used to match artefacts carrying full identification, <a href="https://specifications.openehr.org/releases/AM/latest/Identification.html#_referencing">as defined</a> by the interface HRID reference (<code>ihrid_ref</code>) concept. In this context, it provides a shortened form of the full identifier, typically omitting namespace, with partial version information, including only the major version.</p>
+<p>An <code>ARCHETYPE_ID</code> carries the <em>exact</em> identification of an archetype: its complete version and, in the ADL 2 form, its namespace. Both legacy ADL 1.4 identifiers (a single major version, no namespace) and ADL 2 identifiers (mandatory namespace and a three-part <code>major.minor.patch</code> version) are accepted, so no migration is imposed on existing instances; the namespace is mandatory in the ADL 2 form and absent from the legacy form, so a namespaceless identifier carrying a minor or patch version is not well-formed. An <code>ARCHETYPE_ID</code> is <em>intended</em> to carry the complete identification rather than a reduced-precision reference. A reference matches artefacts at reduced <em>version</em> precision - e.g. the major version only - but, for an ADL 2 artefact, still carries the namespace, since omitting it (for example in an AQL query) would make the match ambiguous and is unsafe; a reference otherwise shares the same lexical form, so an identifier and a reference differ by precision and use rather than by type. Reference matching semantics are defined by the referencing model of the openEHR {openehr_base_artefact_identification}#<em>referencing[Artefact Identification^] specification. The <code>_value</em></code> of an <code>ARCHETYPE_ID</code> is an <code>Hrid</code> (Foundation Types) and obeys the shared HRID grammar by construction.</p>
 </div>
 <div class="paragraph">
 <p>Examples of archetype identifiers include:</p>
@@ -633,16 +676,16 @@ UUIDs are also commonly known as GUIDs, which may be used as a synonym within im
 <div class="ulist">
 <ul>
 <li>
-<p><code>openEHR-EHR-SECTION.physical_examination.v2</code></p>
+<p><code>openEHR-EHR-SECTION.physical_examination.v2</code> (legacy ADL 1.4 form: major version only, no namespace)</p>
 </li>
 <li>
-<p><code>openEHR-EHR-SECTION.physical_examination-prenatal.v1</code></p>
+<p><code>openEHR-EHR-SECTION.physical_examination-prenatal.v1</code> (legacy ADL 1.4 form with a specialised domain concept)</p>
 </li>
 <li>
-<p><code>Hl7-RIM-Act.progress_note.v1</code></p>
+<p><code>org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4</code> (ADL 2 form: mandatory namespace, three-part version)</p>
 </li>
 <li>
-<p><code>openEHR-EHR-OBSERVATION.progress_note-naturopathy.v2</code></p>
+<p><code>com.nedap::openEHR-EHR-OBSERVATION.pulse.v1.1.3</code> (ADL 2 form: namespace disambiguates the custodian)</p>
 </li>
 </ul>
 </div>
@@ -660,6 +703,15 @@ some archetype authoring tools have historically allowed a nonconforming version
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_template_identifiers"><a class="anchor" href="#_template_identifiers"></a><a class="link" href="#_template_identifiers">Template Identifiers</a></h4>
+<div class="paragraph">
+<p>The <code>TEMPLATE_ID</code> subtype identifies a template. The human-readable identifier (HRID) form is <em>strongly recommended</em> for template identifiers, mirroring the archetype identifier, and is the modern (ADL 2) form: <code>namespace '::' rm_publisher '-' rm_package '-' rm_class '.' concept_id '.v' version_id</code>, for example <code>org.example::openEHR-EHR-COMPOSITION.discharge_summary.v1.0.0</code>.</p>
+</div>
+<div class="paragraph">
+<p>For backward compatibility a legacy free-text template name remains a valid <code>TEMPLATE_ID</code>; the HRID form cannot be enforced, but the legacy form is <em>deprecated</em> and tooling is encouraged to generate consistent HRID template identifiers. The <code><em>is_hrid()</em></code> function reports whether a value conforms to the HRID grammar, and the segment and version accessors (<code>namespace()</code>, <code>qualified_rm_class_name()</code>, <code>concept_id()</code>, <code>version_id()</code>, <code>major_version()</code>, <code>minor_version()</code>, <code>patch_version()</code>) return the parsed parts when it does and are empty for a legacy identifier. The grammar itself is defined canonically in the openEHR {openehr_base_artefact_identification}[Artefact Identification^] specification (realised by the <code>Hrid</code> primitive type in Foundation Types).</p>
 </div>
 </div>
 <div class="sect3">
@@ -847,7 +899,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.</p>
 </div></div></td>
@@ -882,7 +934,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.</p>
 </div></div></td>
@@ -971,7 +1023,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_uid_class">UID</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -994,16 +1046,16 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_uid_class">UID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1012,7 +1064,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Value_valid</em>: <code>not value.empty</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1081,7 +1133,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_uid_class">UID</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1104,16 +1156,16 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_uid_class">UID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1122,7 +1174,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Value_valid</em>: <code>not value.empty</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1191,7 +1243,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_uid_class">UID</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1214,16 +1266,16 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_uid_class">UID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1232,7 +1284,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Value_valid</em>: <code>not value.empty</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></em></p>
+<em>Inherited from <a href="#_uid_class">UID</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1309,7 +1361,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.</p>
 </div></div></td>
@@ -1341,7 +1393,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.</p>
 </div></div></td>
@@ -1419,7 +1471,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1428,21 +1480,21 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="#_uid_class">UID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first '::' separator if any, or else any empty String.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if not <code><em>extension</em>.is_empty()</code>.</p>
 </div></div></td>
@@ -1474,35 +1526,35 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="#_uid_class">UID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first '::' separator if any, or else any empty String.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if not <code><em>extension</em>.is_empty()</code>.</p>
 </div></div></td>
@@ -1611,7 +1663,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_uid_based_id_class">UID_BASED_ID</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1634,40 +1686,40 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a>, <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a>, <a href="#_uid_based_id_class">UID_BASED_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="#_uid_class">UID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first '::' separator if any, or else any empty String.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if not <code><em>extension</em>.is_empty()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1676,7 +1728,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Has_extension_valid</em>: <code>extension.is_empty xor has_extension</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1745,7 +1797,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_uid_based_id_class">UID_BASED_ID</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1754,28 +1806,28 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>object_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>object_id</strong> (): <code><a href="#_uid_class">UID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier for logical object of which this identifier identifies one version; normally the <code><em>object_id</em></code> will be the unique identifier of the version container containing the version referred to by this <code>OBJECT_VERSION_ID</code> instance.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creating_system_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creating_system_id</strong> (): <code><a href="#_uid_class">UID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of the system that created the Version corresponding to this Object version id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_tree_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_version_tree_id_class" class="xref page">VERSION_TREE_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_tree_id</strong> (): <code><a href="#_version_tree_id_class">VERSION_TREE_ID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Tree identifier of this version with respect to other versions in the same version tree, as either 1 or 3 part dot-separated numbers, e.g.  1 ,  2.1.4 .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch.</p>
 </div></div></td>
@@ -1801,62 +1853,62 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a>, <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a>, <a href="#_uid_based_id_class">UID_BASED_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root</strong> (): <code><a href="#_uid_class">UID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The identifier of the conceptual namespace in which the object exists, within the identification scheme. Returns the part to the left of the first '::' separator, if any, or else the whole string.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional local identifier of the object within the context of the root identifier. Returns the part to the right of the first '::' separator if any, or else any empty String.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_extension</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if not <code><em>extension</em>.is_empty()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>object_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>object_id</strong> (): <code><a href="#_uid_class">UID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier for logical object of which this identifier identifies one version; normally the <code><em>object_id</em></code> will be the unique identifier of the version container containing the version referred to by this <code>OBJECT_VERSION_ID</code> instance.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creating_system_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_class" class="xref page">UID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creating_system_id</strong> (): <code><a href="#_uid_class">UID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of the system that created the Version corresponding to this Object version id.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_tree_id</strong> (): <code><a href="../../../Release-1.2.0/base_types/identification_package/#_version_tree_id_class" class="xref page">VERSION_TREE_ID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_tree_id</strong> (): <code><a href="#_version_tree_id_class">VERSION_TREE_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Tree identifier of this version with respect to other versions in the same version tree, as either 1 or 3 part dot-separated numbers, e.g.  1 ,  2.1.4 .</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch.</p>
 </div></div></td>
@@ -1867,7 +1919,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Has_extension_valid</em>: <code>extension.is_empty xor has_extension</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></em></p>
+<em>Inherited from <a href="#_uid_based_id_class">UID_BASED_ID</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1978,7 +2030,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String form of this identifier.</p>
 </div></div></td>
@@ -1990,35 +2042,35 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Trunk version number; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch, i.e. has <code><em>branch_number()</em></code> and <code><em>branch_version()</em></code> parts.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_first</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_first</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier corresponds to the first version, i.e. <code><em>trunk_version</em></code> is 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of branch from the trunk point; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of the branch; numbering starts at 1.</p>
 </div></div></td>
@@ -2062,7 +2114,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Is_first_validity</em>: <code>not is_first xor trunk_version.is_equal(“1”)</code></p>
+<p><em>Is_first_validity</em>: <code>not is_first xor trunk_version.is_equal("1")</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2092,7 +2144,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String form of this identifier.</p>
 </div></div></td>
@@ -2101,31 +2153,31 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Trunk version number; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier represents a branch, i.e. has <code><em>branch_number()</em></code> and <code><em>branch_version()</em></code> parts.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_first</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_first</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this version identifier corresponds to the first version, i.e. <code><em>trunk_version</em></code> is 1.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of branch from the trunk point; numbering starts at 1.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of the branch; numbering starts at 1.</p>
 </div></div></td>
@@ -2165,7 +2217,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Is_first_validity</em>: <code>not is_first xor trunk_version.is_equal(“1”)</code></p>
+<p><em>Is_first_validity</em>: <code>not is_first xor trunk_version.is_equal("1")</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2235,7 +2287,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
         "Branch_version_valid": "branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer &gt;= 1",
         "Branch_validity": "(branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )",
         "Is_branch_validity": "is_branch xor branch_number = Void",
-        "Is_first_validity": "not is_first xor trunk_version.is_equal(“1”)"
+        "Is_first_validity": "not is_first xor trunk_version.is_equal(\"1\")"
     }
 }</code></pre>
 </div>
@@ -2286,15 +2338,34 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.</p>
+<p>Globally unique identifier for an archetype, carrying the exact identification of the artefact - its complete version and, in the ADL 2 form, its namespace. An <code>ARCHETYPE_ID</code> is intended to carry the complete identification rather than a reduced-precision reference; a reference (which carries only a partial version, e.g. the major version only, while retaining the namespace of an ADL 2 artefact) shares the same lexical form and differs by precision and use rather than by type, with matching semantics defined by the Artefact Identification specification.</p>
 </div>
 <div class="paragraph">
-<p>Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name \{  '-' specialisation }*  '.v' version_id</code>.</p>
+<p>Supports both legacy ADL 1.4 identifiers (no namespace, single major version) and ADL 2 identifiers (mandatory namespace and a three-part <code>major.minor.patch</code> version, optionally with a pre-release modifier).</p>
+</div>
+<div class="paragraph">
+<p>Lexical forms: <code>rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' major_version</code> (legacy ADL 1.4, e.g. <code>openEHR-EHR-SECTION.physical_examination.v2</code>), or <code>namespace '::' rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' version_id</code> (ADL 2, e.g. <code>org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4</code>).</p>
+</div>
+<div class="paragraph">
+<p>The <code><em>value</em></code> obeys the openEHR human-readable identifier (HRID) grammar, realised by the <code>Hrid</code> primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_hrid_class" class="xref page">Hrid</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The identifier string. Covariantly redefines <code>OBJECT_ID.<em>value</em></code> (<code>String</code>) as the <code>Hrid</code> primitive, so that an archetype identifier is a validated human-readable identifier by construction.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2303,51 +2374,85 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The namespace of the identifier, in the form of a reverse domain name, e.g. <code>"org.openehr"</code>; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally qualified reference model entity, e.g.  <code>"openehr-EHR-OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the concept represented by this archetype, including specialisation, e.g. <code>"Biochemistry_result-cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Organisation originating the reference model on which this archetype is based, e.g. <code>"openEHR"</code>, <code>"CEN"</code>, <code>"HL7"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the reference model, e.g. <code>"RIM"</code>,  <code>"EHR"</code>,  <code>"EN13606"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  <code>"FOLDER"</code>, <code>"COMPOSITION"</code>, <code>"SECTION"</code>, <code>"OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. <code>"cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Version identification of this archetype, representing the major version, e.g. <code>"1"</code>.</p>
+<p>Version identification of this archetype. For an ADL 2 identifier this is the three-part <code>major.minor.patch</code> version, optionally with a pre-release modifier, e.g. <code>"1.8.2"</code> or <code>"2.0.0-rc.4"</code>; for a legacy ADL 1.4 identifier it is the major version only, e.g. <code>"1"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>major_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The major version, i.e. the first numeric segment of <code><em>version_id</em></code>, e.g. <code>"1"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minor_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The minor version, i.e. the second numeric segment of <code><em>version_id</em></code>; empty for a legacy ADL 1.4 (major-only) identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>patch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The patch version, i.e. the third numeric segment of <code><em>version_id</em></code>; empty for a legacy ADL 1.4 (major-only) identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Value_valid</em>: <code>value.is_valid</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2367,68 +2472,105 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.</p>
+<p>Globally unique identifier for an archetype, carrying the exact identification of the artefact - its complete version and, in the ADL 2 form, its namespace. An <code>ARCHETYPE_ID</code> is intended to carry the complete identification rather than a reduced-precision reference; a reference (which carries only a partial version, e.g. the major version only, while retaining the namespace of an ADL 2 artefact) shares the same lexical form and differs by precision and use rather than by type, with matching semantics defined by the Artefact Identification specification.</p>
 </div>
 <div class="paragraph">
-<p>Lexical form: <code>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name \{  '-' specialisation }*  '.v' version_id</code>.</p>
+<p>Supports both legacy ADL 1.4 identifiers (no namespace, single major version) and ADL 2 identifiers (mandatory namespace and a three-part <code>major.minor.patch</code> version, optionally with a pre-release modifier).</p>
+</div>
+<div class="paragraph">
+<p>Lexical forms: <code>rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' major_version</code> (legacy ADL 1.4, e.g. <code>openEHR-EHR-SECTION.physical_examination.v2</code>), or <code>namespace '::' rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' version_id</code> (ADL 2, e.g. <code>org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4</code>).</p>
+</div>
+<div class="paragraph">
+<p>The <code><em>value</em></code> obeys the openEHR human-readable identifier (HRID) grammar, realised by the <code>Hrid</code> primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_hrid_class" class="xref page">Hrid</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<p>The identifier string. Covariantly redefines <code>OBJECT_ID.<em>value</em></code> (<code>String</code>) as the <code>Hrid</code> primitive, so that an archetype identifier is a validated human-readable identifier by construction.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The namespace of the identifier, in the form of a reverse domain name, e.g. <code>"org.openehr"</code>; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_entity</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally qualified reference model entity, e.g.  <code>"openehr-EHR-OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>domain_concept</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the concept represented by this archetype, including specialisation, e.g. <code>"Biochemistry_result-cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_originator</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Organisation originating the reference model on which this archetype is based, e.g. <code>"openEHR"</code>, <code>"CEN"</code>, <code>"HL7"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the reference model, e.g. <code>"RIM"</code>,  <code>"EHR"</code>,  <code>"EN13606"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_entity</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the ontological level within the reference model to which this archetype is targeted, e.g. for openEHR:  <code>"FOLDER"</code>, <code>"COMPOSITION"</code>, <code>"SECTION"</code>, <code>"OBSERVATION"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specialisation</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g. <code>"cholesterol"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Version identification of this archetype, representing the major version, e.g. <code>"1"</code>.</p>
+<p>Version identification of this archetype. For an ADL 2 identifier this is the three-part <code>major.minor.patch</code> version, optionally with a pre-release modifier, e.g. <code>"1.8.2"</code> or <code>"2.0.0-rc.4"</code>; for a legacy ADL 1.4 identifier it is the major version only, e.g. <code>"1"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>major_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The major version, i.e. the first numeric segment of <code><em>version_id</em></code>, e.g. <code>"1"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minor_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The minor version, i.e. the second numeric segment of <code><em>version_id</em></code>; empty for a legacy ADL 1.4 (major-only) identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>patch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The patch version, i.e. the third numeric segment of <code><em>version_id</em></code>; empty for a legacy ADL 1.4 (major-only) identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Invariants</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Value_valid</em>: <code>value.is_valid</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2439,11 +2581,28 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "name": "ARCHETYPE_ID",
-    "documentation": "Identifier or reference for archetypes. Ideally, these identify globally unique archetypes. When used as a reference, only partial version information is included (major version only), and the namespace is omitted.\n\nLexical form: `rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' version_id`.",
+    "documentation": "Globally unique identifier for an archetype, carrying the exact identification of the artefact - its complete version and, in the ADL 2 form, its namespace. An `ARCHETYPE_ID` is intended to carry the complete identification rather than a reduced-precision reference; a reference (which carries only a partial version, e.g. the major version only, while retaining the namespace of an ADL 2 artefact) shares the same lexical form and differs by precision and use rather than by type, with matching semantics defined by the Artefact Identification specification.\n\nSupports both legacy ADL 1.4 identifiers (no namespace, single major version) and ADL 2 identifiers (mandatory namespace and a three-part `major.minor.patch` version, optionally with a pre-release modifier).\n\nLexical forms: `rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' major_version` (legacy ADL 1.4, e.g. `openEHR-EHR-SECTION.physical_examination.v2`), or `namespace '::' rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation } '.v' version_id` (ADL 2, e.g. `org.openehr::openEHR-EHR-OBSERVATION.blood_pressure.v2.1.4`).\n\nThe `_value_` obeys the openEHR human-readable identifier (HRID) grammar, realised by the `Hrid` primitive type; see the openEHR Artefact Identification specification for the grammar, version numbering and referencing model.",
     "ancestors": [
         "OBJECT_ID"
     ],
+    "properties": {
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "documentation": "The identifier string. Covariantly redefines `OBJECT_ID._value_` (`String`) as the `Hrid` primitive, so that an archetype identifier is a validated human-readable identifier by construction.",
+            "is_mandatory": true,
+            "type": "Hrid"
+        }
+    },
     "functions": {
+        "namespace": {
+            "name": "namespace",
+            "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.openehr\"`; mandatory in the ADL 2 form and empty for a legacy ADL 1.4 identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
         "qualified_rm_entity": {
             "name": "qualified_rm_entity",
             "documentation": "Globally qualified reference model entity, e.g.  `\"openehr-EHR-OBSERVATION\"`.",
@@ -2494,12 +2653,39 @@ was indeed the one assigned to it in the particular version or edition.</p>
         },
         "version_id": {
             "name": "version_id",
-            "documentation": "Version identification of this archetype, representing the major version, e.g. `\"1\"`.",
+            "documentation": "Version identification of this archetype. For an ADL 2 identifier this is the three-part `major.minor.patch` version, optionally with a pre-release modifier, e.g. `\"1.8.2\"` or `\"2.0.0-rc.4\"`; for a legacy ADL 1.4 identifier it is the major version only, e.g. `\"1\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "major_version": {
+            "name": "major_version",
+            "documentation": "The major version, i.e. the first numeric segment of `_version_id_`, e.g. `\"1\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "minor_version": {
+            "name": "minor_version",
+            "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "patch_version": {
+            "name": "patch_version",
+            "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty for a legacy ADL 1.4 (major-only) identifier.",
             "result": {
                 "_type": "P_BMM_SIMPLE_TYPE",
                 "type": "String"
             }
         }
+    },
+    "invariants": {
+        "Value_valid": "value.is_valid"
     }
 }</code></pre>
 </div>
@@ -2550,12 +2736,76 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Identifier for templates. Lexical form to be determined.</p>
+<p>Identifier for a template. The human-readable identifier (HRID) form is strongly recommended and is the modern (ADL 2) form: <code>namespace '::' rm_publisher '-' rm_package '-' rm_class '.' concept_id '.v' version_id</code>, e.g. <code>org.example::openEHR-EHR-COMPOSITION.discharge_summary.v1.0.0</code>.</p>
+</div>
+<div class="paragraph">
+<p>For backward compatibility a legacy free-text template name is still permitted, but is deprecated. The HRID grammar is defined by the openEHR Artefact Identification specification and realised by the <code>Hrid</code> primitive type; <code><em>is_hrid</em></code> reports whether a given value conforms to it, and the segment and version accessors return their parts when it does (and are empty for a legacy identifier).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_hrid</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>value</em></code> conforms to the openEHR human-readable identifier (HRID) grammar, i.e. is a valid <code>Hrid</code>; False for a legacy free-text template identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The namespace of the identifier, in the form of a reverse domain name, e.g. <code>"org.example"</code>; mandatory when <code><em>value</em></code> is in HRID (ADL 2) form and empty for a legacy free-text template identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_class_name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The qualified reference model class name, i.e. <code>rm_publisher '-' rm_package '-' rm_class</code>, e.g. <code>"openEHR-EHR-COMPOSITION"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The template concept identifier, e.g. <code>"discharge_summary"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The version part of the identifier as it appears after <code>'.v'</code>, e.g. <code>"1.0.0"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>major_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The major version, i.e. the first numeric segment of <code><em>version_id</em></code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minor_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The minor version, i.e. the second numeric segment of <code><em>version_id</em></code>; empty if not present or <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>patch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The patch version, i.e. the third numeric segment of <code><em>version_id</em></code>; empty if not present or <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -2574,20 +2824,74 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Identifier for templates. Lexical form to be determined.</p>
+<p>Identifier for a template. The human-readable identifier (HRID) form is strongly recommended and is the modern (ADL 2) form: <code>namespace '::' rm_publisher '-' rm_package '-' rm_class '.' concept_id '.v' version_id</code>, e.g. <code>org.example::openEHR-EHR-COMPOSITION.discharge_summary.v1.0.0</code>.</p>
+</div>
+<div class="paragraph">
+<p>For backward compatibility a legacy free-text template name is still permitted, but is deprecated. The HRID grammar is defined by the openEHR Artefact Identification specification and realised by the <code>Hrid</code> primitive type; <code><em>is_hrid</em></code> reports whether a given value conforms to it, and the segment and version accessors return their parts when it does (and are empty for a legacy identifier).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_hrid</strong> (): <code><a href="../../foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>value</em></code> conforms to the openEHR human-readable identifier (HRID) grammar, i.e. is a valid <code>Hrid</code>; False for a legacy free-text template identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The namespace of the identifier, in the form of a reverse domain name, e.g. <code>"org.example"</code>; mandatory when <code><em>value</em></code> is in HRID (ADL 2) form and empty for a legacy free-text template identifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>qualified_rm_class_name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The qualified reference model class name, i.e. <code>rm_publisher '-' rm_package '-' rm_class</code>, e.g. <code>"openEHR-EHR-COMPOSITION"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The template concept identifier, e.g. <code>"discharge_summary"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The version part of the identifier as it appears after <code>'.v'</code>, e.g. <code>"1.0.0"</code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>major_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The major version, i.e. the first numeric segment of <code><em>version_id</em></code>; empty if <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minor_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The minor version, i.e. the second numeric segment of <code><em>version_id</em></code>; empty if not present or <code><em>value</em></code> is not an HRID.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>patch_version</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The patch version, i.e. the third numeric segment of <code><em>version_id</em></code>; empty if not present or <code><em>value</em></code> is not an HRID.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2598,10 +2902,76 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "name": "TEMPLATE_ID",
-    "documentation": "Identifier for templates. Lexical form to be determined.",
+    "documentation": "Identifier for a template. The human-readable identifier (HRID) form is strongly recommended and is the modern (ADL 2) form: `namespace '::' rm_publisher '-' rm_package '-' rm_class '.' concept_id '.v' version_id`, e.g. `org.example::openEHR-EHR-COMPOSITION.discharge_summary.v1.0.0`.\n\nFor backward compatibility a legacy free-text template name is still permitted, but is deprecated. The HRID grammar is defined by the openEHR Artefact Identification specification and realised by the `Hrid` primitive type; `_is_hrid_` reports whether a given value conforms to it, and the segment and version accessors return their parts when it does (and are empty for a legacy identifier).",
     "ancestors": [
         "OBJECT_ID"
-    ]
+    ],
+    "functions": {
+        "is_hrid": {
+            "name": "is_hrid",
+            "documentation": "True if `_value_` conforms to the openEHR human-readable identifier (HRID) grammar, i.e. is a valid `Hrid`; False for a legacy free-text template identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "namespace": {
+            "name": "namespace",
+            "documentation": "The namespace of the identifier, in the form of a reverse domain name, e.g. `\"org.example\"`; mandatory when `_value_` is in HRID (ADL 2) form and empty for a legacy free-text template identifier.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "qualified_rm_class_name": {
+            "name": "qualified_rm_class_name",
+            "documentation": "The qualified reference model class name, i.e. `rm_publisher '-' rm_package '-' rm_class`, e.g. `\"openEHR-EHR-COMPOSITION\"`; empty if `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "concept_id": {
+            "name": "concept_id",
+            "documentation": "The template concept identifier, e.g. `\"discharge_summary\"`; empty if `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "version_id": {
+            "name": "version_id",
+            "documentation": "The version part of the identifier as it appears after `'.v'`, e.g. `\"1.0.0\"`; empty if `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "major_version": {
+            "name": "major_version",
+            "documentation": "The major version, i.e. the first numeric segment of `_version_id_`; empty if `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "minor_version": {
+            "name": "minor_version",
+            "documentation": "The minor version, i.e. the second numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "patch_version": {
+            "name": "patch_version",
+            "documentation": "The patch version, i.e. the third numeric segment of `_version_id_`; empty if not present or `_value_` is not an HRID.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
 }</code></pre>
 </div>
 </div>
@@ -2659,7 +3029,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2668,14 +3038,14 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  <code>"ICD10AM"</code> and <code>"ICD10"</code> refer to distinct terminologies.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of this terminology, if versioning supported, else the empty string.</p>
 </div></div></td>
@@ -2704,29 +3074,29 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  <code>"ICD10AM"</code> and <code>"ICD10"</code> refer to distinct terminologies.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of this terminology, if versioning supported, else the empty string.</p>
 </div></div></td>
@@ -2815,7 +3185,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2824,7 +3194,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the scheme to which this identifier conforms. Ideally this name will be recognisable globally but realistically it may be a local ad hoc scheme whose name is not controlled or standardised in any way.</p>
 </div></div></td>
@@ -2850,20 +3220,20 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_id_class">OBJECT_ID</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The value of the id in the form defined below.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></em></p>
+<em>Inherited from <a href="#_object_id_class">OBJECT_ID</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the scheme to which this identifier conforms. Ideally this name will be recognisable globally but realistically it may be a local ad hoc scheme whose name is not controlled or standardised in any way.</p>
 </div></div></td>
@@ -2948,7 +3318,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for <code><em>namespace</em></code> are:</p>
 </div>
@@ -2961,7 +3331,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code>"unknown"</code></p>
 </li>
 <li>
-<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=+-]&#42;</code>.</p>
+<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=&#43;-]*</code>.</p>
 </li>
 </ul>
 </div>
@@ -2971,14 +3341,14 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. <code>PARTY</code>, <code>PERSON</code>,  <code>GUIDELINE</code>  etc. These class names are from the relevant reference model. The type name <code>ANY</code> can be used to indicate that any type is accepted (e.g. if the type is unknown).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="#_object_id_class">OBJECT_ID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.</p>
 </div></div></td>
@@ -3007,7 +3377,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for <code><em>namespace</em></code> are:</p>
 </div>
@@ -3020,7 +3390,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code>"unknown"</code></p>
 </li>
 <li>
-<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=+-]&#42;</code>.</p>
+<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=&#43;-]*</code>.</p>
 </li>
 </ul>
 </div>
@@ -3029,13 +3399,13 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. <code>PARTY</code>, <code>PERSON</code>,  <code>GUIDELINE</code>  etc. These class names are from the relevant reference model. The type name <code>ANY</code> can be used to indicate that any type is accepted (e.g. if the type is unknown).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="#_object_id_class">OBJECT_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.</p>
 </div></div></td>
@@ -3126,12 +3496,12 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_ref_class">OBJECT_REF</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Type_validity</em>: <code>type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)</code></p>
+<p><em>Type_validity</em>: <code>type.is_equal("PERSON") or type.is_equal("ORGANISATION") or type.is_equal("GROUP") or type.is_equal("AGENT") or type.is_equal("ROLE") or type.is_equal("PARTY") or type.is_equal("ACTOR")</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3155,13 +3525,13 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_ref_class">OBJECT_REF</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for <code><em>namespace</em></code> are:</p>
 </div>
@@ -3174,27 +3544,27 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code>"unknown"</code></p>
 </li>
 <li>
-<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=+-]&#42;</code>.</p>
+<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=&#43;-]*</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Note that the first two are just special values of the regex, and will be matched by it.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></em></p>
+<em>Inherited from <a href="#_object_ref_class">OBJECT_REF</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. <code>PARTY</code>, <code>PERSON</code>,  <code>GUIDELINE</code>  etc. These class names are from the relevant reference model. The type name <code>ANY</code> can be used to indicate that any type is accepted (e.g. if the type is unknown).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></em></p>
+<em>Inherited from <a href="#_object_ref_class">OBJECT_REF</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_id_class" class="xref page">OBJECT_ID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="#_object_id_class">OBJECT_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></em></p>
+<em>Inherited from <a href="#_object_ref_class">OBJECT_REF</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -3202,7 +3572,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Type_validity</em>: <code>type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)</code></p>
+<p><em>Type_validity</em>: <code>type.is_equal("PERSON") or type.is_equal("ORGANISATION") or type.is_equal("GROUP") or type.is_equal("AGENT") or type.is_equal("ROLE") or type.is_equal("PARTY") or type.is_equal("ACTOR")</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3218,7 +3588,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
         "OBJECT_REF"
     ],
     "invariants": {
-        "Type_validity": "type.is_equal(“PERSON”) or type.is_equal(“ORGANISATION”) or type.is_equal(“GROUP”) or type.is_equal(“AGENT”)or type.is_equal(“ROLE”) or type.is_equal(“PARTY”) or type.is_equal(“ACTOR”)"
+        "Type_validity": "type.is_equal(\"PERSON\") or type.is_equal(\"ORGANISATION\") or type.is_equal(\"GROUP\") or type.is_equal(\"AGENT\") or type.is_equal(\"ROLE\") or type.is_equal(\"PARTY\") or type.is_equal(\"ACTOR\")"
     }
 }</code></pre>
 </div>
@@ -3274,7 +3644,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_ref_class">OBJECT_REF</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3283,7 +3653,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The path to an instance, as an absolute path with respect to the object found at <code>VERSION.<em>data</em></code>. An empty path means that the object referred to by <code><em>id</em></code> is being specified.</p>
 </div></div></td>
@@ -3291,7 +3661,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="#_uid_based_id_class">UID_BASED_ID</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.</p>
 </div></div></td>
@@ -3303,7 +3673,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A URI form of the reference, created by concatenating the following:</p>
 </div>
@@ -3316,7 +3686,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code><em>id.value</em></code></p>
 </li>
 <li>
-<p><code>/</code> + <code><em>path</em></code>, where <code><em>path</em></code> is non-empty</p>
+<p><code>/</code> &#43; <code><em>path</em></code>, where <code><em>path</em></code> is non-empty</p>
 </li>
 </ul>
 </div></div></td>
@@ -3342,13 +3712,13 @@ was indeed the one assigned to it in the particular version or edition.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_object_ref_class">OBJECT_REF</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for <code><em>namespace</em></code> are:</p>
 </div>
@@ -3361,30 +3731,30 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code>"unknown"</code></p>
 </li>
 <li>
-<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=+-]&#42;</code>.</p>
+<p>a string matching the standard regex <code>[a-zA-Z][a-zA-Z0-9_.:\/&amp;?=&#43;-]*</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Note that the first two are just special values of the regex, and will be matched by it.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></em></p>
+<em>Inherited from <a href="#_object_ref_class">OBJECT_REF</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g. <code>PARTY</code>, <code>PERSON</code>,  <code>GUIDELINE</code>  etc. These class names are from the relevant reference model. The type name <code>ANY</code> can be used to indicate that any type is accepted (e.g. if the type is unknown).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></em></p>
+<em>Inherited from <a href="#_object_ref_class">OBJECT_REF</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="../../../Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code><a href="#_uid_based_id_class">UID_BASED_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Globally unique id of an object, regardless of where it is stored.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The path to an instance, as an absolute path with respect to the object found at <code>VERSION.<em>data</em></code>. An empty path means that the object referred to by <code><em>id</em></code> is being specified.</p>
 </div></div></td>
@@ -3393,7 +3763,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong> (): <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A URI form of the reference, created by concatenating the following:</p>
 </div>
@@ -3406,7 +3776,7 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <p><code><em>id.value</em></code></p>
 </li>
 <li>
-<p><code>/</code> + <code><em>path</em></code>, where <code><em>path</em></code> is non-empty</p>
+<p><code>/</code> &#43; <code><em>path</em></code>, where <code><em>path</em></code> is non-empty</p>
 </li>
 </ul>
 </div></div></td>
@@ -3470,6 +3840,18 @@ was indeed the one assigned to it in the particular version or edition.</p>
 <div class="paragraph">
 <p>The identifiers defined above are defined in their string form by the following EBNF grammar rules.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The general human-readable identifier (HRID) grammar shared by archetype and template identifiers - namespacing, reference-model class qualification, concept identifiers, version numbering, and reference precision tiers - is defined canonically in the openEHR {openehr_base_artefact_identification}[Artefact Identification^] specification (realised computationally by the <code>Hrid</code> primitive type in Foundation Types). The <code>archetype_id</code> production below is a specific application of that grammar; the recommended <code>template_id</code> form follows the same grammar in its ADL 2 form (with the namespace mandatory), whereas a legacy free-text template identifier is unconstrained by it. A reference regular expression for the grammar - for validation and tooling - is given there alongside the EBNF.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ebnf" data-lang="ebnf">(* ------------------------- UID, OID, UUID -------------------------- *)
@@ -3506,7 +3888,9 @@ branch_number   = number ;
 branch_version  = number ;
 
 (* -------------------------- ARCHETYPE_ID --------------------------- *)
-archetype_id        = qualified_rm_entity, '.', domain_concept, '.v', version_id ;
+archetype_id        = ( namespace, '::', qualified_rm_entity, '.', domain_concept, '.v', version_id )   (* namespaced (ADL 2) form *)
+                    | ( qualified_rm_entity, '.', domain_concept, '.v', major_version ) ;               (* legacy (ADL 1.4) form: no namespace, major version only *)
+namespace           = alphanum-ext-str, { '.', alphanum-ext-str } ;      (* reverse domain name, e.g. org.openehr *)
 qualified_rm_entity = rm_originator, '-', rm_name, '-', rm_entity ;
 rm_originator       = alphanum-str ;     (* id of org originating the RM on which this archetype is based *)
 rm_name             = alphanum-str ;                      (* id of the RM on which the archetype is based *)
@@ -3514,7 +3898,11 @@ rm_entity           = alphanum-str ;                                       (* on
 domain_concept      = concept_name, { '-', specialisation } ;
 concept_name        = alphanum-str ;
 specialisation      = alphanum-str ;
-version_id          = '0' | non-zero-digit, [ number ] ;            (* numeric version identifier *)
+version_id          = major_version, [ '.', minor_version, [ '.', patch_version, [ version_modifier ] ] ] ;
+major_version       = '0' | non-zero-digit, [ number ] ;   (* reduced precision permitted: major, major.minor or major.minor.patch *)
+minor_version       = '0' | non-zero-digit, [ number ] ;
+patch_version       = '0' | non-zero-digit, [ number ] ;
+version_modifier    = ( '-rc' | '-alpha' | '-beta' ), [ '.', number ] ;  (* pre-release modifier + optional build count *)
 
 (* ------------------------- TERMINOLOGY_ID -------------------------- *)
 terminology_id = name-str, [ '(', name-str, ')' ] ;
@@ -3557,7 +3945,7 @@ hex-digit      = digit | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'a' | 'b' | 'c' | '
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../builtins_package/">Builtins Package</a></span>
-  <span class="next"><a href="../appendix/">Appendix</a></span>
+  <span class="next"><a href="../terminology_package/">Terminology Package</a></span>
 </nav>
 </article>
   </div>

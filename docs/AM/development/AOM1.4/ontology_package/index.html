@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -650,7 +623,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_archetype</strong>: <code><a href="../../../Release-2.3.0/AOM2/archetype_package/#_archetype_class" class="xref page">ARCHETYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_archetype</strong>: <code><a href="../archetype_package/#_archetype_class" class="xref page">ARCHETYPE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Archetype which owns this terminology.</p>
 </div></div></td>
@@ -720,7 +693,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>term_definition</strong> (<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-2.3.0/AOM2/terminology_package/#_archetype_term_class" class="xref page">ARCHETYPE_TERM</a></code><br>
+): <code><a href="#_archetype_term_class">ARCHETYPE_TERM</a></code><br>
 <br>
 <em>Pre</em>: <code>has_language (a_lang)</code><br>
 <em>Pre2</em>: <code>has_term_code (a_code)</code></p></td>
@@ -733,7 +706,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>constraint_definition</strong> (<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-2.3.0/AOM2/terminology_package/#_archetype_term_class" class="xref page">ARCHETYPE_TERM</a></code><br>
+): <code><a href="#_archetype_term_class">ARCHETYPE_TERM</a></code><br>
 <br>
 <em>Pre</em>: <code>has_language (a_lang)</code><br>
 <em>Pre_2</em>: <code>has_constraint_code (a_code)</code></p></td>
@@ -746,9 +719,9 @@ a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>term_binding</strong> (<br>
 a_terminology: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="/classes/CODE_PHRASE">CODE_PHRASE</a> `<br>
+): <code><a href="../../../../RM/Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code><br>
 <br>
-<em>Pre</em>: `has_term_binding (a_terminology_id, a_code)</code></p></td>
+<em>Pre</em>: <code>has_term_binding (a_terminology_id, a_code)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Binding of constraint corresponding to a_code in target external terminology a_terminology_id, as a string, which is usually a formal query expression.</p>
 </div></div></td>
@@ -823,7 +796,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_archetype</strong>: <code><a href="../../../Release-2.3.0/AOM2/archetype_package/#_archetype_class" class="xref page">ARCHETYPE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_archetype</strong>: <code><a href="../archetype_package/#_archetype_class" class="xref page">ARCHETYPE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Archetype which owns this terminology.</p>
 </div></div></td>
@@ -883,7 +856,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>term_definition</strong> (<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-2.3.0/AOM2/terminology_package/#_archetype_term_class" class="xref page">ARCHETYPE_TERM</a></code><br>
+): <code><a href="#_archetype_term_class">ARCHETYPE_TERM</a></code><br>
 <br>
 <em>Pre</em>: <code>has_language (a_lang)</code><br>
 <em>Pre2</em>: <code>has_term_code (a_code)</code> [1..1]</p></td>
@@ -895,7 +868,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>constraint_definition</strong> (<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-2.3.0/AOM2/terminology_package/#_archetype_term_class" class="xref page">ARCHETYPE_TERM</a></code><br>
+): <code><a href="#_archetype_term_class">ARCHETYPE_TERM</a></code><br>
 <br>
 <em>Pre</em>: <code>has_language (a_lang)</code><br>
 <em>Pre_2</em>: <code>has_constraint_code (a_code)</code> [1..1]</p></td>
@@ -907,9 +880,9 @@ a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>term_binding</strong> (<br>
 a_terminology: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="/classes/CODE_PHRASE">CODE_PHRASE</a> `<br>
+): <code><a href="../../../../RM/Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code><br>
 <br>
-<em>Pre</em>: `has_term_binding (a_terminology_id, a_code)</code> [1..1]</p></td>
+<em>Pre</em>: <code>has_term_binding (a_terminology_id, a_code)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Binding of constraint corresponding to a_code in target external terminology a_terminology_id, as a string, which is usually a formal query expression.</p>
 </div></div></td>

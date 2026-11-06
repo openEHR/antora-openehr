@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Basic Meta-Model (BMM) DEVELOPMENT :: openEHR Specifications (Local Build)</title>
+    <title>Basic Meta-Model (BMM) STABLE :: openEHR Specifications (Local Build)</title>
     <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/LANG/Release-1.0.0/bmm/">
     <link rel="prev" href="../odin/appendix/">
     <link rel="next" href="overview/">
@@ -148,43 +148,71 @@
     <a class="nav-link" href="overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="packages/">Package Structure</a>
+    <a class="nav-link" href="bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="model_access/">Model Access Package</a>
+    <a class="nav-link" href="rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="core-model/">Model Structure</a>
+    <a class="nav-link" href="core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="extensions/">BMM Extensions</a>
+    <a class="nav-link" href="persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -423,7 +451,7 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Basic Meta-Model (BMM) <span class="spec-status spec-status-development">DEVELOPMENT</span></h1>
+<h1 class="page">Basic Meta-Model (BMM) <span class="spec-status spec-status-stable">STABLE</span></h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -435,7 +463,7 @@
 <h2 id="_purpose"><a class="anchor" href="#_purpose"></a><a class="link" href="#_purpose">Purpose</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document describes the Basic Meta-Model (BMM), a model of object models. It may be considered as an approximate replacement for the UML XMI. It is human-readable and writable, and supports generic types (open and closed), container types, and multiple inheritance. The related <a href="https://specifications.openehr.org/releases/LANG/latest/bmm_persistence.html" target="_blank" rel="noopener">BMM Persistence specification</a> defines an object model for a serialised schema form. The latter enables serialisation of a BMM into a concrete syntax such as JSON, ODIN or XML.</p>
+<p>This document describes the Basic Meta-Model (BMM), a model of object models. It may be considered as an approximate replacement for the UML XMI. It is human-readable and writable, and supports generic types (open and closed), container types, and multiple inheritance.</p>
 </div>
 </div>
 </div>

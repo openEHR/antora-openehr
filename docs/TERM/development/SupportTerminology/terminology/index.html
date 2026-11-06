@@ -2193,6 +2193,7 @@
     Status: <em>active</em></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set consists of the language tags defined by <a href="https://tools.ietf.org/html/rfc5646">RFC-5646</a>. The syntax consists of the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 "alpha-2"</a> form of names of languages, often followed by a region subtag from the <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes">ISO 3166-1 "alpha-2"</a> country list. These are maintained by the <a href="https://www.iana.org/assignments/language-subtag-registry">IANA Language Subtag Registry</a>.<br>
 NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" covers many more languages of cultural or indigenous interest, but which nevertheless are unlikely to be supported by current software or operating systems.<br>
+Region-qualified tags such as "pt-pt" or "pt-br" are valid RFC-5646 tags and are listed where a regional variant is in use. A code is marked DEPRECATED only when it is invalid or withdrawn in the IANA Language Subtag Registry, not because it denotes a regional variant. Tags are case-insensitive; the conventional form uses an uppercase region subtag, e.g. "pt-PT".<br>
    <br>
     Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_entry_class" target="_blank" rel="noopener">ENTRY.language</a>, <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_composition_class" target="_blank" rel="noopener">COMPOSITION.language</a>, <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_encapsulated_class" target="_blank" rel="noopener">DV_ENCAPSULATED.language</a></code></p></td>
 </tr>
@@ -3387,7 +3388,7 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>pt-pt</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Portuguese (Portugal) - DEPRECATED</p>
+<p>Portuguese (Portugal)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3434,9 +3435,16 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ro-md</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Romanian (Moldova)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ro-mo</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Romanian (Moldavia)</p>
+<p>Romanian (Moldavia) - DEPRECATED (MO is Macao; use ro-md)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3462,9 +3470,16 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ru-md</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Russian (Moldova)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ru-mo</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Russian (Moldavia)</p>
+<p>Russian (Moldavia) - DEPRECATED (MO is Macao; use ru-md)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3478,7 +3493,7 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sz</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sami (Lappish) - DEPRECATED</p>
+<p>Sami (Lappish) - DEPRECATED (use se, Northern Sami)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3520,7 +3535,7 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sb</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Serbian - DEPRECATED</p>
+<p>Serbian - DEPRECATED (use sr)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3716,7 +3731,7 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sx</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sutu - DEPRECATED</p>
+<p>Sutu - DEPRECATED (use st)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -3947,7 +3962,7 @@ NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" co
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ji</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Yiddish - DEPRECATED</p>
+<p>Yiddish - DEPRECATED (use yi)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -5051,6 +5066,13 @@ External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>765</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Concentration per volume</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>350</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Density</p>
@@ -5138,6 +5160,13 @@ External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>364</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Energy, linear</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>761</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Flow rate (volume) per area</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -5240,6 +5269,13 @@ External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>764</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Length per area</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>499</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Light intensity</p>
@@ -5299,6 +5335,13 @@ External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>349</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mass per area</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>763</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mitotic count</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -5509,6 +5552,13 @@ External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>129</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Volume</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>762</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Volume per area</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>
@@ -6627,6 +6677,13 @@ External reference: <a href="https://www.hl7.org/fhir/v3/ParticipationMode/cs.ht
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>671</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>research study</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>672</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>interoperability</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">active</p></td>
 </tr>

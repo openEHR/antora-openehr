@@ -1033,37 +1033,37 @@ vital_signs/body_temperature:1/any_event:0/temperature|magnitude</pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_QUANTITY">DV_QUANTITY</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#_dv_quantity" class="xref page">DV_QUANTITY</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Numeric value</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_QUANTITY">DV_QUANTITY</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#_dv_quantity" class="xref page">DV_QUANTITY</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|unit</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unit of measure</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_CODED_TEXT">DV_CODED_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#DV_CODED_TEXT" class="xref page">DV_CODED_TEXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Terminology code</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_CODED_TEXT">DV_CODED_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#DV_CODED_TEXT" class="xref page">DV_CODED_TEXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|value</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display term</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_CODED_TEXT">DV_CODED_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#DV_CODED_TEXT" class="xref page">DV_CODED_TEXT</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|terminology</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Terminology identifier</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PARTY_IDENTIFIED">PARTY_IDENTIFIED</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#PARTY_IDENTIFIED" class="xref page">PARTY_IDENTIFIED</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The ID value</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PARTY_IDENTIFIED">PARTY_IDENTIFIED</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rm_mapping/#PARTY_IDENTIFIED" class="xref page">PARTY_IDENTIFIED</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_namespace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The namespace of the ID value</p></td>
 </tr>
@@ -1179,7 +1179,7 @@ This feature allows incorporating fully-formed openEHR Reference Model (RM) obje
 The <code>ctx/time</code> field, if not explicitly set, defaults to the current server time (<code>now()</code>).</p>
 </div>
 <div class="paragraph">
-<p>See below <a href="#_context_information">[_context_information]</a> for more details.</p>
+<p>See below <a href="../context_information/" class="xref page">Context Information</a> for more details.</p>
 </div>
 </div>
 </div>
@@ -1445,49 +1445,111 @@ The <code>ctx/time</code> field, if not explicitly set, defaults to the current 
 <h2 id="_level_removal"><a class="anchor" href="#_level_removal"></a><a class="link" href="#_level_removal">Level Removal</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Certain RM types are omitted from paths to simplify the structure.
-These types do not typically carry significant clinical information and would unnecessarily complicate the path structure.</p>
+<p>Paths in Flat and Structured formats omit two distinct kinds of segments relative to the canonical RM path:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Container attribute names</strong> of <code>LOCATABLE</code>-to-<code>LOCATABLE</code> relationships are never present as path segments&#8201;&#8212;&#8201;the parent connects directly to the child via the child&#8217;s archetype node-id alias.</p>
+</li>
+<li>
+<p>In addition, certain <strong>wrapper node types</strong> are themselves collapsed&#8201;&#8212;&#8201;their archetype node-id is also dropped&#8201;&#8212;&#8201;because they act only as structural slots and carry no clinically meaningful identity at that level.</p>
+</li>
+</ol>
 </div>
 <div class="sect2">
-<h3 id="_always_removed"><a class="anchor" href="#_always_removed"></a><a class="link" href="#_always_removed">Always Removed</a></h3>
+<h3 id="_container_attributes_elided_from_paths"><a class="anchor" href="#_container_attributes_elided_from_paths"></a><a class="link" href="#_container_attributes_elided_from_paths">Container Attributes Elided from Paths</a></h3>
 <div class="paragraph">
-<p>The following node types are always removed from paths, but their respective data carrying attribute is taken as the value at that specific level:</p>
+<p>The following RM attribute names are universally absent from paths:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ITEM_TREE</code> replaced by <code>ITEM_TREE.items</code></p>
+<p><code>COMPOSITION.content</code></p>
 </li>
 <li>
-<p><code>ITEM_LIST</code> replaced by <code>ITEM_LIST.items</code></p>
+<p><code>SECTION.items</code></p>
 </li>
 <li>
-<p><code>ITEM_SINGLE</code> replaced by <code>ITEM_SINGLE.item</code></p>
+<p><code>OBSERVATION.data</code>, <code>OBSERVATION.state</code>, <code>OBSERVATION.protocol</code></p>
 </li>
 <li>
-<p><code>ITEM_TABLE</code> replaced by <code>ITEM_TABLE.rows</code></p>
+<p><code>EVALUATION.data</code>, <code>EVALUATION.protocol</code></p>
 </li>
 <li>
-<p><code>HISTORY</code> replaced by <code>HISTORY.events</code></p>
+<p><code>INSTRUCTION.activities</code>, <code>INSTRUCTION.protocol</code></p>
+</li>
+<li>
+<p><code>ACTION.description</code>, <code>ACTION.protocol</code></p>
+</li>
+<li>
+<p><code>ADMIN_ENTRY.data</code></p>
+</li>
+<li>
+<p><code>ACTIVITY.description</code></p>
+</li>
+<li>
+<p><code>HISTORY.events</code></p>
+</li>
+<li>
+<p><code>EVENT.data</code>, <code>EVENT.state</code></p>
+</li>
+<li>
+<p><code>ITEM_TREE.items</code>, <code>ITEM_LIST.items</code>, <code>ITEM_SINGLE.item</code>, <code>ITEM_TABLE.rows</code></p>
+</li>
+<li>
+<p><code>CLUSTER.items</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_conditionally_removed"><a class="anchor" href="#_conditionally_removed"></a><a class="link" href="#_conditionally_removed">Conditionally Removed</a></h3>
+<h3 id="_always_collapsed_wrapper_types"><a class="anchor" href="#_always_collapsed_wrapper_types"></a><a class="link" href="#_always_collapsed_wrapper_types">Always Collapsed Wrapper Types</a></h3>
 <div class="paragraph">
-<p>The following types are removed when they meet specific criteria.</p>
+<p>In addition to the attribute elision above, the following wrapper node types are themselves collapsed&#8201;&#8212;&#8201;their archetype node-id is also dropped, so the parent connects directly to the wrapper&#8217;s contents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ITEM_STRUCTURE</code> (abstract) and its concrete subtypes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ITEM_TREE</code></p>
+</li>
+<li>
+<p><code>ITEM_LIST</code></p>
+</li>
+<li>
+<p><code>ITEM_SINGLE</code></p>
+</li>
+<li>
+<p><code>ITEM_TABLE</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>HISTORY</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>An <code>EVENT</code> node is removed when:</p>
+<p>These types act as fixed structural slots in their parent (<code>ENTRY</code> for the <code>ITEM_STRUCTURE</code> family; <code>OBSERVATION</code> for <code>HISTORY</code>) and have no archetype node-id distinct from that slot.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conditionally_collapsed_wrapper_types"><a class="anchor" href="#_conditionally_collapsed_wrapper_types"></a><a class="link" href="#_conditionally_collapsed_wrapper_types">Conditionally Collapsed Wrapper Types</a></h3>
+<div class="paragraph">
+<p>An <code>EVENT</code> node is collapsed when both of the following hold:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Its maximum occurrence is 1 (i.e., <code>max = 1</code>)</p>
+<p>Its maximum occurrence is 1 (i.e., <code>max = 1</code>), AND</p>
 </li>
 <li>
-<p>AND it has no sibling <code>EVENT</code> nodes in the same parent</p>
+<p>No sibling <code>EVENT</code> nodes (of any concrete event type) exist in the same parent <code>HISTORY</code>.</p>
 </li>
 </ol>
 </div>
@@ -1497,13 +1559,88 @@ These types do not typically carry significant clinical information and would un
 <div class="ulist">
 <ul>
 <li>
-<p>Multiple <code>EVENT</code> types exist in the same <code>OBSERVATION</code> (e.g., <code>POINT_EVENT</code> and <code>INTERVAL_EVENT</code>)</p>
+<p>Multiple <code>EVENT</code> types exist in the same parent <code>HISTORY</code> (e.g., a <code>POINT_EVENT</code> alongside an <code>INTERVAL_EVENT</code>), or</p>
 </li>
 <li>
-<p>The <code>EVENT</code> can occur multiple times</p>
+<p>The <code>EVENT</code> can occur multiple times (<code>max &gt; 1</code>).</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_example"><a class="anchor" href="#_example"></a><a class="link" href="#_example">Example</a></h3>
+<div class="paragraph">
+<p>Take a single measurement magnitude inside a laboratory result panel. The canonical RM path is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/content[openEHR-EHR-OBSERVATION.laboratory_test_result.v1]
+  /data[at0001]
+  /events[at0002]
+  /data[at0003]
+  /items[openEHR-EHR-CLUSTER.laboratory_test_panel.v1]
+  /items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1]
+  /items[at0001]
+  /value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same field in Flat form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>laboratory_test_report/laboratory_test/laboratory_test_panel/laboratory_result:0/result_value|magnitude</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Differences:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Container attribute names (<code>content</code>, <code>data</code>, <code>events</code>, <code>items</code>, <code>value</code>) are elided wherever they appear.</p>
+</li>
+<li>
+<p>The <code>HISTORY</code> (<code>at0001</code>) and <code>ITEM_TREE</code> (<code>at0003</code>) wrapper nodes are collapsed; the <code>EVENT</code> (<code>at0002</code>) is conditionally collapsed (here <code>max=1</code>, single event type).</p>
+</li>
+<li>
+<p>The <code>OBSERVATION</code> and the two <code>CLUSTER</code> nodes are retained under their archetype-id aliases (<code>laboratory_test</code>, <code>laboratory_test_panel</code>, <code>laboratory_result</code>); the inner <code>CLUSTER</code> repeats, hence the <code>:0</code> instance index.</p>
+</li>
+<li>
+<p><code>ELEMENT.value</code> is replaced by the <code>|magnitude</code> attribute suffix.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="open_value_sets"><a class="anchor" href="#open_value_sets"></a><a class="link" href="#open_value_sets">Open Value-Sets and the <code>|other</code> Suffix</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When an archetype constrains a leaf to <code>DV_CODED_TEXT</code> with an <em>open</em> value-set&#8201;&#8212;&#8201;the bound terminology lists recommended codes but the constraint also accepts values outside the list (<code>listOpen: true</code> in the web template; non-<code>limit-to-list</code> in ADL)&#8201;&#8212;&#8201;the same leaf may at runtime carry either a <code>DV_CODED_TEXT</code> (chosen from the list) or a <code>DV_TEXT</code> (free-text value).</p>
+</div>
+<div class="paragraph">
+<p>Many archetypes deliberately combine a recommended coded list with free-text fallback (e.g. <code>state_of_dress</code>, <code>confounding_factors</code>, <code>overall_test_status</code>). Without a dedicated FLAT-level discriminator the <code>DV_CODED_TEXT</code> vs <code>DV_TEXT</code> branch would have to be inferred from value patterns, which is fragile and ambiguous. The <code>|other</code> suffix makes the branch explicit at the FLAT level and removes the need for receivers to reason about it.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On <strong>write</strong>: clients supply the free-text value via <code>&lt;path&gt;|other: "&lt;text&gt;"</code>. The server persists the leaf as a <code>DV_TEXT</code> in the canonical RM (not as a <code>DV_CODED_TEXT</code> with empty <code>defining_code</code>).</p>
+</li>
+<li>
+<p>On <strong>read</strong>: when the leaf carries a <code>DV_TEXT</code> whose archetype constraint is <code>DV_CODED_TEXT</code> with <code>listOpen: true</code>, the server SHOULD emit it via <code>&lt;path&gt;|other: "&lt;text&gt;"</code> so that round-trip equality holds at the FLAT level.</p>
+</li>
+<li>
+<p><code>|other</code> is mutually exclusive with <code>|code</code>, <code>|value</code> and <code>|terminology</code> on the same leaf path; servers MUST reject combinations.</p>
+</li>
+<li>
+<p><code>|other</code> MUST be rejected when the constraint is closed (<code>listOpen: false</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The per-suffix table is in the <a href="../rm_mapping/#DV_CODED_TEXT" class="xref page">DV_CODED_TEXT</a> class section.</p>
 </div>
 </div>
 </div>

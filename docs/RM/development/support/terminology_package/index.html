@@ -645,7 +645,7 @@ identifiers is available;</p>
 due to the ubiquity of coded terms;</p>
 </li>
 <li>
-<p>determing the identity of the terminology in data always requires a request to a service containing
+<p>determining the identity of the terminology in data always requires a request to a service containing
 the Oid / name mapping;</p>
 </li>
 <li>
@@ -1188,7 +1188,7 @@ list. A definitive list may be found on the <a href="https://www.nlm.nih.gov/res
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></code>, <code><a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></code>, <code><a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1199,7 +1199,7 @@ list. A definitive list may be found on the <a href="https://www.nlm.nih.gov/res
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
 name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_terminology_access_interface" class="xref page">TERMINOLOGY_ACCESS</a></code></p></td>
+): <code><a href="#_terminology_access_interface">TERMINOLOGY_ACCESS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return an interface to the terminology named name. Allowable names include:-</p>
 </div>
@@ -1221,7 +1221,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
 name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_code_set_access_interface" class="xref page">CODE_SET_ACCESS</a></code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>has_code_set (name)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1232,7 +1232,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
 id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_code_set_access_interface" class="xref page">CODE_SET_ACCESS</a></code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>valid_code_set_id (id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1312,7 +1312,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a>, <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a>, <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1321,154 +1321,154 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Terminology_id_openehr</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"openehr"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of openEHR&#8217;s own terminology.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_audit_change_type</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"audit change type"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_attestation_reason</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"attestation reason"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_composition_category</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"composition category"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_event_math_function</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"event math function"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_states</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"instruction states"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_transitions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"instruction transitions"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_null_flavours</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"null flavours"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_property</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"property"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_function</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"participation function"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_mode</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"participation mode"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_setting</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"setting"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_term_mapping_purpose</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"term mapping purpose"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_subject_relationship</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"subject relationship"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_version_life_cycle_state</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"version lifecycle state"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_character_sets</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"character sets"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_compression_algorithms</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"compression algorithms"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_countries</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"countries"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_integrity_check_algorithms</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"integrity check algorithms"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_languages</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"languages"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_media_types</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"media types"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_normal_statuses</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"normal statuses"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1480,7 +1480,7 @@ an_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_terminology_group_identifiers_class" class="xref page">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1489,13 +1489,13 @@ an_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/support/terminology_package/#_openehr_code_set_identifiers_class" class="xref page">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
+<em>Inherited from <a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
 name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_terminology_access_interface" class="xref page">TERMINOLOGY_ACCESS</a></code> [1..1]</p></td>
+): <code><a href="#_terminology_access_interface">TERMINOLOGY_ACCESS</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return an interface to the terminology named name. Allowable names include:-</p>
 </div>
@@ -1516,7 +1516,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
 name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_code_set_access_interface" class="xref page">CODE_SET_ACCESS</a></code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>has_code_set (name)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1526,7 +1526,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
 id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/support/terminology_package/#_code_set_access_interface" class="xref page">CODE_SET_ACCESS</a></code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>valid_code_set_id (id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1774,7 +1774,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this terminology.</p>
 </div></div></td>
@@ -1783,7 +1783,7 @@ name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (<br>
 a_group_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper 'a_group_id' from this terminology.</p>
 </div></div></td>
@@ -1793,7 +1793,7 @@ a_group_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primi
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.</p>
 </div></div></td>
@@ -1844,7 +1844,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this terminology.</p>
 </div></div></td>
@@ -1852,7 +1852,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (<br>
 a_group_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper 'a_group_id' from this terminology.</p>
 </div></div></td>
@@ -1861,7 +1861,7 @@ a_group_id: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primi
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (<br>
 a_lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
 a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.</p>
 </div></div></td>
@@ -2036,7 +2036,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this code set.</p>
 </div></div></td>
@@ -2089,7 +2089,7 @@ a_code: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this code set.</p>
 </div></div></td>

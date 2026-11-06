@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -404,6 +447,9 @@
 <p>Within the openEHR architecture, a <code><em>system_id</em></code> attribute is recorded both within each patient EHR (<a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_class" target="_blank" rel="noopener"><code>EHR</code> class</a>), and also within the audit created with each commit of data to an EHR (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_audit_details_class" target="_blank" rel="noopener"><code>AUDIT_DETAILS</code> class</a>). It is also used in feeder system audits that record the origin of imported data (<a href="https://specifications.openehr.org/releases/RM/latest/common.html#_feeder_audit_details_class" target="_blank" rel="noopener"><code>FEEDER_AUDIT_DETAILS</code> class</a>). This identifier identifies the logical EHR system as described above, and may be of any form. Common forms include the reverse domain name, GUID and OID string identifiers.</p>
 </div>
 <div class="paragraph">
+<p>While any of these forms is valid, a reverse domain name (e.g. <code>uk.nhs.ehr1</code>, <code>se.regionstockholm.openehr</code>) is the commonly recommended choice where the organisation legally responsible for the system has a stable domain, since it is globally unique, human-readable, and orders from the most general to the most specific part. A UUID/GUID or ISO OID is equally suitable where no stable domain applies or an opaque identifier is preferred. Because the <code><em>system_id</em></code> becomes embedded in the version identifiers of committed&#8201;&#8212;&#8201;and possibly signed&#8201;&#8212;&#8201;content, a globally unique form should be settled on before data is shared or federated, since it cannot easily be changed afterwards. Note that the <code><em>system_id</em></code> identifies the <em>logical</em> system responsible for the data, and is distinct both from the physical server host name (usually a forward domain name) and from any query-federation node identifier.</p>
+</div>
+<div class="paragraph">
 <p>The system identifier is <em>not assumed to be directly processable</em>, but may instead be used as a key, for example in a service maintaining location information.</p>
 </div>
 </div>
@@ -428,7 +474,7 @@ EHR can be configured to include either no demographic or some identifying data.
 principles of openEHR is the complete separation of EHR and demographic information, such that an
 EHR taken in isolation contains little or no clue as to the identity of the patient it belongs to. The
 security benefits are described below. In more complete EHR systems, numerous other services (particularly
-security-related) would normally be deployed, as shown in <a href="#health_services_environment">[health_services_environment]</a>.</p>
+security-related) would normally be deployed, as shown in <a href="../design_principles/#health_services_environment" class="xref page">health_services_environment</a>.</p>
 </div>
 </div>
 </div>

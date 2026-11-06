@@ -1196,7 +1196,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1212,7 +1212,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../../../Release-1.1.0/data_types/uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>DEPRECATED: this field is deprecated; use markdown link/text in the <code><em>value</em></code> attribute, and <code>"markdown"</code> as the value of the <code><em>formatting</em></code> field.</p>
 </div>
@@ -1245,23 +1245,29 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_term_mapping_class" class="xref page">TERM_MAPPING</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_term_mapping_class">TERM_MAPPING</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Terms from other terminologies most closely matching this term, typically used where the originator (e.g. pathology lab) of information uses a local terminology but also supplies one or more equivalents from well known terminologies (e.g. LOINC).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing <code>ENTRY</code>, or else the text object is being used outside of an <code>ENTRY</code> or other enclosing structure which indicates the language.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_character_sets" class="xref page">openEHR code set character sets</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1334,7 +1340,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1361,7 +1367,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -1398,7 +1404,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../../../Release-1.1.0/data_types/uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>DEPRECATED: this field is deprecated; use markdown link/text in the <code><em>value</em></code> attribute, and <code>"markdown"</code> as the value of the <code><em>formatting</em></code> field.</p>
 </div>
@@ -1429,21 +1435,27 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_term_mapping_class" class="xref page">TERM_MAPPING</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_term_mapping_class">TERM_MAPPING</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Terms from other terminologies most closely matching this term, typically used where the originator (e.g. pathology lab) of information uses a local terminology but also supplies one or more equivalents from well known terminologies (e.g. LOINC).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing <code>ENTRY</code>, or else the text object is being used outside of an <code>ENTRY</code> or other enclosing structure which indicates the language.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_character_sets" class="xref page">openEHR code set character sets</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1627,14 +1639,17 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code><a href="#_dv_coded_text_class">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_term_mapping_purpose" class="xref page">openEHR Terminology, term mapping purpose group</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The target term of the mapping.</p>
 </div></div></td>
@@ -1753,13 +1768,16 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code><a href="#_dv_coded_text_class">DV_CODED_TEXT</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_term_mapping_purpose" class="xref page">openEHR Terminology, term mapping purpose group</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The target term of the mapping.</p>
 </div></div></td>
@@ -2143,7 +2161,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_text_class">DV_TEXT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2152,7 +2170,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>defining_code</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>defining_code</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The term of which the  <code><em>value</em></code> attribute is the textual rendition (i.e. rubric).</p>
 </div></div></td>
@@ -2184,7 +2202,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="#_dv_text_class">DV_TEXT</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -2211,7 +2229,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -2245,17 +2263,17 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Displayable rendition of the item, regardless of its underlying structure. For <code>DV_CODED_TEXT</code>, this is the rubric of the complete term as provided by the terminology service.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../../../Release-1.1.0/data_types/uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code><a href="../uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>DEPRECATED: this field is deprecated; use markdown link/text in the <code><em>value</em></code> attribute, and <code>"markdown"</code> as the value of the <code><em>formatting</em></code> field.</p>
 </div>
 <div class="paragraph">
 <p>Original usage, prior to RM Release 1.0.4: Optional link sitting behind a section of plain text or coded term item.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2278,32 +2296,38 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div>
 <div class="paragraph">
 <p>DEPRECATED usage: contains a string of the form <code>"name:value; name:value&#8230;&#8203;"</code> , e.g. <code>"font-weight : bold; font-family : Arial; font-size : 12pt;"</code>. Values taken from W3C CSS2 properties lists for background and font .<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_term_mapping_class" class="xref page">TERM_MAPPING</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_term_mapping_class">TERM_MAPPING</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Terms from other terminologies most closely matching this term, typically used where the originator (e.g. pathology lab) of information uses a local terminology but also supplies one or more equivalents from well known terminologies (e.g. LOINC).<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing <code>ENTRY</code>, or else the text object is being used outside of an <code>ENTRY</code> or other enclosing structure which indicates the language.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing <code>ENTRY</code>, or else the text object is being used outside of an <code>ENTRY</code> or other enclosing structure which indicates the language.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>languages" class="xref page">openEHR code set languages</a><br>
+_Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>encoding</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>character_sets" class="xref page">openEHR code set character sets</a><br>
+_Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>defining_code</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>defining_code</strong>: <code><a href="#_code_phrase_class">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The term of which the  <code><em>value</em></code> attribute is the textual rendition (i.e. rubric).</p>
 </div></div></td>
@@ -2314,31 +2338,31 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Valid_value</em>: <code>not value.is_empty</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Language_valid</em>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Encoding_valid</em>: <code>encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Mappings_valid</em>: <code>mappings /= void implies not mappings.is_empty</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Formatting_valid</em>: <code>formatting /= void implies not formatting.is_empty</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></em></p>
+<em>Inherited from <a href="#_dv_text_class">DV_TEXT</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2425,7 +2449,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2434,7 +2458,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_dv_text_class">DV_TEXT</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Items making up the paragraph, each of which is a text item (which may have its own formatting, and/or have hyperlinks).</p>
 </div></div></td>
@@ -2475,7 +2499,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -2502,7 +2526,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -2533,7 +2557,7 @@ c: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_type
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a>&gt;</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_dv_text_class">DV_TEXT</a>&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Items making up the paragraph, each of which is a text item (which may have its own formatting, and/or have hyperlinks).</p>
 </div></div></td>

@@ -616,9 +616,12 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -630,21 +633,21 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_translation_details_class" class="xref page">TRANSLATION_DETAILS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_translation_details_class">TRANSLATION_DETAILS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of details for each natural-language translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The <code><em>original_language</em></code> does not appear in this list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_resource_description_class" class="xref page">RESOURCE_DESCRIPTION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="#_resource_description_class">RESOURCE_DESCRIPTION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Description and lifecycle information of the resource.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code><a href="../generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The revision history of the resource. Only required if <code><em>is_controlled</em> = True</code> (avoids large revision histories for informal or private editing situations).</p>
 </div></div></td>
@@ -731,9 +734,12 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -743,19 +749,19 @@ translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_translation_details_class" class="xref page">TRANSLATION_DETAILS</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_translation_details_class">TRANSLATION_DETAILS</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of details for each natural-language translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The <code><em>original_language</em></code> does not appear in this list.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_resource_description_class" class="xref page">RESOURCE_DESCRIPTION</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="#_resource_description_class">RESOURCE_DESCRIPTION</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Description and lifecycle information of the resource.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code><a href="../generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The revision history of the resource. Only required if <code><em>is_controlled</em> = True</code> (avoids large revision histories for informal or private editing situations).</p>
 </div></div></td>
@@ -949,9 +955,12 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language of the translation.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1005,9 +1014,12 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language of the translation.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1182,7 +1194,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code><a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code><a href="#_authored_resource_class">AUTHORED_RESOURCE</a></code><br>
 <code>{default&#160;=&#160;0..1}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to owning resource.</p>
@@ -1190,7 +1202,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_resource_description_item_class" class="xref page">RESOURCE_DESCRIPTION_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_resource_description_item_class">RESOURCE_DESCRIPTION_ITEM</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of all parts of resource description that are natural language-dependent, keyed by language code.</p>
 </div></div></td>
@@ -1279,14 +1291,14 @@ translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code><a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></code> [1..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code><a href="#_authored_resource_class">AUTHORED_RESOURCE</a></code> [1..1]<br>
 <code>{default&#160;=&#160;0..1}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to owning resource.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_resource_description_item_class" class="xref page">RESOURCE_DESCRIPTION_ITEM</a>&gt;</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_resource_description_item_class">RESOURCE_DESCRIPTION_ITEM</a>&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of all parts of resource description that are natural language-dependent, keyed by language code.</p>
 </div></div></td>
@@ -1468,9 +1480,12 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The localised language in which the items in this description item are written. Coded from openEHR code set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1576,9 +1591,12 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The localised language in which the items in this description item are written. Coded from openEHR code set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>

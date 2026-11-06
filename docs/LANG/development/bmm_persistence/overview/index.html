@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -439,6 +467,12 @@
 </div>
 <div class="paragraph">
 <p>We thus talk of the <code>P_BMM_*</code> classes as a 'model of a BMM <em>schema</em>' and the <code>BMM_*</code> classes as a 'model of a BMM <em>model</em>', where the latter is understood as the fully computable in-memory object structure with all name references resolved to object references.</p>
+</div>
+<div class="paragraph">
+<p>A <code>P_BMM</code> class definition captures the full feature set of a class: <em>properties</em> (attributes), via the <code>P_BMM_PROPERTY</code> family; <em>functions</em> (routines, with their formal parameters and result type), via the <code>P_BMM_FUNCTION</code> and <code>P_BMM_FUNCTION_PARAMETER</code> families; <em>constants</em>, via <code>P_BMM_CONSTANT</code>; and class <em>invariants</em>. Representing functions and these other features allows a <code>.bmm</code> schema to record the full specification of a model (for example, the operation specifications extracted from the openEHR UML models), independently of whether a given tool materialises those features in its in-memory <code>BMM</code> form.</p>
+</div>
+<div class="paragraph">
+<p>In addition to ordinary classes, the model can also represent pure <em>interfaces</em> via <code>P_BMM_INTERFACE</code>, i.e. class-like definitions that declare only functions and carry no state.</p>
 </div>
 <div class="paragraph">
 <p>The <code>P_BMM</code> format is not the only serial format possible for BMM, and alternatives, e.g. a more syntactic style reminiscent of OMG IDL, are possible.</p>

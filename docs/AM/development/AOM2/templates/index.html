@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -529,7 +502,7 @@
 <p>Within the Archetype formalism, a template is used to aggregate and refine archetypes, to produce a structure corresponding to a particular data set. Templates thus provide a way to use archetypes for specific purposes, while the archetypes contain <em>possible</em> data items, not linked to specific purposes. See the <a href="https://specifications.openehr.org/releases/AM/latest/ADL2.html#_templates" target="_blank" rel="noopener">ADL2 specification, Templates section</a> for a detailed description of template semantics.</p>
 </div>
 <div class="paragraph">
-<p>Templates are formally defined as specialised archetypes, via the <code>TEMPLATE</code> and <code>TEMPLATE_OVERLAY</code> classes shown in <a href="#archetype_package">[archetype_package]</a>. This means that all the formal characteristics of a template are defined by the openEHR Archetype Object Model (AOM) and Archetype Definition Language (ADL) specifications apply to templates. This includes the meta-data (inherited from the <code>AUTHORED_RESOURCE</code> class), specialisation semantics (templates can be specialised into other templates), <code>terminology</code> section (allowing multi-lingual local term definitions and external terminology bindings) as well as the <code>rules</code> and <code>annotations</code> sections.</p>
+<p>Templates are formally defined as specialised archetypes, via the <code>TEMPLATE</code> and <code>TEMPLATE_OVERLAY</code> classes shown in <a href="../archetype_package/#archetype_package" class="xref page">archetype_package</a>. This means that all the formal characteristics of a template are defined by the openEHR Archetype Object Model (AOM) and Archetype Definition Language (ADL) specifications apply to templates. This includes the meta-data (inherited from the <code>AUTHORED_RESOURCE</code> class), specialisation semantics (templates can be specialised into other templates), <code>terminology</code> section (allowing multi-lingual local term definitions and external terminology bindings) as well as the <code>rules</code> and <code>annotations</code> sections.</p>
 </div>
 <div class="paragraph">
 <p>Since a template is a specialised archetype, it cannot change the semantics of archetypes it specialises, and it consequently obeys the same rules as any other specialised archetype. Accordingly, all data created due to the use of templates are guaranteed to conform to the referenced archetypes, as well as the underlying reference model.</p>

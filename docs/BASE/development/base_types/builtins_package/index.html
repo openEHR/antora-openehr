@@ -209,6 +209,9 @@
     <a class="nav-link" href="../identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -451,28 +494,28 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_date_class" class="xref page">Iso8601_date</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_date_class" class="xref page">Iso8601_date</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return today&#8217;s date in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_time_class" class="xref page">Iso8601_time</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_time_class" class="xref page">Iso8601_time</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return current time in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date_time</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_date_time_class" class="xref page">Iso8601_date_time</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date_time</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_date_time_class" class="xref page">Iso8601_date_time</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return current date/time in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time_zone</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_timezone_class" class="xref page">Iso8601_timezone</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time_zone</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_timezone_class" class="xref page">Iso8601_timezone</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the timezone of the current locale.</p>
 </div></div></td>
@@ -501,25 +544,25 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_date_class" class="xref page">Iso8601_date</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_date_class" class="xref page">Iso8601_date</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return today&#8217;s date in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_time_class" class="xref page">Iso8601_time</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_time_class" class="xref page">Iso8601_time</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return current time in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date_time</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_date_time_class" class="xref page">Iso8601_date_time</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_date_time</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_date_time_class" class="xref page">Iso8601_date_time</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return current date/time in the current locale.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time_zone</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/time_types/#_iso8601_timezone_class" class="xref page">Iso8601_timezone</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_time_zone</strong> (): <code><a href="../../foundation_types/time_types/#_iso8601_timezone_class" class="xref page">Iso8601_timezone</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the timezone of the current locale.</p>
 </div></div></td>
@@ -627,7 +670,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primary_language</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primary_language</strong> (): <code><a href="../../foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Primary language of the current locale.</p>
 </div></div></td>
@@ -656,7 +699,7 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primary_language</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primary_language</strong> (): <code><a href="../../foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Primary language of the current locale.</p>
 </div></div></td>
@@ -741,8 +784,8 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sum</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Sum of a container of values.</p>
 </div></div></td>
@@ -750,8 +793,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>avg</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Synonym for <code><em>mean()</em></code>.</p>
 </div></div></td>
@@ -759,8 +802,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mean</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mean (arithmetic average) of a container of values.</p>
 </div></div></td>
@@ -768,8 +811,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>median</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return numerically centre value in ordered form of container contents.</p>
 </div></div></td>
@@ -777,8 +820,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mode (most frequent) of a container of values.</p>
 </div></div></td>
@@ -786,8 +829,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>max</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Maximum of a container of values.</p>
 </div></div></td>
@@ -795,8 +838,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>min</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Minimum of a container of values.</p>
 </div></div></td>
@@ -804,8 +847,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the number of items in <code><em>vals</em></code>, i.e. <code><em>vals.count</em></code>.</p>
 </div></div></td>
@@ -813,8 +856,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>std_dev</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute standard deviation of a container of values.</p>
 </div></div></td>
@@ -844,72 +887,72 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sum</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Sum of a container of values.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>avg</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Synonym for <code><em>mean()</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mean</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mean (arithmetic average) of a container of values.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>median</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return numerically centre value in ordered form of container contents.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mode (most frequent) of a container of values.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>max</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Maximum of a container of values.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>min</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Minimum of a container of values.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the number of items in <code><em>vals</em></code>, i.e. <code><em>vals.count</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>std_dev</strong> (<br>
-vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+vals: <code><a href="../../foundation_types/structure_types/#_container_class" class="xref page">Container</a>&lt;<a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>&gt;[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute standard deviation of a container of values.</p>
 </div></div></td>
@@ -1166,8 +1209,8 @@ vals: <code><a href="../../../Release-1.2.0/foundation_types/structure_types/#_c
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ln</strong> (<br>
-v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute natural log of v.</p>
 </div></div></td>
@@ -1175,8 +1218,8 @@ v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_nume
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>log</strong> (<br>
-v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute base 10 log of v.</p>
 </div></div></td>
@@ -1184,8 +1227,8 @@ v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_nume
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sin</strong> (<br>
-(v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
+(v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute sin(v).</p>
 </div></div></td>
@@ -1215,24 +1258,24 @@ v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_nume
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ln</strong> (<br>
-v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute natural log of v.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>log</strong> (<br>
-v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute base 10 log of v.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sin</strong> (<br>
-(v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
+(v: <code><a href="../../foundation_types/primitive_types/#_numeric_class" class="xref page">Numeric</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_double_class" class="xref page">Double</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compute sin(v).</p>
 </div></div></td>
@@ -1354,11 +1397,11 @@ v: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_nume
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>convert_value</strong> (<br>
-value: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a>[1]</code>,<br>
-from_units: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
-to_units: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
-property: <code><a href="../../../Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code></p></td>
+value: <code><a href="../../foundation_types/primitive_types/#_real_class" class="xref page">Real</a>[1]</code>,<br>
+from_units: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+to_units: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+property: <code><a href="../../foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Convert <code><em>value</em></code> of physical property type (e.g. 'pressure' etc) from one units to another.</p>
 </div></div></td>
@@ -1388,11 +1431,11 @@ property: <code><a href="../../../Release-1.2.0/foundation_types/terminology/#_t
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>convert_value</strong> (<br>
-value: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a>[1]</code>,<br>
-from_units: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
-to_units: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
-property: <code><a href="../../../Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code> [1..1]</p></td>
+value: <code><a href="../../foundation_types/primitive_types/#_real_class" class="xref page">Real</a>[1]</code>,<br>
+from_units: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+to_units: <code><a href="../../foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+property: <code><a href="../../foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a>[1]</code><br>
+): <code><a href="../../foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Convert <code><em>value</em></code> of physical property type (e.g. 'pressure' etc) from one units to another.</p>
 </div></div></td>

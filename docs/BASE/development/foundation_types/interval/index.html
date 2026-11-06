@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -452,7 +495,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../overview/#_any_class" class="xref page">Any</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -475,28 +518,28 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary open (i.e. = <code>-infinity</code>).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>+infinity</code>).</p>
+<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>&#43;infinity</code>).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary value included in range, if <code>not <em>lower_unbounded</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>upper</em></code> boundary value included in range if <code>not <em>upper_unbounded</em></code>.</p>
 </div></div></td>
@@ -511,9 +554,9 @@
 (abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>
-<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code></p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.</p>
 </div></div></td>
@@ -522,28 +565,28 @@ e: <code>T[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.</p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>, i.e. at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.</p>
+<p>True if current interval properly contains <code><em>other</em></code>, i.e. all points of <code><em>other</em></code> are inside the current interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.</p>
 </div></div></td>
@@ -593,7 +636,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../overview/#_any_class" class="xref page">Any</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -611,25 +654,25 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary open (i.e. = <code>-infinity</code>).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>+infinity</code>).</p>
+<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>&#43;infinity</code>).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary value included in range, if <code>not <em>lower_unbounded</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>upper</em></code> boundary value included in range if <code>not <em>upper_unbounded</em></code>.</p>
 </div></div></td>
@@ -639,19 +682,19 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -669,55 +712,55 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+an_object: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>
-<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code> [1..1]</p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>intersects</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.</p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>, i.e. at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>contains</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.</p>
+<p>True if current interval properly contains <code><em>other</em></code>, i.e. all points of <code><em>other</em></code> are inside the current interval.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -817,7 +860,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
                 }
             },
             "post_conditions": {
-                "Post_result": "Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)"
+                "Post_result": "Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)"
             },
             "result": {
                 "_type": "P_BMM_SIMPLE_TYPE",
@@ -826,7 +869,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
         },
         "intersects": {
             "name": "intersects",
-            "documentation": "True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of `_other_` is strictly inside the limits of this interval.",
+            "documentation": "True if there is any overlap between intervals represented by Current and `_other_`, i.e. at least one limit of `_other_` is strictly inside the limits of this interval.",
             "is_abstract": true,
             "parameters": {
                 "other": {
@@ -842,7 +885,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
         },
         "contains": {
             "name": "contains",
-            "documentation": "True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval.",
+            "documentation": "True if current interval properly contains `_other_`, i.e. all points of `_other_` are inside the current interval.",
             "is_abstract": true,
             "parameters": {
                 "other": {
@@ -933,7 +976,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_interval_class">Interval</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -943,7 +986,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <code>{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary open (i.e. = -infinity).</p>
@@ -952,16 +995,16 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <code>{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Upper boundary open (i.e. = +infinity).</p>
+<p>Upper boundary open (i.e. = &#43;infinity).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <code>{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary value included in range if not <code><em>lower_unbounded</em></code>.</p>
@@ -970,7 +1013,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <code>{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper boundary value included in range if not <code><em>upper_unbounded</em></code>.</p>
@@ -1003,7 +1046,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>, <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../overview/#_any_class" class="xref page">Any</a>, <a href="#_interval_class">Interval</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1012,39 +1055,39 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
 <code>{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary open (i.e. = -infinity).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
 <code>{default&#160;=&#160;false}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Upper boundary open (i.e. = +infinity).</p>
+<p>Upper boundary open (i.e. = &#43;infinity).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
 <code>{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower boundary value included in range if not <code><em>lower_unbounded</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]<br>
 <code>{default&#160;=&#160;true}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper boundary value included in range if not <code><em>upper_unbounded</em></code>.</p>
@@ -1055,20 +1098,20 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -1086,58 +1129,58 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+an_object: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>
-<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code> [1..1]</p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>intersects</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>, i.e. at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>contains</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if current interval properly contains <code><em>other</em></code>, i.e. all points of <code><em>other</em></code> are inside the current interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1146,25 +1189,25 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Lower_included_valid</em>: <code>lower_unbounded implies not lower_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Upper_included_valid</em>: <code>upper_unbounded implies not upper_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_consistent</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_comparable</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1281,7 +1324,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_interval_class">Interval</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -1310,7 +1353,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>, <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../overview/#_any_class" class="xref page">Any</a>, <a href="#_interval_class">Interval</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1319,42 +1362,42 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary open (i.e. = <code>-infinity</code>).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>+infinity</code>).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>&#43;infinity</code>).<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary value included in range, if <code>not <em>lower_unbounded</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>upper</em></code> boundary value included in range if <code>not <em>upper_unbounded</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1362,20 +1405,20 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -1393,58 +1436,58 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+an_object: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>
-<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code> [1..1]</p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>intersects</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>, i.e. at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>contains</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if current interval properly contains <code><em>other</em></code>, i.e. all points of <code><em>other</em></code> are inside the current interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1453,25 +1496,25 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Lower_included_valid</em>: <code>lower_unbounded implies not lower_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Upper_included_valid</em>: <code>upper_unbounded implies not upper_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_consistent</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_comparable</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1554,7 +1597,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.2.0/foundation_types/interval/#_proper_interval_class" class="xref page">Proper_interval</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_proper_interval_class">Proper_interval</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1563,14 +1606,14 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_range_marker</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".."</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_range_marker</strong>: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".."</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Marker to use in string form of interval between limits.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_unbounded_marker</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_character_class" class="xref page">Character</a>&#160;=&#160;'&#42;'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_unbounded_marker</strong>: <code><a href="../primitive_types/#_character_class" class="xref page">Character</a>&#160;=&#160;'*'</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Symbol to use to indicate upper limit unbounded.</p>
 </div></div></td>
@@ -1582,28 +1625,28 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this interval imposes no constraints, i.e. is set to <code>0..&#42;</code>.</p>
+<p>True if this interval imposes no constraints, i.e. is set to <code>0..*</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval expresses optionality, i.e. <code>0..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval expresses mandation, i.e. <code>1..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval is set to <code>0..0</code>.</p>
 </div></div></td>
@@ -1629,19 +1672,19 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>, <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>, <a href="../../../Release-1.2.0/foundation_types/interval/#_proper_interval_class" class="xref page">Proper_interval</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../overview/#_any_class" class="xref page">Any</a>, <a href="#_interval_class">Interval</a>, <a href="#_proper_interval_class">Proper_interval</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_range_marker</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".."</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_range_marker</strong>: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".."</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Marker to use in string form of interval between limits.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_unbounded_marker</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_character_class" class="xref page">Character</a>&#160;=&#160;'&#42;'</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multiplicity_unbounded_marker</strong>: <code><a href="../primitive_types/#_character_class" class="xref page">Character</a>&#160;=&#160;'*'</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Symbol to use to indicate upper limit unbounded.</p>
 </div></div></td>
@@ -1653,42 +1696,42 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lower bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Upper bound.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary open (i.e. = <code>-infinity</code>).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_unbounded</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>+infinity</code>).<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if <code><em>upper</em></code> boundary open (i.e. = <code>&#43;infinity</code>).<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>lower</em></code> boundary value included in range, if <code>not <em>lower_unbounded</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper_included</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>upper</em></code> boundary value included in range if <code>not <em>upper_unbounded</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1696,20 +1739,20 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object&#8217;s interval is semantically same as <code><em>other</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div>
 <div class="hdlist">
 <div class="title">Parameters<br></div>
@@ -1727,80 +1770,80 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+an_object: <code><a href="../overview/#_any_class" class="xref page">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+<em>Inherited from <a href="../overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>has</strong> (<br>
 e: <code>T[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
 <br>
-<em>Post_result</em>: <code>Result = (lower_unbounded or lower_included and v &gt;= lower) or v &gt; lower and (upper_unbounded or upper_included and v &lt;= upper or v &lt; upper)</code> [1..1]</p></td>
+<em>Post_result</em>: <code>Result = (lower_unbounded or (lower_included and e &gt;= lower) or e &gt; lower) and (upper_unbounded or (upper_included and e &lt;= upper) or e &lt; upper)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the value <code>e</code> is properly contained in this Interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>intersects</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>. True if at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if there is any overlap between intervals represented by Current and <code><em>other</em></code>, i.e. at least one limit of <code><em>other</em></code> is strictly inside the limits of this interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>contains</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_interval_class">Interval</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if current interval properly contains <code><em>other</em></code>? True if all points of <code><em>other</em></code> are inside the current interval.<br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<p>True if current interval properly contains <code><em>other</em></code>, i.e. all points of <code><em>other</em></code> are inside the current interval.<br>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_open</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this interval imposes no constraints, i.e. is set to <code>0..&#42;</code>.</p>
+<p>True if this interval imposes no constraints, i.e. is set to <code>0..*</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_optional</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval expresses optionality, i.e. <code>0..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_mandatory</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval expresses mandation, i.e. <code>1..1</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_prohibited</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this interval is set to <code>0..0</code>.</p>
 </div></div></td>
@@ -1811,31 +1854,31 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Lower_included_valid</em>: <code>lower_unbounded implies not lower_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Upper_included_valid</em>: <code>upper_unbounded implies not upper_included</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_consistent</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Limits_comparable</em>: <code>(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a></em></p>
+<em>Inherited from <a href="#_interval_class">Interval</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Inv_not_point</em>: <code>lower /= upper</code><br>
-<em>Inherited from <a href="../../../Release-1.2.0/foundation_types/interval/#_proper_interval_class" class="xref page">Proper_interval</a></em></p>
+<em>Inherited from <a href="#_proper_interval_class">Proper_interval</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1861,7 +1904,7 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
             "name": "Multiplicity_unbounded_marker",
             "documentation": "Symbol to use to indicate upper limit unbounded.",
             "type": "Character",
-            "value": "'&amp;#42;'"
+            "value": "'*'"
         }
     },
     "functions": {
@@ -1957,21 +2000,21 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval</strong>: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_multiplicity_interval_class" class="xref page">Multiplicity_interval</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval</strong>: <code><a href="#_multiplicity_interval_class">Multiplicity_interval</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The interval of this cardinality.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_ordered</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_ordered</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the members of the container attribute to which this cardinality refers are ordered.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_unique</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_unique</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the members of the container attribute to which this cardinality refers are unique.</p>
 </div></div></td>
@@ -1983,21 +2026,21 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a bag, i.e. unordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a list, i.e. ordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a set, i.e. unordered, unique membership.</p>
 </div></div></td>
@@ -2026,19 +2069,19 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval</strong>: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_multiplicity_interval_class" class="xref page">Multiplicity_interval</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval</strong>: <code><a href="#_multiplicity_interval_class">Multiplicity_interval</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The interval of this cardinality.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_ordered</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_ordered</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the members of the container attribute to which this cardinality refers are ordered.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_unique</strong>: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_unique</strong>: <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the members of the container attribute to which this cardinality refers are unique.</p>
 </div></div></td>
@@ -2047,19 +2090,19 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/interval/#_interva
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_bag</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a bag, i.e. unordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_list</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a list, i.e. ordered, non-unique membership.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong> (): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_set</strong> (): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the semantics of this cardinality represent a set, i.e. unordered, unique membership.</p>
 </div></div></td>

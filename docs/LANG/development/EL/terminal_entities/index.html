@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -650,9 +678,6 @@
 <div class="paragraph">
 <p>One exception to the above is tuples, which are direct instances of the BMM meta-type <code>BMM_TUPLE</code>. They take the literal form <code>[a, b, c]</code>, where <code>a</code>, <code>b</code>, and <code>c</code> are generally of different types.</p>
 </div>
-<div class="paragraph tbd">
-<p>TBD: consider to not bother with <code>Array</code> and reserve <code>[]</code> for tuples.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -814,9 +839,6 @@
 </tr>
 </tbody>
 </table>
-<div class="paragraph tbd">
-<p>TBD: to achieve this generically, the above map of operators to member functions of appropriate types needs to be supplied in the model supplying the types themselves.</p>
-</div>
 <div class="paragraph">
 <p>Container element access may be used on any expression whose effective type is a container, including function calls.</p>
 </div>
@@ -851,9 +873,6 @@
 </tr>
 </tbody>
 </table>
-<div class="paragraph tbd">
-<p>TBD: For <code>Any</code>, need type anchoring&#8230;&#8203; or else generic functions.</p>
-</div>
 <div class="paragraph">
 <p>Here, 'matching' is understood to mean <em>obtain all matching items</em>.</p>
 </div>
@@ -917,9 +936,6 @@
 </div>
 <div class="paragraph">
 <p>For matching to work, there must be an appropriate function available on all container types. In the case of the openEHR Foundation types, this is <code>match (&lt;[T], Boolean&gt;): List&lt;T&gt;</code> defined on <code>Container&lt;T&gt;</code>; any equivalent function in a different model will do. The return type is nullable.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: to achieve this generically, the map of operators to member functions of appropriate types needs to be supplied in the model supplying the types themselves.</p>
 </div>
 <div class="paragraph">
 <p>Other short forms are available, making a predicate syntax reminiscent of Xpath possible, as follows.</p>

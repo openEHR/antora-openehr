@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -426,7 +469,7 @@
 <p>The <code>functional</code> package includes types enabling functional programming primitives to be expressed in the openEHR modelling environment, i.e. functions-as-objects and 'lambda' expressions.</p>
 </div>
 <div class="paragraph">
-<p>The types are described in this specification are typically of two kinds: <em>built-in types</em>, which are those built in to a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter greatly - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience. The built-in types are indicated in the UML with the <code>«Value_type»</code> stereotype.</p>
+<p>The types are described in this specification are typically of two kinds: <em>built-in types</em>, which are those built into a type system of the development language, and <em>library types</em>, which are assumed to be available in a (class) library defined in the formalism. Thus, the type <code>Boolean</code> is always assumed to exist in a formalism, while the type <code>Array&lt;T&gt;</code> is assumed to be available in a library. For practical purposes, these two categories do not matter greatly - whether <code>String</code> is really a library class (the usual case) or an inbuilt type doesn&#8217;t make much difference to the programmer. They are shown separately here mainly as an explanatory convenience. The built-in types are indicated in the UML with the <code>«Value_type»</code> stereotype.</p>
 </div>
 <div class="paragraph">
 <p>The assumptions that openEHR makes about existing types are documented below in terms of interface definitions. Each of these definitions contains <em>only the assumptions required for the given type to be used in the openEHR type system</em> - <strong>it is not by any means a complete interface definition</strong>. The name and semantics of any function used here for an assumed type <strong>might not be identical</strong> to those found in some implementation technologies. Any mapping required should be stated in the relevant implementation technology specification (ITS). To give a concrete example, where the assumed <code>Set&lt;T&gt;</code> type defined below has an operation <code>has (item: T): Boolean</code> which is used throughout the openEHR specifications, Java has the method <code>contains()</code> on its <code>Set&lt;T&gt;</code> class. In a Java implementation, the <code>contains()</code> method should then be used throughout the openEHR classes as expressed in Java, in place of the <code>has ()</code> method.</p>
@@ -545,8 +588,8 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects considered to be equal in value.</p>
 </div>
@@ -567,8 +610,8 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.</p>
 </div>
@@ -589,8 +632,8 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="#_any_class">Any</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.</p>
 </div></div></td>
@@ -598,8 +641,8 @@ a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+an_object: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.</p>
 </div></div></td>
@@ -607,8 +650,8 @@ an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.</p>
 </div></div></td>
@@ -638,8 +681,8 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_equal</strong> (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects considered to be equal in value.</p>
 </div>
@@ -659,8 +702,8 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference equality for reference types, value equality for value types.</p>
 </div>
@@ -680,24 +723,24 @@ other: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_cla
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instance_of</strong> (<br>
-a_type: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
+a_type: <code><a href="../primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="#_any_class">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Create new instance of a type.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_of</strong> (<br>
-an_object: <code><a href="../../../Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+an_object: <code><a href="#_any_class">Any</a>[1]</code><br>
+): <code><a href="../primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
-other: <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
-): <code><a href="../../../Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.</p>
 </div></div></td>

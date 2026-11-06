@@ -380,7 +380,7 @@ Depending on how an application is invoked, SMART Framework <a href="https://hl7
 <h2 id="_context_selection"><a class="anchor" href="#_context_selection"></a><a class="link" href="#_context_selection">Context Selection</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In a <strong>Standalone Launch</strong>, a client <em>Application</em> can request the <em>Platform</em> to assist with <em>context</em> selection, provided that the relevant <a href="#_capabilities">capabilities</a> are supported by the <em>Platform</em>.
+<p>In a <strong>Standalone Launch</strong>, a client <em>Application</em> can request the <em>Platform</em> to assist with <em>context</em> selection, provided that the relevant <a href="../service_discovery/#_capabilities" class="xref page">capabilities</a> are supported by the <em>Platform</em>.
 Most <strong>patient-facing</strong> and <strong>practitioner-facing</strong> applications will require the <em>Platform</em> to supply additional context during the authorization process.
 This contextual data may include identifiers such as the openEHR EHR ID, FHIR Patient ID, Episode ID, etc. The context is typically valid for the duration of the user session.</p>
 </div>
@@ -415,7 +415,7 @@ The <em>Platform</em> may determine this context automatically based on the auth
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>launch/episode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates that the Application requires episode context at launch. (<a href="#_experimental_episode_context">Experimental</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates that the Application requires episode context at launch. (<a href="../experimental_features/#_experimental_episode_context" class="xref page">Experimental</a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -440,7 +440,7 @@ The <em>Platform</em> may determine this context automatically based on the auth
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>episodeId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the selected clinical episode (if applicable). (<a href="#_experimental_episode_context">experimental</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the selected clinical episode (if applicable). (<a href="../experimental_features/#_experimental_episode_context" class="xref page">experimental</a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -475,7 +475,7 @@ The <em>Platform</em> may determine this context automatically based on the auth
 <div class="ulist">
 <ul>
 <li>
-<p><code>launch</code>: An opaque identifier or <a href="#_launch_parameter_as_a_token">token</a> that encodes relevant launch context (e.g., patient, EHR ID, episode).</p>
+<p><code>launch</code>: An opaque identifier or <a href="../experimental_features/#_launch_parameter_as_a_token" class="xref page">token</a> that encodes relevant launch context (e.g., patient, EHR ID, episode).</p>
 </li>
 <li>
 <p><code>iss</code>: The issuer URL representing the <em>Platform&#8217;s</em> base endpoint (which, for compatibility with SMART on FHIR, should also serve as the FHIR base URL).</p>

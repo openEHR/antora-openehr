@@ -1450,9 +1450,9 @@
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|target</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">STRING</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type.value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">target.value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1928,7 +1928,7 @@
   "conformance-ehrbase.de.v0/context/_participation:0|id_namespace": "HOSPITAL-NS",
   "conformance-ehrbase.de.v0/context/start_time": "2021-12-21T14:19:31.649613+01:00",
   "conformance-ehrbase.de.v0/context/_end_time": "2021-12-21T15:19:31.649613+01:00",
-  "conformance-ehrbase.de.v0/context/_location": "2021-12-21T15:19:31.649613+01:00",
+  "conformance-ehrbase.de.v0/context/_location": "Ward A3, Room 12",
   "conformance-ehrbase.de.v0/context/setting|code": "238",
   "conformance-ehrbase.de.v0/context/setting|value": "other care",
   "conformance-ehrbase.de.v0/context/setting|terminology": "openehr"
@@ -1954,42 +1954,246 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/start_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_DATE_TIME">DV_DATE_TIME</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">start_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/setting</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_CODED_TEXT">DV_CODED_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (openEHR <code>setting</code> group)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_end_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_DATE_TIME">DV_DATE_TIME</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">end_time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_location</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free-text label (e.g. "Ward A3"); not a date-time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_health_care_facility</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PARTY_IDENTIFIED">PARTY_IDENTIFIED</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">health_care_facility</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_participation:i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PARTICIPATION">PARTICIPATION</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">participations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>other_context</code> (RM <code>ITEM_STRUCTURE</code>) attribute is not represented as a leaf in this table; archetyped context content is flattened to sit directly under <code>/context/&lt;node-name&gt;/&#8230;&#8203;</code>, where <code>&lt;node-name&gt;</code> is the identifier derived from the contained archetype (e.g. <code>/context/organisation/&#8230;&#8203;</code> for an <code>openEHR-EHR-CLUSTER.organisation.v0</code> slot inside <code>other_context</code>). The underlying AQL path retains <code>/context/other_context[at0001]/items[&#8230;&#8203;]</code>. The leading underscore on <code>_end_time</code>, <code>_location</code>, <code>_health_care_facility</code> and <code>_participation:i</code> marks them as optional RM-level attributes (see <a href="../basic_concepts/#_rm_attributes_prefix" class="xref page">RM Attributes prefix</a>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="PARTICIPATION"><a class="anchor" href="#PARTICIPATION"></a><a class="link" href="#PARTICIPATION">PARTICIPATION</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See RM specification of the <a href="../../../../RM/Release-1.1.0/common/generic_package/#_participation_class" class="xref page">PARTICIPATION</a> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>performer</code> (<code>PARTY_IDENTIFIED</code>) is inlined: its attributes are emitted at the same level as <code>function</code> and <code>mode</code>, rather than nested under <code>/performer</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "conformance-ehrbase.de.v0/context/_participation:0|function": "requester",
+  "conformance-ehrbase.de.v0/context/_participation:0|mode": "face-to-face communication",
+  "conformance-ehrbase.de.v0/context/_participation:0|name": "Dr. Marcus Johnson",
+  "conformance-ehrbase.de.v0/context/_participation:0|id": "199",
+  "conformance-ehrbase.de.v0/context/_participation:0|id_scheme": "HOSPITAL-NS",
+  "conformance-ehrbase.de.v0/context/_participation:0|id_namespace": "HOSPITAL-NS",
+  "conformance-ehrbase.de.v0/context/_participation:0|identifiers_id:0": "122",
+  "conformance-ehrbase.de.v0/context/_participation:0|identifiers_issuer:0": "issuer",
+  "conformance-ehrbase.de.v0/context/_participation:0|identifiers_assigner:0": "assigner",
+  "conformance-ehrbase.de.v0/context/_participation:0|identifiers_type:0": "type"
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flat Path</th>
+<th class="tableblock halign-left valign-top">Flat type</th>
+<th class="tableblock halign-left valign-top">RM Path</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|function</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">function.value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|mode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mode.value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (openEHR <code>participation mode</code> group)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.external_ref.id.value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_scheme</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.scheme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.external_ref.id.scheme</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_namespace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.external_ref.namespace</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(yes)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">required if id is set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">required if <code>|id</code> is set. (RM <code>OBJECT_REF</code> has <code>namespace</code> directly on the reference, not nested under <code>id</code>.)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_identifier:i</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_IDENTIFIER">DV_IDENTIFIER</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">identifiers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|identifiers_id:i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.identifiers[i].id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|identifiers_issuer:i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.identifiers[i].issuer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|identifiers_assigner:i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.identifiers[i].assigner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|identifiers_type:i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">performer.identifiers[i].type</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+PARTICIPATION&#8217;s <code>time</code> (RM <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code>) is not currently emitted by FLAT mappings. Entries with a constrained participation <code>time</code> interval require the canonical RM JSON form.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="participation_party_related"><a class="anchor" href="#participation_party_related"></a><a class="link" href="#participation_party_related">PARTY_RELATED performer</a></h3>
+<div class="paragraph">
+<p>When the <code>performer</code> is a <code>PARTY_RELATED</code> (a sub-type of <code>PARTY_IDENTIFIED</code> that carries a <code>relationship: DV_CODED_TEXT</code>), the <code>relationship</code> attribute is emitted as a sub-path under the participation, with the standard <a href="#DV_CODED_TEXT">DV_CODED_TEXT</a> suffixes (<code>\|code</code>, <code>\|value</code>, <code>\|terminology</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "conformance-ehrbase.de.v0/context/_participation:0|function": "next of kin",
+  "conformance-ehrbase.de.v0/context/_participation:0|name": "Susan Doe",
+  "conformance-ehrbase.de.v0/context/_participation:0/relationship|code": "10",
+  "conformance-ehrbase.de.v0/context/_participation:0/relationship|value": "mother",
+  "conformance-ehrbase.de.v0/context/_participation:0/relationship|terminology": "openehr"
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flat Path</th>
+<th class="tableblock halign-left valign-top">Flat type</th>
+<th class="tableblock halign-left valign-top">RM Path</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/relationship</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#DV_CODED_TEXT">DV_CODED_TEXT</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">relationship (when <code>performer</code> is <code>PARTY_RELATED</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(yes)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required when <code>performer</code> is a <code>PARTY_RELATED</code>; not present otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Implementation status — EHRbase reads and writes this path (<code>PartyRelatedStdConfig.addRelationship</code>); Better&#8217;s <code>ParticipationToFlatMapper</code> currently treats the performer as <code>PARTY_IDENTIFIED</code> only and does not emit <code>relationship</code>. Producers that need cross-implementation portability for a <code>PARTY_RELATED</code> performer should either fall back to canonical RM JSON or limit usage to EHRbase-side flows until parity is established.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2237,7 +2441,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_namespace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.namespace</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(yes)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">required if id is set</p></td>
 </tr>
@@ -2314,7 +2518,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_namespace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.namespace</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(yes)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">required if id is set</p></td>
 </tr>
@@ -2404,7 +2608,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|id_namespace</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.id.namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">external_ref.namespace</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(yes)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">required if id is set</p></td>
 </tr>
@@ -2672,6 +2876,7 @@
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|value": "term1",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|code": "at0006",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|terminology": "local",
+  "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|preferred_term": "Term One",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|formatting": "plain",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text/_language|code": "en",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text/_language|terminology": "ISO_639-1",
@@ -2684,6 +2889,16 @@
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text/_mapping:0/purpose|terminology": "openehr",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text/_mapping:0/purpose|code": "671",
   "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text/_mapping:0/purpose|value": "research study"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Free-text value when the archetype constraint allows an open value-set (<code>listOpen: true</code> in the web template):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_coded_text|other": "free-text value not in the coded list"
 }</code></pre>
 </div>
 </div>
@@ -2727,6 +2942,20 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">only required for external terminologies</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|preferred_term</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defining_code.preferred_term</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional preferred display rubric for the <code>defining_code</code>. See the <code>|preferred_term</code> row of <a href="#CODE_PHRASE">CODE_PHRASE</a> for the analogous mapping on a bare <code>CODE_PHRASE</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|other</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>value</em> (as <code><a href="#DV_TEXT">DV_TEXT</a></code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free-text value used when the constraint allows an open value-set (<code>listOpen: true</code> in the web template). When <code>|other</code> is set, <code>|code</code>, <code>|value</code>, <code>|terminology</code> and <code>|preferred_term</code> MUST NOT be set; the leaf is serialised in the canonical RM as a <code>DV_TEXT</code> rather than a <code>DV_CODED_TEXT</code>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|formatting</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">formatting</p></td>
@@ -2756,6 +2985,28 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="_when_a_dv_coded_text_becomes_a_dv_text"><a class="anchor" href="#_when_a_dv_coded_text_becomes_a_dv_text"></a><a class="link" href="#_when_a_dv_coded_text_becomes_a_dv_text">When a <code>DV_CODED_TEXT</code> becomes a <code>DV_TEXT</code></a></h3>
+<div class="paragraph">
+<p>Where the archetype constraint allows an open value-set (<code>listOpen: true</code> in the web template; non-<code>limit-to-list</code> in ADL), a leaf bound to <code>DV_CODED_TEXT</code> may be populated with a free-text value via the <code>\|other</code> suffix. In that case:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the canonical RM serialisation of the leaf is a <a href="#DV_TEXT">DV_TEXT</a>, not a <code>DV_CODED_TEXT</code> with empty <code>defining_code</code>;</p>
+</li>
+<li>
+<p><code>\|other</code> is mutually exclusive with <code>\|code</code>, <code>\|value</code>, <code>\|terminology</code> and <code>\|preferred_term</code> on the same leaf;</p>
+</li>
+<li>
+<p>on a closed list (<code>listOpen: false</code>), <code>\|other</code> MUST be rejected.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="../basic_concepts/#open_value_sets" class="xref page">Open Value-Sets and the <code>|other</code> Suffix</a> for the cross-cutting rule and rationale.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3127,14 +3378,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy</code></p></td>
@@ -3255,6 +3506,13 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet proportion_kind</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|precision</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">precision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of decimal places to which <code>|numerator</code> and <code>|denominator</code> are expressed. Value <code>0</code> implies integral; <code>-1</code> implies no limit.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Real</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude</p></td>
@@ -3266,14 +3524,28 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accuracy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Half-range accuracy of measurement. Interpretation depends on <code>|accuracy_is_percent</code>. A value of <code>0</code> means accuracy is 100% (no error).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy_is_percent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accuracy_is_percent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <code>true</code>, <code>|accuracy</code> is a percentage (0–100); when <code>false</code> or absent, <code>|accuracy</code> is an absolute quantity in the same units as the value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -3352,14 +3624,28 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accuracy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Half-range accuracy of measurement. Interpretation depends on <code>|accuracy_is_percent</code>. A value of <code>0</code> means accuracy is 100% (no error).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy_is_percent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accuracy_is_percent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <code>true</code>, <code>|accuracy</code> is a percentage (0–100); when <code>false</code> or absent, <code>|accuracy</code> is an absolute quantity in the same units as the value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -3444,14 +3730,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -3475,7 +3761,7 @@
 <h2 id="DV_DATE_TIME"><a class="anchor" href="#DV_DATE_TIME"></a><a class="link" href="#DV_DATE_TIME">DV_DATE_TIME</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See RM specification of the <a href="../../../../RM/Release-1.1.0/data_types/date_time_package/#_dv_date_class" class="xref page">DV_DATE</a> class.</p>
+<p>See RM specification of the <a href="../../../../RM/Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a> class.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3522,7 +3808,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601 date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601 date-time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_accuracy</code></p></td>
@@ -3536,14 +3822,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -3567,12 +3853,12 @@
 <h2 id="_dv_time"><a class="anchor" href="#_dv_time"></a><a class="link" href="#_dv_time">DV_TIME</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See RM specification of the <a href="../../../../RM/Release-1.1.0/data_types/date_time_package/#_dv_date_class" class="xref page">DV_DATE</a> class.</p>
+<p>See RM specification of the <a href="../../../../RM/Release-1.1.0/data_types/date_time_package/#_dv_time_class" class="xref page">DV_TIME</a> class.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-  "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_date": "2022-01-12"
+  "conformance-ehrbase.de.v0/conformance_section/conformance_observation/any_event:0/dv_time": "13:22:34.000868+01:00"
 }</code></pre>
 </div>
 </div>
@@ -3614,7 +3900,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601 date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO8601 time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_accuracy</code></p></td>
@@ -3628,14 +3914,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -3717,7 +4003,7 @@
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">accuracy_is_percent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|accuracy_is_percent</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accuracy_is_percent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
@@ -3728,14 +4014,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnitude_status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (",&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet (=,&gt;,&gt;=,&lt;,&lt;=,~)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|normal_status</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal_status.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet normal_status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValueSet <code>normal_statuses</code> (codes <code>HHH</code>, <code>HH</code>, <code>H</code>, <code>N</code>, <code>L</code>, <code>LL</code>, <code>LLL</code>). The FLAT carries only the <code>code_string</code>; the underlying <code>CODE_PHRASE</code> terminology is implicitly <code>openehr</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/_normal_range</code></p></td>
@@ -4000,7 +4286,7 @@
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|media_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|mediatype</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">media_type.code_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>

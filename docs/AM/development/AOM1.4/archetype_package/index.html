@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -534,6 +507,24 @@
 </div>
 <div class="title">Figure 1. am.aom14.archetype Package</div>
 </div>
+<div class="sect2">
+<h3 id="_machine_identifier"><a class="anchor" href="#_machine_identifier"></a><a class="link" href="#_machine_identifier">Machine Identifier</a></h3>
+<div class="paragraph">
+<p>The machine identifier of an archetype is the <code><em>uid</em></code> attribute inherited from <a href="https://specifications.openehr.org/releases/BASE/latest/resource.html#_authored_resource_class" target="_blank" rel="noopener"><code>AUTHORED_RESOURCE</code></a> in the BASE component, and is of type <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_uuid_class" target="_blank" rel="noopener"><code>UUID</code></a>. An archetype machine identifier is therefore always a UUID, also known as a GUID, written as hexadecimal integers separated by hyphens in the 8-4-4-4-12 pattern. ISO OIDs, internet identifiers and extended (<code>root::extension</code>) forms of <code>HIER_OBJECT_ID</code> are not used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+earlier releases of this specification redefined <code>ARCHETYPE.<em>uid</em></code> as a <code>HIER_OBJECT_ID</code> documented as an "OID identifier". The archetypes in use, including those published in the openEHR CKM, carry UUIDs, so the redefinition has been removed and existing identifier values remain valid.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -588,14 +579,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code><a href="../constraint_model_package/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Root node of the definition of this archetype.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ontology</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/ontology_package/#_archetype_ontology_class" class="xref page">ARCHETYPE_ONTOLOGY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ontology</strong>: <code><a href="../ontology_package/#_archetype_ontology_class" class="xref page">ARCHETYPE_ONTOLOGY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The ontology of the archetype.</p>
 </div></div></td>
@@ -615,14 +606,6 @@
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_hier_object_id_class" class="xref page">HIER_OBJECT_ID</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>OID identifier of this archetype.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -638,7 +621,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>invariants</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#LANG:BEL:expression_object_model.adoc#_assertion_class" class="xref unresolved">ASSERTION</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>invariants</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../assertion_package/#_assertion_class" class="xref page">ASSERTION</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Invariant statements about this object. Statements are expressed in first order predicate logic, and usually refer to at least two attributes.</p>
 </div></div></td>
@@ -811,16 +794,20 @@ lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_hier_object_id_class" class="xref page">HIER_OBJECT_ID</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_uuid_class" class="xref page">UUID</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>OID identifier of this archetype.</p>
+<p>Unique identifier of the family of archetypes having the same interface identifier (same major version).<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.<br>
-<em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
+<p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>languages" class="xref page">openEHR code set languages</a><br>
+_Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -852,13 +839,13 @@ lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code><a href="../constraint_model_package/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Root node of the definition of this archetype.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ontology</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/ontology_package/#_archetype_ontology_class" class="xref page">ARCHETYPE_ONTOLOGY</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ontology</strong>: <code><a href="../ontology_package/#_archetype_ontology_class" class="xref page">ARCHETYPE_ONTOLOGY</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The ontology of the archetype.</p>
 </div></div></td>
@@ -888,22 +875,13 @@ lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>invariants</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#LANG:BEL:expression_object_model.adoc#_assertion_class" class="xref unresolved">ASSERTION</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>invariants</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../assertion_package/#_assertion_class" class="xref page">ASSERTION</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Invariant statements about this object. Statements are expressed in first order predicate logic, and usually refer to at least two attributes.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
-<br>
-<em>Post</em>: <code>Result = revision_history.most_recent_version</code> [1..1]</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .<br>
-<em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
-</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code> [1..1]</p></td>
@@ -1005,12 +983,6 @@ lang: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_t
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Current_revision_valid</em>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal ("(uncontrolled)")</code><br>
-<em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Translations_valid</em>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code><br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
 </div></div></td>
@@ -1025,12 +997,6 @@ translations.has_key (d.language.code_string)))</code><br>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Languages_available_valid</em>: <code>languages_available.has (original_language)</code><br>
-<em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Revision_history_valid</em>: <code>is_controlled xor revision_history = Void</code><br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/resource/resource_package/#_authored_resource_class" class="xref page">AUTHORED_RESOURCE</a></em></p>
 </div></div></td>
 </tr>
@@ -1108,12 +1074,6 @@ translations.has_key (d.language.code_string)))</code><br>
             "documentation": "Multi-axial identifier of this archetype in archetype space.",
             "is_mandatory": true,
             "type": "ARCHETYPE_ID"
-        },
-        "uid": {
-            "_type": "P_BMM_SINGLE_PROPERTY",
-            "name": "uid",
-            "documentation": "OID identifier of this archetype.",
-            "type": "HIER_OBJECT_ID"
         },
         "concept": {
             "_type": "P_BMM_SINGLE_PROPERTY",

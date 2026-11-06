@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -434,6 +462,123 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_serialisation_formats"><a class="anchor" href="#_serialisation_formats"></a><a class="link" href="#_serialisation_formats">Serialisation Formats</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A BMM schema is a serialisation of the <code>P_BMM_*</code> object graph, and may be written in any format able to express a typed object model. Three formats are in use:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ODIN</strong>: the original and most widely tool-supported format (for example the openEHR ADL Workbench); files use the <code>.bmm</code> extension. The remainder of this chapter describes the ODIN form in detail.</p>
+</li>
+<li>
+<p><strong>JSON</strong>: the primary format produced and consumed by the <code>bmm-publisher</code> tooling; files use the <code>.bmm.json</code> extension.</p>
+</li>
+<li>
+<p><strong>YAML</strong>: an alternative, more compact human-readable format also produced by <code>bmm-publisher</code>; files use the <code>.bmm.yaml</code> extension.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Whatever the format, the same serialisation rules apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>File heading.</strong> A schema file begins with the header (meta) items corresponding to the persisted attributes of <code>P_BMM_SCHEMA</code> (<code><em>bmm_version</em></code>, <code><em>rm_publisher</em></code>, <code><em>schema_name</em></code>, <code><em>rm_release</em></code>, <code><em>schema_revision</em></code>, <code><em>schema_lifecycle_state</em></code>, <code><em>schema_description</em></code>, <code><em>schema_author</em></code>, and the optional <code><em>schema_contributors</em></code>), followed by <code><em>includes</em></code>, <code><em>packages</em></code>, <code><em>primitive_types</em></code>, and <code><em>class_definitions</em></code>.</p>
+</li>
+<li>
+<p><strong>Type discriminator.</strong> Wherever a value may be one of several <code>P_BMM_*</code> subtypes (for example a property, a function parameter, or a result type), the concrete subtype is always stated explicitly via a <code>_type</code> discriminator. Where the type is unambiguous from context (such as a class definition or a package), no discriminator is needed. Each format renders the discriminator in its own idiom: ODIN uses a type marker <code>(P_BMM_SINGLE_PROPERTY)</code>, JSON a <code>"_type": "P_BMM_SINGLE_PROPERTY"</code> member, and YAML a tag <code>!P_BMM_SINGLE_PROPERTY</code>.</p>
+</li>
+<li>
+<p><strong>Keyed collections.</strong> Maps such as <code><em>primitive_types</em></code>, <code><em>class_definitions</em></code>, <code><em>properties</em></code>, <code><em>functions</em></code>, function <code><em>parameters</em></code>, and <code><em>packages</em></code> are keyed by name. <code><em>ancestor_defs</em></code> is keyed by type signature (e.g. <code>GENERIC_PARENT&lt;T,SUPPLIER_B&gt;</code>), and the <code><em>generic_parameter_defs</em></code> of a generic type by formal generic parameter name (e.g. <code>T</code>).</p>
+</li>
+<li>
+<p><strong>Intervals.</strong> The intervals in a schema are the <code><em>cardinality</em></code> values of <code>P_BMM_CONTAINER_PROPERTY</code> and <code>P_BMM_CONTAINER_FUNCTION_PARAMETER</code>. ODIN writes an interval as an interval literal, such as <code>|&gt;=1|</code> or <code>|1..4|</code>. JSON and YAML have no interval literal, so they write it as an object with <code><em>lower</em></code> and either <code><em>upper</em></code>, for a bounded interval, or <code><em>upper_unbounded</em></code> set to <code>true</code>, never both. Both bounds are included, and <code><em>lower</em></code> is always written, as a non-negative integer; <code><em>lower_unbounded</em></code>, <code><em>lower_included</em></code> and <code><em>upper_included</em></code> are not written. A reader treats a missing <code><em>upper_unbounded</em></code> as <code>true</code> when <code><em>upper</em></code> is also missing, and as <code>false</code> when <code><em>upper</em></code> is present.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following shows the same class fragment, an abstract class <code>OBJECT_ID</code> with a single mandatory <code>String</code> property <code><em>value</em></code>, in each of the three formats.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-odin" data-lang="odin">["OBJECT_ID"] = &lt;
+    name = &lt;"OBJECT_ID"&gt;
+    is_abstract = &lt;True&gt;
+    properties = &lt;
+        ["value"] = (P_BMM_SINGLE_PROPERTY) &lt;
+            name = &lt;"value"&gt;
+            is_mandatory = &lt;True&gt;
+            type = &lt;"String"&gt;
+        &gt;
+    &gt;
+&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"OBJECT_ID": {
+    "name": "OBJECT_ID",
+    "is_abstract": true,
+    "properties": {
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "is_mandatory": true,
+            "type": "String"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">OBJECT_ID:
+  name: OBJECT_ID
+  is_abstract: true
+  properties:
+    value: !P_BMM_SINGLE_PROPERTY
+      name: value
+      is_mandatory: true
+      type: String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following shows an open and a bounded cardinality in each of the three formats.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ODIN</th>
+<th class="tableblock halign-left valign-top">JSON</th>
+<th class="tableblock halign-left valign-top">YAML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|&gt;=1|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{"lower": 1, "upper_unbounded": true}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lower: 1</code><br>
+<code>upper_unbounded: true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|1..4|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{"lower": 1, "upper": 4}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lower: 1</code><br>
+<code>upper: 4</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_header_items"><a class="anchor" href="#_header_items"></a><a class="link" href="#_header_items">Header Items</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -539,7 +684,7 @@ make sure that the ODIN 'keys' are the same as the 'name' attributes in each blo
 <div class="sect2">
 <h3 id="_classes_for_primitive_types"><a class="anchor" href="#_classes_for_primitive_types"></a><a class="link" href="#_classes_for_primitive_types">Classes for Primitive Types</a></h3>
 <div class="paragraph">
-<p>Definitions for primitive types in a BMM schema are just normal class definitions within a <code>primitive_types</code> block. Types that are included here are usually types corresonding to primitives in target programming languages, XML schema or other downstream technologies. These types can be be detected as primitive types by tools, but otherwise are processed in the same way as types defined in the main <code>class_definitions</code> group.</p>
+<p>Definitions for primitive types in a BMM schema are just normal class definitions within a <code>primitive_types</code> block. Types that are included here are usually types corresponding to primitives in target programming languages, XML schema or other downstream technologies. These types can be detected as primitive types by tools, but otherwise are processed in the same way as types defined in the main <code>class_definitions</code> group.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -572,7 +717,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 <div class="sect2">
 <h3 id="_non_primitive_classes"><a class="anchor" href="#_non_primitive_classes"></a><a class="link" href="#_non_primitive_classes">Non-primitive Classes</a></h3>
 <div class="paragraph">
-<p>The main group of class definitions in a schema occurs within the <code><em>class_definitions</em></code> block. Each definition is a keyed ODIN object block correspnding to a serialised <code>P_BMM_CLASS</code> object, where the key is the class name. Since <code>name</code> is a BMM meta-model attribute, the class definition always contains its ODIN key.</p>
+<p>The main group of class definitions in a schema occurs within the <code><em>class_definitions</em></code> block. Each definition is a keyed ODIN object block corresponding to a serialised <code>P_BMM_CLASS</code> object, where the key is the class name. Since <code>name</code> is a BMM meta-model attribute, the class definition always contains its ODIN key.</p>
 </div>
 <div class="paragraph">
 <p>The possible class-level meta-properties:</p>
@@ -658,7 +803,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 <div class="sect3">
 <h4 id="_container_properties"><a class="anchor" href="#_container_properties"></a><a class="link" href="#_container_properties">Container Properties</a></h4>
 <div class="paragraph">
-<p>The following is a <code>P_BMM_CONTAINER_PROPERTY</code> definition for the model property <code>items: List&lt;ITEM&gt;</code> in the <code>ELEMENT</code> class. The type is expressed in the <code><em>type_def</em></code> part which indicates the type of the container, which must be defined elsewhere in the schema, typically in the primitive types. The optional <code><em>cardinality</em></code> meta-property indicates cardinality of the container, and is expressed as a ODIN range. The default is <code>|0..*|</code>.</p>
+<p>The following is a <code>P_BMM_CONTAINER_PROPERTY</code> definition for the model property <code>items: List&lt;ITEM&gt;</code> in the <code>ELEMENT</code> class. The type is expressed in the <code><em>type_def</em></code> part which indicates the type of the container, which must be defined elsewhere in the schema, typically in the primitive types. The optional <code><em>cardinality</em></code> meta-property indicates cardinality of the container, and is expressed as a ODIN range. The default is <code>|&gt;=0|</code>, i.e. <code>0..*</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -680,7 +825,7 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 </div>
 </div>
 <div class="paragraph">
-<p>Indexed containers such as <code>Hash&lt;K,V&gt;</code>, <code>Dictionary&lt;K,V&gt;</code> etc are also suuported via the <code>P_BMM_INDEXED_CONTAINER_PROPERTY</code>, the use of which is shown here:</p>
+<p>Indexed containers such as <code>Hash&lt;K,V&gt;</code>, <code>Dictionary&lt;K,V&gt;</code> etc are also supported via the <code>P_BMM_INDEXED_CONTAINER_PROPERTY</code>, the use of which is shown here:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -705,11 +850,113 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 <p>The above represents a property <code>custom_actions: Hash &lt;String, EVENT_ACTION&gt;</code> in the class <code>CALLBACK_WAIT</code>. The meta-element <code>index_type</code> is used to state the key type.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_functions"><a class="anchor" href="#_functions"></a><a class="link" href="#_functions">Functions</a></h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>P_BMM</code> function meta-types were introduced in version 2.4 to capture the operation specifications of the openEHR models (migrated from UML to the <code>bmm-publisher</code> tooling in 2026). They are not yet widely adopted by BMM tooling.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alongside properties, a class definition may declare <em>functions</em> (routines), expressed as ODIN object blocks under the <code><em>functions</em></code> keyword, keyed by function name. A function is a <code>P_BMM_FUNCTION</code>, whose formal parameters appear under <code><em>parameters</em></code>, keyed by parameter name, and whose return type, if any, is stated in <code><em>result</em></code>. A function with no <code><em>result</em></code> is a procedure.</p>
+</div>
+<div class="paragraph">
+<p>Each parameter carries an ODIN type marker indicating its <code>P_BMM_FUNCTION_PARAMETER</code> subtype, in direct analogy with the property meta-types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>P_BMM_SINGLE_FUNCTION_PARAMETER</code> - a parameter of simple (class) type, stated in <code><em>type</em></code>;</p>
+</li>
+<li>
+<p><code>P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN</code> - a parameter whose type is an open generic parameter such as <code>T</code>;</p>
+</li>
+<li>
+<p><code>P_BMM_CONTAINER_FUNCTION_PARAMETER</code> - a parameter of container type, e.g. <code>List&lt;ITEM&gt;</code>, stated in <code><em>type_def</em></code>;</p>
+</li>
+<li>
+<p><code>P_BMM_GENERIC_FUNCTION_PARAMETER</code> - a parameter of generic type, e.g. <code>Interval&lt;Time&gt;</code>, stated in <code><em>type_def</em></code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code><em>result</em></code> is expressed in the same way as a property type, i.e. using a <code>P_BMM_TYPE</code> type marker such as <code>P_BMM_SIMPLE_TYPE</code>, <code>P_BMM_CONTAINER_TYPE</code> or <code>P_BMM_GENERIC_TYPE</code>. The optional <code><em>is_nullable</em></code> meta-property indicates that the result may be <code>Void</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following shows the class <code>BMM_MODEL</code> with a function <code><em>class_definition</em></code>, taking a single <code>String</code> parameter <code><em>a_name</em></code> and returning a <code>BMM_CLASS</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-odin" data-lang="odin">    ["BMM_MODEL"] = &lt;
+        name = &lt;"BMM_MODEL"&gt;
+        ancestors = &lt;"BMM_PACKAGE_CONTAINER"&gt;
+        functions = &lt;
+            ["class_definition"] = &lt;
+                name = &lt;"class_definition"&gt;
+                parameters = &lt;
+                    ["a_name"] = (P_BMM_SINGLE_FUNCTION_PARAMETER) &lt;
+                        name = &lt;"a_name"&gt;
+                        type = &lt;"String"&gt;
+                    &gt;
+                &gt;
+                result = (P_BMM_SIMPLE_TYPE) &lt;
+                    type = &lt;"BMM_CLASS"&gt;
+                &gt;
+            &gt;
+        &gt;
+    &gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_constants"><a class="anchor" href="#_constants"></a><a class="link" href="#_constants">Constants</a></h4>
+<div class="paragraph">
+<p>A class may define named, typed <em>constants</em>, expressed as ODIN object blocks under the <code><em>constants</em></code> keyword, keyed by constant name. Each constant is a <code>P_BMM_CONSTANT</code> carrying its <code><em>type</em></code> (a simple class name) and its literal <code><em>value</em></code> in serialised form. The following shows the class <code>OPENEHR_DEFINITIONS</code> with a single <code>String</code> constant:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-odin" data-lang="odin">    ["OPENEHR_DEFINITIONS"] = &lt;
+        name = &lt;"OPENEHR_DEFINITIONS"&gt;
+        constants = &lt;
+            ["Local_terminology_id"] = &lt;
+                name = &lt;"Local_terminology_id"&gt;
+                type = &lt;"String"&gt;
+                value = &lt;"local"&gt;
+            &gt;
+        &gt;
+    &gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_invariants"><a class="anchor" href="#_invariants"></a><a class="link" href="#_invariants">Invariants</a></h4>
+<div class="paragraph">
+<p>Class <em>invariants</em> are expressed under the <code><em>invariants</em></code> keyword as a set of assertion expressions keyed by tag. Each value is the assertion text, written in the relevant expression syntax (typically the openEHR Basic Expression Language, BEL); <code>P_BMM</code> itself treats the assertion as an opaque string. The following shows two invariants on the class <code>LOCATABLE</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-odin" data-lang="odin">    ["LOCATABLE"] = &lt;
+        name = &lt;"LOCATABLE"&gt;
+        invariants = &lt;
+            ["Links_valid"] = &lt;"links /= Void implies not links.is_empty"&gt;
+            ["Archetype_node_id_valid"] = &lt;"not archetype_node_id.is_empty"&gt;
+        &gt;
+    &gt;</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_generic_classes"><a class="anchor" href="#_generic_classes"></a><a class="link" href="#_generic_classes">Generic Classes</a></h3>
 <div class="paragraph">
-<p>Generic classes are those that have one or more substitutable generic type parameters. Such classes are therefore <em>type generators</em>, since actual types are formed by substitution of concrete types (typically simple classes) for the formal type parameters. The following example shows a generic class <code>Interval</code> with <code>generic_parameter_defs</code> of <code>T</code> which is constrained to conform to the type <code>Ordered</code>. This structure defineds the type <code>Interval&lt;T&#8594;Ordered&gt;</code>, with the same meaning as UML and programming languages supporting generic (templated) types.</p>
+<p>Generic classes are those that have one or more substitutable generic type parameters. Such classes are therefore <em>type generators</em>, since actual types are formed by substitution of concrete types (typically simple classes) for the formal type parameters. The following example shows a generic class <code>Interval</code> with <code>generic_parameter_defs</code> of <code>T</code> which is constrained to conform to the type <code>Ordered</code>. This structure defines the type <code>Interval&lt;T&#8594;Ordered&gt;</code>, with the same meaning as UML and programming languages supporting generic (templated) types.</p>
 </div>
 <div class="paragraph">
 <p>Generic classes will normally contain one or more properties whose formal type is the generic type parameter, i.e. the <code>T</code> in this example, as is the case below where the model properties <code><em>lower</em></code> and <code><em>upper</em></code> are both declared to be of type <code>T</code>. This declaration necessitates the use of the BMM meta-type <code>P_BMM_SINGLE_PROPERTY_OPEN</code>.</p>
@@ -996,13 +1243,13 @@ unlike UML, all container types such as <code>List&lt;T&gt;</code>, <code>Hash&l
 <h2 id="_inheritance"><a class="anchor" href="#_inheritance"></a><a class="link" href="#_inheritance">Inheritance</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the case of inheritance from simple classes, the <code>ancestors</code> list of Strings may be used to simply name the types (which are the same as class names), as seen in the above examples. In the case of generic inheritance, the ancestors are generic types, which may be open, partially closed or fully closed. The following example shows a class model containing generic inheritance in UML (using the closest approximation available in UML), followed by the equivalent P_BMM schema. In the latter, a structured <code>ancestor_defs</code> section is used instead of the <code>ancestors</code> String list, in the same way as for the <code>P_BMM_GENERIC_PROPERTY</code> examples above.</p>
+<p>In the case of inheritance from simple classes, the <code>ancestors</code> list of Strings may be used to simply name the types (which are the same as class names), as seen in the above examples. In the case of generic inheritance, the ancestors are generic types, which may be open, partially closed or fully closed. The following example shows a class model containing generic inheritance in UML (using the closest approximation available in UML), followed by the equivalent P_BMM schema. In the latter, a structured <code>ancestor_defs</code> section is used instead of the <code>ancestors</code> String list, in the same way as for the <code>P_BMM_GENERIC_PROPERTY</code> examples above. Since <code>ancestor_defs</code> replaces <code>ancestors</code>, a class that also inherits from a non-generic class lists that ancestor in <code>ancestor_defs</code> too, as a <code>P_BMM_SIMPLE_TYPE</code>.</p>
 </div>
 <div id="inheritance_example" class="imageblock text-center text-center">
 <div class="content">
 <img src="../../_images/uml/LANG-bmm-inheritance-example.svg" alt="LANG bmm inheritance example">
 </div>
-<div class="title">Figure 1. Generic inheritance eaxmple model</div>
+<div class="title">Figure 1. Generic inheritance example model</div>
 </div>
 <div class="listingblock">
 <div class="content">

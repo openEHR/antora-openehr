@@ -618,7 +618,7 @@ WHERE
 <p>AQL uses predicates (see <a href="https://specifications.openehr.org/releases/BASE/latest/architecture_overview.html#_predicate_expressions" target="_blank" rel="noopener">Predicate Expressions</a>) to define criteria for coarse-grained and fine-grained data. Predicate expressions are always enclosed by brackets (<code>[]</code>).</p>
 </div>
 <div class="paragraph">
-<p>There are three types of predicates used by AQL: the <em>standard predicate</em>, the <em>archetype predicate</em>, and the <em>node predicate</em>.</p>
+<p>There are four types of predicates used by AQL: the <em>standard predicate</em>, the <em>archetype predicate</em>, the <em>node predicate</em> and the <em>version predicate</em>.</p>
 </div>
 <div class="sect2">
 <h3 id="_standard_predicate"><a class="anchor" href="#_standard_predicate"></a><a class="link" href="#_standard_predicate">Standard predicate</a></h3>
@@ -765,6 +765,41 @@ WHERE
 </div>
 <div class="paragraph">
 <p>A node predicate defines criteria on fine-grained data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_version_predicate"><a class="anchor" href="#_version_predicate"></a><a class="link" href="#_version_predicate">Version predicate</a></h3>
+<div class="paragraph">
+<p>A version predicate can only be used on a <code>VERSION</code> class expression in the <code>FROM</code> clause (see <a href="#_class_expressions">Class expressions</a>). It selects the versions of a versioned object, such as a <code>VERSIONED_COMPOSITION</code>, to which the query is applied. It takes one of the following forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LATEST_VERSION</code>: only the latest version of each versioned object;</p>
+</li>
+<li>
+<p><code>ALL_VERSIONS</code>: all versions of each versioned object;</p>
+</li>
+<li>
+<p>a <a href="#_standard_predicate">standard predicate</a> on an attribute of <code>VERSION</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following query returns all versions of the matching Compositions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT
+   v/commit_audit/time_committed/value, c
+FROM
+   EHR e
+      CONTAINS VERSION v[ALL_VERSIONS]
+         CONTAINS COMPOSITION c[openEHR-EHR-COMPOSITION.report.v1]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>LATEST_VERSION</code> is the default. A <code>VERSION</code> class expression without a version predicate, such as <code>VERSION v</code>, is equivalent to <code>VERSION v[LATEST_VERSION]</code>, and a query that does not include a <code>VERSION</code> class expression is applied only to the latest version of each versioned object. To query earlier versions, <code>ALL_VERSIONS</code> or a standard predicate has to be stated.</p>
 </div>
 </div>
 </div>
@@ -1713,7 +1748,7 @@ WHERE
 <p>part two (optional): AQL variable name</p>
 </li>
 <li>
-<p>part three (optional): a standard predicate or an archetype predicate.</p>
+<p>part three (optional): a standard predicate or an archetype predicate; for <code>VERSION</code>, a <a href="#_version_predicate">version predicate</a>.</p>
 </li>
 </ol>
 </div>
@@ -1912,7 +1947,7 @@ WHERE composition/context/start_time &lt; '12:00:00+09:30'</code></pre>
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a><a class="link" href="#_overview_2">Overview</a></h3>
 <div class="paragraph">
-<p>AQL structure was briefly introduced in <a href="#_aql_example">[_aql_example]</a>. This section describes the syntax in more formal detail. An AQL query may include the following clauses which must occur in the order shown.</p>
+<p>AQL structure was briefly introduced in <a href="../overview/#_aql_example" class="xref page">AQL example</a>. This section describes the syntax in more formal detail. An AQL query may include the following clauses which must occur in the order shown.</p>
 </div>
 <div class="ulist">
 <ul>

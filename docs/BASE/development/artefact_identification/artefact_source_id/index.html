@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Source Artefact Identification :: openEHR Specifications (Local Build)</title>
+    <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/BASE/development/artefact_identification/artefact_source_id/">
+    <link rel="prev" href="../overview/">
+    <link rel="next" href="../versioning/">
+    <meta name="description" content="openEHR Artefact Identification specification">
+    <meta name="keywords" content="openehr, identification, HRID, versioning, lifecycle, governance">
+    <meta name="generator" content="Antora 3.1.15">
+    <link rel="stylesheet" href="../../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/tabs.css">
+    <link rel="stylesheet" href="../../../../ui/css/extra.css">
+<link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sebastian-iancu.github.io/antora-openehr">openEHR Specifications (Local Build)</a>
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <input id="search-input" type="text" placeholder="Search the docs">
+          <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:BASE"> Base Model only
+          </label>
+        </div>
+      </div>
+
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Specifications</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
+              openEHR specification
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
+              openEHR portal
+            </a>
+            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
+              openEHR CKM
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Community</a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
+              Issue trackers
+            </a>
+            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
+              Discourse Forum
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
+              Wiki
+            </a>
+            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="BASE" data-version="development">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../">Base Model</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../architecture_overview/">Architecture Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/aims/">Aims of the openEHR Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_principles/">Design Principles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/package_structure/">openEHR Specification Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_of_the_ehr/">Design of the openEHR EHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/security/">Security and Confidentiality</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/identification/">Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/archetypes/">Archetypes and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/paths/">Paths and Locators</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/terminology/">Terminology in openEHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/deployment/">Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/integration/">Integrating openEHR with other Systems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/standards/">Relationship to Standards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/implementation/">Implementation Technology Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../foundation_types/">Foundation Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/primitive_types/">Primitive Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/structure_types/">Structure Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/interval/">Interval</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/time_types/">Time Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/terminology/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/functional/">Functional Meta-types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/type_cross_ref/">Type Cross-Reference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../base_types/">Base Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/definitions_package/">Definitions Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/builtins_package/">Builtins Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../resource/">Resource Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/resource_package/">Resource Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/">Overview</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Base Model</span>
+    <span class="version">development</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../../../AM/Release-2.3.0/">Archetype Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../AM/Release-2.3.0/">Release-2.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-2.2.0/">Release-2.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-1.4.0/">Release-1.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../../Release-1.2.0/">Base Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../Release-1.2.0/">Release-1.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../../">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CDS/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CNF/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../LANG/Release-1.0.0/">Generic Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../LANG/Release-1.0.0/">Release-1.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../LANG/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../TERM/Release-3.0.0/">Release-3.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../TERM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../PROC/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../QUERY/Release-1.0.1/">Release-1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../../QUERY/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../RM/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/Release-1.0.4/">Release-1.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../ITS-REST/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../SM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../Release-1.2.0/" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../">Base Model</a></li>
+    <li><a href="../">Artefact Identification</a></li>
+    <li><a href="./">Source Artefact Identification</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">development</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../Release-1.2.0/">Release-1.2.0</a>
+    <a class="version is-missing" href="../../../Release-1.1.0/">Release-1.1.0</a>
+    <a class="version is-current" href="./">development</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Source Artefact Identification</h1>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The basis for identifying source (i.e. authored) artefacts is to define a number of separate logically identifying properties, as well as a machine identifier. One or more human-readable identifier(s) can be generated from the non-uid identifying properties. For archetypes and templates, the relevant properties are described in the <a href="https://specifications.openehr.org/releases/AM/latest/AOM2.html#_the_archetype_package" target="_blank" rel="noopener">AOM Archetype package</a>, including the <code>ARCHETYPE_HRID</code> class. Related properties are inherited into <code>AUTHORED_ARCHETYPE</code> from the <code>AUTHORED_RESOURCE</code> class of the openEHR <a href="https://specifications.openehr.org/releases/BASE/latest/resource.html" target="_blank" rel="noopener">Resource Model</a>, including the machine identifier <code>uid</code> and the <code>description</code>, whose <code>lifecycle_state</code> records the development state of the artefact, as well as all other descriptive meta-data.</p>
+</div>
+<div id="archetype_package" class="imageblock text-center text-center">
+<div class="content">
+<img src="https://specifications.openehr.org/releases/AM/latest/UML/diagrams/AM-aom2.archetype.svg" alt="AM aom2.archetype">
+</div>
+<div class="title">Figure 1. am.aom2.archetype Package</div>
+</div>
+<div class="paragraph">
+<p>For other types of artefacts the detailed model will differ, but the principles are the same.</p>
+</div>
+<div class="paragraph">
+<p>Three distinct groups of properties are shown in the <code>ARCHETYPE_HRID</code> class that underpin the identification scheme described here, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>namespace</code> provides a way of distinguishing logical identifiers created by different organisations that would otherwise compete in a single semantic identifier space;</p>
+</li>
+<li>
+<p><code>rm_publisher</code>, <code>rm_package</code>, <code>rm_class</code>, <code>concept_id</code> form the basis of the main part of a human-readable identifier, e.g. <code>openEHR-EHR-OBSERVATION.bp_measurement</code>;</p>
+</li>
+<li>
+<p>properties supporting versioning:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>release_version</code>, expressing a 3-part version identifier, e.g. '1.3.0';</p>
+</li>
+<li>
+<p><code>version_status</code>, of the BASE type <code>VERSION_STATUS</code> (<code>alpha</code>, <code>beta</code>, <code>release_candidate</code>, <code>released</code>, <code>build</code>), expressing the development state of the version - corresponding to the <code>description.lifecycle_state</code> of the artefact - from which the <code>-alpha</code>, <code>-beta</code> and <code>-rc</code> modifiers of non-release version ids are derived;</p>
+</li>
+<li>
+<p><code>build_count</code>, incremented at every commit, supporting non-release version ids such as '1.3.0-rc.28', where the build count is 28.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The functions <code>semantic_id</code>, <code>physical_id</code> and <code>version_id</code> return respectively the 'interface' archetype HRID as a string, the complete 'physical' archetype HRID (described below) as an <a href="https://specifications.openehr.org/releases/BASE/latest/foundation_types.html#_hrid_class" target="_blank" rel="noopener">Hrid</a>, and the full version string (computed from <code>release_version</code>, <code>version_status</code> and <code>build_count</code>). The functions <code>major_version</code> , <code>minor_version</code> and <code>patch_version</code> extract the various parts of the 3-part <code>release_version</code> property.</p>
+</div>
+<div class="paragraph">
+<p>The <code>uid</code> property (from <code>AUTHORED_RESOURCE</code>) provides the machine identifier, and is assumed to be a GUID; the <code>build_uid</code> property of <code>AUTHORED_ARCHETYPE</code> is a further GUID identifying each build of the artefact.</p>
+</div>
+<div class="paragraph">
+<p>Every artefact is assigned a <code>namespace</code> when it is created. The namespace is that of the creating organisation - a Custodian Organisation, but equally a vendor or a project (e.g. <code>com.ehrvendor</code>) - and is not used to distinguish 'managed' from 'unmanaged' artefacts: an artefact without a namespace is too easily taken for a managed one once it circulates. A <code>uid</code> may be assigned at creation as well; a Custodian Organisation assigns a new one when it accepts the artefact (see <a href="../distributed_governance/" class="xref page">Distributed Governance</a>). The <code>namespace</code> property of <code>ARCHETYPE_HRID</code> is mandatory. The <code>uid</code> property is optional in the model for legacy (ADL 1.4) artefacts, most of which have neither a <code>uid</code> nor a namespace; such artefacts acquire both when they are migrated to ADL 2.</p>
+</div>
+<div class="paragraph">
+<p>Different types of human-readable identifiers are used for archetypes, templates and terminology subsets. The following sections describe the formal details of this identification scheme, and how it supports referencing between artefacts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_formal_model"><a class="anchor" href="#_formal_model"></a><a class="link" href="#_formal_model">Formal Model</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section defines the formal grammar for human-readable identifiers (HRIDs) of knowledge artefacts. As described above, more than one human-readable identifier can be constructed from the identifying properties of an artefact (for archetypes, those of the <code>ARCHETYPE_HRID</code> class). The grammar is aligned with the ADL 2 base lexer (see <a href="https://specifications.openehr.org/releases/AM/latest/ADL2.html#_base_lexer" target="_blank" rel="noopener">Archetype Definition Language 2</a>).</p>
+</div>
+<div class="paragraph">
+<p>A modern (ADL 2) identifier is always namespaced, the namespace being prepended to what can be termed a 'local' HRID (i.e. local to a given namespace context). Only a legacy (ADL 1.4) identifier has no namespace.</p>
+</div>
+<div class="paragraph">
+<p>An HRID consists of a <code>hrid_root</code> (an identifier of the reference model class and domain concept on which the artefact is based) and a version identifier, in the modern form preceded by a <code>namespace</code>. Two identifier forms are defined: a <em>modern</em> (ADL 2) identifier, in which the <code>namespace</code> is mandatory; and a <em>legacy</em> (ADL 1.4) identifier, which has no namespace and a major-only version.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">    hrid                    =   ( namespace '::' hrid_root '.v' version_id )   (* namespaced (ADL 2) form *)
+                            |   ( hrid_root '.v' major_version ) ;            (* legacy (ADL 1.4) form: no namespace, major version only *)
+    namespace               =   V_REVERSE_DOMAIN_NAME ;   (* See IETF RFCs 1035, 1123 and 2181. *)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The version identifier (<code>version_id</code>) is defined in <a href="../versioning/#_version_numbering" class="xref page">Version Numbering</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>hrid</code> production is the lexical form shared by identifiers and references: its <code>version_id</code> may be given at reduced precision. The <em>complete</em> identifier of a modern (ADL 2) artefact - as returned by <code>ARCHETYPE_HRID.<em>physical_id</em>()</code> and recorded in data - carries the full three-part version, with a version modifier for a pre-release version; reduced-precision forms are references (see <a href="../referencing/" class="xref page">Referencing</a>).</p>
+</div>
+<div class="paragraph">
+<p>The <code>namespace</code> above is the publisher organisation reverse domain name. Reverse domain names are used in order to aid lexical sorting of identifiers and also tools that build directory structures based on reverse domain name segments. All artefacts, including archetypes and templates, are assigned a namespace when created, and the namespace of an identifier is never omitted, wildcarded or inferred. An identifier without a namespace is a legacy (ADL 1.4) identifier.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.openehr</code> : EHR archetypes library at openEHR.org</p>
+</li>
+<li>
+<p><code>uk.nhs</code>      : UK National Health Service</p>
+</li>
+<li>
+<p><code>edu.nci</code>     : US National Cancer Institute</p>
+</li>
+<li>
+<p><code>com.ehrvendor</code> : archetype or template created by a vendor</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_human_readable_identifier_hrid"><a class="anchor" href="#_human_readable_identifier_hrid"></a><a class="link" href="#_human_readable_identifier_hrid">Human-readable Identifier (HRID)</a></h3>
+<div class="paragraph">
+<p>The archetype human-readable identifier consists of two logical parts: an identifier of the reference model (i.e. logical information model) class on which it is based, and an ontological identifier.</p>
+</div>
+<div class="paragraph">
+<p>The <code>hrid_root</code> is defined by the following grammar rules. The <code>archetype_id</code> production of the openEHR <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_syntaxes" target="_blank" rel="noopener">Base Types</a> specification is an application of this grammar.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">    hrid_root                       =   qualified_rm_class_name '.' concept_id ;
+    qualified_rm_class_name         =   rm_publisher '-' rm_package '-' rm_class ;
+    rm_publisher                    =   V_ALPHANUMERIC_NAME ;
+    rm_package                      =   V_ALPHANUMERIC_NAME ;
+    rm_class                        =   V_ALPHANUMERIC_NAME ;
+    concept_id                      =   V_SEGMENTED_ALPHANUMERIC_NAME ;
+
+    V_ALPHANUMERIC_NAME             =   ? [a-zA-Z][a-zA-Z0-9_]+ ? ;  (* regex *)
+    V_SEGMENTED_ALPHANUMERIC_NAME   =   ? [a-zA-Z][a-zA-Z0-9_-]+ ? ; (* allows hyphens *)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The field meanings are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>namespace</code>: reverse domain name of the publishing organisation, e.g. <code>org.openehr</code>, <code>uk.nhs</code>, <code>edu.nci</code>; mandatory in a modern (ADL 2) identifier and absent from a legacy (ADL 1.4) one;</p>
+</li>
+<li>
+<p><code>rm_publisher</code>: id of organisation originating the reference model on which this archetype is based;</p>
+</li>
+<li>
+<p><code>rm_package</code>: identifier of the reference model top-level package closure on which the archetype is based;</p>
+</li>
+<li>
+<p><code>rm_class</code>: name of class or equivalent entity in the reference model on which the artefact is based;</p>
+</li>
+<li>
+<p><code>concept_id</code>: an identifier from an ontology of information artefacts (see below);</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first part takes the form of a 3-part identifier, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>openEHR-EHR-EVALUATION</code></p>
+</li>
+<li>
+<p><code>ISO-ISO13606-ENTRY</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This historically has been used in openEHR and CEN/ISO 13606-2 to identify the reference model class on which an archetype is based. It includes the publisher of the reference model (e.g. "ISO", "openEHR"), which top level 'closure' is being referred to, and finally which class.</p>
+</div>
+<div class="paragraph">
+<p>The notion of 'closure' is a top level package from which the focal class can be reached. In general, a given class can be reached from more than one top level package, but an archetype of that class will only be suitable for one of those packages. For example, the openEHR class <code>CLUSTER</code> is used by classes in both the <code>ehr</code> and <code>demographic</code> top level packages. However, an archetype of <code>CLUSTER</code> will usually be designed for use with only one of those packages. The Cluster archetype <code>physical_examination</code> for example will only make sense in data defined by the <code>ehr</code> package. Consequently, it will have an archetype identifier of the form <code>openEHR-EHR-CLUSTER</code> . <code>physical_examination</code> .</p>
+</div>
+<div class="paragraph">
+<p>The closure part of the identifier could be used by tools to ensure for example that an 'EHR' <code>CLUSTER</code> archetype was never attached to a 'demographic' information item.</p>
+</div>
+<div class="sect3">
+<h4 id="_concept_identifier"><a class="anchor" href="#_concept_identifier"></a><a class="link" href="#_concept_identifier">Concept Identifier</a></h4>
+<div class="paragraph">
+<p>The second part of the human-readable identifier is a 'short' ontological identifier (known in ADL 1.4 as the 'concept' or 'domain concept'). Such identifiers have historically been natural language words or phrases, typically in a short mnemonic form, e.g. 'bp_measurement' in the archetype identifier <code>ISO-ISO13606-ENTRY.bp_measurement.v1</code> .</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_legacy_adl_1_4_semantics"><a class="anchor" href="#_legacy_adl_1_4_semantics"></a><a class="link" href="#_legacy_adl_1_4_semantics">Legacy ADL 1.4 Semantics</a></h4>
+<div class="paragraph">
+<p>Historically in ADL 1.4 (ISO 13606-2:2008), the 'concept' part of the identifier encoded the specialisation hierarchy of concepts as a series of hyphenated segments, e.g. 'problem' and 'problem-diagnosis', with the latter identifying a specialised form of the former.The requirement for the concept name to include specialisations is removed in this specification, as well as the ADL / AOM 1.5 specifications. This enables the domain concept of any artefact to be freely assigned according to the purpose of the artefact.</p>
+</div>
+<div class="paragraph">
+<p>To allow for the fact that legacy specialised archetypes do in fact include the '-' style of separated domain concept identifier, the '-' character is still allowed, but no longer has any semantic significance.</p>
+</div>
+<div class="paragraph">
+<p>One consequence is that for archetypes with identifiers conforming to this specification, the level of specialisation can no longer be determined from the identifier. This new approach is in line with how source artefacts are named in object-oriented languages.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_concept_identifier_semantics"><a class="anchor" href="#_concept_identifier_semantics"></a><a class="link" href="#_concept_identifier_semantics">Concept Identifier Semantics</a></h4>
+<div class="paragraph">
+<p>The more important aspect of the concept identifier, is its origin and semantics. Historically it has been part of the identifier for archetypes because it is human readable and facilitates debugging of systems where the data contain such identifiers. Clearly a purely ad hoc assignment of a human-readable identifier is not scalable or reliable. Consequently rules and mechanisms for assignment need to be identified.</p>
+</div>
+<div class="paragraph">
+<p>This specification takes the point of view that the concept part of a knowledge artefact identifier must come from an ontology corresponding to the namespace of the identifier, in other words, an ontology maintained by a Custodian Organisation or some higher authority.</p>
+</div>
+<div class="paragraph">
+<p>It is not the business of this specification to define the ontology, but we can indicate the general form as being an ontology of information entity types for use in the domain of health. It is assumed that there are nodes within the ontology are related to the classes from the information (i.e. 'reference') model. This leads to an ontology of the form shown below.</p>
+</div>
+<div id="info_artefact_ontology" class="imageblock text-center text-center">
+<div class="content">
+<img src="../_images/diagrams/information_artefact_ontology.png" alt="information artefact ontology" width="70%">
+</div>
+<div class="title">Figure 2. Information Artefact Ontology</div>
+</div>
+<div class="paragraph">
+<p>This (putative) ontology consists of high-level health information recording entities (black), a set of record entry types derived from the Clinical Investigator Record ontology <span class="citation"><a href="#bibliography_entry_Beale_Heard2007">[1]</a></span>, and domain-specific entities in blue. It is assumed that the top node(s) of the ontology could be related to nodes in a published ontology such as the <a href="https://bioportal.bioontology.org/ontologies/IAO" target="_blank" rel="noopener">Information Artefact Ontology (IAO)</a>, but this is not a pre-requisite for establishing this ontology. More ideally, its categories would be related to categories in the <a href="https://basic-formal-ontology.org" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>.</p>
+</div>
+<div class="paragraph">
+<p>The blue node <code>measurement_of_systemic_arterial_blood_pressure</code> (bottom left) describes an entity corresponding to a 'record of systemic arterial blood pressure measurement'. Long names such as this are standard in the ontology community, and are designed to ensure that the name of a category is sufficient to unambiguously define its meaning. Such names are typically too long and unwieldy for the purposes of manageable lexical identifiers such as for archetypes.</p>
+</div>
+<div class="paragraph">
+<p>We therefore assume that a system of 'short identifiers' is possible within the ontology, where a 'short id' is a synonym for a full node identifier. If we further assume that the ontology is constructed with tools (e.g. <a href="http://protege.stanford.edu/" target="_blank" rel="noopener">Protege</a>) and that ontology identifiers are checked to ensure uniqueness.</p>
+</div>
+<div class="paragraph">
+<p>Facilities to manage such ontologies should be available either centrally (e.g. openEHR.org or at The <a href="http://www.obofoundry.org/" target="_blank" rel="noopener">Open Biological and Biomedical Ontologies (OBO)</a>), so that every added archetype, template or subset is assigned a short ontological identifier from the ontology.</p>
+</div>
+<div class="paragraph">
+<p>Existing archetypes can be accommodated within such ontologies in two possible ways. If they have been in use, and data exist containing these identifiers, then their current ontological identifiers can be proposed as the short id for an ontology class defined for the archetype. If there is a clash, a new archetype concept short identifier will be needed, and the archetype will need to be republished under a different identifier.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_need_for_rm_class_name_in_identifier"><a class="anchor" href="#_need_for_rm_class_name_in_identifier"></a><a class="link" href="#_need_for_rm_class_name_in_identifier">Need for RM Class Name in Identifier</a></h4>
+<div class="paragraph">
+<p>Theoretically, the Reference Model class identifier part (qualified_rm_class_name above) should not be needed in a well constructed identifier, on the basis that there should never be a clash of concept identifiers, regardless of the RM class, even though they can easily be similar. For example, a reasonable <code>concept_id</code> for an <code>ENTRY</code> (ISO 13606) or <code>OBSERVATION</code> (openEHR) structure archetyped to represent a generic lab result might be 'lab_result'. For the COMPOSITION-level archetype designed to contain any 'lab result' <code>ENTRY</code> or <code>OBSERVATION</code>, a reasonable name would typically be 'lab_report' (or the equivalent in another language).</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, for some informational concepts, the appropriate name for the actual core data level can appear to be perfectly reasonable also as a name for a higher level container of the same data. Without an efficient and essentially global ontology construction service or authority available, the inclusion of the qualified RM class name acts as a reasonable guard against such clashes.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_regular_expression"><a class="anchor" href="#_regular_expression"></a><a class="link" href="#_regular_expression">Regular Expression</a></h3>
+<div class="paragraph">
+<p>The regular expression below is an <em>informative</em> convenience for implementers - for example to parse or validate an HRID string, or as an OpenAPI / XML-Schema <code>pattern</code>. The normative grammar remains the EBNF above together with the <code>version_id</code> grammar in <a href="../versioning/#_version_numbering" class="xref page">Version Numbering</a>; where the two disagree, the EBNF prevails.</p>
+</div>
+<div class="paragraph">
+<p>It parses an HRID into its segments (the named capture groups). The core <code>rm_publisher-rm_package-rm_class.concept_id</code> and at least the major <code>version_id</code> (<code>.v</code> plus the major number) are required; the <code>namespace</code> and the minor and patch version parts are optional and are captured when present. The expression is deliberately lenient, so it accepts a modern (ADL 2) identifier, a legacy (ADL 1.4) identifier and a reduced-precision <em>reference</em> alike. To <em>validate</em> a complete ADL 2 identifier - rather than merely parse one - additionally require the <code>namespace</code> together with a full three-part <code>version_id</code>; the legacy ADL 1.4 identifier is the remaining well-formed case, namespaceless with a major-only version. A namespaceless string that carries a minor or patch version matches the lenient expression but is well-formed neither as an identifier nor, outside the source artefact that contains it, as a reference - an ADL 2 identifier always carries its namespace, and so does an ADL 2 reference in operational artefacts, data and queries (see <a href="../referencing/" class="xref page">Referencing</a>), so the only namespaceless identifier is the legacy ADL 1.4 identifier (major version only). Forms that carry no version at all, or an empty version ("any version"), are query <em>wildcards</em> defined by the openEHR <a href="https://specifications.openehr.org/releases/QUERY/latest/AQL.html" target="_blank" rel="noopener">Archetype Query Language</a>, not identifiers or references matched here. A namespace is never a wildcard: an empty or omitted namespace does not mean 'any namespace', since such a match cannot be used safely (see <a href="../referencing/" class="xref page">Referencing</a>).</p>
+</div>
+<div class="paragraph">
+<p>PCRE flavour, with named capture groups corresponding to the grammar productions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>^(?:(?&lt;namespace&gt;[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+)::)?(?&lt;rm_publisher&gt;[a-zA-Z][a-zA-Z0-9_]+)-(?&lt;rm_package&gt;[a-zA-Z][a-zA-Z0-9_]+)-(?&lt;rm_class&gt;[a-zA-Z][a-zA-Z0-9_]+)\.(?&lt;concept_id&gt;[a-zA-Z][a-zA-Z0-9_-]+)\.v(?&lt;version_id&gt;(?&lt;major_version&gt;[0-9]+)(?:\.(?&lt;minor_version&gt;[0-9]+)(?:\.(?&lt;patch_version&gt;[0-9]+)(?&lt;version_modifier&gt;-(?:rc|alpha|beta)(?:\.(?&lt;build_count&gt;[0-9]+))?)?)?)?)$</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Equivalent form for engines without named or non-capturing groups (e.g. a W3C XML Schema <code>pattern</code>, which anchors the whole value implicitly):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>([a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+::)?[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+-[a-zA-Z][a-zA-Z0-9_]+\.[a-zA-Z][a-zA-Z0-9_\-]+\.v[0-9]+(\.[0-9]+(\.[0-9]+(-(rc|alpha|beta)(\.[0-9]+)?)?)?)?</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>namespace</code> sub-expression approximates <code>V_REVERSE_DOMAIN_NAME</code> (IETF RFCs 1035, 1123, 2181); a stricter DNS-label form may be substituted where required. The numeric parts follow <code>V_NUMBER</code> (one or more digits).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a><a class="link" href="#_references">References</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a id="bibliography_entry_Beale_Heard2007"></a>[1] T. Beale and S. Heard, “An Ontology-based Model of Clinical Information.,” in Proceedings MedInfo 2007, K. K. et al., Ed., IOS Publishing, Aug. 2007, pp. 760–764. [Online]. Available: <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../overview/">Overview</a></span>
+  <span class="next"><a href="../versioning/">Versioning</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright: © 2003+
+    <a href="https://www.openehr.org"
+        alt="is an independent, non-profit foundation, facilitating the sharing of health
+           records by consumers and clinicians via open specifications, clinical models
+           and open platform implementations.">The openEHR Foundation</a>
+  </p>
+
+  <p>
+    License:
+    <img src="../../../../ui/img/cc-by-nd-88x31.png"
+        alt="Creative Commons Attribution-NoDerivs 3.0 Unported."
+        style="vertical-align:middle;margin:0 0.25rem 0 0;">
+    <a href="https://creativecommons.org/licenses/by-nd/3.0/">
+      Creative Commons Attribution-NoDerivs 3.0 Unported.
+    </a>
+  </p>
+
+  <p>
+    <strong>Links: <strong>
+    <a href="https://www.openehr.org/terms-of-use" class="mr-1">Terms of use</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Privacy policy</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Logos &amp; Trademarks</a> |
+    <a href="https://www.openehr.org/contact-us" class="mx-1">Contact</a>
+  </p>
+</footer>
+
+<script id="site-script" src="../../../../ui/js/site.js" data-ui-root-path="../../../../ui"></script>
+<script defer src="../../../../ui/js/vendor/highlight.js"></script>
+<script src="../../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../ui/js/medium-zoom.min.js"></script>
+<script src="../../../../ui/js/zoom.js"></script>
+<script async src="../../../../ui/js/tabs.js"></script>
+  </body>
+</html>

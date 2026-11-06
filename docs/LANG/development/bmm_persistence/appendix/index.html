@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -481,6 +509,26 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_versions"><a class="anchor" href="#_versions"></a><a class="link" href="#_versions">Versions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>P_BMM</code> model carries its own version number, independent of any single openEHR component release. The current version is <strong>2.4</strong>, which formalises the capture of the full feature set of a class: <em>functions</em> (routines) with their parameters, <em>constants</em>, and class <em>invariants</em>, in addition to the <em>properties</em> already supported in earlier versions. The complete change history is recorded in the amendment record.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These features, and in particular <code>P_BMM</code> functions, exist primarily to capture the operation specifications of the openEHR models. Those specifications were originally maintained in UML and, as of 2026, are migrated to and generated from the BMM tooling (<code>bmm-publisher</code>). They are a recent addition and are not yet widely adopted by BMM tooling; a tool that materialises only the structural (attribute) features of a model may safely ignore the <code><em>functions</em></code>, <code><em>constants</em></code> and <code><em>invariants</em></code> of a class.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_tooling"><a class="anchor" href="#_tooling"></a><a class="link" href="#_tooling">Tooling</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -511,13 +559,34 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.1.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-16" target="_blank" rel="noopener">SPECLANG-16</a>: Correct the P_BMM class model to match the syntax chapter and the published schemas: make <code><em>primitive_types</em></code> and <code><em>class_definitions</em></code> of <code>P_BMM_SCHEMA</code>, <code><em>ancestor_defs</em></code> of <code>P_BMM_CLASS</code>, and <code><em>generic_parameter_defs</em></code> of <code>P_BMM_GENERIC_TYPE</code> keyed <code>Hash</code> collections; make <code><em>generic_parameter_defs</em></code> optional; mark <code><em>root_type</em></code> of <code>P_BMM_GENERIC_TYPE</code> as persisted. State in the syntax chapter how <code><em>ancestor_defs</em></code> and <code><em>generic_parameter_defs</em></code> are keyed, and that <code><em>ancestor_defs</em></code> also holds non-generic ancestors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-18" target="_blank" rel="noopener">SPECLANG-18</a>: Document how JSON and YAML encode an interval (the <code><em>cardinality</em></code> of a container property or container function parameter) and how a reader treats absent members; write the default cardinality as <code>|&gt;=0|</code>, a valid ODIN interval, instead of <code>|0..*|</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-16" target="_blank" rel="noopener">SPECLANG-16</a>: Add support for functions and other missing features in P_BMM: add <code>P_BMM_FUNCTION</code> and the <code>P_BMM_FUNCTION_PARAMETER</code> family (<code>P_BMM_SINGLE_FUNCTION_PARAMETER</code>, <code>P_BMM_SINGLE_FUNCTION_PARAMETER_OPEN</code>, <code>P_BMM_CONTAINER_FUNCTION_PARAMETER</code>, <code>P_BMM_GENERIC_FUNCTION_PARAMETER</code>), <code>P_BMM_CONSTANT</code> and <code>P_BMM_INTERFACE</code>; add <code><em>functions</em></code>, <code><em>constants</em></code> and <code><em>invariants</em></code> to <code>P_BMM_CLASS</code>, <code><em>item_documentations</em></code> to <code>P_BMM_ENUMERATION</code>, and <code><em>bmm_version</em></code> and <code><em>includes</em></code> to <code>P_BMM_SCHEMA</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31 May 2026</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.0.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-2" target="_blank" rel="noopener">SPECLANG-2</a>. Add Basic Meta-Model (BMM) spec to BASE component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>04 Sep 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04 Sep 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>

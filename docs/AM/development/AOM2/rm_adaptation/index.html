@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -622,7 +595,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aom_rm_type_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_adaptation/#_aom_type_mapping_class" class="xref page">AOM_TYPE_MAPPING</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aom_rm_type_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_aom_type_mapping_class">AOM_TYPE_MAPPING</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mappings from AOM built-in types to actual types in RM: whenever the type name is encountered in an archetype, it is mapped to a specific RM type.</p>
 </div></div></td>
@@ -720,7 +693,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aom_rm_type_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_adaptation/#_aom_type_mapping_class" class="xref page">AOM_TYPE_MAPPING</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aom_rm_type_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_aom_type_mapping_class">AOM_TYPE_MAPPING</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mappings from AOM built-in types to actual types in RM: whenever the type name is encountered in an archetype, it is mapped to a specific RM type.</p>
 </div></div></td>
@@ -929,7 +902,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_adaptation/#_aom_property_mapping_class" class="xref page">AOM_PROPERTY_MAPPING</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_aom_property_mapping_class">AOM_PROPERTY_MAPPING</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of mappings of properties of this type to another type.</p>
 </div></div></td>
@@ -970,7 +943,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../Release-2.3.0/AOM2/rm_adaptation/#_aom_property_mapping_class" class="xref page">AOM_PROPERTY_MAPPING</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_mappings</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="#_aom_property_mapping_class">AOM_PROPERTY_MAPPING</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of mappings of properties of this type to another type.</p>
 </div></div></td>
@@ -1384,7 +1357,7 @@ aom_rm_type_substitutions = &lt;
 <h2 id="_aom_lifecycle_state_mappings"><a class="anchor" href="#_aom_lifecycle_state_mappings"></a><a class="link" href="#_aom_lifecycle_state_mappings">AOM Lifecycle State Mappings</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Another kind of useful mapping adjustment that can help to make tools process archetypes in a more homogeneous way is to do with the AOM life-cycle states, which are standardised in the <a href="https://specifications.openehr.org/releases/AM/latest/Identification.html" target="_blank" rel="noopener">openEHR Archetype Identification specification</a>. These states denote the state of a whole archetype in its authoring life cycle. Historically however there were no standard names, with the consequence that various archetype tools implement their own local lifecycle state names. To adjust for this the <code><em>aom_lifecycle_mappings</em></code> property in the <code>AOM_PROFILE</code> class can be used. These mappings have the effect of replacing the current value of the <code><em>lifecycle_state</em></code> property of the <code>RESOURCE_DESCRIPTION</code> instance of a parsed archetype with an openEHR standard state name. A typical example of the <code>description</code> section of an archetype with a local lifecycle state name is below.</p>
+<p>Another kind of useful mapping adjustment that can help to make tools process archetypes in a more homogeneous way is to do with the AOM life-cycle states, which are standardised in the {openehr_base_artefact_identification}[openEHR Artefact Identification specification^]. These states denote the state of a whole archetype in its authoring life cycle. Historically however there were no standard names, with the consequence that various archetype tools implement their own local lifecycle state names. To adjust for this the <code><em>aom_lifecycle_mappings</em></code> property in the <code>AOM_PROFILE</code> class can be used. These mappings have the effect of replacing the current value of the <code><em>lifecycle_state</em></code> property of the <code>RESOURCE_DESCRIPTION</code> instance of a parsed archetype with an openEHR standard state name. A typical example of the <code>description</code> section of an archetype with a local lifecycle state name is below.</p>
 </div>
 <div class="listingblock">
 <div class="content">

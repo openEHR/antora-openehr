@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -709,6 +682,22 @@
 For Ocean .oet this can be copied from <code>templateName</code> and for Better Archetype Designer native Json <code>templateId</code> attribute should be used.</p>
 </li>
 <li>
+<p>ADL 1.4 → ADL 2.4 conversion of meta-data that ADL 1.4 records differently from the <a href="https://specifications.openehr.org/releases/BASE/latest/resource.html" target="_blank" rel="noopener">BASE Resource model</a> used by ADL 2 follows these rules:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional translators are recorded in ADL 1.4 in the <code>other_details</code> of a translation under the key <code>"other_contributors"</code>, one translator per line. Converters should map each line to one entry of <code>TRANSLATION_DETAILS.<em>other_contributors</em></code>. See the ADL 1.4 <a href="https://specifications.openehr.org/releases/AM/latest/ADL1.4.html#_language_section_and_language_translation" target="_blank" rel="noopener">Language Section</a>.</p>
+</li>
+<li>
+<p>In ADL 1.4, <code><em>copyright</em></code> is an attribute of <code>RESOURCE_DESCRIPTION_ITEM</code>, so each language of the description can carry its own value. In ADL 2, the single <code>RESOURCE_DESCRIPTION.<em>copyright</em></code> applies to the archetype as a whole. Converters should copy the copyright of the original language to <code>RESOURCE_DESCRIPTION.<em>copyright</em></code>. A translation&#8217;s copyright that differs from it is kept in the <code><em>other_details</em></code> of that translation&#8217;s <code>RESOURCE_DESCRIPTION_ITEM</code> under the key <code>"copyright"</code>, and a copyright identical to that of the original language is dropped. If the original language has no copyright, <code>RESOURCE_DESCRIPTION.<em>copyright</em></code> is left empty.</p>
+</li>
+<li>
+<p>Converters should record the conversion in <code>RESOURCE_DESCRIPTION.<em>conversion_details</em></code>, using the keys recommended for that attribute: <code>"source_model"</code> (the identifier of the ADL 1.4 archetype or template), <code>"tool"</code> (the name and version of the converter) and <code>"time"</code> (the ISO 8601 date and time of the conversion).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>ADL 2.4 requires <a href="https://specifications.openehr.org/releases/BASE/Release-1.3.0" target="_blank" rel="noopener">BASE Release-1.3.0</a> or newer to work.</p>
 </li>
 </ul>
@@ -820,12 +809,30 @@ For Ocean .oet this can be copied from <code>templateName</code> and for Better 
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>AM Release 2.4.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.4.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.4.3</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Add ADL 1.4 → ADL 2.4 conversion rules for additional translators (<code>other_contributors</code>), per-language <code>copyright</code> and <code>conversion_details</code> to the changes from release 2.3. (<a href="https://specifications.openehr.org/tickets/SPECAM-107" target="_blank" rel="noopener">SPECAM-107</a>, see also <a href="https://specifications.openehr.org/tickets/SPECRM-119" target="_blank" rel="noopener">SPECRM-119</a>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Kohler,<br>
+S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Nov 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.4.2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Correct text on machine identifiers: <code>build_uid</code> is mandatory and defined on <code>AUTHORED_ARCHETYPE</code>; <code>uid</code> is defined on <code>AUTHORED_RESOURCE</code>. (<a href="https://specifications.openehr.org/tickets/SPECPR-366" target="_blank" rel="noopener">SPECPR-366</a>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde,<br>
+S Kohler</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.4.1</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Fix typos. (<a href="https://specifications.openehr.org/tickets/SPECPR-387" target="_blank" rel="noopener">SPECPR-387</a>)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Mar 2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Mar 2025</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>

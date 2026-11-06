@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -526,7 +499,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes ADL archetypes as a whole, adding a small amount of detail to the descriptions of dADL and cADL already given. The important topic of the relationship of the cADL-encoded definition section and the dADL-encoded ontology section is discussed in detail. In this section, only standard ADL (i.e. the cADL and dADL constructs and types described so far) is assumed. Archetypes for use in particular domains can also be built with more efficient syntax and domain-specific types, as described in <a href="#Customising ADL">[Customising ADL]</a>, and the succeeding sections.</p>
+<p>This section describes ADL archetypes as a whole, adding a small amount of detail to the descriptions of dADL and cADL already given. The important topic of the relationship of the cADL-encoded definition section and the dADL-encoded ontology section is discussed in detail. In this section, only standard ADL (i.e. the cADL and dADL constructs and types described so far) is assumed. Archetypes for use in particular domains can also be built with more efficient syntax and domain-specific types, as described in <a href="../customising_adl/" class="xref page">Customising ADL</a>, and the succeeding sections.</p>
 </div>
 <div class="paragraph">
 <p>An ADL archetype follows the structure shown below:</p>
@@ -610,7 +583,7 @@ ontology
 </div>
 </div>
 <div class="paragraph">
-<p>The multi-axial identifier identifies archetypes in a global space. The syntax of the identifier is described in <a href="#Archetype Identification">[Archetype Identification]</a> in <a href="https://specifications.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" target="_blank" rel="noopener">The openEHR Archetype System</a>.</p>
+<p>The multi-axial identifier identifies archetypes in a global space. The syntax of the identifier is described in <a href="../../AOM2/archetype_package/#_archetype_identification" class="xref page">Archetype Identification</a> in <a href="https://specifications.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" target="_blank" rel="noopener">The openEHR Archetype System</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -705,6 +678,24 @@ both the US and British English versions of the word "specialise" are valid in A
 <div class="paragraph">
 <p>Archetypes must always be translated completely, or not at all, to be valid. This means that when a new translation is made, every language dependent section of the <code>description</code> and <code>ontology</code> sections has to be translated into the new language, and an appropriate addition made to the <code>translations</code> list in the language section.</p>
 </div>
+<div class="paragraph">
+<p>Where a translation is made by more than one person, <code>author</code> holds the primary translator, and the other translators are recorded in <code>other_details</code> under the key <code>"other_contributors"</code>, one translator per line, as shown below. This convention corresponds to the <code>TRANSLATION_DETAILS.<em>other_contributors</em></code> attribute of the <a href="https://specifications.openehr.org/releases/BASE/latest/resource.html" target="_blank" rel="noopener">openEHR Resource Model</a>, used in ADL 2; ADL 1.4 to ADL 2 converters should map each line to one entry of that list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-adl" data-lang="adl">        ["nb"] = &lt;
+            language = &lt;[iso_639-1::nb]&gt;
+            author = &lt;
+                ["name"] = &lt;"Translator 1"&gt;
+                ["organisation"] = &lt;"Organisation 1"&gt;
+            &gt;
+            other_details = &lt;
+                ["other_contributors"] = &lt;"Translator 2, Organisation 2, Norway
+Translator 3, Organisation 3, Norway"&gt;
+            &gt;
+        &gt;</code></pre>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -721,7 +712,7 @@ some non-conforming ADL tools in the past created archetypes without a <code>lan
 <div class="sect2">
 <h3 id="_description_section"><a class="anchor" href="#_description_section"></a><a class="link" href="#_description_section">Description Section</a></h3>
 <div class="paragraph">
-<p>The <code>description</code> section of an archetype contains descriptive information, or what some people think of as document "meta-data", i.e. items that can be used in repository indexes and for searching. The dADL syntax, described in <a href="#dADL - Data ADL">[dADL - Data ADL]</a>, is used for the description, as in the following example.</p>
+<p>The <code>description</code> section of an archetype contains descriptive information, or what some people think of as document "meta-data", i.e. items that can be used in repository indexes and for searching. The dADL syntax, described in <a href="../dadl/" class="xref page">dADL - Data ADL</a>, is used for the description, as in the following example.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -789,7 +780,7 @@ some non-conforming ADL tools in the past created archetypes without a <code>lan
 <p>The <code>description</code> section models a specific set of meta-data items, but of course, the meta-data needs over time can never be fully predicted. To enable free extension of the <code>description</code> section, the <code>other_details</code> is used. Its structure takes the form of a Hash of strings, i.e. <code>Hash &lt;String, String&gt;</code>, and can be used to contain other meta-data items not explicitly modelled.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#Extended Meta-data Guide">[Extended Meta-data Guide]</a> Appendix describes the known uses of extended meta-data to date.</p>
+<p>The <a href="../extended_metadata/" class="xref page">Extended Meta-data Guide</a> Appendix describes the known uses of extended meta-data to date.</p>
 </div>
 </div>
 </div>
@@ -799,7 +790,7 @@ some non-conforming ADL tools in the past created archetypes without a <code>lan
 <h2 id="_definition_section"><a class="anchor" href="#_definition_section"></a><a class="link" href="#_definition_section">Definition Section</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>definition</code> section contains the main formal definition of the archetype, and is written in <a href="#cADL - Constraint ADL">the Constraint Definition Language</a>). A typical <code>definition</code> section is as follows:</p>
+<p>The <code>definition</code> section contains the main formal definition of the archetype, and is written in <a href="../cadl/" class="xref page">the Constraint Definition Language</a>). A typical <code>definition</code> section is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1128,7 +1119,7 @@ the use of <code>items</code> in the above is historical in ADL, and will be cha
 <div class="sect2">
 <h3 id="_constraint_bindings_section"><a class="anchor" href="#_constraint_bindings_section"></a><a class="link" href="#_constraint_bindings_section">Constraint_bindings Section</a></h3>
 <div class="paragraph">
-<p>The last of the <code>ontology</code> sections formally describes bindings to placeholder constraints (see <a href="#Placeholder Constraints">[Placeholder Constraints]</a>) from the main archetype body. They are described separately because they are terminology-dependent, and because there may be more than one for a given logical constraint. A typical example follows:</p>
+<p>The last of the <code>ontology</code> sections formally describes bindings to placeholder constraints (see <a href="../cadl/#_placeholder_constraints" class="xref page">Placeholder Constraints</a>) from the main archetype body. They are described separately because they are terminology-dependent, and because there may be more than one for a given logical constraint. A typical example follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">

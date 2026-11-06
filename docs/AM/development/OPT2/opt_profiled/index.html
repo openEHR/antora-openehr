@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -580,9 +553,6 @@
 <p>If node-level control is needed, the choices would need to be made in the raw OPT. Note that while it is normal that some nodes be coded by one terminology, e.g. an HL7 vocabulary, and others by e.g. SNOMED CT, node-by-node selection is not needed to achieve this, because the bindings for those nodes will already state the allowed possibilities. Node-by-node choosing is only needed if there is a need to further reduce <em>possibilities</em> to a more limited set, e.g. if within a single template, one node has a binding to both ICD10 and SNOMED CT but in a specific use, should only be coded in ICD10, but another node exists for which only SNOMED CT should be allowed, from the same two original possibilities.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph tbd">
-<p><strong>TBD</strong>: Currently there is no way to do this in ADL2. It would be easy to implement, using a set of paths of coded nodes each with the list of terminologies allowed at that point.</p>
 </div>
 <div class="paragraph">
 <p>The result of the choices, however made, is expressed in the profiled OPT by using a modified form of the normal term constraint syntax. This is described in detail in the ADL specification, in the <a href="https://specifications.openehr.org/releases/AM/latest/ADL2.html#cADL_Terminology_Constraints">Terminology Constraints</a> and <a href="https://specifications.openehr.org/releases/AM/latest/ADL2.html#terminology_integration_concrete_codes">Terminology Integration</a> sections.</p>

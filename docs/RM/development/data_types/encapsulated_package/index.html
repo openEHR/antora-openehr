@@ -729,7 +729,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -738,16 +738,22 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_character_sets" class="xref page">openEHR code set character sets</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -783,7 +789,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -810,7 +816,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -841,15 +847,21 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_character_sets" class="xref page">openEHR code set character sets</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_languages" class="xref page">openEHR code set languages</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -950,7 +962,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -966,7 +978,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code><a href="../../../Release-1.1.0/data_types/uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code><a href="../uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.</p>
 </div></div></td>
@@ -980,16 +992,22 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>media_type</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>media_type</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_media_types" class="xref page">openEHR code set media types</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>compression_algorithm</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>compression_algorithm</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_compression_algorithms" class="xref page">openEHR code set compression algorithms</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1001,14 +1019,17 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check_algorithm</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check_algorithm</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type of integrity check, a coded value from the openEHR <code>Integrity check</code> code set.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_integrity_check_algorithms" class="xref page">openEHR code set integrity check algorithms</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnail</strong>: <code><a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_multimedia_class" class="xref page">DV_MULTIMEDIA</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnail</strong>: <code><a href="#_dv_multimedia_class">DV_MULTIMEDIA</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The thumbnail for this item, if one exists; mainly for graphics formats.</p>
 </div></div></td>
@@ -1110,7 +1131,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1137,7 +1158,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -1168,17 +1189,23 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>character_sets" class="xref page">openEHR code set character sets</a><br>
+_Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>languages" class="xref page">openEHR code set languages</a><br>
+_Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1188,7 +1215,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code><a href="../../../Release-1.1.0/data_types/uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uri</strong>: <code><a href="../uri_package/#_dv_uri_class" class="xref page">DV_URI</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.</p>
 </div></div></td>
@@ -1200,15 +1227,21 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>media_type</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>media_type</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_media_types" class="xref page">openEHR code set media types</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>compression_algorithm</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>compression_algorithm</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_compression_algorithms" class="xref page">openEHR code set compression algorithms</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1218,13 +1251,16 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check_algorithm</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check_algorithm</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type of integrity check, a coded value from the openEHR <code>Integrity check</code> code set.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_integrity_check_algorithms" class="xref page">openEHR code set integrity check algorithms</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnail</strong>: <code><a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_multimedia_class" class="xref page">DV_MULTIMEDIA</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnail</strong>: <code><a href="#_dv_multimedia_class">DV_MULTIMEDIA</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The thumbnail for this item, if one exists; mainly for graphics formats.</p>
 </div></div></td>
@@ -1268,13 +1304,13 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Language_valid</em>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<em>Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Charset_valid</em>: <code>charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<em>Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1487,7 +1523,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1553,7 +1589,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../../../Release-1.1.0/data_types/basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a>, <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_openehr_definitions_class" class="xref page">OPENEHR_DEFINITIONS</a>, <a href="../basic_package/#_data_value_class" class="xref page">DATA_VALUE</a>, <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Constants</strong></p></th>
@@ -1580,7 +1616,7 @@ ED type from the HL7v3 data types specification.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".&#42;"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regex_any_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;".*"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/base_types/definitions_package/#_basic_definitions_class" class="xref page">BASIC_DEFINITIONS</a></em></p>
@@ -1611,17 +1647,23 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>charset</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<p>Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>character_sets" class="xref page">openEHR code set character sets</a><br>
+_Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="../text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#<em>languages" class="xref page">openEHR code set languages</a><br>
+_Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1651,13 +1693,13 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Language_valid</em>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<em>Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Charset_valid</em>: <code>charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/data_types/encapsulated_package/#_dv_encapsulated_class" class="xref page">DV_ENCAPSULATED</a></em></p>
+<em>Inherited from <a href="#_dv_encapsulated_class">DV_ENCAPSULATED</a></em></p>
 </div></div></td>
 </tr>
 <tr>

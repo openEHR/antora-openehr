@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -714,7 +687,7 @@ ADL2 was initially released with code system using id-codes (for nodes), at-code
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Root_code_regex_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"^(id1&#124;at0000)(\.1)&#42;$"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Root_code_regex_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"^(id1&#124;at0000)(\.1)*$"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Regex pattern of the root code of any archetype. Corresponds to at-codes of the form <code>at0000</code>, <code>at0000.1</code>, <code>at0000.1.1</code> etc, and id-codes of the form <code>id1</code>, <code>id1.1</code>, <code>id1.1.1</code> etc. For at-coded ADL2 numbering starts with zero (i.e. <code>at0000</code>) while the id-coded ADL2 numbering starts with one (i.e. <code>id1</code>).</p>
 </div></div></td>
@@ -912,7 +885,7 @@ ADL2 was initially released with code system using id-codes (for nodes), at-code
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Root_code_regex_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"^(id1&#124;at0000)(\.1)&#42;$"</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Root_code_regex_pattern</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&#160;=&#160;"^(id1&#124;at0000)(\.1)*$"</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Regex pattern of the root code of any archetype. Corresponds to at-codes of the form <code>at0000</code>, <code>at0000.1</code>, <code>at0000.1.1</code> etc, and id-codes of the form <code>id1</code>, <code>id1.1</code>, <code>id1.1.1</code> etc. For at-coded ADL2 numbering starts with zero (i.e. <code>at0000</code>) while the id-coded ADL2 numbering starts with one (i.e. <code>id1</code>).</p>
 </div></div></td>

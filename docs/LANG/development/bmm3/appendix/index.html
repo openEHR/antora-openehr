@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Appendix :: openEHR Specifications (Local Build)</title>
+    <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/LANG/development/bmm3/appendix/">
+    <link rel="prev" href="../extensions/">
+    <link rel="next" href="../../bmm_persistence/">
+    <meta name="description" content="Basic Meta-Model (BMM) v3 specification">
+    <meta name="keywords" content="reflection, meta-model, UML, BMM">
+    <meta name="generator" content="Antora 3.1.15">
+    <link rel="stylesheet" href="../../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/tabs.css">
+    <link rel="stylesheet" href="../../../../ui/css/extra.css">
+<link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sebastian-iancu.github.io/antora-openehr">openEHR Specifications (Local Build)</a>
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <input id="search-input" type="text" placeholder="Search the docs">
+          <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:LANG"> Generic Languages only
+          </label>
+        </div>
+      </div>
+
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Specifications</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
+              openEHR specification
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
+              openEHR portal
+            </a>
+            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
+              openEHR CKM
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Community</a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
+              Issue trackers
+            </a>
+            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
+              Discourse Forum
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
+              Wiki
+            </a>
+            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="LANG" data-version="development">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../">Generic Languages</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../odin/">Object Data Instance Notation (ODIN)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/basics/">Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/odin_artefacts/">ODIN Artefacts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/content/">Content</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/references/">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/leaf_data/">Leaf Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/path_syntax/">Path Syntax</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/plug_in_syntaxes/">Plug-in Syntaxes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/other_syntaxes/">Relationship with other Syntaxes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/syntax_spec/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm/">Basic Meta-Model (BMM)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm_persistence/">BMM Persistence Model and Syntax</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/model/">Persistence Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/syntax/">BMM Persistence Syntax</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../BEL/">Basic Expression Language (BEL)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/language/">The Basic Expression Language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/expression_object_model/">The Basic Expression Object Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/syntax/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../EL/">Expression Language (EL)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/basics/">EL Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/terminal_entities/">Terminal Entities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/expressions/">Complex Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/decision_tables/">Decision Tables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/syntax/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Generic Languages</span>
+    <span class="version">development</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../../../AM/Release-2.3.0/">Archetype Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../AM/Release-2.3.0/">Release-2.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-2.2.0/">Release-2.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-1.4.0/">Release-1.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../BASE/Release-1.2.0/">Base Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../BASE/Release-1.2.0/">Release-1.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../BASE/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../BASE/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CDS/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CNF/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../../Release-1.0.0/">Generic Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../Release-1.0.0/">Release-1.0.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../../">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../TERM/Release-3.0.0/">Release-3.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../TERM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../PROC/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../QUERY/Release-1.0.1/">Release-1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../../QUERY/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../RM/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/Release-1.0.4/">Release-1.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../ITS-REST/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../SM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../../BASE/Release-1.2.0/" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../">Generic Languages</a></li>
+    <li><a href="../">Basic Meta-Model (BMM) v3 developments</a></li>
+    <li><a href="./">Appendix</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">development</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../Release-1.0.0/">Release-1.0.0</a>
+    <a class="version is-current" href="./">development</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Appendix</h1>
+<div class="sect1">
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a><a class="link" href="#_acknowledgements">Acknowledgements</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_primary_author"><a class="anchor" href="#_primary_author"></a><a class="link" href="#_primary_author">Primary Author</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica; openEHR Foundation Management Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors"><a class="anchor" href="#_contributors"></a><a class="link" href="#_contributors">Contributors</a></h3>
+<div class="paragraph">
+<p>This specification has benefited from formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Matija Kejžar, Senior Engineer, Better, Slovenia</p>
+</li>
+<li>
+<p>Patrick Langford, NeuronSong LLC, Utah, USA</p>
+</li>
+<li>
+<p>Claude Nanjo MA African Studies, M Public Health, Cognitive Medical Systems Inc., California, USA</p>
+</li>
+<li>
+<p>Harold Solbrig, Mayo Clinic, Rochester, USA</p>
+</li>
+<li>
+<p>Erik Sundvall PhD, Linkoping University, Sweden</p>
+</li>
+<li>
+<p>Bert Verhees, ROSA Software, The Netherlands.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trademarks"><a class="anchor" href="#_trademarks"></a><a class="link" href="#_trademarks">Trademarks</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>'openEHR' is a registered trademark of the openEHR Foundation;</p>
+</li>
+<li>
+<p>'Java' is a registered trademark of Oracle Corporation;</p>
+</li>
+<li>
+<p>'C#' is a registered trademark of Microsoft;</p>
+</li>
+<li>
+<p>'OMG' and 'UML' are registered trademarks of the Object Management Group;</p>
+</li>
+<li>
+<p>'MagicDraw' is a registered trademark of NoMagic Inc;</p>
+</li>
+<li>
+<p>'Rational Software Architect' is a registered trademark of IBM Corporation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conformance"><a class="anchor" href="#_conformance"></a><a class="link" href="#_conformance">Conformance</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant <a href="https://specifications.openehr.org/releases/ITS/development/index" target="_blank" rel="noopener">openEHR Implementation Technology Specification(s) (ITSs)</a>, such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a><a class="link" href="#_previous_versions">Previous Versions</a></h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This document represents the v3 development line of the Basic Meta-Model, extending it with an expression and statement meta-model. The latest stable version of BMM, which is the v2.x form implemented by current openEHR tooling, is specified in the <a href="https://specifications.openehr.org/releases/LANG/latest/bmm.html" target="_blank" rel="noopener">BMM specification</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_version_3_0_0"><a class="anchor" href="#_version_3_0_0"></a><a class="link" href="#_version_3_0_0">Version 3.0.0</a></h3>
+<div class="paragraph">
+<p>This version made major changes to the <code>BMM_TYPE</code> hierarchy and semantics, enabling generic inheritance by generic and non-generic classes to be represented.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_version_3_1_0"><a class="anchor" href="#_version_3_1_0"></a><a class="link" href="#_version_3_1_0">Version 3.1.0</a></h3>
+<div class="paragraph">
+<p>This version adds meta-classes for computational elements to BMM, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>routines, variables, constants;</p>
+</li>
+<li>
+<p>expressions (including assertions);</p>
+</li>
+<li>
+<p>statements.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It makes various adjustments to the existing model attributes and classes. The BMM remains compatible with P_BMM 2.x, i.e. any existing <code>.bmm</code> file can be parsed to create a v 3.1.0 BMM instance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a_note_on_language"><a class="anchor" href="#_a_note_on_language"></a><a class="link" href="#_a_note_on_language">A Note on Language</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we use the following terms:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">class</dt>
+<dd>
+<p>generally refers to a class defined in a model expressed in BMM, i.e. an instance of a BMM meta-class;</p>
+</dd>
+<dt class="hdlist1">meta-class</dt>
+<dd>
+<p>refers to a class in the BMM itself, such as <code>BMM_CLASS</code>, in order to clearly distinguish it from classes defined in models represented using BMM;</p>
+</dd>
+<dt class="hdlist1">feature (of a class)</dt>
+<dd>
+<p>any stored or computed element of a class, including constants, attributes (properties) and routines (methods);</p>
+</dd>
+<dt class="hdlist1">property</dt>
+<dd>
+<p>a stored class feature; also known as 'attribute';</p>
+</dd>
+<dt class="hdlist1">routine</dt>
+<dd>
+<p>a computed class feature that may be either value-returning (a function) or work-performing (a procedure);</p>
+</dd>
+<dt class="hdlist1">function</dt>
+<dd>
+<p>a routine that computes and returns a value; typically causes no side-effects in the object;</p>
+</dd>
+<dt class="hdlist1">procedure</dt>
+<dd>
+<p>a routine that performs a computation; typically has side-effects;</p>
+</dd>
+<dt class="hdlist1">generic (class or type)</dt>
+<dd>
+<p>a kind of class or type that has parameters of other types; known as 'template' type in some programming languages;</p>
+</dd>
+<dt class="hdlist1">type</dt>
+<dd>
+<p>generally refers to a type defined in a model expressed in BMM, i.e. an instance of a BMM meta-type;</p>
+</dd>
+<dt class="hdlist1">meta-type</dt>
+<dd>
+<p>refers to a type in the BMM itself, which is either a class (such as <code>BMM_CLASS</code>) or generically derived (meta-)type in the sense of being an instance generator, where the instances will be concrete type definitions in models represented using BMM.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tooling"><a class="anchor" href="#_tooling"></a><a class="link" href="#_tooling">Tooling</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/openEHR/archie" target="_blank" rel="noopener">openEHR Archie Library</a> fully implements this specification in Java and may be used to build UI tools for compiling, viewing and editing BMM models.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench (AWB)</a> fully implements this specification, and provides a convenient way of illustrating BMM semantics. The screenshots used in this specification are all from the ADL Workbench. The tool is written in the Eiffel language, and is available as <a href="https://github.com/openEHR/adl-tools" target="_blank" rel="noopener">open source on Github</a>. The BMM libraries can be found in the <a href="https://github.com/wolandscat/EOMF/tree/master/library/bmm" target="_blank" rel="noopener">EOMF Github repository</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a><a class="link" href="#_amendment_record">Amendment Record</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.1.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>4.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-14" target="_blank" rel="noopener">SPECLANG-14</a>. Formalise the BMM v2/v3 split: this specification is maintained as a separate document (BMM v3) for the evolved meta-model; the stable v2.x form is moved to the separate BMM specification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-8" target="_blank" rel="noopener">SPECLANG-8</a>. Classify <code>EL_DECISION_TABLE</code> under <code>EL_TERMINAL</code>;<br>
+ Add read-only and writable meta-types for variables and properties;<br>
+ Add routine, function and property signature meta-types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 Apr 2022</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-8" target="_blank" rel="noopener">SPECLANG-8</a>. Simplify meta-model of features to single inheritance;<br>
+ change <code>BMM_PROCEDURE</code> to return a special type similar to Haskell, Kotlin. Revert some 3.1.0 changes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jun 2021</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.0.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-2" target="_blank" rel="noopener">SPECLANG-2</a>. Add Basic Meta-Model (BMM) spec to LANG component.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 May 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add <code>EL_SIMPLE</code> to distinguish complex expressions from terminals and operator expressions;
+ Adjust <code>BMM_CONSTANT</code> to support computed constants;<br>
+ Add <code>EL_DECISION_TABLE</code>, <code>BMM_ACTION_TABLE</code> classes and descendants;<br>
+ Add <code>BMM_INTERVAL_VALUE</code>;<br>
+ Add <code>BMM_FEATURE_GROUP</code> and <code>BMM_VISIBILITY</code> classes;<br>
+ Rename <code>BMM_SCHEMA.<em>bmm_schema</em></code> to <code><em>bmm_model</em></code>;<br>
+ Remove unintended inheritance from <code>BMM_SCHEMA</code> to <code>P_BMM_PACKAGE_CONTAINER</code>;<br>
+ Improve documentation in <a href="#Model Access Package">[Model Access Package]</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 Oct 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>EL_ASSERTION</code> to <code>EL_BOOLEAN_EXPRESSION</code>;<br>
+ Extend literal meta-types to directly support container literals;<br>
+ Add basic statement types to BMM;<br>
+ Add external routine support;<br>
+ Added note on multiple inheritance in Class Features section.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 Jun 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove inheritance to <code>BMM_DEFINITIONS</code> (assume static access);<br>
+ Remove <code>BMM_ENTITY</code> class and 'Entities' section of document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Verhees,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Jun 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_DEFINED_TYPE</code> to <code>BMM_EFFECTIVE_TYPE</code>;<br>
+ Rename <code>BMM_ENTITY_TYPE</code> to <code>BMM_MODEL_TYPE</code>;<br>
+ Significant improvements to meta-type part of model;<br>
+ Add Expression language meta-model;<br>
+ Add abstract syntax examples to text;<br>
+ Add description of default <code>Any</code> class and type;<br>
+ Add <code>BMM_MODEL.<em>used_models</em></code>;<br>
+ Add creators and converters;<br>
+ Add <code>ROUTINE.<em>body</em></code> hook;<br>
+ Add <code>BMM_RESULT</code>, <code>EL_SCOPED_REF</code>, <code>EL_TYPE_REF</code>;<br>
+ Add <code>BMM_MODULE</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Apr 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_MODEL_ELEMENT</code> to <code>BMM_DECLARATION</code>;<br>
+ Rename <code>BMM_VALUED</code> to <code>BMM_TYPED</code>;<br>
+ Rename <code>BMM_REFERENCEABLE</code> to <code>BMM_FEATURE</code>;<br>
+ Introduce dual taxonomy for features based on scoped declarations and typing;<br>
+ Add meta-model for functional entities. Re-structure packages. Modify <code>BMM_FEATURE.<em>signature</em></code> to new meta-type, <code>BMM_SIGNATURE</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 Nov 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improve meta-model of Features: rename <code>BMM_FORMAL_ELEMENT</code> to <code>BMM_REFERENCEABLE</code>; move <code>BMM_VALUE_RETURNING.<em>type</em></code> to <code>BMM_EVALUABLE</code>;<br>
+ Add <code>BMM_INDEXED_CONTAINER_TYPE</code>, <code>BMM_INDEXED_CONTAINER_PROPERTY</code>, to support indexed containers like <code>Hash&lt;K, V&gt;</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Mar 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improve meta-model of Enumerated types to include types restricted to a terminology or value set (may be used for terminology constraints);<br>
+ Improve explanation and diagrams to do with types and classes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Feb 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add feature elements <code>BMM_ROUTINE</code>, <code>BMM_VALUED</code> and descendants;<br>
+ Change <code>BMM_PROPERTY.<em>is_mandatory</em></code> to <code>BMM_MUTABLE.<em>is_nullable</em></code> (reversed Boolean sense);<br>
+ Made <code>BMM_PACKAGE_CONTAINER</code> abstract;<br>
+ Moved <code><em>name</em></code> to <code>BMM_MODEL_ELEMENT</code>, replacing <code><em>name</em></code> in <code>BMM_CLASS</code>, <code>BMM_PACKAGE</code>, <code>BMM_PROPERTY</code>, and <code><em>model_name</em></code> in <code>BMM_MODEL</code>;<br>
+ Marked <code>BMM_PROPERTY.<em>is_computed</em></code> as obsolete (to be phased out);<br>
+ Add <code>BMM_PROPERTY.<em>is_composition</em></code> to distinguish part/whole from associations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Sep 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-2" target="_blank" rel="noopener">SPECLANG-2</a>. Add Basic Meta-Model (BMM) spec to LANG component;<br>
+ Separate <code>P_BMM</code> model and syntax to BMM Persistence specification;<br>
+ refactor / tighten class model:<br>
+ rename <code>BMM_GENERIC_PARAMETER</code> to <code>BMM_PARAMETER_TYPE</code>;<br>
+ remove <code>BMM_OPEN_TYPE</code>; remove <code>BMM_TYPE_ELEMENT</code>;<br>
+ add new type <code>BMM_DEFINED_TYPE</code> as parent of <code>BMM_SIMPLE_TYPE</code> and <code>BMM_GENERIC_TYPE</code>;<br>
+ add new type <code>BMM_UNITARY_TYPE</code> as parent of <code>BMM_DEFINED_TYPE</code> and <code>BMM_PARAMETER_TYPE</code>;<br>
+ redefine <code>BMM_CLASS.<em>ancestors</em></code> to be of type <code>BMM_DEFINED_TYPE</code>;<br>
+ redefine <code>BMM_PARAMETER_TYPE.<em>conforms_to</em></code> to <code><em>type_constraint</em></code> of type <code>BMM_DEFINED_TYPE</code>;<br>
+ correct <code>BMM_CLASS.<em>immediate_descendants</em></code> to be of type <code>List&lt;BMM_CLASS&gt;</code>;<br>
+ rename <code>BMM_CLASSIFIER</code> to <code>BMM_ENTITY</code>;<br>
+ Support generic types as class ancestors;<br>
+ Remove archetype-related meta-data.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improve and update introductory text in the Overview section.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03 Nov 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove <code>BMM_CLASSIFIER.<em>conformance_type_name</em></code>;<br>
+ Constrain <code>BMM_GENERIC_PARAMETER.<em>name</em></code> to one character and upper case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C Nanjo,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02 Mar 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_CLASSIFIER.<em>as_type_string</em></code> to <code><em>type_name</em></code> and <code><em>as_conformance_type_string</em></code> to <code><em>conformance_type_name</em></code>.<br>
+ Move and rename <code>BMM_TYPE.<em>as_display_type_string</em></code> to <code>BMM_CLASSIFIER.<em>type_signature</em></code>. Add redefinitions in relevant descendant classes.<br>
+ Rename <code>BMM_SIMPLE_TYPE_OPEN</code> to <code>BMM_OPEN_TYPE</code>.<br>
+ Add new class <code>BMM_TYPE_ELEMENT</code> in preparation for BMM 3 refactoring.<br>
+ Rename <code>BMM_SCHEMA</code> to <code>BMM_MODEL</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 Jun 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial writing based on ADL Workbench implementation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Feb 2016</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../extensions/">BMM Extensions</a></span>
+  <span class="next"><a href="../../bmm_persistence/">BMM Persistence Model and Syntax</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright: © 2003+
+    <a href="https://www.openehr.org"
+        alt="is an independent, non-profit foundation, facilitating the sharing of health
+           records by consumers and clinicians via open specifications, clinical models
+           and open platform implementations.">The openEHR Foundation</a>
+  </p>
+
+  <p>
+    License:
+    <img src="../../../../ui/img/cc-by-nd-88x31.png"
+        alt="Creative Commons Attribution-NoDerivs 3.0 Unported."
+        style="vertical-align:middle;margin:0 0.25rem 0 0;">
+    <a href="https://creativecommons.org/licenses/by-nd/3.0/">
+      Creative Commons Attribution-NoDerivs 3.0 Unported.
+    </a>
+  </p>
+
+  <p>
+    <strong>Links: <strong>
+    <a href="https://www.openehr.org/terms-of-use" class="mr-1">Terms of use</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Privacy policy</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Logos &amp; Trademarks</a> |
+    <a href="https://www.openehr.org/contact-us" class="mx-1">Contact</a>
+  </p>
+</footer>
+
+<script id="site-script" src="../../../../ui/js/site.js" data-ui-root-path="../../../../ui"></script>
+<script defer src="../../../../ui/js/vendor/highlight.js"></script>
+<script src="../../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../ui/js/medium-zoom.min.js"></script>
+<script src="../../../../ui/js/zoom.js"></script>
+<script async src="../../../../ui/js/tabs.js"></script>
+  </body>
+</html>

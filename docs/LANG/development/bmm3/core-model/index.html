@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Model Structure :: openEHR Specifications (Local Build)</title>
+    <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/LANG/development/bmm3/core-model/">
+    <link rel="prev" href="../model_access/">
+    <link rel="next" href="../core-types/">
+    <meta name="description" content="Basic Meta-Model (BMM) v3 specification">
+    <meta name="keywords" content="reflection, meta-model, UML, BMM">
+    <meta name="generator" content="Antora 3.1.15">
+    <link rel="stylesheet" href="../../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/tabs.css">
+    <link rel="stylesheet" href="../../../../ui/css/extra.css">
+<link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sebastian-iancu.github.io/antora-openehr">openEHR Specifications (Local Build)</a>
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <input id="search-input" type="text" placeholder="Search the docs">
+          <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:LANG"> Generic Languages only
+          </label>
+        </div>
+      </div>
+
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Specifications</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
+              openEHR specification
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
+              openEHR portal
+            </a>
+            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
+              openEHR CKM
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Community</a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
+              Issue trackers
+            </a>
+            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
+              Discourse Forum
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
+              Wiki
+            </a>
+            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="LANG" data-version="development">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../">Generic Languages</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../odin/">Object Data Instance Notation (ODIN)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/basics/">Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/odin_artefacts/">ODIN Artefacts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/content/">Content</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/references/">References</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/leaf_data/">Leaf Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/path_syntax/">Path Syntax</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/plug_in_syntaxes/">Plug-in Syntaxes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/other_syntaxes/">Relationship with other Syntaxes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/syntax_spec/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../odin/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm/">Basic Meta-Model (BMM)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm_persistence/">BMM Persistence Model and Syntax</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/model/">Persistence Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/syntax/">BMM Persistence Syntax</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm_persistence/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../BEL/">Basic Expression Language (BEL)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/language/">The Basic Expression Language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/expression_object_model/">The Basic Expression Object Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/syntax/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../BEL/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../EL/">Expression Language (EL)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/basics/">EL Basics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/terminal_entities/">Terminal Entities</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/expressions/">Complex Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/decision_tables/">Decision Tables</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/syntax/">Syntax Specification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../EL/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Generic Languages</span>
+    <span class="version">development</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../../../AM/Release-2.3.0/">Archetype Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../AM/Release-2.3.0/">Release-2.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-2.2.0/">Release-2.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-1.4.0/">Release-1.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../BASE/Release-1.2.0/">Base Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../BASE/Release-1.2.0/">Release-1.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../BASE/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../BASE/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CDS/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CNF/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../../Release-1.0.0/">Generic Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../Release-1.0.0/">Release-1.0.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../../">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../TERM/Release-3.0.0/">Release-3.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../TERM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../PROC/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../QUERY/Release-1.0.1/">Release-1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../../QUERY/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../RM/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/Release-1.0.4/">Release-1.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../ITS-REST/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../SM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../../BASE/Release-1.2.0/" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../">Generic Languages</a></li>
+    <li><a href="../">Basic Meta-Model (BMM) v3 developments</a></li>
+    <li><a href="./">Model Structure</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">development</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../Release-1.0.0/">Release-1.0.0</a>
+    <a class="version is-current" href="./">development</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Model Structure</h1>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>core</code> package defines the main BMM meta-model, within which the <code>model</code> sub-package defines the top-level structure of a model which is an instance of the BMM. The UML for this package is shown below.</p>
+</div>
+<div id="core_model" class="imageblock text-center text-center">
+<div class="content">
+<img src="../../_images/uml/LANG-bmm3.core.model.svg" alt="LANG bmm3.core.model">
+</div>
+<div class="title">Figure 1. <code>base.bmm.core.model</code> Package - Model structure</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_naming_convention"><a class="anchor" href="#_naming_convention"></a><a class="link" href="#_naming_convention">Naming Convention</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a BMM model, names typically appear in the common case-sensitive form used by the model users, and may therefore follow one of a number of common conventions, including 'camel case', 'snake-case' and so on. When used computationally within an instantiated BMM model, it is assumed that case-insensitive matching is used. This means that the class name <code>"Hashable"</code> refers to the same class as <code>"HASHABLE"</code>. Note however that underscores are not removed during matching, so that the classes <code>"HashMap"</code> and <code>"HASH_MAP"</code> are understood as different classes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+a future version of BMM may define an option to import schemas using differing naming styles, with transformation into a single style for the target model.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_model_semantics"><a class="anchor" href="#_model_semantics"></a><a class="link" href="#_model_semantics">Model Semantics</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In BMM, a <em>model</em> is understood as a set of <em>package</em> and <em>module</em> definitions that are developed and maintained as a unit, by some organisation, and usually having an associated hierarchical namespace. The abstract <code>BMM_MODULE</code> class is the ancestor for any kind of module, which is understood as a container for <em>features</em> of various kinds, including the usual <em>properties</em>, <em>routines</em>, and so on. A BMM model is structured in the same general way as a UML model, i.e. with a hierarchical package containment structure and a set of module definitions, where a commonly used type of module is the <em>class</em>.  The following illustrates the structure of a typical 'class' or 'object' model.</p>
+</div>
+<div id="bmm_structure" class="imageblock text-center text-center">
+<div class="content">
+<img src="../_images/diagrams/bmm_structure.svg" alt="bmm structure">
+</div>
+<div class="title">Figure 2. BMM model structure</div>
+</div>
+<div class="paragraph">
+<p>The <code>BMM_MODEL</code> class defines the single instance of each distinct BMM model that may exist within a collection of models, such as shown in the <code>model_access</code> package above. It provides an interface that enables any class definition to be retrieved, as well as various accessor functions to interrogate the model. A BMM Model has a name (the inherited <code><em>name</em></code> attribute) that is used to identify the model as a whole within a system using multiple models. It contains a number of other meta-data attributes describing authorship etc, and otherwise contains a list of package and class definitions.</p>
+</div>
+<div class="sect2">
+<h3 id="_packages"><a class="anchor" href="#_packages"></a><a class="link" href="#_packages">Packages</a></h3>
+<div class="paragraph">
+<p>In BMM, packages have the same role as in UML - as non-semantic organisational logical containers of classes, usually corresponding to file system folders in software implementations. They provide an organisational convenience, and in an instantiated BMM model, contain references to class definitions. A model validity checker ensures that every class is contained within exactly one package.</p>
+</div>
+<div class="paragraph">
+<p>Package paths are only used in BMM to specify package structures in the serialised form in an efficient way, i.e. by using paths to avoid defining a hierarchy in which only lower packages contain classes. They are not used as namespaces as in UML. Consequently, <strong>all classes in a BMM model should be uniquely named</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_of_other_models"><a class="anchor" href="#_use_of_other_models"></a><a class="link" href="#_use_of_other_models">Use of other Models</a></h3>
+<div class="paragraph">
+<p>A model may <em>use</em> another model. This is the same kind of relationship denoted by the 'import' keyword in many programming languages. In BMM, the use of other models is declared once only, in the using model, rather than on a per-class level as in some languages (e.g. Java). The use of another model makes its contents available for use in declarations (e.g. inheritance) and expressions within the using model. This is achieved by populating the <code>BMM_CLASS.<em>scope</em></code> attribute with a reference to the used model. In a serial form, a typical syntax such as <code>other_model_name::Class</code> would be used.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation"><a class="anchor" href="#_documentation"></a><a class="link" href="#_documentation">Documentation</a></h3>
+<div class="paragraph">
+<p>A <code><em>documentation</em></code> attribute is inherited from <code>BMM_MODEL_ELEMENT</code> into <code>BMM_MODULE</code>, <code>BMM_FEATURE</code> and `BMM_PACKAGE_CONTAINER, enabling packages, classes, routines and properties to be individually documented using a keyed table (i.e. Hash) of values.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly recommended to use the following key /type combinations for the relevant purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"purpose": String</code></p>
+</li>
+<li>
+<p><code>"keywords": List&lt;String&gt;</code></p>
+</li>
+<li>
+<p><code>"use": String</code></p>
+</li>
+<li>
+<p><code>"misuse": String</code></p>
+</li>
+<li>
+<p><code>"references": String</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other keys and value types may be freely added.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_meta_data"><a class="anchor" href="#_other_meta_data"></a><a class="link" href="#_other_meta_data">Other Meta-data</a></h3>
+<div class="paragraph">
+<p>The <code>BMM_MODEL_ELEMENT</code> meta-class also defines the attribute <code><em>extensions</em></code> of type <code>Hash&lt;String, Any&gt;</code>, to enable representation of meta-data of any type on any model node. This provides a means of extending BMM.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_any_class_and_type"><a class="anchor" href="#_the_any_class_and_type"></a><a class="link" href="#_the_any_class_and_type">The Any Class and Type</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While a BMM model defines a model in terms of class declarations, it must always have a top class named <code>Any</code> from which all others inherit. Similar to the root class in a typical OOPL type systems (sometimes called 'Object'), the <code>Any</code> class defines semantics true for all objects such as equality (i.e. semantics for an '=' operator) and copying.</p>
+</div>
+<div class="paragraph">
+<p>A BMM model may define its own <code>Any</code> class, but if it does not, the <code>BMM_MODEL</code> instance representing the model will produce a standard 'Any' class via the <code><em>any_class_definition()</em></code> method. This will create the following structure, including a default package structure, and an <code>Any</code> type.</p>
+</div>
+<div id="bmm_any_class" class="imageblock text-center text-center">
+<div class="content">
+<img src="../../_images/uml/LANG-bmm3-any_class.svg" alt="LANG bmm3 any class">
+</div>
+<div class="title">Figure 3. Default <code>Any</code> class</div>
+</div>
+<div class="paragraph">
+<p>The <code>Any</code> type defined by the model&#8217;s <code>Any</code> class, or else the default one above, will be used as the inheritance parent for every class in the model that doesn&#8217;t have any other inheritance parent. As a result, the inheritance graph will always have the <code>Any</code> type as its top node.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a><a class="link" href="#_class_definitions">Class Definitions</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bmm_package_container_class"><a class="anchor" href="#_bmm_package_container_class"></a><a class="link" href="#_bmm_package_container_class">BMM_PACKAGE_CONTAINER Class</a></h3>
+<div id="_tabs_1" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_1_definition" class="tab">
+<p>Definition</p>
+</li>
+<li id="_tabs_1_effective" class="tab">
+<p>Effective</p>
+</li>
+<li id="_tabs_1_bmm" class="tab">
+<p>BMM</p>
+</li>
+<li id="_tabs_1_uml" class="tab">
+<p>UML</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_1_definition--panel" class="tabpanel" aria-labelledby="_tabs_1_definition">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_PACKAGE_CONTAINER (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A BMM model component that contains packages and classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Child packages; keys all in upper case for guaranteed matching.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model element within which a referenceable element is known.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Package at the path <code><em>a_path</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
+action: <code><a href="../expressions/#_el_procedure_agent_class" class="xref page">EL_PROCEDURE_AGENT</a>[1]</code><br>
+): <code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recursively execute <code><em>action</em></code>, which is a procedure taking a <code>BMM_PACKAGE</code> argument, on all members of packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if there is a package at the path <code><em>a_path</em></code>; paths are delimited with delimiter <code>{BMM_DEFINITIONS}_Package_name_delimiter_</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_1_effective--panel" class="tabpanel" aria-labelledby="_tabs_1_effective">
+<table class="tableblock frame-none grid-rows stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong><em>BMM_PACKAGE_CONTAINER (abstract)</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A BMM model component that contains packages and classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Name of this model element.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional documentation of this element, as a keyed list.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly recommended to use the following key /type combinations for the relevant purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"purpose": String</code></p>
+</li>
+<li>
+<p><code>"keywords": List&lt;String&gt;</code></p>
+</li>
+<li>
+<p><code>"use": String</code></p>
+</li>
+<li>
+<p><code>"misuse": String</code></p>
+</li>
+<li>
+<p><code>"references": String</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other keys and value types may be freely added.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model element within which a referenceable element is known.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extensions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Child packages; keys all in upper case for guaranteed matching.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_root_scope</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (scope = self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this declaration entity is the root of the declaration hierarchy.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Package at the path <code><em>a_path</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
+action: <code><a href="../expressions/#_el_procedure_agent_class" class="xref page">EL_PROCEDURE_AGENT</a>[1]</code><br>
+): <code>void</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recursively execute <code><em>action</em></code>, which is a procedure taking a <code>BMM_PACKAGE</code> argument, on all members of packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if there is a package at the path <code><em>a_path</em></code>; paths are delimited with delimiter <code>{BMM_DEFINITIONS}_Package_name_delimiter_</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_1_bmm--panel" class="tabpanel" aria-labelledby="_tabs_1_bmm">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "name": "BMM_PACKAGE_CONTAINER",
+    "documentation": "A BMM model component that contains packages and classes.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_DECLARATION"
+    ],
+    "properties": {
+        "packages": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "packages",
+            "documentation": "Child packages; keys all in upper case for guaranteed matching.",
+            "type_def": {
+                "root_type": "Hash",
+                "generic_parameters": [
+                    "String",
+                    "BMM_PACKAGE"
+                ]
+            }
+        },
+        "scope": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "scope",
+            "documentation": "Model element within which a referenceable element is known.",
+            "is_mandatory": true,
+            "type": "BMM_PACKAGE_CONTAINER"
+        }
+    },
+    "functions": {
+        "package_at_path": {
+            "name": "package_at_path",
+            "documentation": "Package at the path `_a_path_`.",
+            "parameters": {
+                "a_path": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_path",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_PACKAGE"
+            },
+            "is_nullable": true
+        },
+        "do_recursive_packages": {
+            "name": "do_recursive_packages",
+            "documentation": "Recursively execute `_action_`, which is a procedure taking a `BMM_PACKAGE` argument, on all members of packages.",
+            "parameters": {
+                "action": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "action",
+                    "type": "EL_PROCEDURE_AGENT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "void"
+            }
+        },
+        "has_package_path": {
+            "name": "has_package_path",
+            "documentation": "True if there is a package at the path `_a_path_`; paths are delimited with delimiter `{BMM_DEFINITIONS}_Package_name_delimiter_`.",
+            "parameters": {
+                "a_path": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_path",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_1_uml--panel" class="tabpanel" aria-labelledby="_tabs_1_uml">
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/uml/classes/bmm_package_container.svg" alt="bmm package container">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bmm_package_class"><a class="anchor" href="#_bmm_package_class"></a><a class="link" href="#_bmm_package_class">BMM_PACKAGE Class</a></h3>
+<div id="_tabs_2" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_2_definition" class="tab">
+<p>Definition</p>
+</li>
+<li id="_tabs_2_effective" class="tab">
+<p>Effective</p>
+</li>
+<li id="_tabs_2_bmm" class="tab">
+<p>BMM</p>
+</li>
+<li id="_tabs_2_uml" class="tab">
+<p>UML</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_2_definition--panel" class="tabpanel" aria-labelledby="_tabs_2_definition">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_PACKAGE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Abstraction of a package as a tree structure whose nodes can contain other packages and classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code><em>name</em></code> may be qualified if it is a top-level package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Classes listed as being in this package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Full path of this package back to root package.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_2_effective--panel" class="tabpanel" aria-labelledby="_tabs_2_effective">
+<table class="tableblock frame-none grid-rows stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>BMM_PACKAGE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Abstraction of a package as a tree structure whose nodes can contain other packages and classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code><em>name</em></code> may be qualified if it is a top-level package.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a>, <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Name of this model element.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional documentation of this element, as a keyed list.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly recommended to use the following key /type combinations for the relevant purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"purpose": String</code></p>
+</li>
+<li>
+<p><code>"keywords": List&lt;String&gt;</code></p>
+</li>
+<li>
+<p><code>"use": String</code></p>
+</li>
+<li>
+<p><code>"misuse": String</code></p>
+</li>
+<li>
+<p><code>"references": String</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other keys and value types may be freely added.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model element within which a referenceable element is known.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extensions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Child packages; keys all in upper case for guaranteed matching.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>classes</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Classes listed as being in this package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_root_scope</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (scope = self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this declaration entity is the root of the declaration hierarchy.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Package at the path <code><em>a_path</em></code>.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
+action: <code><a href="../expressions/#_el_procedure_agent_class" class="xref page">EL_PROCEDURE_AGENT</a>[1]</code><br>
+): <code>void</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recursively execute <code><em>action</em></code>, which is a procedure taking a <code>BMM_PACKAGE</code> argument, on all members of packages.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if there is a package at the path <code><em>a_path</em></code>; paths are delimited with delimiter <code>{BMM_DEFINITIONS}_Package_name_delimiter_</code>.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>root_classes</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Full path of this package back to root package.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_2_bmm--panel" class="tabpanel" aria-labelledby="_tabs_2_bmm">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "name": "BMM_PACKAGE",
+    "documentation": "Abstraction of a package as a tree structure whose nodes can contain other packages and classes.\n\nThe `_name_` may be qualified if it is a top-level package.",
+    "ancestors": [
+        "BMM_PACKAGE_CONTAINER"
+    ],
+    "properties": {
+        "classes": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "classes",
+            "documentation": "Classes listed as being in this package.",
+            "type_def": {
+                "container_type": "List",
+                "type": "BMM_CLASS"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        }
+    },
+    "functions": {
+        "root_classes": {
+            "name": "root_classes",
+            "documentation": "Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages. Recurse into each child only far enough to find the first level of classes.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "BMM_CLASS"
+            },
+            "is_nullable": true
+        },
+        "path": {
+            "name": "path",
+            "documentation": "Full path of this package back to root package.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_2_uml--panel" class="tabpanel" aria-labelledby="_tabs_2_uml">
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/uml/classes/bmm_package.svg" alt="bmm package">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bmm_model_class"><a class="anchor" href="#_bmm_model_class"></a><a class="link" href="#_bmm_model_class">BMM_MODEL Class</a></h3>
+<div id="_tabs_3" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_3_definition" class="tab">
+<p>Definition</p>
+</li>
+<li id="_tabs_3_effective" class="tab">
+<p>Effective</p>
+</li>
+<li id="_tabs_3_bmm" class="tab">
+<p>BMM</p>
+</li>
+<li id="_tabs_3_uml" class="tab">
+<p>UML</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_3_definition--panel" class="tabpanel" aria-labelledby="_tabs_3_definition">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BMM_MODEL</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Definition of the root of a BMM model (along with what is inherited from <code>BMM_SCHEMA_CORE</code>).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code>, <code><a href="../model_access/#_bmm_model_metadata_class" class="xref page">BMM_MODEL_METADATA</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>All classes in this model, keyed by type name.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>used_models</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_model_class" class="xref page">BMM_MODEL</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of other models 'used' (i.e. 'imported' by this model). Classes in the current model may refer to classes in a used model by specifying the other class&#8217;s <code><em>scope</em></code> meta-attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_id</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifier of this model, lower-case, formed from:</p>
+</div>
+<div class="paragraph">
+<p><code>&lt;rm_publisher&gt;_&lt;model_name&gt;_&lt;rm_release&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>E.g. <code>"openehr_ehr_1.0.4"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (<br>
+a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code> (which may contain a generic part).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code>. If it contains a generic part, this will be removed if it is a fully open generic name, otherwise it will remain intact, i.e. if it is an effective generic name that identifies a <code>BMM_GENERIC_CLASS_EFFECTIVE</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_class_definition</strong> (<br>
+a_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_class_name</em></code> has a class definition in the model.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_definition</strong> (<br>
+a_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_type_name</em></code> is already concretely known in the system, including if it is generic, which may be open, partially open or closed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (<br>
+a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_enumeration_class" class="xref page">BMM_ENUMERATION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the enumeration definition corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of keys in <code><em>class_definitions</em></code> of items marked as primitive types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of keys in <code><em>class_definitions</em></code> of items that are enumeration types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong> (): <code><a href="../../bmm/core/#_bmm_property_class" class="xref page">BMM_PROPERTY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the property definition for <code><em>a_prop_name</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (<br>
+a_bmm_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_bmm_property_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_ms_property_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_ms_property_type</em></code> is a valid 'MS' dynamic type for <code><em>a_property</em></code> in BMM type <code><em>a_bmm_type_name</em></code>. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like <code>List&lt;&gt;</code>, <code>Set&lt;&gt;</code> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong> (): <code><a href="../../bmm/core/#_bmm_property_class" class="xref page">BMM_PROPERTY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the property definition for <code><em>a_property_path</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition_at_path</strong> (<br>
+a_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_prop_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition for the class that owns the terminal attribute in <code>a_prop_path</code> in flattened class corresponding to <code>a_type_name</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (<br>
+a_class: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return all ancestor types of <code><em>a_class_name</em></code> up to root class (usually <code>Any</code>, <code>Object</code> or something similar). Does  not include current class. Returns empty list if none.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_descendant_of</strong> (<br>
+a_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_parent_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_class_name</em></code> is a descendant in the model of <code><em>a_parent_class_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (<br>
+a_desc_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+an_anc_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Check conformance of <code><em>a_desc_type</em></code> to <code><em>an_anc_type</em></code>; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their appropriate constrainer types, or Any during the conformance testing process.</p>
+</div>
+<div class="paragraph">
+<p>Conformance is found if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[base class test] types are non-generic, and either type names are identical, or else <code><em>a_desc_type</em></code> has <code><em>an_anc_type</em></code> in its ancestors;</p>
+</li>
+<li>
+<p>both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; <code><em>type_name_conforms_to</em></code> test</p>
+</li>
+<li>
+<p>descendant type is generic and ancestor type is not, and they pass base classes test.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (<br>
+a_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Generate type substitutions for the supplied type, which may be simple, generic (closed, open or partially open), or a container type. In the generic and container cases, the result is the permutation of the base class type and type substitutions of all generic parameters.</p>
+</div>
+<div class="hdlist">
+<div class="title">Parameters<br></div>
+<table>
+<tr>
+<td class="hdlist1">
+<code><em>a_type</em></code>
+</td>
+<td class="hdlist2">
+<p>Name of a type.</p>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_class_definition</strong> (): <code><a href="../core-classes/#_bmm_simple_class_class" class="xref page">BMM_SIMPLE_CLASS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_CLASS</code> instance for the <code>Any</code> class. This may be defined in the BMM schema, but if not, use <code>BMM_DEFINITIONS.<em>any_class</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_simple_type_class" class="xref page">BMM_SIMPLE_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_TYPE</code> instance for the <code>Any</code> type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>boolean_type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_simple_type_class" class="xref page">BMM_SIMPLE_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_TYPE</code> instance for the <code>Boolean</code> type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Inv_top_level_scope</em>: <code>scope = self</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_3_effective--panel" class="tabpanel" aria-labelledby="_tabs_3_effective">
+<table class="tableblock frame-none grid-rows stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>BMM_MODEL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Definition of the root of a BMM model (along with what is inherited from <code>BMM_SCHEMA_CORE</code>).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a>, <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a>, <a href="../model_access/#_bmm_model_metadata_class" class="xref page">BMM_MODEL_METADATA</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Name of this model element.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional documentation of this element, as a keyed list.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly recommended to use the following key /type combinations for the relevant purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"purpose": String</code></p>
+</li>
+<li>
+<p><code>"keywords": List&lt;String&gt;</code></p>
+</li>
+<li>
+<p><code>"use": String</code></p>
+</li>
+<li>
+<p><code>"misuse": String</code></p>
+</li>
+<li>
+<p><code>"references": String</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other keys and value types may be freely added.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model element within which a referenceable element is known.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extensions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Child packages; keys all in upper case for guaranteed matching.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_publisher</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Publisher of model expressed in the schema.<br>
+<em>Inherited from <a href="../model_access/#_bmm_model_metadata_class" class="xref page">BMM_MODEL_METADATA</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_release</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Release of model expressed in the schema as a 3-part numeric, e.g. "3.1.0" .<br>
+<em>Inherited from <a href="../model_access/#_bmm_model_metadata_class" class="xref page">BMM_MODEL_METADATA</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definitions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>All classes in this model, keyed by type name.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>used_models</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../bmm/core/#_bmm_model_class" class="xref page">BMM_MODEL</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of other models 'used' (i.e. 'imported' by this model). Classes in the current model may refer to classes in a used model by specifying the other class&#8217;s <code><em>scope</em></code> meta-attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_root_scope</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (scope = self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this declaration entity is the root of the declaration hierarchy.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>package_at_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_package_class" class="xref page">BMM_PACKAGE</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Package at the path <code><em>a_path</em></code>.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>do_recursive_packages</strong> (<br>
+action: <code><a href="../expressions/#_el_procedure_agent_class" class="xref page">EL_PROCEDURE_AGENT</a>[1]</code><br>
+): <code>void</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recursively execute <code><em>action</em></code>, which is a procedure taking a <code>BMM_PACKAGE</code> argument, on all members of packages.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_package_path</strong> (<br>
+a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if there is a package at the path <code><em>a_path</em></code>; paths are delimited with delimiter <code>{BMM_DEFINITIONS}_Package_name_delimiter_</code>.<br>
+<em>Inherited from <a href="../../bmm/core/#_bmm_package_container_class" class="xref page">BMM_PACKAGE_CONTAINER</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>model_id</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifier of this model, lower-case, formed from:</p>
+</div>
+<div class="paragraph">
+<p><code>&lt;rm_publisher&gt;_&lt;model_name&gt;_&lt;rm_release&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>E.g. <code>"openehr_ehr_1.0.4"</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition</strong> (<br>
+a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code> (which may contain a generic part).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition corresponding to <code><em>a_type_name</em></code>. If it contains a generic part, this will be removed if it is a fully open generic name, otherwise it will remain intact, i.e. if it is an effective generic name that identifies a <code>BMM_GENERIC_CLASS_EFFECTIVE</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_class_definition</strong> (<br>
+a_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_class_name</em></code> has a class definition in the model.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_type_definition</strong> (<br>
+a_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_type_name</em></code> is already concretely known in the system, including if it is generic, which may be open, partially open or closed.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_definition</strong> (<br>
+a_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_enumeration_class" class="xref page">BMM_ENUMERATION</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the enumeration definition corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>primitive_types</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of keys in <code><em>class_definitions</em></code> of items marked as primitive types.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>enumeration_types</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List of keys in <code><em>class_definitions</em></code> of items that are enumeration types.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition</strong> (): <code><a href="../../bmm/core/#_bmm_property_class" class="xref page">BMM_PROPERTY</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the property definition for <code><em>a_prop_name</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ms_conformant_property_type</strong> (<br>
+a_bmm_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_bmm_property_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_ms_property_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_ms_property_type</em></code> is a valid 'MS' dynamic type for <code><em>a_property</em></code> in BMM type <code><em>a_bmm_type_name</em></code>. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like <code>List&lt;&gt;</code>, <code>Set&lt;&gt;</code> etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>property_definition_at_path</strong> (): <code><a href="../../bmm/core/#_bmm_property_class" class="xref page">BMM_PROPERTY</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the property definition for <code><em>a_property_path</em></code> in flattened class corresponding to <code><em>a_type_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>class_definition_at_path</strong> (<br>
+a_type_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_prop_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../bmm/core/#_bmm_class_class" class="xref page">BMM_CLASS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve the class definition for the class that owns the terminal attribute in <code>a_prop_path</code> in flattened class corresponding to <code>a_type_name</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_ancestor_classes</strong> (<br>
+a_class: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return all ancestor types of <code><em>a_class_name</em></code> up to root class (usually <code>Any</code>, <code>Object</code> or something similar). Does  not include current class. Returns empty list if none.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_descendant_of</strong> (<br>
+a_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+a_parent_class_name: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>a_class_name</em></code> is a descendant in the model of <code><em>a_parent_class_name</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_conforms_to</strong> (<br>
+a_desc_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code>,<br>
+an_anc_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Check conformance of <code><em>a_desc_type</em></code> to <code><em>an_anc_type</em></code>; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their appropriate constrainer types, or Any during the conformance testing process.</p>
+</div>
+<div class="paragraph">
+<p>Conformance is found if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[base class test] types are non-generic, and either type names are identical, or else <code><em>a_desc_type</em></code> has <code><em>an_anc_type</em></code> in its ancestors;</p>
+</li>
+<li>
+<p>both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; <code><em>type_name_conforms_to</em></code> test</p>
+</li>
+<li>
+<p>descendant type is generic and ancestor type is not, and they pass base classes test.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtypes</strong> (<br>
+a_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>&gt;</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Generate type substitutions for the supplied type, which may be simple, generic (closed, open or partially open), or a container type. In the generic and container cases, the result is the permutation of the base class type and type substitutions of all generic parameters.</p>
+</div>
+<div class="hdlist">
+<div class="title">Parameters<br></div>
+<table>
+<tr>
+<td class="hdlist1">
+<code><em>a_type</em></code>
+</td>
+<td class="hdlist2">
+<p>Name of a type.</p>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_class_definition</strong> (): <code><a href="../core-classes/#_bmm_simple_class_class" class="xref page">BMM_SIMPLE_CLASS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_CLASS</code> instance for the <code>Any</code> class. This may be defined in the BMM schema, but if not, use <code>BMM_DEFINITIONS.<em>any_class</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>any_type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_simple_type_class" class="xref page">BMM_SIMPLE_TYPE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_TYPE</code> instance for the <code>Any</code> type.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>boolean_type_definition</strong> (): <code><a href="../../bmm/core/#_bmm_simple_type_class" class="xref page">BMM_SIMPLE_TYPE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>BMM_SIMPLE_TYPE</code> instance for the <code>Boolean</code> type.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Invariants</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Inv_top_level_scope</em>: <code>scope = self</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_3_bmm--panel" class="tabpanel" aria-labelledby="_tabs_3_bmm">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "name": "BMM_MODEL",
+    "documentation": "Definition of the root of a BMM model (along with what is inherited from `BMM_SCHEMA_CORE`).",
+    "ancestors": [
+        "BMM_PACKAGE_CONTAINER",
+        "BMM_MODEL_METADATA"
+    ],
+    "properties": {
+        "class_definitions": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "class_definitions",
+            "documentation": "All classes in this model, keyed by type name.",
+            "type_def": {
+                "root_type": "Hash",
+                "generic_parameters": [
+                    "String",
+                    "BMM_CLASS"
+                ]
+            }
+        },
+        "used_models": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "used_models",
+            "documentation": "List of other models 'used' (i.e. 'imported' by this model). Classes in the current model may refer to classes in a used model by specifying the other class's `_scope_` meta-attribute.",
+            "type_def": {
+                "container_type": "List",
+                "type": "BMM_MODEL"
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        }
+    },
+    "functions": {
+        "model_id": {
+            "name": "model_id",
+            "documentation": "Identifier of this model, lower-case, formed from:\n\n`&lt;rm_publisher&gt;_&lt;model_name&gt;_&lt;rm_release&gt;`\n\nE.g. `\"openehr_ehr_1.0.4\"`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        },
+        "class_definition": {
+            "name": "class_definition",
+            "documentation": "Retrieve the class definition corresponding to `_a_type_name_` (which may contain a generic part).",
+            "parameters": {
+                "a_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_CLASS"
+            }
+        },
+        "type_definition": {
+            "name": "type_definition",
+            "documentation": "Retrieve the class definition corresponding to `_a_type_name_`. If it contains a generic part, this will be removed if it is a fully open generic name, otherwise it will remain intact, i.e. if it is an effective generic name that identifies a `BMM_GENERIC_CLASS_EFFECTIVE`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_CLASS"
+            }
+        },
+        "has_class_definition": {
+            "name": "has_class_definition",
+            "documentation": "True if `_a_class_name_` has a class definition in the model.",
+            "parameters": {
+                "a_class_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_class_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "has_type_definition": {
+            "name": "has_type_definition",
+            "documentation": "True if `_a_type_name_` is already concretely known in the system, including if it is generic, which may be open, partially open or closed.",
+            "parameters": {
+                "a_type_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_type_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "enumeration_definition": {
+            "name": "enumeration_definition",
+            "documentation": "Retrieve the enumeration definition corresponding to `_a_type_name_`.",
+            "parameters": {
+                "a_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_ENUMERATION"
+            }
+        },
+        "primitive_types": {
+            "name": "primitive_types",
+            "documentation": "List of keys in `_class_definitions_` of items marked as primitive types.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "enumeration_types": {
+            "name": "enumeration_types",
+            "documentation": "List of keys in `_class_definitions_` of items that are enumeration types.",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "property_definition": {
+            "name": "property_definition",
+            "documentation": "Retrieve the property definition for `_a_prop_name_` in flattened class corresponding to `_a_type_name_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_PROPERTY"
+            }
+        },
+        "ms_conformant_property_type": {
+            "name": "ms_conformant_property_type",
+            "documentation": "True if `_a_ms_property_type_` is a valid 'MS' dynamic type for `_a_property_` in BMM type `_a_bmm_type_name_`. 'MS' conformance means 'model-semantic' conformance, which abstracts away container types like `List&lt;&gt;`, `Set&lt;&gt;` etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or multiple containment.",
+            "parameters": {
+                "a_bmm_type_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_bmm_type_name",
+                    "type": "String"
+                },
+                "a_bmm_property_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_bmm_property_name",
+                    "type": "String"
+                },
+                "a_ms_property_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_ms_property_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "property_definition_at_path": {
+            "name": "property_definition_at_path",
+            "documentation": "Retrieve the property definition for `_a_property_path_` in flattened class corresponding to `_a_type_name_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_PROPERTY"
+            }
+        },
+        "class_definition_at_path": {
+            "name": "class_definition_at_path",
+            "documentation": "Retrieve the class definition for the class that owns the terminal attribute in `a_prop_path` in flattened class corresponding to `a_type_name`.",
+            "parameters": {
+                "a_type_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_type_name",
+                    "type": "String"
+                },
+                "a_prop_path": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_prop_path",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_CLASS"
+            }
+        },
+        "all_ancestor_classes": {
+            "name": "all_ancestor_classes",
+            "documentation": "Return all ancestor types of `_a_class_name_` up to root class (usually `Any`, `Object` or something similar). Does  not include current class. Returns empty list if none.",
+            "parameters": {
+                "a_class": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_class",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            },
+            "is_nullable": true
+        },
+        "is_descendant_of": {
+            "name": "is_descendant_of",
+            "documentation": "True if `_a_class_name_` is a descendant in the model of `_a_parent_class_name_`.",
+            "parameters": {
+                "a_class_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_class_name",
+                    "type": "String"
+                },
+                "a_parent_class_name": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_parent_class_name",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "type_conforms_to": {
+            "name": "type_conforms_to",
+            "documentation": "Check conformance of `_a_desc_type_` to `_an_anc_type_`; the types may be generic, and may contain open generic parameters like 'T' etc. These are replaced with their appropriate constrainer types, or Any during the conformance testing process.\n\nConformance is found if:\n\n* [base class test] types are non-generic, and either type names are identical, or else `_a_desc_type_` has `_an_anc_type_` in its ancestors;\n* both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; `_type_name_conforms_to_` test\n* descendant type is generic and ancestor type is not, and they pass base classes test.",
+            "parameters": {
+                "a_desc_type": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_desc_type",
+                    "type": "String"
+                },
+                "an_anc_type": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "an_anc_type",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "subtypes": {
+            "name": "subtypes",
+            "documentation": "Generate type substitutions for the supplied type, which may be simple, generic (closed, open or partially open), or a container type. In the generic and container cases, the result is the permutation of the base class type and type substitutions of all generic parameters.",
+            "parameters": {
+                "a_type": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_type",
+                    "documentation": "Name of a type.",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "String"
+            }
+        },
+        "any_class_definition": {
+            "name": "any_class_definition",
+            "documentation": "`BMM_SIMPLE_CLASS` instance for the `Any` class. This may be defined in the BMM schema, but if not, use `BMM_DEFINITIONS._any_class_`.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_SIMPLE_CLASS"
+            }
+        },
+        "any_type_definition": {
+            "name": "any_type_definition",
+            "documentation": "`BMM_SIMPLE_TYPE` instance for the `Any` type.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_SIMPLE_TYPE"
+            }
+        },
+        "boolean_type_definition": {
+            "name": "boolean_type_definition",
+            "documentation": "`BMM_SIMPLE_TYPE` instance for the `Boolean` type.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "BMM_SIMPLE_TYPE"
+            }
+        }
+    },
+    "invariants": {
+        "Inv_top_level_scope": "scope = self"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_3_uml--panel" class="tabpanel" aria-labelledby="_tabs_3_uml">
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/uml/classes/bmm_model.svg" alt="bmm model">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bmm_module_class"><a class="anchor" href="#_bmm_module_class"></a><a class="link" href="#_bmm_module_class">BMM_MODULE Class</a></h3>
+<div id="_tabs_4" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_4_definition" class="tab">
+<p>Definition</p>
+</li>
+<li id="_tabs_4_effective" class="tab">
+<p>Effective</p>
+</li>
+<li id="_tabs_4_bmm" class="tab">
+<p>BMM</p>
+</li>
+<li id="_tabs_4_uml" class="tab">
+<p>UML</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_4_definition--panel" class="tabpanel" aria-labelledby="_tabs_4_definition">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>BMM_MODULE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Meta-type defining a generalised module concept. Descendants define actual structure and contents.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_model_class" class="xref page">BMM_MODEL</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model within which module is defined.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_4_effective--panel" class="tabpanel" aria-labelledby="_tabs_4_effective">
+<table class="tableblock frame-none grid-rows stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong><em>BMM_MODULE (abstract)</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Meta-type defining a generalised module concept. Descendants define actual structure and contents.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Name of this model element.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>documentation</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional documentation of this element, as a keyed list.</p>
+</div>
+<div class="paragraph">
+<p>It is strongly recommended to use the following key /type combinations for the relevant purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"purpose": String</code></p>
+</li>
+<li>
+<p><code>"keywords": List&lt;String&gt;</code></p>
+</li>
+<li>
+<p><code>"use": String</code></p>
+</li>
+<li>
+<p><code>"misuse": String</code></p>
+</li>
+<li>
+<p><code>"references": String</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other keys and value types may be freely added.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scope</strong>: <code><a href="../../bmm/core/#_bmm_model_class" class="xref page">BMM_MODEL</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Model within which module is defined.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extensions</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_hash_class" class="xref page">Hash</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>,<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Functions</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_root_scope</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (scope = self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this declaration entity is the root of the declaration hierarchy.<br>
+<em>Inherited from <a href="../statements/#_bmm_declaration_class" class="xref page">BMM_DECLARATION</a></em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="_tabs_4_bmm--panel" class="tabpanel" aria-labelledby="_tabs_4_bmm">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "name": "BMM_MODULE",
+    "documentation": "Meta-type defining a generalised module concept. Descendants define actual structure and contents.",
+    "is_abstract": true,
+    "ancestors": [
+        "BMM_DECLARATION"
+    ],
+    "properties": {
+        "scope": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "scope",
+            "documentation": "Model within which module is defined.",
+            "is_mandatory": true,
+            "type": "BMM_MODEL"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_4_uml--panel" class="tabpanel" aria-labelledby="_tabs_4_uml">
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/uml/classes/bmm_module.svg" alt="bmm module">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../model_access/">Model Access Package</a></span>
+  <span class="next"><a href="../core-types/">Types</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright: © 2003+
+    <a href="https://www.openehr.org"
+        alt="is an independent, non-profit foundation, facilitating the sharing of health
+           records by consumers and clinicians via open specifications, clinical models
+           and open platform implementations.">The openEHR Foundation</a>
+  </p>
+
+  <p>
+    License:
+    <img src="../../../../ui/img/cc-by-nd-88x31.png"
+        alt="Creative Commons Attribution-NoDerivs 3.0 Unported."
+        style="vertical-align:middle;margin:0 0.25rem 0 0;">
+    <a href="https://creativecommons.org/licenses/by-nd/3.0/">
+      Creative Commons Attribution-NoDerivs 3.0 Unported.
+    </a>
+  </p>
+
+  <p>
+    <strong>Links: <strong>
+    <a href="https://www.openehr.org/terms-of-use" class="mr-1">Terms of use</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Privacy policy</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Logos &amp; Trademarks</a> |
+    <a href="https://www.openehr.org/contact-us" class="mx-1">Contact</a>
+  </p>
+</footer>
+
+<script id="site-script" src="../../../../ui/js/site.js" data-ui-root-path="../../../../ui"></script>
+<script defer src="../../../../ui/js/vendor/highlight.js"></script>
+<script src="../../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../ui/js/medium-zoom.min.js"></script>
+<script src="../../../../ui/js/zoom.js"></script>
+<script async src="../../../../ui/js/tabs.js"></script>
+  </body>
+</html>

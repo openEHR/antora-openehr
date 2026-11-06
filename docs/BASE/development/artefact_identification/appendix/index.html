@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Appendix :: openEHR Specifications (Local Build)</title>
+    <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/BASE/development/artefact_identification/appendix/">
+    <link rel="prev" href="../scenarios/">
+    <meta name="description" content="openEHR Artefact Identification specification">
+    <meta name="keywords" content="openehr, identification, HRID, versioning, lifecycle, governance">
+    <meta name="generator" content="Antora 3.1.15">
+    <link rel="stylesheet" href="../../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/tabs.css">
+    <link rel="stylesheet" href="../../../../ui/css/extra.css">
+<link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sebastian-iancu.github.io/antora-openehr">openEHR Specifications (Local Build)</a>
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <input id="search-input" type="text" placeholder="Search the docs">
+          <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:BASE"> Base Model only
+          </label>
+        </div>
+      </div>
+
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Specifications</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
+              openEHR specification
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
+              openEHR portal
+            </a>
+            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
+              openEHR CKM
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Community</a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
+              Issue trackers
+            </a>
+            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
+              Discourse Forum
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
+              Wiki
+            </a>
+            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="BASE" data-version="development">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../">Base Model</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../architecture_overview/">Architecture Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/aims/">Aims of the openEHR Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_principles/">Design Principles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/package_structure/">openEHR Specification Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_of_the_ehr/">Design of the openEHR EHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/security/">Security and Confidentiality</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/identification/">Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/archetypes/">Archetypes and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/paths/">Paths and Locators</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/terminology/">Terminology in openEHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/deployment/">Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/integration/">Integrating openEHR with other Systems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/standards/">Relationship to Standards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/implementation/">Implementation Technology Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../foundation_types/">Foundation Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/primitive_types/">Primitive Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/structure_types/">Structure Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/interval/">Interval</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/time_types/">Time Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/terminology/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/functional/">Functional Meta-types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/type_cross_ref/">Type Cross-Reference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../base_types/">Base Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/definitions_package/">Definitions Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/builtins_package/">Builtins Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../resource/">Resource Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/resource_package/">Resource Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Base Model</span>
+    <span class="version">development</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../../../AM/Release-2.3.0/">Archetype Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../AM/Release-2.3.0/">Release-2.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-2.2.0/">Release-2.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-1.4.0/">Release-1.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../../Release-1.2.0/">Base Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../Release-1.2.0/">Release-1.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../../">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CDS/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CNF/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../LANG/Release-1.0.0/">Generic Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../LANG/Release-1.0.0/">Release-1.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../LANG/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../TERM/Release-3.0.0/">Release-3.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../TERM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../PROC/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../QUERY/Release-1.0.1/">Release-1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../../QUERY/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../RM/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/Release-1.0.4/">Release-1.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../ITS-REST/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../SM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../Release-1.2.0/" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../">Base Model</a></li>
+    <li><a href="../">Artefact Identification</a></li>
+    <li><a href="./">Appendix</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">development</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../Release-1.2.0/">Release-1.2.0</a>
+    <a class="version is-missing" href="../../../Release-1.1.0/">Release-1.1.0</a>
+    <a class="version is-current" href="./">development</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Appendix</h1>
+<div class="sect1">
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a><a class="link" href="#_acknowledgements">Acknowledgements</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_primary_author"><a class="anchor" href="#_primary_author"></a><a class="link" href="#_primary_author">Primary Author</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica, UK; openEHR International Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors"><a class="anchor" href="#_contributors"></a><a class="link" href="#_contributors">Contributors</a></h3>
+<div class="paragraph">
+<p>This specification has benefited from input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people and institutions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sebastian Garde PhD, Ocean Informatics</p>
+</li>
+<li>
+<p>Heather Leslie MD, Ocean Informatics</p>
+</li>
+<li>
+<p>Ian McNicoll MD, MSc, Ocean Informatics UK</p>
+</li>
+<li>
+<p>Martin van der Meer, Code24, Netherlands</p>
+</li>
+<li>
+<p>David Moner PhD, Universitat Politècnica de València, Spain</p>
+</li>
+<li>
+<p>Erik Sundvall PhD, Linkoping University, Sweden</p>
+</li>
+<li>
+<p>Sebastian Iancu, Code24, Netherlands</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trademarks"><a class="anchor" href="#_trademarks"></a><a class="link" href="#_trademarks">Trademarks</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>'openEHR' is a registered trademark of The openEHR Foundation</p>
+</li>
+<li>
+<p>'SNOMED CT' is a registered trademark of IHTSDO</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_supporters"><a class="anchor" href="#_supporters"></a><a class="link" href="#_supporters">Supporters</a></h3>
+<div class="paragraph">
+<p>The work reported in this paper has been funded by the following organisations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="https://www.openehr.org/community/industry_partners/" target="_blank" rel="noopener">openEHR Industry Partners</a>;</p>
+</li>
+<li>
+<p>Better d.o.o, Slovenia</p>
+</li>
+<li>
+<p>Ocean Informatics, UK
+== Conventions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Grammar is expressed in EBNF; terminal classes such as <code>V_ALPHANUMERIC_NAME</code> are given as regular expressions. Class, type and attribute names use the openEHR conventions, i.e. <code>TYPE_NAME</code>, <code>Primitive_type_name</code> and <code>attribute_name</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conformance"><a class="anchor" href="#_conformance"></a><a class="link" href="#_conformance">Conformance</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant <a href="https://specifications.openehr.org/releases/ITS/development/index" target="_blank" rel="noopener">openEHR Implementation Technology Specification(s) (ITSs)</a>, such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tools"><a class="anchor" href="#_tools"></a><a class="link" href="#_tools">Tools</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Various tools exist for creating and processing archetypes. The <a href="https://www.openehr.org/downloads/ADLworkbench" target="_blank" rel="noopener">ADL Workbench</a> is a reference compiler, visualiser and editor. The openEHR tools can be <a href="https://www.openehr.org/downloads/modellingtools" target="_blank" rel="noopener">downloaded from the website</a>. Source projects can be found at the <a href="https://github.com/openEHR" target="_blank" rel="noopener">openEHR Github project</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a><a class="link" href="#_amendment_record">Amendment Record</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser, Implementer</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.3.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>: Relocate the AM Archetype Identification specification (issue 0.7.9, AM Release 2.3.0) to the BASE component as the Artefact Identification specification. Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-463" target="_blank" rel="noopener">SPECPR-463</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name <code>TEMPLATE_ID</code> (Base Types) among the identifier types of the scheme; its value should be an HRID (<a href="https://specifications.openehr.org/tickets/SPECBASE-42" target="_blank" rel="noopener">SPECBASE-42</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Follow AOM2 issue 2.4.2: the <code>namespace</code> of <code>ARCHETYPE_HRID</code> is mandatory, and <code>physical_id</code> returns an <code>Hrid</code> (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>, <a href="https://specifications.openehr.org/tickets/SPECAM-103" target="_blank" rel="noopener">SPECAM-103</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Correct editorial defects carried over from the AM document: restore a truncated lifecycle rule, fix typos, the ODIN example syntax and date, the AQL example quotes and the identifier lengths in the optimisation example (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preface: state where the document came from, use the BASE feedback channel and the current titles of related documents; add missing external-link markers; use <code>sectnums</code>; add the BASE release row to this record (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make the merged chapters consistent: the complete ADL 2 identifier carries the full version, while reduced-precision forms are references; <code>release_version</code> is the three-part numeric version; references from data use the complete identifier (<code>archetype_ver_ref = hrid</code>); the namespace rules for references are stated once; the build count after <code>-rc</code> is optional; replace the outdated terms 'extension', 'miniHRID' and 'instance UID'; data examples use full versions (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every artefact is assigned a namespace at creation (that of its creating organisation, e.g. a vendor); the namespace no longer distinguishes managed from unmanaged artefacts, and is never omitted, wildcarded or inferred in an identifier. Only legacy (ADL 1.4) identifiers have no namespace. Add a vendor namespace example (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
+S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Align the identifying properties with the AOM2 <code>ARCHETYPE_HRID</code> and the BASE Resource Model: <code>rm_package</code>, <code>version_status</code> (BASE <code>VERSION_STATUS</code>), <code>build_count</code>, <code>semantic_id</code>; the machine identifier <code>uid</code> from <code>AUTHORED_RESOURCE</code> and the per-build <code>build_uid</code> of <code>AUTHORED_ARCHETYPE</code> (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">References from data: the identifier recorded in data is the complete <code>ARCHETYPE_ID</code> (namespace and full version); legacy ADL 1.4 identifiers remain valid and are not read as abbreviated three-part versions (<a href="https://specifications.openehr.org/tickets/SPECBASE-35" target="_blank" rel="noopener">SPECBASE-35</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-474" target="_blank" rel="noopener">SPECPR-474</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Align the reference grammar (<code>hrid_ref</code> and the interface, specific interface and physical tiers) with the ADL 2 <code>ARCHETYPE_REF</code> token: numeric version parts only, a pre-release version being referenced by its full identifier. State that a namespace is never a wildcard, and when a reference may omit it (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace the version identifier grammar by the HRID version grammar aligned with the ADL 2 base lexer: reduced-precision <code>version_id</code>, full <code>release_version</code>, <code>-beta</code> modifier, optional <code>build_count</code> after a pre-release modifier (replacing <code>extension</code> and <code>issue_number</code>) (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+J Holslag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace the identifier grammar by the HRID grammar aligned with the ADL 2 base lexer: a namespaced modern (ADL 2) form and a legacy (ADL 1.4) form, <code>rm_package</code> instead of <code>rm_closure</code>; remove the statement that it simplifies the <code>ARCHETYPE_ID</code> grammar; add an informative regular expression (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-363" target="_blank" rel="noopener">SPECPR-363</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generalise the purpose and scope from archetypes to knowledge artefacts; state the BASE computable types (<code>Hrid</code>, <code>ARCHETYPE_ID</code>) and the location of the machine identifier (<code>AUTHORED_RESOURCE.<em>uid</em></code>) (<a href="https://specifications.openehr.org/tickets/SPECBASE-50" target="_blank" rel="noopener">SPECBASE-50</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2026</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>AM Release 2.3.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Dec 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECAM-58" target="_blank" rel="noopener">SPECAM-58</a>. Correct errors and improve examples - S Garde review Nov 2018. Change <code><em>instance_uid</em></code> to <code><em>build_uid</em></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Nov 2018</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>AM Release 2.2.0</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>AM Release 2.1.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECAM-52" target="_blank" rel="noopener">SPECAM-52</a>Improve explanation of version number progression in section 4.2; correct version identifier grammar (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-254" target="_blank" rel="noopener">SPECPR-254</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E Sundvall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Feb 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Correct formatting, re-instate Archetype model diagram at start of section 3.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 Jan 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECAM-41" target="_blank" rel="noopener">SPECAM-41</a>. Correct 'unstable' to 'alpha'; correct version-related typo; update versioning incrementing rules.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Jun 2017</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>AM Release 2.0.6</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace <code>'-unstable'</code> with <code>'-alpha'</code> to be compatible with typical tools.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Feb 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace <code>'+uNNN'</code> with <code>'-unstable'</code>; simplify the number after <code>'rc'</code> to an integer build count.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde,<br>
+ I McNicoll,<br>
+ H Leslie</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 Sep 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove <code><em>build_count</em></code>, replace with <code><em>build_uid</em></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 May 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change <code>ARCHEYTPE_HRID.<em>commit_number</em></code> to <code><em>instance_uid</em></code>. Build_count reset to 1 on each version change. Adjust diagrams and explanations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde<br>
+ I McNicoll<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 May 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simplify development state in lifecycle; merge 'initial' and rename 'draft'.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde<br>
+ I McNicoll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 May 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rewrite referencing section; update 'problem description; further grammar improvements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 Jun 2013</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove errors and ambiguities to do with explanation of human readable identifier; improve nomenclature; rewrite grammar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Jun 2013</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Major update based on CKM clinical group analysis, and feedback from the CIMI and openEHR communities.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Garde<br>
+ H Leslie<br>
+ I McNicoll<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 Apr 2013</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refinements to do with template identification.<br>
+ Review from Medical Centrum Alkmaar (Netherlands).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale<br>
+ M van der Meer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Feb 2010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Writing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jul 2009</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../scenarios/">Scenarios</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright: © 2003+
+    <a href="https://www.openehr.org"
+        alt="is an independent, non-profit foundation, facilitating the sharing of health
+           records by consumers and clinicians via open specifications, clinical models
+           and open platform implementations.">The openEHR Foundation</a>
+  </p>
+
+  <p>
+    License:
+    <img src="../../../../ui/img/cc-by-nd-88x31.png"
+        alt="Creative Commons Attribution-NoDerivs 3.0 Unported."
+        style="vertical-align:middle;margin:0 0.25rem 0 0;">
+    <a href="https://creativecommons.org/licenses/by-nd/3.0/">
+      Creative Commons Attribution-NoDerivs 3.0 Unported.
+    </a>
+  </p>
+
+  <p>
+    <strong>Links: <strong>
+    <a href="https://www.openehr.org/terms-of-use" class="mr-1">Terms of use</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Privacy policy</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Logos &amp; Trademarks</a> |
+    <a href="https://www.openehr.org/contact-us" class="mx-1">Contact</a>
+  </p>
+</footer>
+
+<script id="site-script" src="../../../../ui/js/site.js" data-ui-root-path="../../../../ui"></script>
+<script defer src="../../../../ui/js/vendor/highlight.js"></script>
+<script src="../../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../ui/js/medium-zoom.min.js"></script>
+<script src="../../../../ui/js/zoom.js"></script>
+<script async src="../../../../ui/js/tabs.js"></script>
+  </body>
+</html>

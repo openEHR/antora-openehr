@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -587,7 +560,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -596,7 +569,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/domain_extension/#_ordinal_class" class="xref page">ORDINAL</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_ordinal_class">ORDINAL</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value set of allowed Ordinals in the constraint.</p>
 </div></div></td>
@@ -622,7 +595,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -631,14 +604,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference model type that this node corresponds to.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>occurrences</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a>&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Occurrences of this object node in the data, under the owning attribute. Upper limit can only be greater than 1 if owning attribute has a cardinality of more than 1).<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -646,18 +619,18 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Semantic identifier of this node, used to distinguish sibling nodes. All nodes must have a node_id; for nodes under a container C_ATTRIBUTE, the id must be an id-code must be defined in the archetype terminology. For valid structures, all node ids are at-codes.
 For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>assumed_value</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value to be assumed if none sent in data.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/domain_extension/#_ordinal_class" class="xref page">ORDINAL</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_ordinal_class">ORDINAL</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value set of allowed Ordinals in the constraint.</p>
 </div></div></td>
@@ -667,26 +640,26 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_subset_of</strong> (<br>
-other: <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
+other: <code><a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
 Typically used during validation of special-ised archetype nodes.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_valid</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Path of this node relative to root of archetype.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -695,7 +668,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the relative path a_path exists at this node.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -704,28 +677,28 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a_value is valid with respect to constraint expressed in concrete instance of this type.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>prototype_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a prototype value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_assumed_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if there is an assumed value.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>default_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a default value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -734,14 +707,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <em>Post</em>: <code>Result = attributes.is_empty</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if any value of the reference model type being constrained is allowed. Redefine in descendants.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../constraint_model_package/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Standard (i.e. C_OBJECT) form of constraint.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -750,19 +723,19 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Post</em>: <code>Result = soc_parent /= Void or parent.soc_parent /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Path_exists</em>: <code>path /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Assumed_value_valid</em>: <code>has_assumed_value implies valid_value(assumed_value)</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -851,7 +824,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: `<a href="/classes/CODE_PHRASE">CODE_PHRASE</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code><a href="../../../../RM/Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Terminology code providing the Ordinal&#8217;s symbol.</p>
 </div></div></td>
@@ -887,7 +860,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: `<a href="/classes/CODE_PHRASE">CODE_PHRASE</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code><a href="../../../../RM/Release-1.1.0/data_types/text_package/#_code_phrase_class" class="xref page">CODE_PHRASE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Terminology code providing the Ordinal&#8217;s symbol.</p>
 </div></div></td>
@@ -977,7 +950,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -993,7 +966,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/domain_extension/#_c_quantity_item_class" class="xref page">C_QUANTITY_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_c_quantity_item_class">C_QUANTITY_ITEM</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value set of allowed individual Quantity item constraints in this Quantity constraint.</p>
 </div></div></td>
@@ -1019,7 +992,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1028,14 +1001,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference model type that this node corresponds to.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>occurrences</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a>&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Occurrences of this object node in the data, under the owning attribute. Upper limit can only be greater than 1 if owning attribute has a cardinality of more than 1).<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1043,14 +1016,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Semantic identifier of this node, used to distinguish sibling nodes. All nodes must have a node_id; for nodes under a container C_ATTRIBUTE, the id must be an id-code must be defined in the archetype terminology. For valid structures, all node ids are at-codes.
 For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>assumed_value</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value to be assumed if none sent in data.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1060,7 +1033,7 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/domain_extension/#_c_quantity_item_class" class="xref page">C_QUANTITY_ITEM</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_c_quantity_item_class">C_QUANTITY_ITEM</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value set of allowed individual Quantity item constraints in this Quantity constraint.</p>
 </div></div></td>
@@ -1070,26 +1043,26 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_subset_of</strong> (<br>
-other: <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
+other: <code><a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
 Typically used during validation of special-ised archetype nodes.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_valid</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Path of this node relative to root of archetype.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1098,7 +1071,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the relative path a_path exists at this node.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1107,28 +1080,28 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a_value is valid with respect to constraint expressed in concrete instance of this type.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>prototype_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a prototype value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_assumed_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if there is an assumed value.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>default_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a default value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1137,14 +1110,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <em>Post</em>: <code>Result = attributes.is_empty</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if any value of the reference model type being constrained is allowed. Redefine in descendants.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../constraint_model_package/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Standard (i.e. C_OBJECT) form of constraint.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1153,19 +1126,19 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Post</em>: <code>Result = soc_parent /= Void or parent.soc_parent /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Path_exists</em>: <code>path /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Assumed_value_valid</em>: <code>has_assumed_value implies valid_value(assumed_value)</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1273,6 +1246,35 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <p>Optional units constraint.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_system</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional units system from which the code in <code><em>units</em></code> is defined, as for <code>DV_QUANTITY.<em>units_system</em></code>: a URI identifying a terminology containing units concepts.</p>
+</div>
+<div class="paragraph">
+<p>If not set, the UCUM standard (case-sensitive codes) is assumed as the units system.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_display_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional displayable form of <code><em>units</em></code>, as for <code>DV_QUANTITY.<em>units_display_name</em></code>, e.g. <code>'lb'</code> for <code>'[lb_av]'</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The display name may be language-dependent, so it is better set in templates than in archetypes.
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1308,6 +1310,33 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <p>Optional units constraint.</p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_system</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional units system from which the code in <code><em>units</em></code> is defined, as for <code>DV_QUANTITY.<em>units_system</em></code>: a URI identifying a terminology containing units concepts.</p>
+</div>
+<div class="paragraph">
+<p>If not set, the UCUM standard (case-sensitive codes) is assumed as the units system.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_display_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional displayable form of <code><em>units</em></code>, as for <code>DV_QUANTITY.<em>units_display_name</em></code>, e.g. <code>'lb'</code> for <code>'[lb_av]'</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The display name may be language-dependent, so it is better set in templates than in archetypes.
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1334,6 +1363,18 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
             "_type": "P_BMM_SINGLE_PROPERTY",
             "name": "units",
             "documentation": "Optional units constraint.",
+            "type": "String"
+        },
+        "units_system": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "units_system",
+            "documentation": "Optional units system from which the code in `_units_` is defined, as for `DV_QUANTITY._units_system_`: a URI identifying a terminology containing units concepts.\n\nIf not set, the UCUM standard (case-sensitive codes) is assumed as the units system.",
+            "type": "String"
+        },
+        "units_display_name": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "units_display_name",
+            "documentation": "Optional displayable form of `_units_`, as for `DV_QUANTITY._units_display_name_`, e.g. `'lb'` for `'[lb_av]'`.\n\nNOTE: The display name may be language-dependent, so it is better set in templates than in archetypes.",
             "type": "String"
         }
     }
@@ -1391,7 +1432,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1438,7 +1479,7 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>, <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a>, <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a>, <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1447,14 +1488,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference model type that this node corresponds to.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>occurrences</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/interval/#_interval_class" class="xref page">Interval</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a>&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Occurrences of this object node in the data, under the owning attribute. Upper limit can only be greater than 1 if owning attribute has a cardinality of more than 1).<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1462,14 +1503,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Semantic identifier of this node, used to distinguish sibling nodes. All nodes must have a node_id; for nodes under a container C_ATTRIBUTE, the id must be an id-code must be defined in the archetype terminology. For valid structures, all node ids are at-codes.
 For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_object_class" class="xref page">C_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>assumed_value</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value to be assumed if none sent in data.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1493,26 +1534,26 @@ For C_PRIMITIVE_OBJECTs, it will have the special value Primitive_node_id.<br>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_subset_of</strong> (<br>
-other: <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
+other: <code><a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
 Typically used during validation of special-ised archetype nodes.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>is_valid</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>+
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Path of this node relative to root of archetype.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1521,7 +1562,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the relative path a_path exists at this node.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1530,28 +1571,28 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a_value is valid with respect to constraint expressed in concrete instance of this type.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>prototype_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a prototype value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_assumed_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if there is an assumed value.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>default_value</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a default value from this constraint object.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1560,14 +1601,14 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <em>Post</em>: <code>Result = attributes.is_empty</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if any value of the reference model type being constrained is allowed. Redefine in descendants.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>standard_equivalent</strong> (): <code><a href="../constraint_model_package/#_c_complex_object_class" class="xref page">C_COMPLEX_OBJECT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Standard (i.e. C_OBJECT) form of constraint.<br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM1.4/constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_domain_type_class" class="xref page">C_DOMAIN_TYPE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1576,19 +1617,19 @@ a_value: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Post</em>: <code>Result = soc_parent /= Void or parent.soc_parent /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Path_exists</em>: <code>path /= Void</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_archetype_constraint_class" class="xref page">ARCHETYPE_CONSTRAINT</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Assumed_value_valid</em>: <code>has_assumed_value implies valid_value(assumed_value)</code><br>
-<em>Inherited from <a href="../../../Release-2.3.0/AOM2/constraint_model-overview/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
+<em>Inherited from <a href="../constraint_model_package/#_c_defined_object_class" class="xref page">C_DEFINED_OBJECT</a></em></p>
 </div></div></td>
 </tr>
 </tbody>

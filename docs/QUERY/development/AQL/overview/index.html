@@ -334,13 +334,13 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>the utilization of <a href="#_openehr_path_syntax">openEHR path syntax</a> to locate clinical statements and data values within them using archetypes; this syntax is used to represent the query criteria and returned results, and allows stating query criteria using archetype and node identifiers, data values within the archetypes, and class attributes defined within the Reference Model;</p>
+<p>the utilization of <a href="../syntax/#_openehr_path_syntax" class="xref page">openEHR path syntax</a> to locate clinical statements and data values within them using archetypes; this syntax is used to represent the query criteria and returned results, and allows stating query criteria using archetype and node identifiers, data values within the archetypes, and class attributes defined within the Reference Model;</p>
 </li>
 <li>
 <p>returned results may be objects of any granularity from 'top-level' RM objects to primitive data items;</p>
 </li>
 <li>
-<p>the utilization of a <a href="#_containment"><code>CONTAINS</code> operator</a> to match data hierarchy relationships in order to constrain the source data to which the query is applied;</p>
+<p>the utilization of a <a href="../syntax/#_containment" class="xref page"><code>CONTAINS</code> operator</a> to match data hierarchy relationships in order to constrain the source data to which the query is applied;</p>
 </li>
 <li>
 <p>the utilization of ADL-like operator syntaxes, such as <code>matches</code>, <code>exists</code> and <code>not</code>;</p>
@@ -349,7 +349,7 @@
 <p>model-neutral syntax: AQL does not have any dependency on a Reference Model; it is also neutral to system implementation and environment;</p>
 </li>
 <li>
-<p>supports time-based conditions to query historical versions of data.</p>
+<p>supports querying historical versions of data, using <a href="../syntax/#_version_predicate" class="xref page">version predicates</a> and time-based conditions; by default, a query is applied only to the latest version of each versioned object.</p>
 </li>
 </ol>
 </div>
@@ -381,7 +381,7 @@
 <h2 id="_aql_example"><a class="anchor" href="#_aql_example"></a><a class="link" href="#_aql_example">AQL example</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Below is an example of an AQL statement. This statement returns all blood pressure values contained in <code>COMPOSITION</code> instances defined by the <code>openEHR-EHR-COMPOSITION.encounter.v1</code> archetype, which contain <code>OBSERVATION</code> instances defined by the <code>openEHR-EHR-OBSERVATION.blood_pressure.v1</code> archetype, where the systolic value is greater than or equal to 140 or whose diastolic value is greater than or equal to 90, within a specified EHR (i.e. whose EHR id is the value of the variable <code>$ehrUid</code>). The AQL syntax is a synthesis of SQL structural syntax and the <a href="#_openehr_path_syntax">openEHR path syntax</a>.</p>
+<p>Below is an example of an AQL statement. This statement returns all blood pressure values contained in <code>COMPOSITION</code> instances defined by the <code>openEHR-EHR-COMPOSITION.encounter.v1</code> archetype, which contain <code>OBSERVATION</code> instances defined by the <code>openEHR-EHR-OBSERVATION.blood_pressure.v1</code> archetype, where the systolic value is greater than or equal to 140 or whose diastolic value is greater than or equal to 90, within a specified EHR (i.e. whose EHR id is the value of the variable <code>$ehrUid</code>). The AQL syntax is a synthesis of SQL structural syntax and the <a href="../syntax/#_openehr_path_syntax" class="xref page">openEHR path syntax</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">

@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -577,7 +620,7 @@ infections' (ICD10 code <code>A04</code>):</p>
 <div class="sect2">
 <h3 id="_paths_within_top_level_structures"><a class="anchor" href="#_paths_within_top_level_structures"></a><a class="link" href="#_paths_within_top_level_structures">Paths within Top-level Structures</a></h3>
 <div class="paragraph">
-<p>Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <a href="#archetypes_and_data">[archetypes_and_data]</a>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as <code>List&lt;T&gt;</code> etc., e.g. <code>COMPOSITION.<em>content</em></code> is defined to be a <code>List&lt;CONTENT_ITEM&gt;</code>, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an <code><em>archetype_node_id</em></code> attribute carrying archetype <code><em>node_id</em></code> values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, <code><em>archetype_id</em></code> predicates are also used to distinguish them. The same shorthand is used for <code><em>archetype_id</em></code> predicate expressions as for <code><em>archetype_node_ids</em></code>, i.e. instead of using <code>[@archetype_id = "xxxxx"]</code>, <code>[xxxx]</code> can be used instead.</p>
+<p>Paths within top-level structures strictly adhere to attribute and function names in the relevant parts of the reference model. Predicate expressions are needed to distinguish multiple siblings in various points in paths into these structures, but particularly at archetype "chaining" points. A chaining point is where one archetype takes over from another as illustrated in figure <a href="../archetypes/#archetypes_and_data" class="xref page">archetypes_and_data</a>. Chaining points in Compositions occur between the Composition and a Section structure, potentially between a Section structure and other sub-Section structures (constrained by a different Section archetype), and between either Compositions or Section structures, and Entries. Chaining might also occur inside an Entry, if archetyping is used on lower level structures such as Item_lists etc. Most chaining points correspond to container types such as <code>List&lt;T&gt;</code> etc., e.g. <code>COMPOSITION.<em>content</em></code> is defined to be a <code>List&lt;CONTENT_ITEM&gt;</code>, meaning that in real data, the content of a Composition could be a List of Section structures. To distinguish between such sibling structures, predicate expressions are used, based on the archetype_id. At the root point of an archetype in data (e.g. top of a Section structure), the archetype_id carries the identifier of the archetype used to create that structure, in the same manner as any interior point in an archetyped structure has an <code><em>archetype_node_id</em></code> attribute carrying archetype <code><em>node_id</em></code> values. The chaining point between Sections and Entries works in the same manner, and since multiple Entries can occur under a single Section, <code><em>archetype_id</em></code> predicates are also used to distinguish them. The same shorthand is used for <code><em>archetype_id</em></code> predicate expressions as for <code><em>archetype_node_ids</em></code>, i.e. instead of using <code>[@archetype_id = "xxxxx"]</code>, <code>[xxxx]</code> can be used instead.</p>
 </div>
 <div class="paragraph">
 <p>The following paths are examples of referring to items within a Composition:</p>
@@ -985,7 +1028,7 @@ ehr:/347a5490-55ee-4da9-b91a-9bba710f730e/directory</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This URI identifies a top-level item whose version identifier is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, i.e. the second trunk version of the Versioned Object identified by the GUID, created at an EHR system identified by <code>net.nhs.rmh</code>. Note that the mention of a system in the version identifier does not imply that the requested EHR is at that system, only that the top-level object being sought was created at that system.</p>
+<p>This URI identifies a top-level item whose version identifier is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, i.e. the second trunk version of the Versioned Object identified by the GUID, created at an EHR system identified by <code>uk.nhs.ehr1</code>. Note that the mention of a system in the version identifier does not imply that the requested EHR is at that system, only that the top-level object being sought was created at that system.</p>
 </div>
 </div>
 <div class="sect3">

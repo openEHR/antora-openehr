@@ -565,7 +565,7 @@ to other systems which support ISO 13606 as an interoperability standard.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -574,7 +574,7 @@ to other systems which support ISO 13606 as an interoperability standard.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="../../../Release-1.1.0/data_structures/representation_package/#_item_class" class="xref page">ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="../representation_package/#_item_class" class="xref page">ITEM</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
 </div></div></td>
@@ -600,16 +600,16 @@ to other systems which support ISO 13606 as an interoperability standard.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>, <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a>, <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>, <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a>, <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="../../data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -619,35 +619,35 @@ to other systems which support ISO 13606 as an interoperability standard.</p>
 </div>
 <div class="paragraph">
 <p>At an archetype root point, the value of this attribute is always the stringified form of the <code><em>archetype_id</em></code> found in the <code><em>archetype_details</em></code> object.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_uid_based_id_class" class="xref page">UID_BASED_ID</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional globally unique object identifier for root points of archetyped structures.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>links</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/common/archetyped_package/#_link_class" class="xref page">LINK</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>links</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../common/archetyped_package/#_link_class" class="xref page">LINK</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Links to other archetyped structures (data whose root object inherits from <code>ARCHETYPED</code>, such as <code>ENTRY</code>, <code>SECTION</code> and so on). Links may be to structures in other compositions.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_details</strong>: <code><a href="../../../Release-1.1.0/common/archetyped_package/#_archetyped_class" class="xref page">ARCHETYPED</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_details</strong>: <code><a href="../../common/archetyped_package/#_archetyped_class" class="xref page">ARCHETYPED</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of archetyping used on this node.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feeder_audit</strong>: <code><a href="../../../Release-1.1.0/common/archetyped_package/#_feeder_audit_class" class="xref page">FEEDER_AUDIT</a></code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feeder_audit</strong>: <code><a href="../../common/archetyped_package/#_feeder_audit_class" class="xref page">FEEDER_AUDIT</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail from non-openEHR system of original commit of information forming the content of this node, or from a conversion gateway which has synthesised this node.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -725,10 +725,10 @@ other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent</strong> (): <code><a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent</strong> (): <code><a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Parent of this node in a compositional hierarchy.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -739,7 +739,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <em>Pre</em>: <code>path_unique (a_path)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -748,7 +748,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of items corresponding to a non-unique path.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -759,7 +759,7 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <em>Pre</em>: <code>not a_path.is_empty</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the path exists in the data with respect to the current item.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -770,34 +770,34 @@ a_path: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 <em>Pre</em>: <code>path_exists (a_path)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the path corresponds to a single item in the data.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_of_item</strong> (<br>
-a_loc: <code><a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a>[1]</code><br>
+a_loc: <code><a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The path to an item relative to the root of this archetyped structure.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_pathable_class" class="xref page">PATHABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code><a href="../../data_types/text_package/#_dv_text_class" class="xref page">DV_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_archetype_root</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this node is the root of an archetyped structure.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="../../../Release-1.1.0/data_structures/representation_package/#_item_class" class="xref page">ITEM</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="../representation_package/#_item_class" class="xref page">ITEM</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
 </div></div></td>
@@ -808,19 +808,19 @@ a_loc: <code><a href="../../../Release-1.1.0/common/archetyped_package/#_pathabl
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Links_valid</em>: <code>links /= Void implies not links.is_empty</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Archetyped_valid</em>: <code>is_archetype_root xor archetype_details = Void</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Archetype_node_id_valid</em>: <code>not archetype_node_id.is_empty</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
+<em>Inherited from <a href="../../common/archetyped_package/#_locatable_class" class="xref page">LOCATABLE</a></em></p>
 </div></div></td>
 </tr>
 </tbody>

@@ -329,7 +329,7 @@
 <div class="sect2">
 <h3 id="_syntax"><a class="anchor" href="#_syntax"></a><a class="link" href="#_syntax">Syntax</a></h3>
 <div class="paragraph">
-<p>Because GDL2 guidelines are machine serialisations of the <a href="#GDL2 Object Model">[GDL2 Object Model]</a>, the syntax is mostly a direct consequence of the structure. Currently, either <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">openEHR ODIN</a> or <a href="http://json.org" target="_blank" rel="noopener">JSON</a> syntax may be used. The exception is where expressions appear, which is within Assertion and Assignment statements, which as per the model, occur in <code>/pre_conditions</code>, <code>data_bindings[id]/predicates</code>, <code>rules[id]/when</code> statements, <code>rules[id]/then</code> actions, and Guideline <code>default_actions</code>.</p>
+<p>Because GDL2 guidelines are machine serialisations of the <a href="../model/" class="xref page">GDL2 Object Model</a>, the syntax is mostly a direct consequence of the structure. Currently, either <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">openEHR ODIN</a> or <a href="http://json.org" target="_blank" rel="noopener">JSON</a> syntax may be used. The exception is where expressions appear, which is within Assertion and Assignment statements, which as per the model, occur in <code>/pre_conditions</code>, <code>data_bindings[id]/predicates</code>, <code>rules[id]/when</code> statements, <code>rules[id]/then</code> actions, and Guideline <code>default_actions</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following subsections describe the expressions occurring in Assertion and Assignment statements. The former is a kind of statement that asserts the truth of a Boolean expression, while the latter is a programming-style assignment of an expression of any type to a variable of that type.</p>
@@ -489,7 +489,7 @@ terminology = &lt;
 <div class="sect2">
 <h3 id="_expression_elements"><a class="anchor" href="#_expression_elements"></a><a class="link" href="#_expression_elements">Expression Elements</a></h3>
 <div class="paragraph">
-<p>Most expression terminal elements shown in the <a href="#Expressions Package">[Expressions Package]</a> below are generated during the process of parsing larger expressions and statements found within guidelines, as per the above examples. Consequently, some properties, such as types of constants and variables are inferred and generated on the fly, rather than being stated literally within a guideline.</p>
+<p>Most expression terminal elements shown in the <a href="../model/#_expressions_package" class="xref page">Expressions Package</a> below are generated during the process of parsing larger expressions and statements found within guidelines, as per the above examples. Consequently, some properties, such as types of constants and variables are inferred and generated on the fly, rather than being stated literally within a guideline.</p>
 </div>
 </div>
 <div class="sect2">

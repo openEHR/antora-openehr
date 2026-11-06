@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -562,7 +535,7 @@ meta_data: '(' meta_data_item  (';' meta_data_item )* ')' ;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The syntax for <code>meta_data_item</code>, <code>ARCHETYPE_HRID</code> and <code>ARCHETYPE_REF</code> can be found below in <a href="#_syntax_specification">[_syntax_specification]</a>.</p>
+<p>The syntax for <code>meta_data_item</code>, <code>ARCHETYPE_HRID</code> and <code>ARCHETYPE_REF</code> can be found below in <a href="../syntax_spec/" class="xref page">Syntax Specification</a>.</p>
 </div>
 <div class="paragraph">
 <p>The 'archetype' artefact type can have any or all of the above sections. The other artefact types are more specific in their form.</p>
@@ -849,7 +822,7 @@ archetype (adl_version=2.4.0; rm_release=1.0.2)
 <p><strong>Deprecated</strong>: In ADL 1.4 and transitional forms of ADL 1.5, archetype identifiers included only a single version number, and this typically started at 1. Tools that deal with older archetypes should accept these identifiers, and convert the version part to 'v1.0.0' or any other appropriate identifier, obeying the openEHR Artefact Knowledge Identification specification.</p>
 </div>
 <div class="paragraph">
-<p>The multi-axial archetype identifier identifies archetypes in a global concept space within a given namespace. It is also known as an 'ontological' identifier, since the concept space can be understood as an ontology of informational concepts on which the archetypes are based. The syntax of the identifier is described in the <a href="https://specifications.openehr.org/releases/AM/latest/Identification.html" target="_blank" rel="noopener">openEHR Identification Specification</a>. The structure of the concept space is essentially two-level, with the first level being a reference model class (e.g. openEHR <code>OBSERVATION</code> class) and the second being a domain concept (e.g. 'haematology result').</p>
+<p>The multi-axial archetype identifier identifies archetypes in a global concept space within a given namespace. It is also known as an 'ontological' identifier, since the concept space can be understood as an ontology of informational concepts on which the archetypes are based. The syntax of the identifier is described in the {openehr_base_artefact_identification}[openEHR Artefact Identification Specification^]. The structure of the concept space is essentially two-level, with the first level being a reference model class (e.g. openEHR <code>OBSERVATION</code> class) and the second being a domain concept (e.g. 'haematology result').</p>
 </div>
 <div class="paragraph">
 <p>Because namespaces are usually treated hierarchically, higher level namespaces (e.g. '.org' domains) are assumed to be includable by more local namespaces, with the result that the concept definition space is inherited as well.</p>
@@ -867,7 +840,7 @@ archetype (adl_version=2.4.0; rm_release=1.0.2)
 <div class="sect2">
 <h3 id="_version_identifiers"><a class="anchor" href="#_version_identifiers"></a><a class="link" href="#_version_identifiers">Version Identifiers</a></h3>
 <div class="paragraph">
-<p>ADL 2 Archetypes contain 3-part version identifiers, with optional qualifiers, following the openEHR Artefact Knowledge Identification specification. Examples below:</p>
+<p>ADL 2 Archetypes contain 3-part version identifiers, with optional qualifiers, following the openEHR Archetype Identification specification. Examples below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1528,7 +1501,7 @@ the evolution toward separation of data context paths and expressions will enabl
     $substance_use_status: Boolean := /data[at0001]/items[at0002]/value[at90001]
     $substance_use_data: Object_ref := /data[at0001]/items[at0007|details of use|]
 
-    Substance_use: $substance_use_status /= [at0016|never used|] implies
+    Substance_use: $substance_use_status != [at0016|never used|] implies
         exists /data[at0001]/items[at0007|details of use|]</pre>
 </div>
 </div>
@@ -1540,7 +1513,7 @@ the evolution toward separation of data context paths and expressions will enabl
     $substance_use_status: Boolean := /data[id2]/items[id3]/value[id18]
     $substance_use_data: Object_ref := /data[id2]/items[id8|details of use|]
 
-    Substance_use: $substance_use_status /= [at17|never used|] implies
+    Substance_use: $substance_use_status != [at17|never used|] implies
         exists /data[id2]/items[id8|details of use|]</pre>
 </div>
 </div>
@@ -1709,7 +1682,7 @@ terminology
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">Overview</a></h3>
 <div class="paragraph">
-<p>This section describes the syntax of the <code>terminology</code> section of an archetype. The following section, <a href="#Terminology Integration">[Terminology Integration]</a> describes the semantics.</p>
+<p>This section describes the syntax of the <code>terminology</code> section of an archetype. The following section, <a href="../terminology_integration/" class="xref page">Terminology Integration</a> describes the semantics.</p>
 </div>
 <div class="paragraph">
 <p>The <code>terminology</code> section of an archetype is expressed in ODIN, and is where codes representing node identifiers, constraints on coded term values, and bindings to terminologies are defined. Linguistic language translations are added in the form of extra blocks keyed by the relevant language. The following example shows the general layout of this section.</p>

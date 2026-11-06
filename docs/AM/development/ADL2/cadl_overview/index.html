@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -939,7 +912,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The rules and use of node identifiers are described in more detail below in the <a href="#_node_identifiers">Node Identifiers</a> and <a href="#_node_identifier_codes">[_node_identifier_codes]</a> sections.</p>
+<p>The rules and use of node identifiers are described in more detail below in the <a href="#_node_identifiers">Node Identifiers</a> and <a href="../adl_introduction/#_node_identifier_codes" class="xref page">Node Identifier Codes</a> sections.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1248,7 +1221,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>cardinality</code> keyword implies firstly that the property events must be of a container type, such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> , <code>Bag&lt;T&gt;</code> . The integer range indicates the valid membership of the container; a single '*' means the range '0..*', i.e. '0 to many'. The type of the container is not explicitly indicated, since it is usually defined by the information model. However, the semantics of a logical set (unique membership, ordering not significant), a logical list (ordered, non-unique membership) or a bag (unordered, non-unique membership) can be constrained using the additional keywords <code>ordered</code> , <code>unordered</code> , <code>unique</code> and <code>non-unique</code> within the cardinality constraint, as per the following examples:</p>
+<p>The <code>cardinality</code> keyword implies firstly that the property events must be of a container type, such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> , <code>Bag&lt;T&gt;</code> . The integer range indicates the valid membership of the container; a single '*' means the range '0..*', i.e. '0 to many'. The type of the container is not explicitly indicated, since it is usually defined by the information model. However, the semantics of a logical set (unique membership, ordering not significant), a logical list (ordered, non-unique membership) or a bag (unordered, non-unique membership) can be constrained using the additional keywords <code>ordered</code>, <code>unordered</code> and <code>unique</code> within the cardinality constraint, as per the following examples:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1256,6 +1229,9 @@
     events cardinality ∈ {*; unordered; unique} ∈ {         -- logical set
     events cardinality ∈ {*; unordered} ∈ {                 -- logical bag</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The keyword <code>unique</code> means logical uniqueness: no two members of the container may be equal by value. Object identity is not meant, and attributes that distinguish sibling objects anyway, such as their names, are not taken into account. When <code>unique</code> is not stated, membership is non-unique.</p>
 </div>
 <div class="paragraph">
 <p>If no numeric or ordering constraint on the cardinality of a container attribute is required, the keyword is used on its own, and simply indicates that the attribute is a container, as in the following example:</p>
@@ -1272,7 +1248,7 @@
 <p>In theory, no cardinality constraint can be stronger than the semantics of the corresponding container in the relevant part of the reference model. However, in practice, developers often use lists to facilitate data integration, when the actual semantics are intended to be of a set; in such cases, they typically ensure set-like semantics in their own code rather than by using an <code>Set&lt;T&gt;</code> type. How such constraints are evaluated in practice may depend somewhat on knowledge of the software system.</p>
 </div>
 <div class="paragraph principle">
-<p>A <strong>cardinality constraint</strong> must be used after any Reference Model container attribute name (or after its existence constraint, if there is one) in order to designate it as a container attribute. Additionally, it may constrain the number of member items it may have in the data, and whether it has "list", "set", or "bag" semantics, via the use of the keywords 'ordered', 'unordered', 'unique' and 'non-unique'.</p>
+<p>A <strong>cardinality constraint</strong> must be used after any Reference Model container attribute name (or after its existence constraint, if there is one) in order to designate it as a container attribute. Additionally, it may constrain the number of member items it may have in the data, and whether it has "list", "set", or "bag" semantics, via the use of the keywords 'ordered', 'unordered' and 'unique'.</p>
 </div>
 <div class="paragraph">
 <p>The numeric part of the cardinality constraint can take the values <code>{0}</code>, <code>\{0..0}</code>, <code>\{0..n}</code>, <code>\{m..n}</code>, <code>{0..*}</code>, or <code>\{*}</code>, or a syntactic equivalent. The first two of these constraints are unlikely to be useful, but there is no reason to prevent them. There is no default cardinality, since if none is shown, the relevant attribute is assumed to be single-valued (in the interests of uniformity in archetypes, this holds even for smarter parsers that can access the reference model and determine that the attribute is in fact a container).</p>
@@ -1954,7 +1930,7 @@ employees[id105]/title</pre>
 <p>The above paths can all be used to reference the relevant nodes within the archetype in which they are defined, or within any specialised child archetype.</p>
 </div>
 <div class="paragraph">
-<p>Paths used in cADL are expressed in the ADL path syntax, described in detail in <a href="#ADL Paths">[ADL Paths]</a>. ADL paths have the same alternating object/attribute structure implied in the general hierarchical structure of cADL, obeying the pattern <code>TYPE/attribute/TYPE/attribute/</code> &#8230;&#8203; .</p>
+<p>Paths used in cADL are expressed in the ADL path syntax, described in detail in <a href="../paths/" class="xref page">ADL Paths</a>. ADL paths have the same alternating object/attribute structure implied in the general hierarchical structure of cADL, obeying the pattern <code>TYPE/attribute/TYPE/attribute/</code> &#8230;&#8203; .</p>
 </div>
 <div class="paragraph">
 <p>The examples above are <em>physical</em> paths because they refer to object nodes using node identifier codes such as 'at0003' ('id4'). Physical paths can be rendered as <em>logical</em> paths by adding the code meanings from the <code>terminology</code> section as annotations for node identifiers, if defined. Thus, the following two paths might be equivalent:</p>
@@ -2204,7 +2180,7 @@ If for example this was not the case with the <code>DV_QUANTITY</code> type (as 
 </div>
 </div>
 <div class="paragraph">
-<p>Proxy objects provide an internal reuse mechanism. Specialised archetypes may redefine structures on such nodes as if they had been defined inline. This is described in more detail in <a href="#Internal Reference (Proxy Object) Redefinition">[Internal Reference (Proxy Object) Redefinition]</a>.</p>
+<p>Proxy objects provide an internal reuse mechanism. Specialised archetypes may redefine structures on such nodes as if they had been defined inline. This is described in more detail in <a href="../spec_overview/#_internal_reference_proxy_object_redefinition" class="xref page">Internal Reference (Proxy Object) Redefinition</a>.</p>
 </div>
 <div class="paragraph principle">
 <p>A proxy constraint object allows object constraints defined elsewhere to be re-used within the same archetype or a specialised child.</p>
@@ -2569,13 +2545,13 @@ If for example this was not the case with the <code>DV_QUANTITY</code> type (as 
 </div>
 </div>
 <div class="paragraph">
-<p>where the 'vaccine' archetype is a specialisation of the 'medication' archetype. Redefinitions of this kind are described in more detail in <a href="#External Reference Redefinition">[External Reference Redefinition]</a>.</p>
+<p>where the 'vaccine' archetype is a specialisation of the 'medication' archetype. Redefinitions of this kind are described in more detail in <a href="../spec_overview/#_external_reference_redefinition" class="xref page">External Reference Redefinition</a>.</p>
 </div>
 <div class="paragraph">
 <p>External references can of course also be defined under container attributes.</p>
 </div>
 <div class="paragraph">
-<p>The second use of external references is typically in templates, to specify an archetype or sub-template of a template for an attribute where no slot has been defined. This use is described in <a href="#Unconstrained Attributes">[Unconstrained Attributes]</a>.</p>
+<p>The second use of external references is typically in templates, to specify an archetype or sub-template of a template for an attribute where no slot has been defined. This use is described in <a href="../spec_overview/#_unconstrained_attributes" class="xref page">Unconstrained Attributes</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_paths_2"><a class="anchor" href="#_paths_2"></a><a class="link" href="#_paths_2">Paths</a></h4>
@@ -2706,7 +2682,7 @@ If for example this was not the case with the <code>DV_QUANTITY</code> type (as 
 <p>A slot is designed to be 'filled', i.e. to have one of the allowed archetypes chosen for use. This is done in a child archetype, almost always a template. A slot can also be 'closed', meaning no further fillers can be added.</p>
 </div>
 <div class="paragraph">
-<p>The actual specification of slot fillers, and also the 'closing' of slots is done in specialised archetypes, and is described in <a href="#Slot Filling and Redefinition">[Slot Filling and Redefinition]</a>, in the chapter on specialisation.</p>
+<p>The actual specification of slot fillers, and also the 'closing' of slots is done in specialised archetypes, and is described in <a href="../spec_overview/#_slot_filling_and_redefinition" class="xref page">Slot Filling and Redefinition</a>, in the chapter on specialisation.</p>
 </div>
 <div class="sect3">
 <h4 id="_formal_semantics_of_include_and_exclude_constraints"><a class="anchor" href="#_formal_semantics_of_include_and_exclude_constraints"></a><a class="link" href="#_formal_semantics_of_include_and_exclude_constraints">Formal Semantics of include and exclude Constraints</a></h4>
@@ -3029,7 +3005,7 @@ If for example this was not the case with the <code>DV_QUANTITY</code> type (as 
 </div>
 </div>
 <div class="paragraph">
-<p>In ADL, slot-filling is considered a kind of specialisation of a slot, which enables slots to be filled by the same mechanism as any other kind of specialisation found in a child archetype. Slot-filling and other forms of slot redefinition are described in more detail in <a href="#Slot Filling and Redefinition">[Slot Filling and Redefinition]</a>.</p>
+<p>In ADL, slot-filling is considered a kind of specialisation of a slot, which enables slots to be filled by the same mechanism as any other kind of specialisation found in a child archetype. Slot-filling and other forms of slot redefinition are described in more detail in <a href="../spec_overview/#_slot_filling_and_redefinition" class="xref page">Slot Filling and Redefinition</a>.</p>
 </div>
 </div>
 </div>
@@ -4272,10 +4248,7 @@ although block-style indenting is used to express group blocks, the <code>group<
 </div>
 </div>
 <div class="paragraph">
-<p>The rules for including special characters within strings are described in <a href="#File Encoding and Character Quoting">[File Encoding and Character Quoting]</a>.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: there is an argument for only allowing a single String value rather than a list, where the value is aways a regex since <code>{"platypus", "kangaroo", "wombat"}</code> can be expressed as <code>{/platypus|kangaroo|wombat/}</code>. See also AOM spec.</p>
+<p>The rules for including special characters within strings are described in <a href="../file_encoding/" class="xref page">File Encoding and Character Quoting</a>.</p>
 </div>
 <div class="paragraph">
 <p>The regular expression patterns supported in cADL are as follows.</p>
@@ -4540,7 +4513,7 @@ there is no way to state that timezone information be <em>prohibited</em>.
 </table>
 </div>
 <div class="paragraph">
-<p>The syntax of legal patterns is given by Antlr4 lexical rules <code>DATE_CONSTRAINT_PATTERN</code>, <code>TIME_CONSTRAINT_PATTERN</code> and <code>DATE_TIME_CONSTRAINT_PATTERN</code> shown below in the <a href="#_base_lexer">Base Lexer syntax section</a>.</p>
+<p>The syntax of legal patterns is given by Antlr4 lexical rules <code>DATE_CONSTRAINT_PATTERN</code>, <code>TIME_CONSTRAINT_PATTERN</code> and <code>DATE_TIME_CONSTRAINT_PATTERN</code> shown below in the <a href="../syntax_spec/#_base_lexer" class="xref page">Base Lexer syntax section</a>.</p>
 </div>
 <div class="paragraph">
 <p>All expressions generated by these patterns must also satisfy the validity rules:</p>
@@ -4736,7 +4709,7 @@ there is no way to state that timezone information be <em>prohibited</em>.
 <div class="sect4">
 <h5 id="_patterns"><a class="anchor" href="#_patterns"></a><a class="link" href="#_patterns">Patterns</a></h5>
 <div class="paragraph">
-<p>Patterns based on ISO 8601 can be used to constrain durations in the same way as for Date/time types. The Antlr4 lexical rule for the pattern is <code>DURATION_CONSTRAINT_PATTERN</code>, shown below in the <a href="#_base_lexer">Base Lexer syntax section</a>.</p>
+<p>Patterns based on ISO 8601 can be used to constrain durations in the same way as for Date/time types. The Antlr4 lexical rule for the pattern is <code>DURATION_CONSTRAINT_PATTERN</code>, shown below in the <a href="../syntax_spec/#_base_lexer" class="xref page">Base Lexer syntax section</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4842,10 +4815,10 @@ a negative sign (or equivalently, the '&lt;= 0' construction as above) is only u
 <p>Coded terms are treated as a primitive type in ADL in order to enable the formalism and tools to work with terminology constraints. Unlike other primitive constraints, terminology constraints may be complex, because they can refer to external resources, either directly or via 'bindings' defined elsewhere in the archetype. This section describes just the syntax representations and relationships between these.</p>
 </div>
 <div class="paragraph">
-<p>The full description, including binding and resolution is provided in <a href="#Terminology Integration">[Terminology Integration]</a>. This section describes only the syntax for term constraint in the <code>definition</code> section of an archetype.</p>
+<p>The full description, including binding and resolution is provided in <a href="../terminology_integration/" class="xref page">Terminology Integration</a>. This section describes only the syntax for term constraint in the <code>definition</code> section of an archetype.</p>
 </div>
 <div class="paragraph">
-<p>Terminology constraints come in both the usual 'formal' form, as well as a 'soft' form, designed to allow constraints to be treated as various kinds of preferences. These are described below. The allowed specialisations of terminology constraints are described in <a href="#_primitive_object_redefinition">[_primitive_object_redefinition]</a>.</p>
+<p>Terminology constraints come in both the usual 'formal' form, as well as a 'soft' form, designed to allow constraints to be treated as various kinds of preferences. These are described below. The allowed specialisations of terminology constraints are described in <a href="../spec_overview/#_primitive_object_redefinition" class="xref page">_primitive_object_redefinition</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_formal_terminology_constraint"><a class="anchor" href="#_formal_terminology_constraint"></a><a class="link" href="#_formal_terminology_constraint">Formal Terminology Constraint</a></h4>
@@ -5069,7 +5042,7 @@ a negative sign (or equivalently, the '&lt;= 0' construction as above) is only u
 <div class="sect3">
 <h4 id="_operational_binding_constraints"><a class="anchor" href="#_operational_binding_constraints"></a><a class="link" href="#_operational_binding_constraints">Operational Binding Constraints</a></h4>
 <div class="paragraph">
-<p>The above sections describe 'source form' constraints, i.e. constraints expressed in terms of internal codes and value-sets. A further constraint possibility exists, for use at the point of operational template generation. As described in <a href="#From Constraints to Concrete Codes in Data">[From Constraints to Concrete Codes in Data]</a>, the choice may be made that a specific operational template (OPT) should use external codes from the archetype bindings (such as from <a href="http://www.snomed.org" target="_blank" rel="noopener">SNOMED CT</a>, <a href="http://www.who.int/classifications/icd/en/" target="_blank" rel="noopener">ICD10</a>, etc) as the values of some or all coded nodes, rather than using the internal at-codes.</p>
+<p>The above sections describe 'source form' constraints, i.e. constraints expressed in terms of internal codes and value-sets. A further constraint possibility exists, for use at the point of operational template generation. As described in <a href="../terminology_integration/#_from_constraints_to_concrete_codes_in_data" class="xref page">From Constraints to Concrete Codes in Data</a>, the choice may be made that a specific operational template (OPT) should use external codes from the archetype bindings (such as from <a href="http://www.snomed.org" target="_blank" rel="noopener">SNOMED CT</a>, <a href="http://www.who.int/classifications/icd/en/" target="_blank" rel="noopener">ICD10</a>, etc) as the values of some or all coded nodes, rather than using the internal at-codes.</p>
 </div>
 <div class="paragraph">
 <p>To express this choice, the OPT&#8217;s <code>definition</code> section contains a modified version of the usual syntax <code>[at0001]</code> (<code>[at2]</code>) or <code>[ac1]</code> in those nodes where an external term from the bindings is to be used. This takes the form <code>[acN@ttttt]</code> or <code>[atNNNN@ttttt]</code> (<code>[atN@ttttt]</code>) where <code>ttttt</code> is the namespace identifier of a binding in the <code>terminology</code> section of the archetype.</p>
@@ -5123,7 +5096,7 @@ a negative sign (or equivalently, the '&lt;= 0' construction as above) is only u
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#Terminology Integration">[Terminology Integration]</a> for fuller picture of how this works.</p>
+<p>See <a href="../terminology_integration/" class="xref page">Terminology Integration</a> for fuller picture of how this works.</p>
 </div>
 </div>
 </div>

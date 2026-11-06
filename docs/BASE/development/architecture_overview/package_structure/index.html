@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -393,7 +436,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section provides an overview of the specifications of the openEHR platform components (i.e. the components on the left side of <a href="#specification_project">[specification_project]</a>). Each component contains one or more specifications, which come in three types:</p>
+<p>This section provides an overview of the specifications of the openEHR platform components (i.e. the components on the left side of <a href="../overview/#specification_project" class="xref page">specification_project</a>). Each component contains one or more specifications, which come in three types:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -785,7 +828,7 @@ History
 <p>Several concepts that recur in higher level packages are defined in the <code>common</code> package. For example, the classes <code>LOCATABLE</code> and <code>ARCHETYPED</code> provide the link between information and archetype models. The classes <code>ATTESTATION</code> and <code>PARTICIPATION</code> are generic domain concepts that provide a standard way of documenting involvement of clinical professionals and other agents with the EHR, including signing.</p>
 </div>
 <div class="paragraph">
-<p>The <code>change_control</code> package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <a href="#Versioning">[Versioning]</a> section.</p>
+<p>The <code>change_control</code> package defines a formal model of change management and versioning which applies to any service that needs to be able to supply previous states of its information, in particular the demographic and EHR services. The key semantics of versioning in openEHR are described in the <a href="../security/#_versioning" class="xref page">Versioning</a> section.</p>
 </div>
 </div>
 <div class="sect3">
@@ -815,7 +858,7 @@ synchronisation Extract.</p>
 <p>The Integration model defines the class <code>GENERIC_ENTRY</code>, a subtype of <code>ENTRY</code> used to represent freeform
 legacy or external data as a tree. This Entry type has its own archetypes, known as "integration
 archetypes", which can be used in concert with clinical archetypes as the basis for a tool-based data
-integration system. See <a href="#Integrating openEHR with other Systems">[Integrating openEHR with other Systems]</a> for more details.</p>
+integration system. See <a href="../integration/" class="xref page">Integrating openEHR with other Systems</a> for more details.</p>
 </div>
 </div>
 <div class="sect3">
@@ -867,7 +910,7 @@ a flexible way of including the arbitrary demographic attributes allowed in the 
 <div class="title">Figure 9. Structure of the ADL 1.4 <code>org.openehr.am</code> package</div>
 </div>
 <div class="paragraph">
-<p>Another key specification is the Archetype Identification specification, which defines semantics for archetype identifiers, versioning and life-cycle. The formal specifications may be found on the <a href="https://specifications.openehr.org/releases/AM/latest/index">Archetype Model index page</a>.</p>
+<p>Another key specification is the {openehr_base_artefact_identification}[Artefact Identification^] specification in the BASE component, which defines semantics for archetype and template identifiers, versioning and life-cycle. The formal archetype specifications may be found on the <a href="https://specifications.openehr.org/releases/AM/latest/index" target="_blank" rel="noopener">Archetype Model index page</a>.</p>
 </div>
 </div>
 </div>

@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -845,7 +818,7 @@ aaa ∉ \{5}</code></pre>
 <p>Two or more object blocks introduced by type names appearing after an attribute which is not a container (i.e. for which there is no cardinality constraint) are taken to be <strong>alternative constraints</strong>, only one of which needs to be matched by the data.</p>
 </div>
 <div class="paragraph">
-<p>Note that there is a more efficient way to express the above example, using domain type extensions. See <a href="#Customising ADL">[Customising ADL]</a>.</p>
+<p>Note that there is a more efficient way to express the above example, using domain type extensions. See <a href="../customising_adl/" class="xref page">Customising ADL</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -868,7 +841,7 @@ aaa ∉ \{5}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The keyword <code>cardinality</code> implies firstly that the property events must be of a container type, such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> , <code>Bag&lt;T&gt;</code> . The integer range indicates the valid membership of the container; a single <code>*</code> means the range <code>0..*</code>, i.e. '0 to many'. The type of the container is not explicitly indicated, since it is usually defined by the information model. However, the semantics of a logical set (unique membership, ordering not significant), a logical list (ordered, non-unique membership) or a bag (unordered, non-unique membership) can be constrained using the additional keywords <code>ordered</code> , <code>unordered</code> , <code>unique</code> and <code>non-unique</code> within the cardinality constraint, as per the following examples:</p>
+<p>The keyword <code>cardinality</code> implies firstly that the property events must be of a container type, such as <code>List&lt;T&gt;</code> , <code>Set&lt;T&gt;</code> , <code>Bag&lt;T&gt;</code> . The integer range indicates the valid membership of the container; a single <code>*</code> means the range <code>0..*</code>, i.e. '0 to many'. The type of the container is not explicitly indicated, since it is usually defined by the information model. However, the semantics of a logical set (unique membership, ordering not significant), a logical list (ordered, non-unique membership) or a bag (unordered, non-unique membership) can be constrained using the additional keywords <code>ordered</code>, <code>unordered</code> and <code>unique</code> within the cardinality constraint, as per the following examples:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -878,10 +851,13 @@ aaa ∉ \{5}</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>The keyword <code>unique</code> means logical uniqueness: no two members of the container may be equal by value. Object identity is not meant, and attributes that distinguish sibling objects anyway, such as their names, are not taken into account. When <code>unique</code> is not stated, membership is non-unique.</p>
+</div>
+<div class="paragraph">
 <p>In theory, none of these constraints can be stronger than the semantics of the corresponding container in the relevant part of the reference model. However, in practice, developers often use lists to facilitate integration, when the actual semantics are intended to be of a set; in such cases, they typically ensure set-like semantics in their own code rather than by using an <code>Set&lt;T&gt;</code> type. How such constraints are evaluated in practice may depend somewhat on knowledge of the  software system.</p>
 </div>
 <div class="paragraph principle">
-<p>A <strong>cardinality constraint</strong> may be used after any attribute name (or after its <code>existence</code> constraint, if there is one) in order to indicate that the attribute refers to a container type, what number of member items it must have in the data, and optionally, whether it has "list", "set", or "bag" semantics, via the use of the keywords <code>ordered</code>, <code>unordered</code>, <code>unique</code> and <code>non-unique</code>.</p>
+<p>A <strong>cardinality constraint</strong> may be used after any attribute name (or after its <code>existence</code> constraint, if there is one) in order to indicate that the attribute refers to a container type, what number of member items it must have in the data, and optionally, whether it has "list", "set", or "bag" semantics, via the use of the keywords <code>ordered</code>, <code>unordered</code> and <code>unique</code>.</p>
 </div>
 <div class="paragraph">
 <p>The numeric part of the cardinality constraint can take the values <code>{0}</code>, <code>\{0..0}</code>, <code>\{0..n}</code>, <code>\{m..n}</code>, <code>{0..*}</code>, or <code>\{*}</code>, or a syntactic equivalent. The first two of these constraints are unlikely to be useful, but there is no reason to prevent them. There is no default cardinality, since if none is shown, the relevant attribute is assumed to be single-valued (in the interests of uniformity in archetypes, this holds even for smarter parsers that can access the reference model and determine that the attribute is in fact a container).</p>
@@ -1030,7 +1006,7 @@ members[at0105]/title</code></pre>
 <p>Node ids are required only where it is necessary to create paths, for example in <code>use_node</code> statements. However, the underlying reference model might have stronger requirements. The <a href="https://specifications.openehr.org/releases/RM/latest">openEHR Reference Model</a> for example requires that all node types which inherit from the class <code>LOCATABLE</code> have both a <code><em>archetype_node_id</em></code> and a runtime <code><em>name</em></code> attribute. Only data types (such as <code>QUANTITY</code>, <code>CODED_TEXT</code>) and their constituent types are exempt.</p>
 </div>
 <div class="paragraph">
-<p>Paths are used in cADL to refer to cADL nodes, and are expressed in the ADL path syntax, described in detail in <a href="#ADL Paths">[ADL Paths]</a>. ADL paths have the same alternating object/attribute structure implied in the general hierarchical structure of cADL, obeying the pattern <code>TYPE/attribute/TYPE/attribute/&#8230;&#8203;</code>.</p>
+<p>Paths are used in cADL to refer to cADL nodes, and are expressed in the ADL path syntax, described in detail in <a href="../paths/" class="xref page">ADL Paths</a>. ADL paths have the same alternating object/attribute structure implied in the general hierarchical structure of cADL, obeying the pattern <code>TYPE/attribute/TYPE/attribute/&#8230;&#8203;</code>.</p>
 </div>
 <div class="paragraph principle">
 <p><strong>Paths</strong> in cADL always refer to object nodes, and can only be constructed through nodes having node ids, or nodes which are the only child object of a single-cardinality attribute.</p>
@@ -1373,7 +1349,7 @@ primitive types in cADL are expressed without type names, and omitting one level
 </div>
 </div>
 <div class="paragraph">
-<p>The first example constrains the runtime value of the <code><em>species</em></code> attribute of some object to take the value "platypus"; the second constrains it be either "platypus" or "kangaroo", and so on. <strong>In almost all cases, this kind of string constraint should be avoided</strong>, since it usually renders the body of the archetype language-dependent. Exceptions are proper names (e.g. "NHS", "Apgar"), product tradenames (but note even these are typically different in different language locales, even if the different names are not literally translations of each other). The preferred way of constraining string attributes in a language independent way is with local <code>[ac]</code> codes. See <a href="#_local_constraint_codes">[_local_constraint_codes]</a>.</p>
+<p>The first example constrains the runtime value of the <code><em>species</em></code> attribute of some object to take the value "platypus"; the second constrains it be either "platypus" or "kangaroo", and so on. <strong>In almost all cases, this kind of string constraint should be avoided</strong>, since it usually renders the body of the archetype language-dependent. Exceptions are proper names (e.g. "NHS", "Apgar"), product tradenames (but note even these are typically different in different language locales, even if the different names are not literally translations of each other). The preferred way of constraining string attributes in a language independent way is with local <code>[ac]</code> codes. See <a href="../adl/#_local_constraint_codes" class="xref page">Local Constraint Codes</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1398,7 +1374,7 @@ primitive types in cADL are expressed without type names, and omitting one level
 </div>
 </div>
 <div class="paragraph">
-<p>The rules for including special characters within strings are described in <a href="#_file_encoding_and_character_quoting">[_file_encoding_and_character_quoting]</a>.</p>
+<p>The rules for including special characters within strings are described in <a href="../file_encoding/" class="xref page">File Encoding and Character Quoting</a>.</p>
 </div>
 <div class="paragraph">
 <p>The regular expression patterns supported in cADL are as follows.</p>
@@ -1662,7 +1638,7 @@ there is no way to state that timezone information be <em>prohibited</em>.
 </table>
 </div>
 <div class="paragraph">
-<p>The syntax of legal patterns is given by Antlr4 lexical rules <code>DATE_CONSTRAINT_PATTERN</code>, <code>TIME_CONSTRAINT_PATTERN</code> and <code>DATE_TIME_CONSTRAINT_PATTERN</code> shown below in the <a href="#_base_lexer">Base Lexer syntax section</a>.</p>
+<p>The syntax of legal patterns is given by Antlr4 lexical rules <code>DATE_CONSTRAINT_PATTERN</code>, <code>TIME_CONSTRAINT_PATTERN</code> and <code>DATE_TIME_CONSTRAINT_PATTERN</code> shown below in the <a href="../syntax_spec/#_base_lexer" class="xref page">Base Lexer syntax section</a>.</p>
 </div>
 <div class="paragraph">
 <p>All expressions generated by these patterns must also satisfy the validity rules:</p>
@@ -1858,7 +1834,7 @@ there is no way to state that timezone information be <em>prohibited</em>.
 <div class="sect4">
 <h5 id="_patterns_2"><a class="anchor" href="#_patterns_2"></a><a class="link" href="#_patterns_2">Patterns</a></h5>
 <div class="paragraph">
-<p>Patterns based on ISO 8601 can be used to constrain durations in the same way as for Date/time types. The Antlr4 lexical rule for the pattern is <code>DURATION_CONSTRAINT_PATTERN</code>, shown below in the <a href="#_base_lexer">Base Lexer syntax section</a>.</p>
+<p>Patterns based on ISO 8601 can be used to constrain durations in the same way as for Date/time types. The Antlr4 lexical rule for the pattern is <code>DURATION_CONSTRAINT_PATTERN</code>, shown below in the <a href="../syntax_spec/#_base_lexer" class="xref page">Base Lexer syntax section</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>

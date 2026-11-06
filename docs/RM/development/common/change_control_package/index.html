@@ -893,7 +893,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <p>The version identification scheme described here is adapted from <span class="citation"><a href="#bibliography_entry_Hnìtynka2004">[1]</a></span>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute of type <code>OBJECT_VERSION_ID</code>, which is a three-part String identifier consisting of the sub-parts extractable via the accessors <code><em>object_id()</em></code>, <code><em>creating_system_id()</em></code> and <code><em>version_tree_id()</em></code> (see the <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package"><code>base_types.identification</code> package</a> in the BASE component), in which the <code><em>object_id()</em></code> part is a copy of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code> version container.</p>
 </div>
 <div class="paragraph">
-<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT.<em>uid</em></code> value - here, <code>"1234"</code> - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code>. Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern <code>"1234:system_id:version_tree_id"</code>. The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below. The function <code>VERSION.<em>owner_id()</em></code> is provided to enable a caller to easily obtain the 'owning version container' identifier.</p>
+<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT.<em>uid</em></code> value - here, <code>"1234"</code> - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code>. Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern <code>"1234::system_id::version_tree_id"</code>. The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below. The function <code>VERSION.<em>owner_id()</em></code> is provided to enable a caller to easily obtain the 'owning version container' identifier.</p>
 </div>
 <div id="version_identification_system" class="imageblock text-center text-center">
 <div class="content">
@@ -951,7 +951,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 </ul>
 </div>
 <div class="paragraph">
-<p>To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the <code><em>creating_system_id</em></code> attribute of <code>VERSION.<em>uid</em></code>, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.</p>
+<p>To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the <code><em>creating_system_id</em></code> attribute of <code>VERSION.<em>uid</em></code>, representing the system where the version was created. This is a machine processable identifier, such as a reverse domain name, GUID or ISO OID.</p>
 </div>
 <div class="paragraph">
 <p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular UID) is created locally, the <code>VERSION.<em>uid.creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
@@ -1224,7 +1224,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of initial creation of this versioned object.</p>
 </div></div></td>
@@ -1250,7 +1250,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a>&lt;T&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_version_class">VERSION</a>&lt;T&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return a list of all versions in this object.</p>
 </div></div></td>
@@ -1258,7 +1258,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (<br>
-a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
+a_time: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a version for time  <code><em>a_time</em></code> exists.</p>
@@ -1277,7 +1277,7 @@ a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identifi
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (<br>
 a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code><br>
+): <code><a href="#_version_class">VERSION</a></code><br>
 <br>
 <em>Pre</em>: <code>has_version_id (a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1298,8 +1298,8 @@ a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identifi
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
-a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code><br>
+a_time: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
+): <code><a href="#_version_class">VERSION</a></code><br>
 <br>
 <em>Pre</em>: <code>has_version_at_time (a_time)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1308,28 +1308,28 @@ a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code><a href="../../../Release-1.1.0/common/generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code><a href="../generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>History of all audits and attestations in this versioned repository.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code><a href="#_version_class">VERSION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added version (i.e. on trunk or any branch).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code><a href="#_version_class">VERSION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added trunk version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code><br>
 <br>
 <em>Post</em>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1342,8 +1342,8 @@ a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
 a_new_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
 ): <code>void</code><br>
@@ -1359,8 +1359,8 @@ signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/prim
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
 a_new_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 an_other_input_uids: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>&gt;[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
@@ -1375,8 +1375,8 @@ signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/prim
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_imported_version</strong> (<br>
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_version: <code><a href="../../../Release-1.1.0/common/change_control_package/#_original_version_class" class="xref page">ORIGINAL_VERSION</a>[1]</code><br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_version: <code><a href="#_original_version_class">ORIGINAL_VERSION</a>[1]</code><br>
 ): <code>void</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add a new imported version. Details of version id etc come from the <code>ORIGINAL_VERSION</code> being committed.</p>
@@ -1385,7 +1385,7 @@ a_version: <code><a href="../../../Release-1.1.0/common/change_control_package/#
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (<br>
-an_attestation: <code><a href="../../../Release-1.1.0/common/generic_package/#_attestation_class" class="xref page">ATTESTATION</a>[1]</code>,<br>
+an_attestation: <code><a href="../generic_package/#_attestation_class" class="xref page">ATTESTATION</a>[1]</code>,<br>
 a_ver_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
 ): <code>void</code><br>
@@ -1462,7 +1462,7 @@ and is_original_version(a_ver_id)</code></p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of initial creation of this versioned object.</p>
 </div></div></td>
@@ -1483,14 +1483,14 @@ and is_original_version(a_ver_id)</code></p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a>&lt;T&gt;&gt;</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_version_class">VERSION</a>&lt;T&gt;&gt;</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return a list of all versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (<br>
-a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
+a_time: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a version for time  <code><em>a_time</em></code> exists.</p>
@@ -1507,7 +1507,7 @@ a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identifi
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (<br>
 a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code><br>
+): <code><a href="#_version_class">VERSION</a></code><br>
 <br>
 <em>Pre</em>: <code>has_version_id (a_ver_id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1526,8 +1526,8 @@ a_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identifi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
-a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
-): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code><br>
+a_time: <code><a href="../../data_types/date_time_package/#_dv_date_time_class" class="xref page">DV_DATE_TIME</a>[1]</code><br>
+): <code><a href="#_version_class">VERSION</a></code><br>
 <br>
 <em>Pre</em>: <code>has_version_at_time (a_time)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1535,25 +1535,25 @@ a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code><a href="../../../Release-1.1.0/common/generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code><a href="../generic_package/#_revision_history_class" class="xref page">REVISION_HISTORY</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>History of all audits and attestations in this versioned repository.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code><a href="#_version_class">VERSION</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added version (i.e. on trunk or any branch).</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code><a href="#_version_class">VERSION</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added trunk version.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code><br>
 <br>
 <em>Post</em>: <code>Result = latest_trunk_version.lifecycle_state</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1565,8 +1565,8 @@ a_time: <code><a href="../../../Release-1.1.0/data_types/date_time_package/#_dv_
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
 a_new_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
 ): <code>void</code><br>
@@ -1581,8 +1581,8 @@ signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/prim
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
 a_new_version_uid: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 an_other_input_uids: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>&gt;[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
@@ -1596,8 +1596,8 @@ signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/prim
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_imported_version</strong> (<br>
 a_contribution: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a>[1]</code>,<br>
-an_audit: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
-a_version: <code><a href="../../../Release-1.1.0/common/change_control_package/#_original_version_class" class="xref page">ORIGINAL_VERSION</a>[1]</code><br>
+an_audit: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a>[1]</code>,<br>
+a_version: <code><a href="#_original_version_class">ORIGINAL_VERSION</a>[1]</code><br>
 ): <code>void</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add a new imported version. Details of version id etc come from the <code>ORIGINAL_VERSION</code> being committed.</p>
@@ -1605,7 +1605,7 @@ a_version: <code><a href="../../../Release-1.1.0/common/change_control_package/#
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (<br>
-an_attestation: <code><a href="../../../Release-1.1.0/common/generic_package/#_attestation_class" class="xref page">ATTESTATION</a>[1]</code>,<br>
+an_attestation: <code><a href="../generic_package/#_attestation_class" class="xref page">ATTESTATION</a>[1]</code>,<br>
 a_ver_id: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a>[1]</code>,<br>
 signing_key: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
 ): <code>void</code><br>
@@ -2075,7 +2075,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this version to the <code>VERSIONED_OBJECT</code>.</p>
 </div></div></td>
@@ -2112,7 +2112,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -2194,7 +2194,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this version to the <code>VERSIONED_OBJECT</code>.</p>
 </div></div></td>
@@ -2221,7 +2221,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -2425,7 +2425,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_version_class">VERSION</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2455,14 +2455,17 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_version_lifecycle_state" class="xref page">openEHR Terminology, version lifecycle state group</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attestations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/common/generic_package/#_attestation_class" class="xref page">ATTESTATION</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attestations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../generic_package/#_attestation_class" class="xref page">ATTESTATION</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of attestations relating to this version.</p>
 </div></div></td>
@@ -2525,7 +2528,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_version_class">VERSION</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2534,21 +2537,21 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contribution</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contribution in which this version was added.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>OpenPGP digital signature or digest of content committed in this Version.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this version to the <code>VERSIONED_OBJECT</code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2570,13 +2573,16 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
+</div>
+<div class="paragraph">
+<p>Terminology: <a href="../../../../TERM/Release-3.0.0/SupportTerminology/terminology/#_version_lifecycle_state" class="xref page">openEHR Terminology, version lifecycle state group</a></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attestations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-1.1.0/common/generic_package/#_attestation_class" class="xref page">ATTESTATION</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attestations</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../generic_package/#_attestation_class" class="xref page">ATTESTATION</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of attestations relating to this version.</p>
 </div></div></td>
@@ -2594,35 +2600,35 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>uid</strong> (): <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier of this <code>VERSION</code>, in the form of an <code>{object_id, a version_tree_id, creating_system_id}</code> triple, where the <code><em>object_id</em></code> has the same value as the containing <code>VERSIONED_OBJECT <em>uid</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>preceding_version_uid</strong> (): <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_version_id_class" class="xref page">OBJECT_VERSION_ID</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier of the version of which this version is a modification; Void if this is the first version.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>data</strong> (): <code>T</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The data of this Version.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(abstract)</em> <strong>lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A canonical serial form of this Version, created by serialising all attributes except signature, suitable for generating reliable hashes and signatures.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2631,14 +2637,14 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <em>Post</em>: <code>Result.value.is_equal (uid.object_id.value)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Copy of the owning <code>VERSIONED_OBJECT.<em>uid</em></code> value; extracted from the local <code><em>uid</em></code> property&#8217;s <code><em>object_id</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Version represents a branch. Derived from <code><em>uid</em></code> attribute.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2653,19 +2659,19 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Owner_id_valid</em>: <code>owner_id.value.is_equal (uid.object_id.value)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Preceding_version_uid_validity</em>: <code>uid.version_tree_id.is_first xor preceding_version_uid /= Void</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Lifecycle_state_ valid</em>: <code>lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2823,7 +2829,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_version_class">VERSION</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2832,7 +2838,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="../../../Release-1.1.0/common/change_control_package/#_original_version_class" class="xref page">ORIGINAL_VERSION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="#_original_version_class">ORIGINAL_VERSION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The <code>ORIGINAL_VERSION</code> object that was imported.</p>
 </div></div></td>
@@ -2865,7 +2871,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (effected)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -2899,7 +2905,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_version_class">VERSION</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2908,25 +2914,25 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contribution</strong>: <code><a href="../../../../BASE/Release-1.2.0/base_types/identification_package/#_object_ref_class" class="xref page">OBJECT_REF</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Contribution in which this version was added.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>OpenPGP digital signature or digest of content committed in this Version.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this version to the <code>VERSIONED_OBJECT</code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="../../../Release-1.1.0/common/change_control_package/#_original_version_class" class="xref page">ORIGINAL_VERSION</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="#_original_version_class">ORIGINAL_VERSION</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The <code>ORIGINAL_VERSION</code> object that was imported.</p>
 </div></div></td>
@@ -2957,7 +2963,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../../Release-1.1.0/data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="../../data_types/text_package/#_dv_coded_text_class" class="xref page">DV_CODED_TEXT</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -2966,7 +2972,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A canonical serial form of this Version, created by serialising all attributes except signature, suitable for generating reliable hashes and signatures.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2975,14 +2981,14 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <em>Post</em>: <code>Result.value.is_equal (uid.object_id.value)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Copy of the owning <code>VERSIONED_OBJECT.<em>uid</em></code> value; extracted from the local <code><em>uid</em></code> property&#8217;s <code><em>object_id</em></code>.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Version represents a branch. Derived from <code><em>uid</em></code> attribute.<br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2991,19 +2997,19 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Owner_id_valid</em>: <code>owner_id.value.is_equal (uid.object_id.value)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Preceding_version_uid_validity</em>: <code>uid.version_tree_id.is_first xor preceding_version_uid /= Void</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Lifecycle_state_ valid</em>: <code>lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</code><br>
-<em>Inherited from <a href="../../../Release-1.1.0/common/change_control_package/#_version_class" class="xref page">VERSION</a></em></p>
+<em>Inherited from <a href="#_version_class">VERSION</a></em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3145,7 +3151,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this Contribution.</p>
 </div></div></td>
@@ -3186,7 +3192,7 @@ and is_original_version(a_ver_id)</code> [1..1]</p></td>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="../../../Release-1.1.0/common/generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="../generic_package/#_audit_details_class" class="xref page">AUDIT_DETAILS</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit trail corresponding to the committal of this Contribution.</p>
 </div></div></td>

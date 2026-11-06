@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Referencing :: openEHR Specifications (Local Build)</title>
+    <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/BASE/development/artefact_identification/referencing/">
+    <link rel="prev" href="../distributed_governance/">
+    <link rel="next" href="../uris/">
+    <meta name="description" content="openEHR Artefact Identification specification">
+    <meta name="keywords" content="openehr, identification, HRID, versioning, lifecycle, governance">
+    <meta name="generator" content="Antora 3.1.15">
+    <link rel="stylesheet" href="../../../../ui/css/site.css">
+    <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/openehr.css">
+    <link rel="stylesheet" href="../../../../ui/css/tabs.css">
+    <link rel="stylesheet" href="../../../../ui/css/extra.css">
+<link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sebastian-iancu.github.io/antora-openehr">openEHR Specifications (Local Build)</a>
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <input id="search-input" type="text" placeholder="Search the docs">
+          <label class="filter checkbox">
+            <input type="checkbox" data-facet-filter="component:BASE"> Base Model only
+          </label>
+        </div>
+      </div>
+
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Specifications</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
+              openEHR specification
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
+              openEHR portal
+            </a>
+            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
+              openEHR CKM
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Community</a>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
+              Issue trackers
+            </a>
+            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
+              Discourse Forum
+            </a>
+            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
+              Wiki
+            </a>
+            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="BASE" data-version="development">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../">Base Model</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../">Overview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../architecture_overview/">Architecture Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/aims/">Aims of the openEHR Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_principles/">Design Principles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/package_structure/">openEHR Specification Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/design_of_the_ehr/">Design of the openEHR EHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/security/">Security and Confidentiality</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/identification/">Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/archetypes/">Archetypes and Templates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/paths/">Paths and Locators</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/terminology/">Terminology in openEHR</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/deployment/">Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/integration/">Integrating openEHR with other Systems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/standards/">Relationship to Standards</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/implementation/">Implementation Technology Specifications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../architecture_overview/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../foundation_types/">Foundation Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/primitive_types/">Primitive Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/structure_types/">Structure Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/interval/">Interval</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/time_types/">Time Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/terminology/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/functional/">Functional Meta-types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/type_cross_ref/">Type Cross-Reference</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../foundation_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../base_types/">Base Types</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/definitions_package/">Definitions Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/builtins_package/">Builtins Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../resource/">Resource Model</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/resource_package/">Resource Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="./">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Base Model</span>
+    <span class="version">development</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <div class="title"><a href="../../../../AM/Release-2.3.0/">Archetype Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../AM/Release-2.3.0/">Release-2.3.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-2.2.0/">Release-2.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/Release-1.4.0/">Release-1.4.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../AM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../../Release-1.2.0/">Base Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../Release-1.2.0/">Release-1.2.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../../">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CDS/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../CNF/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../LANG/Release-1.0.0/">Generic Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../LANG/Release-1.0.0/">Release-1.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../LANG/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../TERM/Release-3.0.0/">Release-3.0.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../TERM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../PROC/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../QUERY/Release-1.0.1/">Release-1.0.1</a>
+        </li>
+        <li class="version">
+          <a href="../../../../QUERY/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../RM/Release-1.1.0/">Release-1.1.0</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/Release-1.0.4/">Release-1.0.4</a>
+        </li>
+        <li class="version">
+          <a href="../../../../RM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../ITS-REST/development/">development</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../SM/development/">development</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../Release-1.2.0/" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../">Base Model</a></li>
+    <li><a href="../">Artefact Identification</a></li>
+    <li><a href="./">Referencing</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">development</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../Release-1.2.0/">Release-1.2.0</a>
+    <a class="version is-missing" href="../../../Release-1.1.0/">Release-1.1.0</a>
+    <a class="version is-current" href="./">development</a>
+  </div>
+</div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Referencing</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes how artefacts are referenced, by other artefacts and software. The general principle for referencing is that references based on human-readable identifiers are used between source artefacts, in the same way as for software, while references in operational forms of the artefacts or from data may be in the form of either HRIDs or machine identifiers.</p>
+</div>
+<div class="paragraph">
+<p>A key semantic difference exists with references as opposed to identifiers. A reference is either a full physical artefact identifier, or else an identifier with partial version information. In both cases, a reference is used to match artefacts carrying full identification. In general, there can be several candidate matches, and therefore a matching algorithm has to be specified in each case, in order to ensure constant meaning for a given reference in all modelling and computing environments.</p>
+</div>
+<div class="paragraph">
+<p>Various forms of the references based on the HRID are used, depending on the need, as described below. These are denoted as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the interface HRID reference (<code>ihrid_ref</code>), which is the same for all artefact instances sharing the same core interface, in other words, the form of the identifier including only the major version; this will match the latest release available of that major version;</p>
+</li>
+<li>
+<p>the specific interface HRID reference (<code>sihrid_ref</code>), which is the form of the identifier including the major and minor versions, which will match a specific release of the interface;</p>
+</li>
+<li>
+<p>the physical HRID reference (<code>phrid_ref</code>), which identifies artefact instances which are identical; this is the form of identifier with the full version identifier included.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A reference carries only numeric version segments (no pre-release modifier), matching the ADL 2 <code>ARCHETYPE_REF</code> token; a pre-release version is referenced by its full identifier (an <code>hrid</code>). The grammar for this is as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">    hrid_ref                =   [ namespace '::' ] hrid_root '.v' version_ref ;   (* cf. ADL 2 ARCHETYPE_REF *)
+    version_ref             =   major_version { '.' V_NUMBER } ;                  (* numeric only *)
+
+    ihrid_ref               =   [ namespace '::' ] hrid_root '.v' major_version ;                                      (* interface *)
+    sihrid_ref              =   [ namespace '::' ] hrid_root '.v' major_version '.' minor_version ;                    (* specific interface *)
+    phrid_ref               =   [ namespace '::' ] hrid_root '.v' major_version '.' minor_version '.' patch_version ;  (* physical *)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A reference identifies the <code>namespace</code> of the referenced artefact: the reduced precision of a reference concerns the version only, not the namespace. A namespace is never a wildcard - an omitted namespace does not mean 'any namespace', which would make the reference ambiguous and unsafe, notably in an <a href="https://specifications.openehr.org/releases/QUERY/latest/AQL.html" target="_blank" rel="noopener">AQL</a> query. Within a source artefact, a reference without a namespace denotes an artefact in the same namespace as the referencing artefact (see <a href="#_source_artefact_references">Source Artefact References</a>); elsewhere - in operational artefacts, in data and in queries - a reference to an ADL 2 artefact carries its namespace explicitly. Only a legacy (ADL 1.4) artefact, which has no namespace at all, is referenced without one.</p>
+</div>
+<div class="paragraph">
+<p>Because minor versions may add structure, a major-version-only reference does not necessarily designate all of the interface available in the latest minor version; where precise designation is required, at least a minor version should be included.</p>
+</div>
+<div class="paragraph">
+<p>By way of example, the following two archetype iHRID references denote different logical archetypes, from a data processing point of view, since their major versions are different, indicating a breaking change between the two:</p>
+</div>
+<div class="paragraph">
+<p><code>org.openehr::openEHR-EHR-EVALUATION.diagnosis.<strong>v1</strong></code><br>
+<code>org.openehr::openEHR-EHR-EVALUATION.diagnosis.<strong>v2</strong></code></p>
+</div>
+<div class="paragraph">
+<p>Conversely, the following references denote physically distinct archetypes that are regarded as logically substitutable:</p>
+</div>
+<div class="paragraph">
+<p><code>org.openehr::openEHR-EHR-EVALUATION.diagnosis.<strong>v1.1.5</strong></code><br>
+<code>org.openehr::openEHR-EHR-EVALUATION.diagnosis.<strong>v1.1.7</strong></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_artefact_references"><a class="anchor" href="#_source_artefact_references"></a><a class="link" href="#_source_artefact_references">Source Artefact References</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes the scenarios and representation required for identifier-based referencing between design time 'source' (i.e. compiler input) artefacts.</p>
+</div>
+<div class="sect2">
+<h3 id="_archetype_external_references_adlaom_2"><a class="anchor" href="#_archetype_external_references_adlaom_2"></a><a class="link" href="#_archetype_external_references_adlaom_2">Archetype External References (ADL/AOM 2)</a></h3>
+<div class="paragraph">
+<p>In ADL 2, a direct archetype-archetype reference, known as an 'external reference' can be defined, which uses an interface reference (<code>ihrid_ref</code>), as shown in the following example.</p>
+</div>
+<div id="_tabs_1" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_1_at_coded_adl2" class="tab">
+<p>at-coded ADL2</p>
+</li>
+<li id="_tabs_1_id_coded_adl2" class="tab">
+<p>id-coded ADL2</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_1_at_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_1_at_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    ACTIVITY[at0001] ∈ {   -- Medication activity
+        description ∈ {
+            use_archetype ITEM_TREE [openEHR-EHR-ITEM_TREE.medication.v1]
+        }
+    }</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_1_id_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_1_id_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    ACTIVITY[id2] ∈ {   -- Medication activity
+        description ∈ {
+            use_archetype ITEM_TREE [openEHR-EHR-ITEM_TREE.medication.v1]
+        }
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If such a reference does not include a namespace, the meaning is that the same namespace as the current archetype is assumed. A namespace would be included to express a reference to an archetype outside the current namespace.</p>
+</div>
+<div class="paragraph">
+<p>A reference such as the above will resolve to an actual archetype at runtime according to the following algorithm:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the most recent released version variant of <code>openEHR-EHR-ITEM_TREE.medication.v1</code>, i.e. the latest minor or patch version such as <code>v1.0.4</code>, <code>v1.2.49</code> etc OR</p>
+</li>
+<li>
+<p>the latest release candidate version of <code>openEHR-EHR-ITEM_TREE.medication.v1</code>, e.g. <code>v1.2.3-rc.44</code>, because 'rc' versions are guaranteed to be semantically compatible with their target version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because minor versions can include structural additions, it may be that in some cases, archetype external references need to be include a minor version as well - allowing an exact structural form of the archetype (interface) to be identified. Similarly, for testing or other research purposes, it should probably be assumed that patch versions, and <code>-rc</code>, <code>-alpha</code> and <code>-beta</code> versions of an archetype, need to be referenced; a pre-release version is referenced by its full identifier.</p>
+</div>
+<div class="paragraph">
+<p>The general case is therefore assumed to be that an artefact reference is a <code>hrid_ref</code> , but most commonly an <code>ihrid_ref</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_template_references_to_archetypes_and_templates"><a class="anchor" href="#_template_references_to_archetypes_and_templates"></a><a class="link" href="#_template_references_to_archetypes_and_templates">Template References to Archetypes and Templates</a></h3>
+<div class="paragraph">
+<p>Templates are normally designed as pre-cursors to software artefacts, such as forms, message definitions and document schemas. Consequently, their exact contents and structure are usually carefully controlled by their developers, in the interests of stability. To achieve this, references from templates to other templates or archetypes need to be able to refer to any level of version of the target artefact. During a development phase, it may be that the template references are limited to major versions of the human-readable identifier, i.e. the <code>ihrid_ref</code> . At some point it may be the case that the minor version must be included as well. As noted above, this is because minor versions of archetypes can include structural additions, and therefore affect the structure of the final document / data-set etc. It may even be the case that patch level versions need to be identified, so as to ensure no changes whatever can occur in the template, even if upgraded versions of the source artefacts become available.</p>
+</div>
+<div class="paragraph">
+<p>Such tight control is not however a universal requirement. A conscious design decision may have been taken that says that the resulting software artefact contents are whatever results from the template definition at the time of publishing, assuming references to major versions only.</p>
+</div>
+<div class="paragraph">
+<p>To accommodate these scenarios, template references to archetypes and other templates need to be legal at any version level. For example, any of the following references should be legal in a template:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.openehr::openEHR-EHR-EVALUATION.problem.v2</code></p>
+</li>
+<li>
+<p><code>org.openehr::openEHR-EHR-EVALUATION.problem.v2.4</code></p>
+</li>
+<li>
+<p><code>org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.17</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In development and research environments, it is reasonable to allow references to <code>-rc</code>, <code>-alpha</code> and <code>-beta</code> variants as well, using their full identifiers.</p>
+</div>
+<div class="paragraph">
+<p>The general case is therefore as for archetype external references: a template reference is a <code>hrid_ref</code> .</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_between_specialised_archetypes"><a class="anchor" href="#_between_specialised_archetypes"></a><a class="link" href="#_between_specialised_archetypes">Between Specialised Archetypes</a></h3>
+<div class="paragraph">
+<p>A specialised archetype refers to its parent using the human-readable reference, including only the major version. Two possible variants can occur:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With a non-namespaced reference. This is assumed to come from the same namespace as the specialised archetype.</p>
+</li>
+<li>
+<p>With a namespaced identifier where the namespace is different from that of the referencing archetype. This resolves against the latest release of the referenced archetype in the locally available repository copy of the referenced namespace.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following figure shows a number of archetypes related by specialisation.</p>
+</div>
+<div id="specialisation_relationships" class="imageblock text-center text-center">
+<div class="content">
+<img src="../_images/diagrams/specialisation_relationships.png" alt="specialisation relationships" width="80%">
+</div>
+<div class="title">Figure 1. Specialisation Relationships</div>
+</div>
+<div class="paragraph">
+<p>One question that naturally arises to do with specialisation is what happens when the parent archetype is revised. The approach is the same as for object-oriented software: all archetypes in a given 'check-out' or release must always compile at any point in time to be valid. If a revised parent is introduced that invalidates any of its inheritance children, revisions must be made to the children before the repository becomes valid as a whole again. This means that a new version of an archetype in general may require child archetypes to be re-versioned as well.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_artefact_relationship_constraints"><a class="anchor" href="#_source_artefact_relationship_constraints"></a><a class="link" href="#_source_artefact_relationship_constraints">Source Artefact Relationship Constraints</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Related to the concept of 'references' is constraints that when evaluated at runtime, resolve to artefact identifiers. Two types are described here, which are the two kinds of archetype 'slot' definition.</p>
+</div>
+<div class="sect2">
+<h3 id="_adl_1_4_archetype_slots"><a class="anchor" href="#_adl_1_4_archetype_slots"></a><a class="link" href="#_adl_1_4_archetype_slots">ADL 1.4 Archetype Slots</a></h3>
+<div class="paragraph">
+<p>In ADL 1.4, archetypes slots are defined via assertions in their slot statements. Although the specification allows for all kinds of possibilities, the only one in use is regular expressions (REs) on the archetype identifiers allowed to fill the slot. Current ADL 1.4 tooling supports REs on full (non-name-spaced) ADL 1.4 archetype identifiers, which include only the major version number, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    openEHR-EHR-EVALUATION.problem.v1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that such REs often include disjoint patterns, by using the form <code>"id_pattern1|id_pattern2|id_pattern3"</code>.</p>
+</div>
+<div class="paragraph">
+<p>A typical slot definition using REs based on such identifiers is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    protocol matches {
+        ITEM_TREE[at0015] ∈ {
+            items cardinality ∈ {0..*; ordered} ∈ {
+                allow_archetype CLUSTER[id20] occurrences ∈ {0..1} matches {
+                    include
+                        archetype_id/value ∈ {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
+                }
+            }
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This slot allows any archetype named <code>openEHR-EHR-CLUSTER.device.v1</code> or <code>openEHR-EHR-CLUSTER.device-xxx.v1</code>, which used the ADL 1.4 method of signifying specialised archetypes.</p>
+</div>
+<div class="paragraph">
+<p>Since legacy (ADL 1.4) identifiers carry no namespace, ADL 1.4 slot REs match identifiers without a namespace.</p>
+</div>
+<div class="paragraph">
+<p>As for external references, there is technically nothing to stop a slot RE being defined to refer to specific minor versions or builds of an archetype. The same rule applies: released archetypes should only include major versions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adl_2_archetype_slots"><a class="anchor" href="#_adl_2_archetype_slots"></a><a class="link" href="#_adl_2_archetype_slots">ADL 2 Archetype Slots</a></h3>
+<div class="paragraph">
+<p>In ADL 2 a slot can be defined using a semantic (rather than lexical) expression in which matching archetypes are defined in the form of a constraint on the archetype concept (and optionally namespace), reminiscent of the SNOMED CT post-coordination constraint syntax. This is shown in the following example.</p>
+</div>
+<div id="_tabs_2" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_2_at_coded_adl2" class="tab">
+<p>at-coded ADL2</p>
+</li>
+<li id="_tabs_2_id_coded_adl2" class="tab">
+<p>id-coded ADL2</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_2_at_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_2_at_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    allow_archetype CLUSTER [at0003.1] occurrences ∈ {0..1} ∈ {
+        include ∈ {True}
+            archetype_id ∈ {
+                ARCHETYPE_ID ∈ {
+                    namespace ∈ {...}
+                    concept ∈ {&lt;&lt; investigation_methodology OR &lt;&lt; investigation_protocol}
+                    ...
+                }
+            }
+        }</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_2_id_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_2_id_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    allow_archetype CLUSTER [id4.1] occurrences ∈ {0..1} ∈ {
+        include ∈ {True}
+            archetype_id ∈ {
+                ARCHETYPE_ID ∈ {
+                    namespace ∈ {...}
+                    concept ∈ {&lt;&lt; investigation_methodology OR &lt;&lt; investigation_protocol}
+                    ...
+                }
+            }
+        }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The above kind of referencing relies on an ontological underpinning for the <code>concept_id</code> part of the human-readable identifier.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aql_query_sets"><a class="anchor" href="#_aql_query_sets"></a><a class="link" href="#_aql_query_sets">AQL Query Sets</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AQL queries are in general authored in a 'set' in order to achieve a design objective, e.g. populate a report, screen, or for some analytical objective. Many are purely local in nature and may be considered 'throwaway'. Others are carefully designed for needs like populating a clinical guideline or performing a standard computation. Within an archetyped framework, such query sets need to be identified and managed in a similar way to other artefacts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aql_queries"><a class="anchor" href="#_aql_queries"></a><a class="link" href="#_aql_queries">AQL Queries</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Archetype-based queries contain archetype references and paths, and can also contain template identifiers and paths. Typical examples are the paths (in green) in the following query:</p>
+</div>
+<div id="_tabs_3" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_3_at_coded_adl2" class="tab">
+<p>at-coded ADL2</p>
+</li>
+<li id="_tabs_3_id_coded_adl2" class="tab">
+<p>id-coded ADL2</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_3_at_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_3_at_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">    SELECT pulse
+    FROM EHR[ehr_id/value=$ehruid]
+     CONTAINS COMPOSITION c
+     CONTAINS OBSERVATION pulse[openEHR-EHR-OBSERVATION.pulse.v1]
+
+    WHERE c/name/value='Encounter' AND
+        c/context/start_time/value &lt;= $endperiod AND
+        c/context/start_time/value &gt;= $startPeriod AND
+        pulse/data/events[at0005]/data/items[at0003]/value/value &lt; 60</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_3_id_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_3_id_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">    SELECT pulse
+    FROM EHR[ehr_id/value=$ehruid]
+     CONTAINS COMPOSITION c
+     CONTAINS OBSERVATION pulse[openEHR-EHR-OBSERVATION.pulse.v1]
+
+    WHERE c/name/value='Encounter' AND
+        c/context/start_time/value &lt;= $endperiod AND
+        c/context/start_time/value &gt;= $startPeriod AND
+        pulse/data/events[id6]/data/items[id4]/value/value &lt; 60</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The semantics of referencing in queries differ from those of the archetype-to-archetype form, due to the fact that references are normally followed by paths that refer to specific data points within the structure. For an AQL query to be correct, the path must exist in the archetype at the release matched by the reference. Since minor versions can add to the archetype 'interface' (i.e. add data points, and therefore paths, to the structure), a given path needs to reference the oldest archetype for which the path is valid. Consider the following path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    [openEHR-EHR-OBSERVATION.pulse.v1]/data/events[at0005]/data/items[at0003]/value/value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this to be valid, the path <code>/data/events[at0005]/data/items[at0003]/value/value</code> must exist within the earliest v1.x release of the archetype openEHR-EHR-OBSERVATION.pulse.v1, i.e. v1.0.0. If this path happened to have been added in a more recent minor release, the archetype reference would need to include the first minor version containing that path.</p>
+</div>
+<div class="paragraph">
+<p>Once an AQL query processor can work with a valid path, it will match the following data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>any instance of the data point at that path in the referenced archetype;</p>
+</li>
+<li>
+<p>any instance of a data point in a congruent path in a specialisation child archetype.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example of a congruent path in a child archetype is:</p>
+</div>
+<div id="_tabs_4" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_4_at_coded_adl2" class="tab">
+<p>at-coded ADL2</p>
+</li>
+<li id="_tabs_4_id_coded_adl2" class="tab">
+<p>id-coded ADL2</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_4_at_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_4_at_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    /data/events[at0005.0.4]/data/items[at0003.1]/value/value</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_4_id_coded_adl2--panel" class="tabpanel" aria-labelledby="_tabs_4_id_coded_adl2">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cadl" data-lang="cadl">    /data/events[id6.0.4]/data/items[id4.1]/value/value</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operational_artefacts"><a class="anchor" href="#_operational_artefacts"></a><a class="link" href="#_operational_artefacts">Operational Artefacts</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Operational artefacts such as flattened archetypes and operational templates generated by compiler tools are built from source artefacts, including by reference resolution from within some source artefacts to others within the current repository of the local and imported artefacts. The particular versions of reference targets are determined by the contents of the configuration, and are thus a function of version management activities, in the same way as for software development.</p>
+</div>
+<div class="paragraph">
+<p>When an operational artefact is generated from controlled source artefacts (i.e. within a Custodian Organisation), it is possible to include the fine-grained revision information from the relevant source artefacts, so that the operational form describes exactly which set of source artefacts were used to produce it. The source artefact semantic signatures can also be included. This information can be included in a configuration section of the artefact. This would be expressed in ODIN (previously dADL) or an XML equivalent, and would list the 'configuration' of concrete artefact revisions used to generate the operational version.</p>
+</div>
+<div class="paragraph">
+<p>The structure of a Configuration is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">    configuration       =   archetype_config template_config subset_config rm_release ;
+    archetype_config    =   config_item { config_item } ;
+    template_config     =   { config_item } ;
+    subset_config       =   { config_item } ;
+    rm_release          =   rm_name release_id ;
+
+    config_item         =   identifier [ revision_id [ commit_id ] ] [ signature ] ;
+
+    signature           =   CHARACTER_SEQUENCE ;
+    revision_id         =   V_INTEGER ;
+    commit_id           =   V_INTEGER ;
+    release_id          =   V_STRING ;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example of the configuration of an operational template in a controlled environment (ODIN format) is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-odin" data-lang="odin">    archetypes = &lt;
+        [1] = &lt;
+            id = &lt;"org.openehr::openEHR-EHR-OBSERVATION.heartrate.v1.3.28"&gt;
+            signature = &lt;"23895yw85y0y0"&gt;
+        &gt;
+        [2] = &lt;
+            id = &lt;"au.gov.nehta::openEHR-EHR-EVALUATION.genetic-diagnosis.v1.2.0"&gt;
+            signature = &lt;"98typrhweruhfd"&gt;
+        &gt;
+        [3] = &lt;
+            id = &lt;"org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.0"&gt;
+            signature = &lt;"2rfhweiudfwieurfh"&gt;
+        &gt;
+    &gt;
+    templates = &lt;
+        [1] = &lt;
+            id = &lt;"au.gov.nehta::openEHR-EHR-COMPOSITION.vital_signs.v5.36.1"&gt;
+        &gt;
+    &gt;
+    subsets = &lt;
+        [1] = &lt;
+            id = &lt;"org.ihtsdo.general::cardiac_diagnoses.v18.1.0"&gt;
+        &gt;
+    &gt;
+    rm = &lt;
+        name = &lt;"org.openehr.rm"&gt;
+        release = &lt;"1.1"&gt;
+    &gt;
+&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references_from_data"><a class="anchor" href="#_references_from_data"></a><a class="link" href="#_references_from_data">References from Data</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a><a class="link" href="#_requirements">Requirements</a></h3>
+<div class="paragraph">
+<p>In knowledge-enabled information environments such as those built on the archetype principles, knowledge artefacts are used to control the creation and validation of data, with the effect that data eventually stored in such systems 'conform' to the relevant artefacts. In order to be able to further process (e.g. display, modify and query) such data, references of some kind to the knowledge artefacts must be stored in the data. The requirements for such references depend on where the data are found, broadly within two possible situations, namely data within operational systems (e.g. EHR systems) and data within 'messages', 'extracts', or 'documents' sent between systems.</p>
+</div>
+<div class="paragraph">
+<p>Three requirements can be identified with respect to data within systems.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Reconstitutability</em>: firstly, it must be possible to re-connect data with the archetypes, templates and subsets, used to create them. This implies that the complete identifier - namespace and full version - is recorded in data, since even a minor version may have an effect on structure.</p>
+</li>
+<li>
+<p><em>Querying</em>: secondly, it must be possible to know what archetypes (including major version), and therefore what path-sets can be used for querying data - given that this may well include parents of specialised archetypes, not just the archetypes used to directly create the data.</p>
+</li>
+<li>
+<p><em>Optimisation</em>: we can also assume that in a typical production system handling millions of health records, that the size of artefact identifiers embedded in data (especially if repeated) may be an issue, and that some kind of space optimisation may be required.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Within extracts or messages, the same requirements broadly hold, but could be better restated as follows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Reconstitutability</em>: it must be possible for the receiving system to be able to determine the relationship of each data element with the artefacts(s) used to create it, so that it can be correctly reconstituted in the receiver system environment.</p>
+</li>
+<li>
+<p><em>Querying</em>: for ensuring the correct functioning of querying, the extract or message should potentially carry sufficient archetype lineage information the archetypes used in the data to allow querying at the receiver, particularly if the latter wants to be able to query using more general parents (e.g. a 'problem' archetype rather than some specific diagnosis specialisation).</p>
+</li>
+<li>
+<p><em>Optimisation</em>: a reasonable trade-off between space optimisation and clarity of representation must be used, given that messages, extracts etc flow between heterogeneous systems.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reconstitutability"><a class="anchor" href="#_reconstitutability"></a><a class="link" href="#_reconstitutability">Reconstitutability</a></h3>
+<div class="paragraph">
+<p>The reconstitutability requirement means recording archetype and template identifiers on the relevant nodes in the data. A basic form of this has always been used in openEHR, such that at archetype root nodes, the archetype identifier and if relevant the template identifier is recorded, and at interior nodes, the at-codes are recorded (formally, the archetype identifier and at-codes are recorded in the <code>LOCATABLE</code> .archetype_node_id attribute of each data node). For example, in data created based on openEHR Releases 1.0.2 or earlier, the archetype identifier references are of the form:</p>
+</div>
+<div class="paragraph">
+<p><code>openEHR-EHR-EVALUATION.diagnosis.v1</code></p>
+</div>
+<div class="paragraph">
+<p>With the identification system described here, the identifier recorded in data is the <em>complete</em> identifier of the artefact - an <code>ARCHETYPE_ID</code> (see the openEHR <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_archetype_identifiers" target="_blank" rel="noopener">Base Types</a> specification) carrying the namespace and the full version identifier, i.e.:</p>
+</div>
+<div class="paragraph">
+<p><code>org.openehr::openEHR-EHR-EVALUATION.diagnosis.<strong>v1.29.0</strong></code></p>
+</div>
+<div class="paragraph">
+<p>so that the exact artefact used to create the data can always be determined. Identifiers recorded from legacy (ADL 1.4) artefacts, which have no namespace and a major-only version (as in the first example above), remain valid, so no migration of existing data is required; such an identifier denotes the legacy artefact, and is not an abbreviation of a three-part version.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_supporting_archetype_based_querying"><a class="anchor" href="#_supporting_archetype_based_querying"></a><a class="link" href="#_supporting_archetype_based_querying">Supporting Archetype-based Querying</a></h3>
+<div class="paragraph">
+<p>Querying of data in openEHR systems is assumed to be based on archetype 'path-sets', i.e. the set of paths extracted from an operational (flat-form) archetype. The paths are a slight simplification of standard X-paths. Two querying methods have been described to date, AQL and a-path, both making this assumption (see <a href="https://specifications.openehr.org/releases/QUERY/latest/AQL.html" target="_blank" rel="noopener">The Archetype Query Language (AQL)</a> ).</p>
+</div>
+<div class="paragraph">
+<p>Based on this assumption, given an archetype X used to create data, the following archetypes could be used for querying:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>X, i.e. exact same version, revision &amp; commit;</p>
+</li>
+<li>
+<p>any previous minor or patch variant of X;</p>
+</li>
+<li>
+<p>any of the specialisation parents of X;</p>
+</li>
+<li>
+<p>any previous minor or patch variant of any of the specialisation parents of X.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For non-specialised archetypes, the allowable querying archetypes can be deduced from the archetype reference recorded in the data. For specialised archetypes, the specialisation lineage can only be obtained from the operational form of the archetype, found in the template used to create the data. This would create a potential problem where for data imported from another site without the relevant template(s), the archetype lineage information was not available. This would prevent the query engine at the receiver system knowing how to query the data using even the more general archetypes in the lineage, that it may have access to.</p>
+</div>
+<div class="paragraph">
+<p>To address this situation, one of the following strategies is required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>include the configuration meta-data from the operational template(s) with the data when it is exchanged, i.e. in an EHR Extract.</p>
+</li>
+<li>
+<p>include archetype lineage information in the data itself. This could be a modified form of the identifier reference in the case of specialised archetypes to allow lineage information to be stored.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The second approach can be considered a generalisation of recording just the current archetype identifier, i.e. the 'lineage' for non-specialised archetypes evaluates to just that archetype id, and for specialised archetypes, it will be a list. This specification assumes that the second is used.</p>
+</div>
+<div class="paragraph">
+<p>The simplest form of this would be as a list of operational identifiers, e.g.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    au.gov.nehta::openEHR-EHR-EVALUATION.genetic_diagnosis.v1.12.9,
+    org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1.29.0,
+    org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.18</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_formal_model"><a class="anchor" href="#_formal_model"></a><a class="link" href="#_formal_model">Formal Model</a></h3>
+<div class="paragraph">
+<p>A formal definition of reference catering to the above requirements is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ebnf" data-lang="ebnf">    archetype_data_ref  =   archetype_ver_ref { ',' archetype_ver_ref } ;
+    archetype_ver_ref   =   hrid ;   (* the complete identifier of each artefact in the lineage *)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optimisations"><a class="anchor" href="#_optimisations"></a><a class="link" href="#_optimisations">Optimisations</a></h3>
+<div class="paragraph">
+<p>In normal archetype-based data, both basic references and additional lineage information might be repeated throughout a given component, such as an openEHR or <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a> <code>COMPOSITION</code> . Consider a <code>COMPOSITION</code> documenting problems &amp; diagnoses of the patient, where each problem is recorded using the archetype</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    uk.nhs.royalfree.clinical::openEHR-EHR-EVALUATION.diagnosis.v2.15.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>whose lineage is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1.29.0
+    org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the archetype reference lengths are 67, 53 and 50 characters respectively, i.e. a total of 170 characters. Repeated say 5 times would give 850 characters of identifier meta-data for the <code>COMPOSITION</code> , whose main clinical data could easily be similar. Even in an XML-based storage system, various kinds of compression are used, the identifier reference overhead might be considered as an unacceptable fraction of the overall data storage requirement.</p>
+</div>
+<div class="paragraph">
+<p>It is therefore worth considering various simple optimisations, while retaining clarity and comprehensibility in the data. The following ideas are currently intended to be limited to serialised forms of data. They would therefore only require changes to openEHR XML-schemas rather than the abstract reference model.</p>
+</div>
+<div class="sect3">
+<h4 id="_identifier_aliasing"><a class="anchor" href="#_identifier_aliasing"></a><a class="link" href="#_identifier_aliasing">Identifier Aliasing</a></h4>
+<div class="paragraph">
+<p>The most obvious optimisation is to use a set of variable references local to the data context, in this case an openEHR or ISO 13606 Extract. For example, at the top of the Extract, the following definitions could be made:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    id01=uk.nhs.royalfree.clinical::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
+        org.openehr::openEHR-EHR-EVALUATION.diagnosis.v1.29.0,
+        org.openehr::openEHR-EHR-EVALUATION.problem.v2.4.0
+    id02=au.gov.nehta::openEHR-EHR-OBSERVATION.hba1c_result.v1.4.0,
+        org.openehr::openEHR-EHR-OBSERVATION.lab_result.v1.18.0
+    etc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The identifiers <code>id01</code>, <code>id02</code> etc would then be used in the data, reducing the identifier overhead by perhaps 50% in some cases. This possibility would be enabled by adding an attribute to contain the variable definitions at the top of the <code>EHR_EXTRACT</code> type in the openEHR Reference Model, and in equivalent classes in other models.</p>
+</div>
+<div class="paragraph">
+<p>The use of such variables will slightly complicate querying and other data processing, since a query that returns part of a Composition would return data containing meaningless local variable names rather than proper archetype meta-data.</p>
+</div>
+<div class="paragraph">
+<p>A second question to consider is whether any parts of the identifiers could be removed. For example, it might initially appear that the reference model and class identification could be removed altogether, since the data when initially created would seem by definition to be based on the reference model and class of the archetype. However, neither are guaranteed. Consider the following two cases which use archetypes based on a different reference model to create data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a data extractor that transforms source data, say in openEHR form, to a standard form, say in ISO 13606 form. The archetype identifiers embedded in the latter data will be the original openEHR archetype identifiers (the extractor does not create new archetypes to do its transformation work);</p>
+</li>
+<li>
+<p>a product that is directly based on another standard, such as ISO 13606 but uses the published library of openEHR archetypes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similarly, in the case of the class, the data may easily be based on a descendant (e.g. the <code>POINT_EVENT</code> class in openEHR) of the class mentioned in the archetype (e.g. <code>EVENT</code> ).</p>
+</div>
+<div class="paragraph">
+<p>We therefore assume that although some of the above assumptions might be available in very particular environments, they cannot be safely made in general, particularly since it can never be predicted where data may be shared.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reference_compression"><a class="anchor" href="#_reference_compression"></a><a class="link" href="#_reference_compression">Reference Compression</a></h4>
+<div class="paragraph">
+<p>Nevertheless, it would be possible to go further in terms of removing repetition in the once-only declarations. For instance, a compressed form of the archetype lineage information could be constructed, whereby repeated sections in each subsequent identifier are replaced by a special character. The example above would become:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    id01=uk.nhs.royalfree.clinical::openEHR-EHR-EVALUATION.diagnosis.v2.15.0,
+        org.openehr::~.diagnosis.v1.29.0,
+        ~::~.problem.v2.4.0
+    id02=au.gov.nehta::openEHR-EHR-OBSERVATION.hba1c_result.v1.4.0,
+        org.openehr::~.lab_result.v1.18.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above syntax uses the <code>~</code> character in each identifier in the list to mean 'the missing parts are taken from the corresponding element(s) of the previous identifier in the list' (the inspiration is the use of the <code>~</code> in dictionaries to stand for the keyword). In this syntax, the concrete archetype used to create the data is guaranteed to appear first and in its entirety in the list.</p>
+</div>
+<div class="paragraph">
+<p>Clearly in a particular system in which archetypes were only ever used from the same reference model as the system itself is built on, an even further reduced form of these references could be created. However, if the data were ever to be shared, such references would be in danger of being non-interoperable.</p>
+</div>
+<div class="paragraph">
+<p>Whether the additional saving in space justifies the added complexity in parsing is debatable.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../distributed_governance/">Distributed Governance</a></span>
+  <span class="next"><a href="../uris/">A Reliable URI for Knowledge Resources</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright: © 2003+
+    <a href="https://www.openehr.org"
+        alt="is an independent, non-profit foundation, facilitating the sharing of health
+           records by consumers and clinicians via open specifications, clinical models
+           and open platform implementations.">The openEHR Foundation</a>
+  </p>
+
+  <p>
+    License:
+    <img src="../../../../ui/img/cc-by-nd-88x31.png"
+        alt="Creative Commons Attribution-NoDerivs 3.0 Unported."
+        style="vertical-align:middle;margin:0 0.25rem 0 0;">
+    <a href="https://creativecommons.org/licenses/by-nd/3.0/">
+      Creative Commons Attribution-NoDerivs 3.0 Unported.
+    </a>
+  </p>
+
+  <p>
+    <strong>Links: <strong>
+    <a href="https://www.openehr.org/terms-of-use" class="mr-1">Terms of use</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Privacy policy</a> |
+    <a href="https://www.openehr.org/privacy-policy" class="mx-1">Logos &amp; Trademarks</a> |
+    <a href="https://www.openehr.org/contact-us" class="mx-1">Contact</a>
+  </p>
+</footer>
+
+<script id="site-script" src="../../../../ui/js/site.js" data-ui-root-path="../../../../ui"></script>
+<script defer src="../../../../ui/js/vendor/highlight.js"></script>
+<script src="../../../../ui/js/vendor/lunr.js"></script>
+<script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../ui/js/medium-zoom.min.js"></script>
+<script src="../../../../ui/js/zoom.js"></script>
+<script async src="../../../../ui/js/tabs.js"></script>
+  </body>
+</html>

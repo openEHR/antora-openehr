@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Appendix :: openEHR Specifications (Local Build)</title>
     <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/LANG/Release-1.0.0/bmm/appendix/">
-    <link rel="prev" href="../extensions/">
-    <link rel="next" href="../../bmm_persistence/">
+    <link rel="prev" href="../persistence/">
+    <link rel="next" href="../../bmm3/">
     <meta name="description" content="Basic Meta-Model (BMM) specification">
     <meta name="keywords" content="reflection, meta-model, UML, BMM">
     <meta name="generator" content="Antora 3.1.15">
@@ -148,43 +148,71 @@
     <a class="nav-link" href="../overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../packages/">Package Structure</a>
+    <a class="nav-link" href="../bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../model_access/">Model Access Package</a>
+    <a class="nav-link" href="../rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../core-model/">Model Structure</a>
+    <a class="nav-link" href="../core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../persistence/">Persistence</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="./">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -446,22 +474,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Matija Kejžar, Senior Engineer, Better, Slovenia</p>
-</li>
-<li>
 <p>Patrick Langford, NeuronSong LLC, Utah, USA</p>
 </li>
 <li>
-<p>Claude Nanjo MA African Studies, M Public Health, Cognitive Medical Systems Inc., California, USA</p>
+<p>Claude Nanjo MA African Studies., M Public Health, Cognitive Medical Systems Inc., California, USA</p>
 </li>
 <li>
 <p>Harold Solbrig, Mayo Clinic, Rochester, USA</p>
 </li>
 <li>
 <p>Erik Sundvall PhD, Linkoping University, Sweden</p>
-</li>
-<li>
-<p>Bert Verhees, ROSA Software, The Netherlands.</p>
 </li>
 </ul>
 </div>
@@ -471,19 +493,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p>'openEHR' is a registered trademark of the openEHR Foundation;</p>
+<p>'openEHR' is a registered trademark of the openEHR Foundation</p>
 </li>
 <li>
-<p>'Java' is a registered trademark of Oracle Corporation;</p>
+<p>'Java' is a registered trademark of Oracle Corporation</p>
 </li>
 <li>
-<p>'C#' is a registered trademark of Microsoft;</p>
+<p>'C#' is a registered trademark of Microsoft Corporation</p>
 </li>
 <li>
-<p>'OMG' and 'UML' are registered trademarks of the Object Management Group;</p>
+<p>'OMG' and 'UML' are registered trademarks of the Object Management Group</p>
 </li>
 <li>
-<p>'MagicDraw' is a registered trademark of NoMagic Inc;</p>
+<p>'MagicDraw' is a registered trademark of NoMagic Inc</p>
 </li>
 <li>
 <p>'Rational Software Architect' is a registered trademark of IBM Corporation.</p>
@@ -494,106 +516,16 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conformance"><a class="anchor" href="#_conformance"></a><a class="link" href="#_conformance">Conformance</a></h2>
+<h2 id="_history"><a class="anchor" href="#_history"></a><a class="link" href="#_history">History</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant <a href="https://specifications.openehr.org/releases/ITS/development/index" target="_blank" rel="noopener">openEHR Implementation Technology Specification(s) (ITSs)</a>, such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_previous_versions"><a class="anchor" href="#_previous_versions"></a><a class="link" href="#_previous_versions">Previous Versions</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_version_3_0_0"><a class="anchor" href="#_version_3_0_0"></a><a class="link" href="#_version_3_0_0">Version 3.0.0</a></h3>
-<div class="paragraph">
-<p>This version made major changes to the <code>BMM_TYPE</code> hierarchy and semantics, enabling generic inheritance by generic and non-generic classes to be represented.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_version_3_1_0"><a class="anchor" href="#_version_3_1_0"></a><a class="link" href="#_version_3_1_0">Version 3.1.0</a></h3>
-<div class="paragraph">
-<p>This version adds meta-classes for computational elements to BMM, including:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>routines, variables, constants;</p>
-</li>
-<li>
-<p>expressions (including assertions);</p>
-</li>
-<li>
-<p>statements.</p>
-</li>
-</ul>
+<p>The Basic Meta-Model originated in the openEHR BASE component, where it was published up to and including <a href="https://specifications.openehr.org/releases/BASE/Release-1.0.4/bmm.html" target="_blank" rel="noopener">BASE Release 1.0.4</a>. With the establishment of the openEHR LANG (Generic Languages) component, the BMM specification was migrated to LANG, which is now its normative home. This document describes the stable v2.x form of BMM, i.e. the form implemented by current openEHR tooling such as Archie.</p>
 </div>
 <div class="paragraph">
-<p>It makes various adjustments to the existing model attributes and classes. The BMM remains compatible with P_BMM 2.x, i.e. any existing <code>.bmm</code> file can be parsed to create a v 3.1.0 BMM instance.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_a_note_on_language"><a class="anchor" href="#_a_note_on_language"></a><a class="link" href="#_a_note_on_language">A Note on Language</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The elements of meta-models are sometimes named confusingly in the literature and within various programming language technologies. In this specification, we use the following terms:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">class</dt>
-<dd>
-<p>generally refers to a class defined in a model expressed in BMM, i.e. an instance of a BMM meta-class;</p>
-</dd>
-<dt class="hdlist1">meta-class</dt>
-<dd>
-<p>refers to a class in the BMM itself, such as <code>BMM_CLASS</code>, in order to clearly distinguish it from classes defined in models represented using BMM;</p>
-</dd>
-<dt class="hdlist1">feature (of a class)</dt>
-<dd>
-<p>any stored or computed element of a class, including constants, attributes (properties) and routines (methods);</p>
-</dd>
-<dt class="hdlist1">property</dt>
-<dd>
-<p>a stored class feature; also known as 'attribute';</p>
-</dd>
-<dt class="hdlist1">routine</dt>
-<dd>
-<p>a computed class feature that may be either value-returning (a function) or work-performing (a procedure);</p>
-</dd>
-<dt class="hdlist1">function</dt>
-<dd>
-<p>a routine that computes and returns a value; typically causes no side-effects in the object;</p>
-</dd>
-<dt class="hdlist1">procedure</dt>
-<dd>
-<p>a routine that performs a computation; typically has side-effects;</p>
-</dd>
-<dt class="hdlist1">generic (class or type)</dt>
-<dd>
-<p>a kind of class or type that has parameters of other types; known as 'template' type in some programming languages;</p>
-</dd>
-<dt class="hdlist1">type</dt>
-<dd>
-<p>generally refers to a type defined in a model expressed in BMM, i.e. an instance of a BMM meta-type;</p>
-</dd>
-<dt class="hdlist1">meta-type</dt>
-<dd>
-<p>refers to a type in the BMM itself, which is either a class (such as <code>BMM_CLASS</code>) or generically derived (meta-)type in the sense of being an instance generator, where the instances will be concrete type definitions in models represented using BMM.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tooling"><a class="anchor" href="#_tooling"></a><a class="link" href="#_tooling">Tooling</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <a href="https://github.com/openEHR/archie" target="_blank" rel="noopener">openEHR Archie Library</a> fully implements this specification in Java and may be used to build UI tools for compiling, viewing and editing BMM models.</p>
+<p>Continued development of the meta-model, extending it with an expression and statement meta-model together with richer feature and signature metadata, is carried out separately and is documented in the {openehr_bmm3}[BMM v3 specification^]. The v2.x form described here remains the normative, tool-implemented version.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="https://www.openehr.org/downloads/ADLworkbench">openEHR ADL Workbench (AWB)</a> fully implements this specification, and provides a convenient way of illustrating BMM semantics. The screenshots used in this specification are all from the ADL Workbench. The tool is written in the Eiffel language, and is available as <a href="https://github.com/openEHR/adl-tools" target="_blank" rel="noopener">open source on Github</a>. The BMM libraries can be found in the <a href="https://github.com/wolandscat/EOMF/tree/master/library/bmm" target="_blank" rel="noopener">EOMF Github repository</a>.</p>
+<p>The P_BMM persistence model, which defines the serialised schema form of a BMM model together with its <a href="https://specifications.openehr.org/releases/LANG/latest/odin.html" target="_blank" rel="noopener">ODIN</a> syntax, is specified separately in the <a href="https://specifications.openehr.org/releases/LANG/latest/bmm_persistence.html" target="_blank" rel="noopener">BMM Persistence specification</a>.</p>
 </div>
 </div>
 </div>
@@ -620,128 +552,19 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.1.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>4.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-8" target="_blank" rel="noopener">SPECLANG-8</a>. Classify <code>EL_DECISION_TABLE</code> under <code>EL_TERMINAL</code>;<br>
- Add read-only and writable meta-types for variables and properties;<br>
- Add routine, function and property signature meta-types.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Apr 2022</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-8" target="_blank" rel="noopener">SPECLANG-8</a>. Simplify meta-model of features to single inheritance;<br>
- change <code>BMM_PROCEDURE</code> to return a special type similar to Haskell, Kotlin. Revert some 3.1.0 changes.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">09 Jun 2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-14" target="_blank" rel="noopener">SPECLANG-14</a>. Formalise the BMM v2/v3 split: this specification is established as a separate, stable BMM document in the LANG component; the evolved meta-model is maintained in the separate BMM v3 specification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2026</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>LANG Release 1.0.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-2" target="_blank" rel="noopener">SPECLANG-2</a>. Add Basic Meta-Model (BMM) spec to LANG component.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openEHR SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11 May 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add <code>EL_SIMPLE</code> to distinguish complex expressions from terminals and operator expressions;
- Adjust <code>BMM_CONSTANT</code> to support computed constants;<br>
- Add <code>EL_DECISION_TABLE</code>, <code>BMM_ACTION_TABLE</code> classes and descendants;<br>
- Add <code>BMM_INTERVAL_VALUE</code>;<br>
- Add <code>BMM_FEATURE_GROUP</code> and <code>BMM_VISIBILITY</code> classes;<br>
- Rename <code>BMM_SCHEMA.<em>bmm_schema</em></code> to <code><em>bmm_model</em></code>;<br>
- Remove unintended inheritance from <code>BMM_SCHEMA</code> to <code>P_BMM_PACKAGE_CONTAINER</code>;<br>
- Improve documentation in <a href="#Model Access Package">[Model Access Package]</a>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12 Oct 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>EL_ASSERTION</code> to <code>EL_BOOLEAN_EXPRESSION</code>;<br>
- Extend literal meta-types to directly support container literals;<br>
- Add basic statement types to BMM;<br>
- Add external routine support;<br>
- Added note on multiple inheritance in Class Features section.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">25 Jun 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remove inheritance to <code>BMM_DEFINITIONS</code> (assume static access);<br>
- Remove <code>BMM_ENTITY</code> class and 'Entities' section of document.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B Verhees,<br>
- T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">01 Jun 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_DEFINED_TYPE</code> to <code>BMM_EFFECTIVE_TYPE</code>;<br>
- Rename <code>BMM_ENTITY_TYPE</code> to <code>BMM_MODEL_TYPE</code>;<br>
- Significant improvements to meta-type part of model;<br>
- Add Expression language meta-model;<br>
- Add abstract syntax examples to text;<br>
- Add description of default <code>Any</code> class and type;<br>
- Add <code>BMM_MODEL.<em>used_models</em></code>;<br>
- Add creators and converters;<br>
- Add <code>ROUTINE.<em>body</em></code> hook;<br>
- Add <code>BMM_RESULT</code>, <code>EL_SCOPED_REF</code>, <code>EL_TYPE_REF</code>;<br>
- Add <code>BMM_MODULE</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22 Apr 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>BMM_MODEL_ELEMENT</code> to <code>BMM_DECLARATION</code>;<br>
- Rename <code>BMM_VALUED</code> to <code>BMM_TYPED</code>;<br>
- Rename <code>BMM_REFERENCEABLE</code> to <code>BMM_FEATURE</code>;<br>
- Introduce dual taxonomy for features based on scoped declarations and typing;<br>
- Add meta-model for functional entities. Re-structure packages. Modify <code>BMM_FEATURE.<em>signature</em></code> to new meta-type, <code>BMM_SIGNATURE</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11 Nov 2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Improve meta-model of Features: rename <code>BMM_FORMAL_ELEMENT</code> to <code>BMM_REFERENCEABLE</code>; move <code>BMM_VALUE_RETURNING.<em>type</em></code> to <code>BMM_EVALUABLE</code>;<br>
- Add <code>BMM_INDEXED_CONTAINER_TYPE</code>, <code>BMM_INDEXED_CONTAINER_PROPERTY</code>, to support indexed containers like <code>Hash&lt;K, V&gt;</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10 Mar 2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Improve meta-model of Enumerated types to include types restricted to a terminology or value set (may be used for terminology constraints);<br>
- Improve explanation and diagrams to do with types and classes.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22 Feb 2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add feature elements <code>BMM_ROUTINE</code>, <code>BMM_VALUED</code> and descendants;<br>
- Change <code>BMM_PROPERTY.<em>is_mandatory</em></code> to <code>BMM_MUTABLE.<em>is_nullable</em></code> (reversed Boolean sense);<br>
- Made <code>BMM_PACKAGE_CONTAINER</code> abstract;<br>
- Moved <code><em>name</em></code> to <code>BMM_MODEL_ELEMENT</code>, replacing <code><em>name</em></code> in <code>BMM_CLASS</code>, <code>BMM_PACKAGE</code>, <code>BMM_PROPERTY</code>, and <code><em>model_name</em></code> in <code>BMM_MODEL</code>;<br>
- Marked <code>BMM_PROPERTY.<em>is_computed</em></code> as obsolete (to be phased out);<br>
- Add <code>BMM_PROPERTY.<em>is_composition</em></code> to distinguish part/whole from associations.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15 Sep 2018</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECLANG-2" target="_blank" rel="noopener">SPECLANG-2</a>. Add Basic Meta-Model (BMM) spec to LANG component;<br>
- Separate <code>P_BMM</code> model and syntax to BMM Persistence specification;<br>
- refactor / tighten class model:<br>
- rename <code>BMM_GENERIC_PARAMETER</code> to <code>BMM_PARAMETER_TYPE</code>;<br>
- remove <code>BMM_OPEN_TYPE</code>; remove <code>BMM_TYPE_ELEMENT</code>;<br>
- add new type <code>BMM_DEFINED_TYPE</code> as parent of <code>BMM_SIMPLE_TYPE</code> and <code>BMM_GENERIC_TYPE</code>;<br>
- add new type <code>BMM_UNITARY_TYPE</code> as parent of <code>BMM_DEFINED_TYPE</code> and <code>BMM_PARAMETER_TYPE</code>;<br>
- redefine <code>BMM_CLASS.<em>ancestors</em></code> to be of type <code>BMM_DEFINED_TYPE</code>;<br>
- redefine <code>BMM_PARAMETER_TYPE.<em>conforms_to</em></code> to <code><em>type_constraint</em></code> of type <code>BMM_DEFINED_TYPE</code>;<br>
- correct <code>BMM_CLASS.<em>immediate_descendants</em></code> to be of type <code>List&lt;BMM_CLASS&gt;</code>;<br>
- rename <code>BMM_CLASSIFIER</code> to <code>BMM_ENTITY</code>;<br>
- Support generic types as class ancestors;<br>
- Remove archetype-related meta-data.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12 May 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Nov 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.2</p></td>
@@ -752,8 +575,13 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remove <code>BMM_CLASSIFIER.<em>conformance_type_name</em></code>;<br>
- Constrain <code>BMM_GENERIC_PARAMETER.<em>name</em></code> to one character and upper case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rename <code>P_BMM_SIMPLE_TYPE_OPEN</code> to <code>P_BMM_OPEN_TYPE</code>;<br>
+ Remove <code>BMM_CLASSIFIER.<em>conformance_type_name</em></code>;<br>
+ Rename <code>P_BMM_GENERIC_PARAMETER.<em>create_bmm_generic_parameter_definition</em></code> to <code><em>create_bmm_generic_parameter</em></code>;<br>
+ Remove inheritance from <code>P_BMM_PACKAGE_CONTAINER</code> to <code>P_BMM_MODEL_ELEMENT</code>;<br>
+ Make <code>P_BMM_MODEL_ELEMENT</code> abstract;<br>
+ Correct <code>P_BMM_ENUMERATION.<em>items_names</em></code> cardinality to multiple;<br>
+ Constrain <code>BMM_GENERIC_PARAMETER.<em>name</em></code> and <code>P_BMM_GENERIC_PARAMETER.<em>name</em></code> to one character and upper case.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Nanjo,<br>
  T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">02 Mar 2017</p></td>
@@ -764,9 +592,18 @@
  Move and rename <code>BMM_TYPE.<em>as_display_type_string</em></code> to <code>BMM_CLASSIFIER.<em>type_signature</em></code>. Add redefinitions in relevant descendant classes.<br>
  Rename <code>BMM_SIMPLE_TYPE_OPEN</code> to <code>BMM_OPEN_TYPE</code>.<br>
  Add new class <code>BMM_TYPE_ELEMENT</code> in preparation for BMM 3 refactoring.<br>
+ Remove class <code>P_BMM_CLASSIFIER</code>.<br>
+ Add missed inheritance from <code>P_BMM_PROPERTY</code> to <code>P_BMM_MODEL_ELEMENT</code>.<br>
  Rename <code>BMM_SCHEMA</code> to <code>BMM_MODEL</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20 Jun 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add missing inheritance from <code>P_BMM_SCHEMA</code> to <code>BMM_SCHEMA_CORE</code>.<br>
+ Correct naming of <code><em>bmm_xxx_definition</em></code>, <code><em>create_bmm_xxx_definition</em></code> in <code>P_BMM_XXX</code> classes to <code><em>bmm_xxx</em></code>, <code><em>create_bmm_xxx</em></code> etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Apr 2016</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.1.0</p></td>
@@ -779,8 +616,8 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../extensions/">BMM Extensions</a></span>
-  <span class="next"><a href="../../bmm_persistence/">BMM Persistence Model and Syntax</a></span>
+  <span class="prev"><a href="../persistence/">Persistence</a></span>
+  <span class="next"><a href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a></span>
 </nav>
 </article>
   </div>

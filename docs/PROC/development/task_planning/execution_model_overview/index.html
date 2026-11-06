@@ -435,7 +435,7 @@
 <h2 id="_phases_of_processing"><a class="anchor" href="#_phases_of_processing"></a><a class="link" href="#_phases_of_processing">Phases of Processing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As described in the earlier section <a href="#Execution Concepts">[Execution Concepts]</a>, Work Plan execution traverses three states: <code>materialised</code>, <code>activated</code> and <code>terminated</code>. These are described in the following sub-sections.</p>
+<p>As described in the earlier section <a href="../design/#_execution_concepts" class="xref page">Execution Concepts</a>, Work Plan execution traverses three states: <code>materialised</code>, <code>activated</code> and <code>terminated</code>. These are described in the following sub-sections.</p>
 </div>
 <div class="sect2">
 <h3 id="_materialisation"><a class="anchor" href="#_materialisation"></a><a class="link" href="#_materialisation">Materialisation</a></h3>
@@ -477,7 +477,7 @@
 <p>As part of activation, the <em>runtime window</em> must be determined. This is a moving window corresponding to the section of a materialised Plan that will be actively executing at any moment. The size of the window should be at least a working shift (e.g. 8-12 hours), but might be longer, e.g. the number of days used in the organisation for lookahead planning. The parts of Task Plans within a Work Plan that are inside the runtime window are in active execution, while other parts (both prior and after the window) are not currently executing but should be available for visualisation.</p>
 </div>
 <div class="paragraph">
-<p>When the runtime window is known, allocations for the window can be managed, as <a href="#Allocation">described below</a>. To enable allocation to take place, a communication channel must be established with each potential worker or worker pool. This may consist of any technical means, including email, instant messager, a ward screen application and so on. Allocations may be filled in a 'just in time' fashion where the technical means exists to enable it (e.g. push communications from the server).</p>
+<p>When the runtime window is known, allocations for the window can be managed, as <a href="../design/#_allocation" class="xref page">described below</a>. To enable allocation to take place, a communication channel must be established with each potential worker or worker pool. This may consist of any technical means, including email, instant messager, a ward screen application and so on. Allocations may be filled in a 'just in time' fashion where the technical means exists to enable it (e.g. push communications from the server).</p>
 </div>
 <div class="paragraph">
 <p>Execution starts by putting the Work Plan&#8217;s top-level Task Plans into an initial wait state, waiting on allocation of principal performer, and availability of the Task Plan subject (patient, related person, image, tissue sample etc).</p>

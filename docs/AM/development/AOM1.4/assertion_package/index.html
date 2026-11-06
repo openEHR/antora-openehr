@@ -244,33 +244,6 @@
     <a class="nav-link" href="../../Identification/">Archetype Identification</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_source_id/">Source Artefact Identification</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/versioning/">Versioning</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/lifecycle_mgt/">Lifecycle Model</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/distributed_governance/">Distributed Governance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/referencing/">Referencing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/uris/">A Reliable URI for Knowledge Resources</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/artefact_authentication/">Artefact Authentication</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../Identification/scenarios/">Scenarios</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../Identification/appendix/">Appendix</a>
   </li>
 </ul>
@@ -526,7 +499,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a><a class="link" href="#_overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Assertions are expressed in archetypes in typed first-order predicate logic (FOL). They are used in two places: to express archetype slot constraints, and to express rules in complex object constraints. In both of these places, their role is to constrain something <em>inside</em> the archetype. Constraints on external resources such as terminologies are expressed in the constraint binding part of the archetype <code>ontology</code>, described in <a href="#_terminology_package">[_terminology_package]</a>. The <code>assertion</code> package is illustrated below.</p>
+<p>Assertions are expressed in archetypes in typed first-order predicate logic (FOL). They are used in two places: to express archetype slot constraints, and to express rules in complex object constraints. In both of these places, their role is to constrain something <em>inside</em> the archetype. Constraints on external resources such as terminologies are expressed in the constraint binding part of the archetype <code>ontology</code>, described in <a href="../ontology_package/" class="xref page">Terminology Package</a>. The <code>assertion</code> package is illustrated below.</p>
 </div>
 <div id="assertion_package" class="imageblock text-center text-center">
 <div class="content">
@@ -634,14 +607,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Root of expression tree.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>variables</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_assertion_variable_class" class="xref page">ASSERTION_VARIABLE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>variables</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_assertion_variable_class">ASSERTION_VARIABLE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Definitions of variables used in the assertion expression.</p>
 </div></div></td>
@@ -694,13 +667,13 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expression</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Root of expression tree.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>variables</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_assertion_variable_class" class="xref page">ASSERTION_VARIABLE</a>&gt;</code> [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>variables</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/structure_types/#_list_class" class="xref page">List</a>&lt;<a href="#_assertion_variable_class">ASSERTION_VARIABLE</a>&gt;</code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Definitions of variables used in the assertion expression.</p>
 </div></div></td>
@@ -947,7 +920,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1005,7 +978,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_expr_item_class">EXPR_ITEM</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1014,7 +987,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of this item in the mathematical sense. For leaf nodes, must be the name of a primitive type, or else a reference model type. The type for any relational or boolean operator will be “Boolean”, while the type for any arithmetic operator, will be “Real” or “Integer”.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></em></p>
+<em>Inherited from <a href="#_expr_item_class">EXPR_ITEM</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1111,7 +1084,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1127,7 +1100,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_operator_kind_enumeration" class="xref page">OPERATOR_KIND</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="#_operator_kind_enumeration">OPERATOR_KIND</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Code of operator.</p>
 </div></div></td>
@@ -1153,7 +1126,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_expr_item_class">EXPR_ITEM</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1162,7 +1135,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of this item in the mathematical sense. For leaf nodes, must be the name of a primitive type, or else a reference model type. The type for any relational or boolean operator will be “Boolean”, while the type for any arithmetic operator, will be “Real” or “Integer”.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></em></p>
+<em>Inherited from <a href="#_expr_item_class">EXPR_ITEM</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1172,7 +1145,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_operator_kind_enumeration" class="xref page">OPERATOR_KIND</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="#_operator_kind_enumeration">OPERATOR_KIND</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Code of operator.</p>
 </div></div></td>
@@ -1259,7 +1232,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_expr_operator_class">EXPR_OPERATOR</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1268,7 +1241,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Operand node.</p>
 </div></div></td>
@@ -1294,7 +1267,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a>, <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_expr_item_class">EXPR_ITEM</a>, <a href="#_expr_operator_class">EXPR_OPERATOR</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1303,25 +1276,25 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of this item in the mathematical sense. For leaf nodes, must be the name of a primitive type, or else a reference model type. The type for any relational or boolean operator will be “Boolean”, while the type for any arithmetic operator, will be “Real” or “Integer”.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></em></p>
+<em>Inherited from <a href="#_expr_item_class">EXPR_ITEM</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>precedence_overridden</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></em></p>
+<em>Inherited from <a href="#_expr_operator_class">EXPR_OPERATOR</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_operator_kind_enumeration" class="xref page">OPERATOR_KIND</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="#_operator_kind_enumeration">OPERATOR_KIND</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Code of operator.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></em></p>
+<em>Inherited from <a href="#_expr_operator_class">EXPR_OPERATOR</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Operand node.</p>
 </div></div></td>
@@ -1401,7 +1374,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_expr_operator_class">EXPR_OPERATOR</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1410,14 +1383,14 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Left operand node.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Right operand node.</p>
 </div></div></td>
@@ -1443,7 +1416,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a>, <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Inherits: <a href="#_expr_item_class">EXPR_ITEM</a>, <a href="#_expr_operator_class">EXPR_OPERATOR</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1452,31 +1425,31 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type name of this item in the mathematical sense. For leaf nodes, must be the name of a primitive type, or else a reference model type. The type for any relational or boolean operator will be “Boolean”, while the type for any arithmetic operator, will be “Real” or “Integer”.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></em></p>
+<em>Inherited from <a href="#_expr_item_class">EXPR_ITEM</a></em></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>precedence_overridden</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></em></p>
+<em>Inherited from <a href="#_expr_operator_class">EXPR_OPERATOR</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="../../../Release-2.3.0/AOM1.4/assertion_package/#_operator_kind_enumeration" class="xref page">OPERATOR_KIND</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator</strong>: <code><a href="#_operator_kind_enumeration">OPERATOR_KIND</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Code of operator.<br>
-<em>Inherited from <a href="#LANG:BEL:expression_object_model.adoc#_expr_operator_class" class="xref unresolved">EXPR_OPERATOR</a></em></p>
+<em>Inherited from <a href="#_expr_operator_class">EXPR_OPERATOR</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>left_operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Left operand node.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code><a href="#LANG:BEL:expression_object_model.adoc#_expr_item_class" class="xref unresolved">EXPR_ITEM</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>right_operand</strong>: <code><a href="#_expr_item_class">EXPR_ITEM</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Right operand node.</p>
 </div></div></td>
@@ -1799,7 +1772,7 @@
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">op_plus</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Arithmetic plus operator (+)</p>
+<p>Arithmetic plus operator (&#43;)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1943,7 +1916,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">op_plus</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Arithmetic plus operator (+)</p>
+<p>Arithmetic plus operator (&#43;)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1978,16 +1951,16 @@
 other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Value equality.<br>
+<p>Value equality: return True if <code>this</code> and <code><em>other</em></code> are attached to objects considered to be equal in value.<br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equal</strong> <em>alias</em> "=", "==" (<br>
 other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Reference equality.<br>
+<p>Reference equality for reference types, value equality for value types.<br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
@@ -2005,26 +1978,59 @@ a_type: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive
 an_object: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Type name of an object as a string. May include generic parameters, as in "Interval&lt;Time&gt;".<br>
+<p>Type name of an object as a string. May include generic parameters, as in <code>"Interval&lt;Time&gt;"</code>.<br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>not_equal</strong> <em>alias</em> "!=", "≠" (<br>
 other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
 ): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘&gt;’, ‘&gt;=’, ‘&lt;=’, ‘&lt;&gt;’. In real type systems, this operator might be defined on another class for comparability.<br>
+<p>True if current object not equal to <code><em>other</em></code>. Returns not <code><em>equal</em>()</code>.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Lexical comparison of string content based on ordering in relevant character set.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than_or_equal</strong> <em>alias</em> "&lt;=", "≤" (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>not (other &lt; self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if current object less than or equal to <code><em>other</em></code>.<br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a></em></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
-other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
-): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than</strong> <em>alias</em> "&gt;" (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (other &lt; self)</code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Concatenation operator - causes ‘other’ to be appended to this string.<br>
-<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></em></p>
+<p>True if current object greater than <code><em>other</em></code>.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>greater_than_or_equal</strong> <em>alias</em> "&gt;=", "≥" (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code><br>
+<br>
+<em>Post_result</em>: <code>Result = (other &lt;= self)</code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if current object greater than or equal to <code><em>other</em></code>.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_ordered_class" class="xref page">Ordered</a></em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2045,6 +2051,24 @@ other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_integer</strong> (): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the integer corresponding to the integer value represented in this string.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>append</strong> <em>alias</em> "+" (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Concatenation operator - causes <code><em>other</em></code> to be appended to this string.<br>
+<em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (<br>
+other: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a>[1]</code><br>
+): <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True if this String contains <code><em>other</em></code> (case-sensitive).<br>
 <em>Inherited from <a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></em></p>
 </div></div></td>
 </tr>

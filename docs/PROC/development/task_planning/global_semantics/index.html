@@ -449,7 +449,7 @@
 <div class="sect2">
 <h3 id="_general_scheme"><a class="anchor" href="#_general_scheme"></a><a class="link" href="#_general_scheme">General Scheme</a></h3>
 <div class="paragraph">
-<p>When a materialised Work Plan is activated (<a href="#_activation">see below</a>), its top-level Task Plans are active, meaning that their initial Task(s) are in the <code>available</code> lifecycle state, as <a href="#_task_lifecycle">described above</a>.</p>
+<p>When a materialised Work Plan is activated (<a href="../execution_model_overview/#_activation" class="xref page">see below</a>), its top-level Task Plans are active, meaning that their initial Task(s) are in the <code>available</code> lifecycle state, as <a href="../design/#_task_lifecycle" class="xref page">described above</a>.</p>
 </div>
 <div class="paragraph">
 <p>In a Task Plan, the <em>execution path</em> follows the chain of Tasks defined in the <code><em>definition</em></code> of the Plan, which is a <code>TASK_GROUP</code>. It descends into and exits any other <code>TASK_GROUPs</code> encountered within the Plan as Tasks are executed and completed or cancelled by their workers. A Task becomes <code>available</code> based on a combination of completion (or skipping) of previous Tasks and other conditions, according to the Task lifecycle logic <a href="#_task_lifecycle_2">described above</a>.</p>

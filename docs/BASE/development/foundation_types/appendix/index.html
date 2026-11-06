@@ -209,6 +209,9 @@
     <a class="nav-link" href="../../base_types/identification_package/">Identification Package</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../base_types/terminology_package/">Terminology Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../base_types/appendix/">Appendix</a>
   </li>
 </ul>
@@ -226,6 +229,46 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../resource/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../artefact_identification/">Artefact Identification</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_source_id/">Source Artefact Identification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/versioning/">Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/lifecycle_mgt/">Lifecycle Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/distributed_governance/">Distributed Governance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/referencing/">Referencing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/uris/">A Reliable URI for Knowledge Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/artefact_authentication/">Artefact Authentication</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/scenarios/">Scenarios</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../artefact_identification/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -450,17 +493,63 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.3.0</p></td>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>BASE Release 1.3.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.3.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduce the <code>Hrid</code> primitive type: a <code>String</code> constrained to the human-readable identifier (HRID) grammar defined in the {openehr_base_artefact_identification}[Artefact Identification^] specification, with segment and version accessors. Resolves the ADL 2 / Base Types HRID syntax conflict (<a href="https://specifications.openehr.org/tickets/SPECBASE-49" target="_blank" rel="noopener">SPECBASE-49</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-363" target="_blank" rel="noopener">SPECPR-363</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clarify how <code>Iso8601_duration.<em>to_seconds()</em></code> converts durations containing years and months to seconds&#8201;&#8212;&#8201;add the explicit conversion formula and a cross-reference to the <code>Time_Definitions</code> 'average' day-count constants (<a href="https://specifications.openehr.org/tickets/SPECPR-386" target="_blank" rel="noopener">SPECPR-386</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 Jul 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove the <code><em>timezone</em></code> function from <code>Iso8601_date</code>: an ISO 8601 date does not carry a timezone (the time shift applies only to the time part), so the accessor&#8201;&#8212;&#8201;carried over from <code>Iso8601_date_time</code> / <code>Iso8601_time</code>&#8201;&#8212;&#8201;is removed (<a href="https://specifications.openehr.org/tickets/SPECPR-426" target="_blank" rel="noopener">SPECPR-426</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Mewes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24 Jul 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Correct documentation typos in the Overview and Time types, and remove the repeated meaning text in the <code>Interval</code> <code><em>intersects</em></code> and <code><em>contains</em></code> function documentation (<a href="https://specifications.openehr.org/tickets/SPECPR-458" target="_blank" rel="noopener">SPECPR-458</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-459" target="_blank" rel="noopener">SPECPR-459</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-460" target="_blank" rel="noopener">SPECPR-460</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R Kavanagh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Jul 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type the <code>test</code> argument of the <code>Container</code> predicate functions (<code>there_exists</code>, <code>for_all</code>, <code>matching</code>, <code>select</code>) as <code>FUNCTION&lt;TUPLE1&lt;T&gt;, Boolean&gt;</code> instead of the undefined <code>Operation</code> type&#8201;&#8212;&#8201;a UML-to-BMM omission in <a href="https://specifications.openehr.org/tickets/SPECBASE-48" target="_blank" rel="noopener">SPECBASE-48</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Jul 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add BMM definition of BASE and render class asciidoc files (<a href="https://specifications.openehr.org/tickets/SPECBASE-48" target="_blank" rel="noopener">SPECBASE-48</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 May 2026</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Documentation fixes and typos (including <a href="https://specifications.openehr.org/tickets/SPECPR-391" target="_blank" rel="noopener">SPECPR-391</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
 P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Jan 2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Jan 2025</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECBASE-32" target="_blank" rel="noopener">SPECBASE-32</a>: Improve Types cross-reference table in Foundation types.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">09 Jan 2025</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECAM-82" target="_blank" rel="noopener">SPECAM-82</a>: Add legacy <code>CODE_PHRASE</code> class to Foundation Types to support AOM 1.4 model.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 Apr 2023</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.2.1</p></td>

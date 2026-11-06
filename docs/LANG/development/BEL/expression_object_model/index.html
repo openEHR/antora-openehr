@@ -148,43 +148,71 @@
     <a class="nav-link" href="../../bmm/overview/">Overview</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/packages/">Package Structure</a>
+    <a class="nav-link" href="../../bmm/bmm_in_use/">BMM in Use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_access/">Model Access Package</a>
+    <a class="nav-link" href="../../bmm/rm_access/">RM Access Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-model/">Model Structure</a>
+    <a class="nav-link" href="../../bmm/core/">Core Package</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-types/">Types</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-classes/">Classes</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-features/">Class Features</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/core-values/">Literal Values</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/expressions/">Expressions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/functional/">Functional Elements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/statements/">Statements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/model_semantics/">Model Semantics</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../bmm/extensions/">BMM Extensions</a>
+    <a class="nav-link" href="../../bmm/persistence/">Persistence</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../bmm/appendix/">Appendix</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../bmm3/">Basic Meta-Model (BMM) v3 developments</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/overview/">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/packages/">Package Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_access/">Model Access Package</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-model/">Model Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-types/">Types</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-classes/">Classes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-features/">Class Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/core-values/">Literal Values</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/expressions/">Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/functional/">Functional Elements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/statements/">Statements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/model_semantics/">Model Semantics</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/extensions/">BMM Extensions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../bmm3/appendix/">Appendix</a>
   </li>
 </ul>
   </li>
@@ -466,7 +494,7 @@
 <div class="sect2">
 <h3 id="_expressions"><a class="anchor" href="#_expressions"></a><a class="link" href="#_expressions">Expressions</a></h3>
 <div class="paragraph">
-<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="#language-expressions">Expressions</a> sub-section in the Language section.</p>
+<p>Expressions are fully described statement values that may be evaluated internally (as compared to an external query) and are defined by the <code>EXPR_XXX</code> classes. The Expression classes model a typical evaluation tree each of whose nodes is either a leaf or an operator node. The semantics of Expressions are described in the <a href="../language/#language-expressions" class="xref page">Expressions</a> sub-section in the Language section.</p>
 </div>
 <div class="paragraph">
 <p>In this model, function calls are treated as leaf nodes rather than tree nodes, which would be more typical of a functional language meta-model. The leaf node approach used here treats function calls as black boxes requiring an evaluation method, enabling the main expression tree to be evaluated by use of a standard set of operators whose semantics can be safely built in.</p>
@@ -575,14 +603,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Boolean"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Boolean"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Boolean">Boolean</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -612,12 +640,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Boolean"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Boolean"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Boolean">Boolean</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_boolean_class" class="xref page">Boolean</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -711,14 +739,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Integer"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Integer"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Integer">Integer</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -748,12 +776,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Integer"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Integer"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Integer">Integer</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -847,14 +875,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Real"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Real"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Real">Real</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -884,12 +912,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Real"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Real"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Real">Real</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_real_class" class="xref page">Real</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -983,14 +1011,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Date"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Date"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1020,12 +1048,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Date"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Date"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1119,14 +1147,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Date_time"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Date_time"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1156,12 +1184,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Date_time"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Date_time"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1255,14 +1283,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Time"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Time"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1292,12 +1320,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Time"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Time"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1391,14 +1419,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Duration"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Duration"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1428,12 +1456,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Duration"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Duration"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1527,14 +1555,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"String"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"String"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/String">String</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1564,12 +1592,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"String"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"String"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/String">String</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1663,14 +1691,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Uri"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Uri"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Integer">Integer</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1700,12 +1728,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Uri"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Uri"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Integer">Integer</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_integer_class" class="xref page">Integer</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1799,14 +1827,14 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Terminology_code"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Terminology_code"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Terminology_code">Terminology_code</a> `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1836,12 +1864,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Terminology_code"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Terminology_code"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Terminology_code">Terminology_code</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/terminology/#_terminology_code_class" class="xref page">Terminology_code</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1935,8 +1963,8 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> `<br>
-`{default&#160;=&#160;"Object_ref"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code><br>
+<code>{default&#160;=&#160;"Object_ref"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
@@ -1966,12 +1994,12 @@
 <th class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Attributes</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="/classes/String">String</a> ` [1..1]<br>
-`{default&#160;=&#160;"Object_ref"}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_name</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/primitive_types/#_string_class" class="xref page">String</a></code> [1..1]<br>
+<code>{default&#160;=&#160;"Object_ref"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: `<a href="/classes/Any">Any</a> ` [1..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_anchor</strong>: <code><a href="../../../../BASE/Release-1.2.0/foundation_types/overview/#_any_class" class="xref page">Any</a></code> [1..1]</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Attribute of the openEHR primitive type (or Any) corresponding to this type definition meta-type.<br>
 <em>Inherited from <a href="../../../Release-1.0.0/bmm/expressions/#_el_type_def_class" class="xref page">EL_TYPE_DEF</a></em></p>
