@@ -154,6 +154,9 @@ commit_checkpoint \
 # Step 10: Rewrite internal class cross-references to Antora xrefs
 "$SCRIPT_DIR/10-rewrite-class-xrefs.sh"
 
+# Step 10b: Point class xrefs in generated partials at this component version's own pages
+"$SCRIPT_DIR/10b-localise-class-xrefs.sh"
+
 # Step 10c: Resolve <<...>> cross references that point to another page
 "$SCRIPT_DIR/10c-resolve-cross-references.sh"
 

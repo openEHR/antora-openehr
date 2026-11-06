@@ -23,9 +23,10 @@ STAGING_ROOT="modules/ROOT/partials/Adoc"
 # SVG tree → modules/ROOT/images/*. **plantUML/** and **images/** under Adoc are not copied into partials/plantUML
 # (images/ is handled separately; plantUML/ is staging-only and removed with Adoc/).
 #
-# Pin default tag; override with BMM_PUBLISHER_IMAGE e.g. ghcr.io/openehr/bmm-publisher:0.7.0
+# Pin default tag; override with BMM_PUBLISHER_IMAGE e.g. ghcr.io/openehr/bmm-publisher:0.12.0
+# 0.8.0+ is required: dependencies are passed with `-d` (loaded for cross-refs, not exported).
 # Set BMM_PUBLISHER_AS_ROOT=1 to omit --user (not recommended; leaves root-owned files on mounts).
-DOCKER_IMAGE="${BMM_PUBLISHER_IMAGE:-ghcr.io/openehr/bmm-publisher:0.7.0}"
+DOCKER_IMAGE="${BMM_PUBLISHER_IMAGE:-ghcr.io/openehr/bmm-publisher:0.12.0}"
 ROOT_IMAGES_DIR="modules/ROOT/images"
 
 # Optional local BMM JSON overlays (merged on top of the image's /app/resources):
@@ -218,14 +219,63 @@ resolve_bmm_dependencies() {
   local main_version="$2"
 
   case "$component:$main_version" in
-    AM:1.4.0) echo "openehr_base_1.1.0" ;;
-    AM:2.2.0) echo "openehr_base_1.1.0" ;;
-    AM:2.3.0) echo "openehr_lang_1.0.0 openehr_base_1.2.0" ;;
-    AM:2.4.0) echo "openehr_lang_1.1.0 openehr_base_1.3.0" ;;
+    # AM 1.4.0 BMM declares includes openehr_base_1.3.0 (needed for CODE_PHRASE).
+    AM:1.4.0) echo "openehr_base_1.3.0" ;;
+    # AM 2.2.0/2.3.0 rules and archetype tables reference STATEMENT, ASSERTION, EXPR_*,
+    # defined only in LANG 1.1.0 (and BASE 1.0.4); LANG 1.1.0 is loaded for link resolution.
+    # AM 2.3.0+ also needs LANG 1.0.0 for EL_BOOLEAN_EXPRESSION (P_ARCHETYPE.rules).
+    AM:2.2.0) echo "openehr_lang_1.1.0 openehr_base_1.1.0" ;;
+    AM:2.3.0) echo "openehr_lang_1.0.0 openehr_lang_1.1.0 openehr_base_1.2.0" ;;
+    AM:2.4.0) echo "openehr_lang_1.0.0 openehr_lang_1.1.0 openehr_base_1.3.0" ;;
     RM:1.0.4) echo "openehr_base_1.1.0" ;;
     RM:1.1.0) echo "openehr_base_1.2.0" ;;
     RM:1.2.0) echo "openehr_base_1.3.0" ;;
     LANG:1.1.0) echo "openehr_base_1.3.0" ;;
+    # Older releases: their BMMs declare no `includes`. Use the BASE release current at
+    # their release date; BASE 1.0.4 is the oldest BASE BMM available for RM 1.0.2/1.0.3.
+    RM:1.0.2|RM:1.0.3) echo "openehr_base_1.0.4" ;;
+    LANG:1.0.0) echo "openehr_base_1.1.0" ;;
+    TERM:3.0.0) echo "openehr_base_1.2.0" ;;
+    TERM:3.1.0) echo "openehr_base_1.3.0" ;;
+    *) echo "" ;;
+  esac
+}
+
+# bmm_includes_from_resource <bmm_id>
+#   Prints the schema ids listed under `includes` in the BMM (local overlay first,
+#   then the publisher image), space-separated; empty if none.
+bmm_includes_from_resource() {
+  local id="$1"
+  local file="" tmp="" cid
+
+  if [[ -n "${BMM_RESOURCES_OVERLAY:-}" && -f "${BMM_RESOURCES_OVERLAY}/${id}.bmm.json" ]]; then
+    file="${BMM_RESOURCES_OVERLAY}/${id}.bmm.json"
+  elif [[ -f "computable/BMM/${id}.bmm.json" ]]; then
+    file="computable/BMM/${id}.bmm.json"
+  else
+    tmp="$(mktemp -d)"
+    if cid="$(docker create --entrypoint /bin/true "$DOCKER_IMAGE" 2>/dev/null)"; then
+      docker cp "$cid:/app/resources/${id}.bmm.json" "$tmp/${id}.bmm.json" >/dev/null 2>&1 \
+        && file="$tmp/${id}.bmm.json"
+      docker rm "$cid" >/dev/null 2>&1 || true
+    fi
+  fi
+
+  if [[ -n "$file" ]]; then
+    jq -r '[.includes // {} | .[] | .id] | join(" ")' "$file" 2>/dev/null || true
+  fi
+  [[ -z "$tmp" ]] || rm -rf "$tmp"
+}
+
+# known_unresolved_types <bmm_id>
+#   Types a schema references that no schema loadable as its dependency defines.
+known_unresolved_types() {
+  case "$1" in
+    # C_OBJECT is an AM class; LANG cannot depend on AM.
+    openehr_lang_1.0.0) echo "C_OBJECT" ;;
+    # P_BMM_SINGLE_PROPERTY_OPEN.bmm_property: BMM_PROPERTY<BMM_OPEN_TYPE>; BASE 1.0.4
+    # never defined BMM_OPEN_TYPE (unlinked in the legacy UML table too).
+    openehr_base_1.0.4) echo "BMM_OPEN_TYPE" ;;
     *) echo "" ;;
   esac
 }
@@ -237,9 +287,31 @@ validate_generated_classes() {
     exit 1
   fi
 
-  if rg -n "include::\\{uml_export_dir\\}/classes/|include::\\.\\./UML/.*/classes/" "$output_dir" >/dev/null 2>&1; then
+  if grep -rqE "include::\\{uml_export_dir\\}/classes/|include::\\.\\./UML/.*/classes/" "$output_dir"; then
     echo "Error: Generated class files still contain legacy UML include paths"
     exit 1
+  fi
+
+  # bmm-publisher renders types no loaded schema defines as dead `link:/classes/<Type>`
+  # links, usually because a dependency schema was not passed with -d. Types listed by
+  # known_unresolved_types for the generated schemas are accepted.
+  local unresolved allowed="" id
+  for id in "${MAIN_IDS[@]}"; do
+    allowed+=" $(known_unresolved_types "$id")"
+  done
+  unresolved="$(grep -rhoE 'link:/classes/[A-Za-z0-9_]*' modules/ROOT/partials/classes \
+    modules/ROOT/partials/definitions modules/ROOT/partials/effective 2>/dev/null \
+    | sed 's#link:/classes/##' \
+    | grep -vxF -f <(printf '%s\n' $allowed | grep . || true) \
+    | sort | uniq -c | sort -rn || true)"
+  if [ -n "$unresolved" ]; then
+    echo "Error: generated partials contain unresolved type links (link:/classes/<Type>):"
+    echo "$unresolved" | head -20
+    if [[ -z "${BMM_ALLOW_UNRESOLVED:-}" ]]; then
+      echo "Pass the missing schema with BMM_DEP_FILES, or set BMM_ALLOW_UNRESOLVED=1 to continue."
+      exit 1
+    fi
+    echo "  • BMM_ALLOW_UNRESOLVED is set; continuing"
   fi
 }
 
@@ -380,17 +452,29 @@ reconcile_legacy_class_files() {
 echo "Step 3a: Generating UML class partials via bmm-publisher..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-if [ ! -f "$MANIFEST_PATH" ]; then
-  echo "No manifest.json found in $(pwd); skipping bmm-publisher generation."
-  echo ""
-  exit 0
+# Old release branches (e.g. RM release/1.0.3, AM release/1.4.0) carry no manifest.json;
+# take the version from the branch name instead.
+BRANCH_VERSION=""
+if [ ! -f "$MANIFEST_PATH" ] && [ -z "${BMM_MAIN_FILE:-}" ]; then
+  BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)"
+  if [[ "$BRANCH_NAME" =~ ^release/([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+    BRANCH_VERSION="${BASH_REMATCH[1]}"
+  else
+    echo "No manifest.json found in $(pwd) and branch '${BRANCH_NAME}' is not release/X.Y.Z; skipping bmm-publisher generation."
+    echo ""
+    exit 0
+  fi
 fi
 
 if [ -n "${BMM_MAIN_FILE:-}" ]; then
   MAIN_IDS=("$BMM_MAIN_FILE")
   RESOLUTION_MODE="external override"
 else
-  MAIN_VERSION="$(resolve_bmm_main "$COMPONENT_NAME" "$MANIFEST_PATH")"
+  if [ -n "$BRANCH_VERSION" ]; then
+    MAIN_VERSION="$BRANCH_VERSION"
+  else
+    MAIN_VERSION="$(resolve_bmm_main "$COMPONENT_NAME" "$MANIFEST_PATH")"
+  fi
   if [ -z "$MAIN_VERSION" ]; then
     echo "No BMM version resolved for component $COMPONENT_NAME from $MANIFEST_PATH; skipping bmm-publisher generation."
     echo ""
@@ -400,9 +484,24 @@ else
   MAIN_IDS=("$MAIN_ID")
   # AM content references both aom14.* and aom2.* class partial series.
   if [[ "$COMPONENT_NAME" == "AM" ]]; then
-    MAIN_IDS=("openehr_am_1.4.0" "$MAIN_ID")
+    if [[ "$MAIN_ID" == "openehr_am_1.4.0" ]]; then
+      # AM release/1.4.0 also carries the AOM2 pages; 2.2.0 is the oldest AOM2 BMM.
+      MAIN_IDS=("openehr_am_1.4.0" "openehr_am_2.2.0")
+    else
+      MAIN_IDS=("openehr_am_1.4.0" "$MAIN_ID")
+    fi
   fi
-  RESOLUTION_MODE="manifest-driven"
+  # RM 1.0.2 / 1.0.3 still document the foundation types (String, List, Iso8601_date, ...)
+  # on their own pages, so their class partials come from BASE 1.0.4. BASE runs first:
+  # on a shared class name (OBJECT_ID, ...) the RM run overwrites it with RM's own table.
+  if [[ "$MAIN_ID" == "openehr_rm_1.0.2" || "$MAIN_ID" == "openehr_rm_1.0.3" ]]; then
+    MAIN_IDS=("openehr_base_1.0.4" "$MAIN_ID")
+  fi
+  if [ -n "$BRANCH_VERSION" ]; then
+    RESOLUTION_MODE="branch-name"
+  else
+    RESOLUTION_MODE="manifest-driven"
+  fi
 fi
 
 echo "→ Repo: $REPO_NAME"
@@ -451,7 +550,11 @@ for MAIN_ID in "${MAIN_IDS[@]}"; do
   else
     MAIN_VERSION_NORMALIZED="$(echo "$MAIN_ID" | sed -E 's/^openehr_[a-z]+_//')"
     DEP_IDS="$(resolve_bmm_dependencies "$COMPONENT_NAME" "$MAIN_VERSION_NORMALIZED")"
-    DEP_MODE="fallback map"
+    DEP_MODE="version map"
+    if [ -z "$DEP_IDS" ]; then
+      DEP_IDS="$(bmm_includes_from_resource "$MAIN_ID")"
+      DEP_MODE="BMM includes"
+    fi
   fi
 
   echo "→ Main BMM id ($RESOLUTION_MODE): $MAIN_ID"
@@ -480,7 +583,10 @@ for MAIN_ID in "${MAIN_IDS[@]}"; do
   if [[ -n "${BMM_RESOURCES_MERGED_DIR:-}" ]]; then
     docker_run+=(-v "${BMM_RESOURCES_MERGED_DIR}:/app/resources")
   fi
-  docker_run+=("$DOCKER_IMAGE" asciidoc "$MAIN_ID" $DEP_IDS)
+  docker_run+=("$DOCKER_IMAGE" asciidoc "$MAIN_ID")
+  for dep in $DEP_IDS; do
+    docker_run+=(-d "$dep")
+  done
   "${docker_run[@]}"
 
   collect_generated_artifacts "$MAIN_ID" "modules/ROOT/partials"
