@@ -1,0 +1,76 @@
+name: Build and deploy site
+
+# Builds the site from the development and release/* branches of the
+# specifications-* repos (read from GitHub) and deploys it to GitHub Pages.
+# Nightly run picks up merges in the spec repos without a push here.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Antora and extensions
+        run: npm install --no-audit --no-fund
+
+      - name: Playbook with GitHub sources
+        # antora-playbook-github.yml reads local repos/ clones; read the same branches from GitHub instead.
+        run: |
+          sed -E 's#url: repos/(specifications-[A-Za-z-]+)#url: https://github.com/openEHR/\1#' \
+            antora-playbook-github.yml > antora-playbook-ci.yml
+          if grep -q 'url: repos/' antora-playbook-ci.yml; then
+            echo "::error::local repos/ source left in antora-playbook-ci.yml"; exit 1
+          fi
+
+      - name: Cache Antora content
+        uses: actions/cache@v4
+        with:
+          path: .cache/antora
+          key: antora-${{ github.run_id }}
+          restore-keys: antora-
+
+      - name: Build
+        run: |
+          npx antora antora-playbook-ci.yml \
+            --url "https://openehr.github.io/antora-openehr" \
+            --to-dir site 2>&1 | tee antora.log
+          touch site/.nojekyll
+          {
+            echo "### Antora build"
+            echo "- pages: $(find site -name '*.html' | wc -l)"
+            echo "- log lines with WARN or ERROR: $(grep -cE '\"level\":\"(warn|error)\"|WARN|ERROR' antora.log || true)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
