@@ -12,8 +12,8 @@
 //   - the module's index page.
 // <VERSION> "latest" is the component's latest version, "development" the development
 // version, anything else is used as the version name when it exists, else latest.
-// Links that match no component or module (UML, wiki, ITS-JSON, file downloads) are left
-// as they are and counted in the log.
+// Links that match no component or module (UML, ITS-JSON) are left as they are and counted
+// in the log. Deeper paths (CNF test files, /components/, wiki) do not match and are left too.
 
 const path = require('path')
 
@@ -28,6 +28,15 @@ const toId = (text) =>
     .replace(/&[a-z0-9#]+;/g, '')
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
+
+// A malformed %-escape in an anchor must not stop the build: use the anchor as written.
+const safeDecode = (text) => {
+  try {
+    return decodeURIComponent(text)
+  } catch {
+    return text
+  }
+}
 
 module.exports.register = function () {
   const logger = this.getLogger('rewrite-legacy-spec-links')
@@ -55,7 +64,10 @@ module.exports.register = function () {
       const component = contentCatalog.getComponent(componentName)
       if (!component) return undefined
       if (legacyVersion === 'latest') return component.latest.version
-      if (component.versions.some((v) => v.version === legacyVersion)) return legacyVersion
+      // Legacy URLs name a release as Release-1.0.4 or as bare 1.0.4 (see caddy/Caddyfile).
+      for (const name of [legacyVersion, `Release-${legacyVersion}`]) {
+        if (component.versions.some((v) => v.version === name)) return name
+      }
       return component.latest.version
     }
 
@@ -83,7 +95,7 @@ module.exports.register = function () {
       const entry = findModule(componentName, version, doc === '' || doc === 'index' ? 'ROOT' : doc)
       if (!entry) return undefined
       const index = entry.index || entry.pages[0].page
-      const id = fragment ? decodeURIComponent(fragment.slice(1)) : undefined
+      const id = fragment ? safeDecode(fragment.slice(1)) : undefined
       if (id) {
         const hits = entry.pages.filter((p) => p.ids.has(id))
         if (hits.length > 1) stats.anchorAmbiguous++
@@ -122,11 +134,12 @@ module.exports.register = function () {
         rewritten++
         const href = relativeUrl(page.pub.url, target.page.pub.url) + target.fragment
         // Internal link now: drop the new-window attributes the ^ shorthand added.
-        const attrs = (before + after)
-          .replace(/\s*\btarget="_blank"/, '')
-          .replace(/\s*\brel="noopener"/, '')
-          .replace(/\s+$/, '')
-        return `<a${attrs} href="${href}">`
+        const attrs = `${before} ${after}`
+          .replace(/\btarget="_blank"/, '')
+          .replace(/\brel="noopener"/, '')
+          .replace(/\s+/g, ' ')
+          .trim()
+        return `<a href="${href}"${attrs ? ' ' + attrs : ''}>`
       })
       if (out !== html) page.contents = Buffer.from(out)
     }
