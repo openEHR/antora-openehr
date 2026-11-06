@@ -9,7 +9,7 @@
     <link rel="next" href="../translation/">
     <meta name="description" content="openEHR Support Terminology specification">
     <meta name="keywords" content="terminology, code-set, vocabulary, openehr">
-    <meta name="generator" content="Antora 3.1.14">
+    <meta name="generator" content="Antora 3.1.15">
     <link rel="stylesheet" href="../../../../ui/css/site.css">
     <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
     <link rel="stylesheet" href="../../../../ui/css/openehr.css">
@@ -103,12 +103,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../terminology_code_sets_vars/">Terminology Code Sets Vars</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../terminology_vocabularies_vars/">Terminology Vocabularies Vars</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../terminology/">Terminology</a>
@@ -636,7 +630,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code><br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this code set.</p>
@@ -728,7 +722,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code> [0..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code> [0..1]<br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this code set.</p>
@@ -868,7 +862,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code><br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this code within the code set.</p>
@@ -913,7 +907,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code> [0..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code> [0..1]<br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this code within the code set.</p>
@@ -1046,7 +1040,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code><br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this vocabulary.</p>
@@ -1110,7 +1104,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code> [0..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code> [0..1]<br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this vocabulary.</p>
@@ -1234,7 +1228,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code><br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this concept within the vocabulary.</p>
@@ -1276,7 +1270,7 @@
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_class">TERMINOLOGY_STATUS</a></code> [0..1]<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>status</strong>: <code><a href="#_terminology_status_enumeration">TERMINOLOGY_STATUS</a></code> [0..1]<br>
 <code>{default&#160;=&#160;}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Status of this concept within the vocabulary.</p>

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Terminology :: openEHR Specifications (Local Build)</title>
     <link rel="canonical" href="https://sebastian-iancu.github.io/antora-openehr/TERM/Release-3.0.0/SupportTerminology/terminology/">
-    <link rel="prev" href="../terminology_vocabularies_vars/">
+    <link rel="prev" href="../overview/">
     <link rel="next" href="../representation/">
     <meta name="description" content="openEHR Support Terminology specification">
     <meta name="keywords" content="terminology, code-set, vocabulary, openehr">
-    <meta name="generator" content="Antora 3.1.14">
+    <meta name="generator" content="Antora 3.1.15">
     <link rel="stylesheet" href="../../../../ui/css/site.css">
     <link rel="stylesheet" href="../../../../ui/css/antora-openehr.css">
     <link rel="stylesheet" href="../../../../ui/css/openehr.css">
@@ -103,12 +103,6 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../overview/">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../terminology_code_sets_vars/">Terminology Code Sets Vars</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../terminology_vocabularies_vars/">Terminology Vocabularies Vars</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="./">Terminology</a>
@@ -313,11 +307,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>countries</strong><br>
     Id: <em>countries</em>, External_id: <em>ISO_3166-1</em><br>
-    Ref: {countries_ref}<br>
+    Ref: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes" target="_blank" rel="noopener">ISO Countries list</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{countries_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set defined by the <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes">ISO 3166-1 "alpha-2"</a> standard consists of two-character names of countries and country subdivisions.<br>
    <br>
-    Used in: <code>{countries_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_composition_class" target="_blank" rel="noopener">COMPOSITION.territory</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -2094,11 +2088,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>character sets</strong><br>
     Id: <em>character_sets</em>, External_id: <em>IANA_character-sets</em><br>
-    Ref: {character_sets_ref}<br>
+    Ref: <a href="https://www.iana.org/assignments/character-sets" target="_blank" rel="noopener">IANA Character Sets</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{character_sets_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This IANA (Internet Naming Authority) code set consists of the names of recognised character sets.<br>
    <br>
-    Used in: <code>{character_sets_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_entry_class" target="_blank" rel="noopener">ENTRY.encoding</a>, <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_encapsulated_class" target="_blank" rel="noopener">DV_ENCAPSULATED.charset</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -2195,11 +2189,12 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>languages</strong><br>
     Id: <em>languages</em>, External_id: <em>ISO_639-1</em><br>
-    Ref: {languages_ref}<br>
+    Ref: <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank" rel="noopener">ISO Language codes</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{languages_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set consists of the language tags defined by <a href="https://tools.ietf.org/html/rfc5646">RFC-5646</a>. The syntax consists of the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 "alpha-2"</a> form of names of languages, often followed by a region subtag from the <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes">ISO 3166-1 "alpha-2"</a> country list. These are maintained by the <a href="https://www.iana.org/assignments/language-subtag-registry">IANA Language Subtag Registry</a>.<br>
+NOTE: This code set does not cover all languages, whereas ISO 639-2 "alpha-3" covers many more languages of cultural or indigenous interest, but which nevertheless are unlikely to be supported by current software or operating systems.<br>
    <br>
-    Used in: <code>{languages_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_entry_class" target="_blank" rel="noopener">ENTRY.language</a>, <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_composition_class" target="_blank" rel="noopener">COMPOSITION.language</a>, <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_encapsulated_class" target="_blank" rel="noopener">DV_ENCAPSULATED.language</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -3997,11 +3992,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>media types</strong><br>
     Id: <em>media_types</em>, External_id: <em>IANA_media-types</em><br>
-    Ref: {media_types_ref}<br>
+    Ref: <a href="https://www.iana.org/assignments/media-types" target="_blank" rel="noopener">IANA Media Types</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{media_types_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This IANA (Internet Naming Authority) code set consists of the names of media types.<br>
    <br>
-    Used in: <code>{media_types_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_multimedia_class_" target="_blank" rel="noopener">DV_MULTIMEDIA.media_type</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4588,11 +4583,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>compression algorithms</strong><br>
     Id: <em>compression_algorithms</em>, External_id: <em>openehr_compression_algorithms</em><br>
-    Ref: {compression_algorithms_ref}<br>
+    Ref: <a href="https://www.hl7.org/fhir/v3/CompressionAlgorithm/cs.html" target="_blank" rel="noopener">HL7 Compression Algorithms domain</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{compression_algorithms_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set consists of the names of algorithms used to compress data.<br>
    <br>
-    Used in: <code>{compression_algorithms_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_multimedia_class" target="_blank" rel="noopener">DV_MULTIMEDIA.compression_algorithm</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4644,11 +4639,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>integrity check algorithms</strong><br>
     Id: <em>integrity_check_algorithms</em>, External_id: <em>openehr_integrity_check_algorithms</em><br>
-    Ref: {integrity_check_algorithms_ref}<br>
+    Ref: <a href="https://www.hl7.org/fhir/v3/IntegrityCheckAlgorithm/cs.html" target="_blank" rel="noopener">HL7 IntegrityCheckAlgorithm domain</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{integrity_check_algorithms_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set consists of the names of algorithms used to generate hashes for the purpose of integrity checks on data.<br>
    <br>
-    Used in: <code>{integrity_check_algorithms_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_multimedia_class" target="_blank" rel="noopener">DV_MULTIMEDIA.integrity_check_algorithm</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4710,11 +4705,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name: <strong>normal statuses</strong><br>
     Id: <em>normal_statuses</em>, External_id: <em>openehr_normal_statuses</em><br>
-    Ref: {normal_statuses_ref}<br>
+    Ref: <a href="https://www.hl7.org/fhir/valueset-observation-interpretation.html" target="_blank" rel="noopener">HL7 Observation-Interpretation vocabulary</a><br>
     Status: <em>active</em></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{normal_statuses_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This code set codifies statuses of quantitative values with respect to a normal range for the measured analyte or phenomenon. Use generally restricted to laboratory results. Maps to some codes in HL7v2 User-defined table 0078 - Abnormal flags.<br>
    <br>
-    Used in: <code>{normal_statuses_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_ordered_class" target="_blank" rel="noopener">DV_ORDERED.normal_status</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4787,9 +4782,10 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-attestation_reason" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-attestation_reason" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{attestation_reason_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies attestation statuses of Compositions or other elements of the health record.<br>
+External reference: <a href="https://www.hl7.org/fhir/v3/ParticipationSignature/cs.html" target="_blank" rel="noopener">HL7 ParticipationSignature domain</a><br>
    <br>
-    Used in: <code>{attestation_reason_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_attestation_class" target="_blank" rel="noopener">ATTESTATION.reason</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4833,9 +4829,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-audit_change_type" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-audit_change_type" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{audit_change_type_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the kinds of changes to data which are recorded in audit trails.<br>
    <br>
-    Used in: <code>{audit_change_type_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_audit_details_class" target="_blank" rel="noopener">AUDIT_DETAILS.change_type</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4928,9 +4924,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-composition_category" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-composition_category" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{composition_category_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the values of the `category` attribute in Compositions.<br>
    <br>
-    Used in: <code>{composition_category_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_composition_class" target="_blank" rel="noopener">COMPOSITION.category</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -4988,9 +4984,10 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-property" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-property" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{property_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies purposes for physical properties corresponding to formal unit specifications, and allows comparison of Quantities with different units but which measure the same property.<br>
+External reference: <a href="http://unitsofmeasure.org/ucum.html" target="_blank" rel="noopener">Regenstrief Institute - Unified Codes for Units of Measure</a><br>
    <br>
-    Used in: <code>{property_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_dv_quantity_class" target="_blank" rel="noopener">DV_QUANTITY</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -5622,9 +5619,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-version_lifecycle_state" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-version_lifecycle_state" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{version_lifecycle_state_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies lifecycle states of Compositions or other elements of the health record.<br>
    <br>
-    Used in: <code>{version_lifecycle_state_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_original_version_class" target="_blank" rel="noopener">ORIGINAL_VERSION.lifecycle_state</a>, <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_imported_version_class" target="_blank" rel="noopener">IMPORTED_VERSION.lifecycle_state</a>, <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_versioned_object_class" target="_blank" rel="noopener">VERSIONED_OBJECT.lifecycle_state</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -5689,9 +5686,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-participation_function" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-participation_function" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{participation_function_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies functions of participation of parties in an interaction.<br>
    <br>
-    Used in: <code>{participation_function_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_participation_class" target="_blank" rel="noopener">PARTICIPATION.function</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -5728,9 +5725,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-null_flavours" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-null_flavours" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{null_flavours_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies 'flavours of null' for missing data items.<br>
    <br>
-    Used in: <code>{null_flavours_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_structures.html#_element_class" target="_blank" rel="noopener">ELEMENT.null_flavour</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -5788,9 +5785,10 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-participation_mode" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-participation_mode" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{participation_mode_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies modes of participation of parties in an interaction.<br>
+External reference: <a href="https://www.hl7.org/fhir/v3/ParticipationMode/cs.html" target="_blank" rel="noopener">HL7 ParticipationMode domain</a><br>
    <br>
-    Used in: <code>{participation_mode_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_participation_class" target="_blank" rel="noopener">PARTICIPATION.mode</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6044,9 +6042,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-instruction_states" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-instruction_states" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{instruction_states_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the names of the states in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_the_standard_instruction_state_machine_ism" target="_blank" rel="noopener">standard Instruction state machine</a>.<br>
    <br>
-    Used in: <code>{instruction_states_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ism_transition_class" target="_blank" rel="noopener">ISM_TRANSITION.current_state</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6146,9 +6144,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-instruction_transitions" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-instruction_transitions" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{instruction_transitions_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the names of the transitions in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_the_standard_instruction_state_machine_ism" target="_blank" rel="noopener">standard Instruction state machine</a>.<br>
    <br>
-    Used in: <code>{instruction_transitions_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ism_transition_class" target="_blank" rel="noopener">ISM_TRANSITION.transition</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6318,9 +6316,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-subject_relationship" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-subject_relationship" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{subject_relationship_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the relationship between the subject of care and some other party mentioned in the health record.<br>
    <br>
-    Used in: <code>{subject_relationship_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/common.html#_party_related_class" target="_blank" rel="noopener">PARTY_RELATED.relationship</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6602,9 +6600,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-term_mapping_purpose" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-term_mapping_purpose" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{term_mapping_purpose_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies purposes for term mappings as used in openEHR coded text data.<br>
    <br>
-    Used in: <code>{term_mapping_purpose_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_term_mapping_class" target="_blank" rel="noopener">TERM_MAPPING.purpose</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6655,9 +6653,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-event_math_function" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-event_math_function" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{event_math_function_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies mathematical functions applied to non-instantaneous time series events.<br>
    <br>
-    Used in: <code>{event_math_function_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/data_structures.html#_interval_class" target="_blank" rel="noopener">INTERVAL_EVENT.math_function</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6764,9 +6762,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-setting" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-setting" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{setting_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies broad types of settings in which clinical care is delivered. It is not intended to be a perfect classification of the real world, but instead a practical coarse-grained categorisation to aid querying.<br>
    <br>
-    Used in: <code>{setting_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_event_context_class" target="_blank" rel="noopener">EVENT_CONTEXT.setting</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6894,9 +6892,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-extract_content_type" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-extract_content_type" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{extract_content_type_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the type of the content required for an Extract specification.<br>
    <br>
-    Used in: <code>{extract_content_type_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr_extract.html#_extract_spec_class" target="_blank" rel="noopener">EXTRACT_SPEC.extract_type</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -6968,9 +6966,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-extract_action_type" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-extract_action_type" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{extract_action_type_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the action types of a Request for an Extract specification.<br>
    <br>
-    Used in: <code>{extract_action_type_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr_extract.html#_extract_action_request_class" target="_blank" rel="noopener">EXTRACT_ACTION_REQUEST.action</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -7021,9 +7019,9 @@
     Status: <em>active</em><br>
     Languages:  <em>en, es, ja, pt, zh</em><br>
     FHIR Terminology: <code><a href="https://specifications.openehr.org/fhir/codesystem-extract_update_trigger_event_type" target="_blank" rel="noopener">CodeSystem</a>, <a href="https://specifications.openehr.org/fhir/valueset-extract_update_trigger_event_type" target="_blank" rel="noopener">ValueSet</a></code></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">{extract_update_trigger_event_type_description}<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">This vocabulary codifies the event names of an update Extract specification.<br>
    <br>
-    Used in: <code>{extract_update_trigger_event_type_links}</code></p></td>
+    Used in: <code><a href="https://specifications.openehr.org/releases/RM/latest/ehr_extract.html#_extract_update_spec_class" target="_blank" rel="noopener"> EXTRACT_UPDATE_SPEC.trigger_events</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code</strong></p></th>
@@ -7057,7 +7055,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../terminology_vocabularies_vars/">Terminology Vocabularies Vars</a></span>
+  <span class="prev"><a href="../overview/">Overview</a></span>
   <span class="next"><a href="../representation/">Representation</a></span>
 </nav>
 </article>
