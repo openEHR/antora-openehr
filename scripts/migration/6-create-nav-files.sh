@@ -59,6 +59,8 @@ generate_nav_entries_from_master() {
   declare -A seen_group
 
   list_chapter_includes "$master_file" | while read -r target; do
+    # Attribute-only includes are partials, not pages (see is_attribute_include)
+    is_attribute_include "$target" && continue
     if is_master_include "$target"; then
       local group
       group="$(chapter_group_key "$target")"

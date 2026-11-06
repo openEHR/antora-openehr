@@ -16,9 +16,17 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 move_diagram_to_root() {
   local src="$1"
-  local base
+  local subname="${2:-}"
+  local base dst
   base="$(basename "$src")"
-  git_move_preserve_history "$src" "modules/ROOT/images/uml/$base"
+  dst="modules/ROOT/images/uml/$base"
+  # A nested UML/<SUBDIR>/diagrams/ file whose name is already taken by a different
+  # flat diagram (AM: AOM1.4 and AOM2 both have AOM-archetype.svg) keeps its subdir,
+  # so neither version overwrites the other; step 9 links to it.
+  if [ -n "$subname" ] && [ -e "$dst" ] && ! cmp -s "$src" "$dst"; then
+    dst="modules/ROOT/images/uml/$subname/$base"
+  fi
+  git_move_preserve_history "$src" "$dst"
 }
 
 # Handle UML directory if it exists
@@ -43,7 +51,7 @@ if [ -d "docs/UML" ] || [ -d "docs/uml" ]; then
     if [ -d "$subdir/diagrams" ]; then
       echo "→ Moving UML diagrams from $subname to ROOT/images/uml/"
       find "$subdir/diagrams" \( -name "*.svg" -o -name "*.png" -o -name "*.jpg" \) -type f | while read -r f; do
-        move_diagram_to_root "$f"
+        move_diagram_to_root "$f" "$subname"
       done
     fi
   done

@@ -81,6 +81,17 @@ list_chapter_includes() {
 # is_master_include <target>
 #   Returns success if target matches master chapter naming.
 # -------------------------------------------------------------------
+# is_attribute_include <target>
+#   True for master.adoc includes that only define attributes for the chapters after them
+#   (e.g. TERM's terminology_vocabularies_vars.adoc). They become partials, not pages.
+is_attribute_include() {
+  case "$(basename "$1")" in
+    manifest_vars.adoc) return 1 ;;
+    *_vars.adoc)        return 0 ;;
+    *)                  return 1 ;;
+  esac
+}
+
 is_master_include() {
   local target="$1"
   case "$target" in
@@ -171,7 +182,9 @@ resolve_module_master_source() {
 strip_legacy_master_index_lines() {
   local f="$1"
   [ -f "$f" ] || return 0
-  sed -i '/^include::/d;/^image::{openehr_logo}/d' "$f"
+  # The logo comes as {openehr_logo} or, in older releases (AM 1.4.0), as a hard-coded URL;
+  # left in place it pushes the title below it, which then renders as a part, not the title.
+  sed -i '/^include::/d;/^image::{openehr_logo}/d;/^image::https\?:\/\/[^[]*openehr_logo/d' "$f"
   sed -i '/^:sectnums:/d' "$f"
 }
 

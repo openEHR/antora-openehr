@@ -170,7 +170,7 @@ inject_per_page_pkg_overrides() {
 
   # Walk master.adoc tracking :pkg: changes and mapping page includes to their pkg value
   local current_pkg="$default_pkg"
-  while IFS= read -r line; do
+  while IFS= read -r line || [ -n "$line" ]; do
     # Detect :pkg: assignment
     if [[ "$line" =~ ^:pkg:[[:space:]]*(.+)$ ]]; then
       current_pkg="${BASH_REMATCH[1]}"

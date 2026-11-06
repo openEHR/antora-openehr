@@ -30,6 +30,7 @@ REMOTE_REWRITES=(
   "LANG|.|{openehr_adl_antlr_include}/adl/"
   "LANG|.|{openehr_openehr_antlr_include}/"
   "LANG|.|{grammar_dir}/"
+  "BASE|.|{openehr_adl_antlr_include}/adl/"
 )
 
 for entry in "${REMOTE_REWRITES[@]}"; do

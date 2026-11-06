@@ -117,6 +117,9 @@ MODULES="$("$SCRIPT_DIR/1-analyze-structure.sh")"
 # Step 3a: Generate Antora-ready UML class partials via bmm-publisher
 "$SCRIPT_DIR/3a-generate-uml-classes.sh" "$COMPONENT_NAME"
 
+# Step 3b: Class partials from legacy UML class tables when no BMM exists (SM, PROC, CDS)
+"$SCRIPT_DIR/3b-legacy-classes-to-partials.sh"
+
 # Checkpoint: generated class partials + legacy UML/class cleanup.
 commit_checkpoint \
   "chore(migration): regenerate uml classes and retire legacy class files" \
@@ -153,6 +156,9 @@ commit_checkpoint \
 
 # Step 10b: Point class xrefs in generated partials at this component version's own pages
 "$SCRIPT_DIR/10b-localise-class-xrefs.sh"
+
+# Step 10c: Resolve <<...>> cross references that point to another page
+"$SCRIPT_DIR/10c-resolve-cross-references.sh"
 
 # Step 11: Tag untagged listing blocks in QUERY/AQL pages with [source, sql]
 "$SCRIPT_DIR/11-tag-query-source-blocks.sh" "$COMPONENT_NAME"
