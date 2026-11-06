@@ -15,7 +15,9 @@ set -euo pipefail
 # taken from the partial's heading (`=== EXPR_ITEM Class` -> _expr_item_class). In
 # ROOT partials definitions/ and effective/, `xref:{class_<name>}[` becomes
 # `xref:<module>:<page>.adoc#<anchor>[` when <name> is documented here, looked up with
-# the file's own prefix first (aom14., aom2., bmm3.), then without a prefix. Classes
+# the file's own prefix first (aom14., aom2., bmm3.), then without a prefix. Since
+# bmm-publisher#43 the attribute carries the prefix itself ({class_aom2_c_object} for
+# aom2.c_object.adoc), so each stem is also stored with dots as underscores. Classes
 # not documented in this repo keep the global attribute.
 #
 # Run from repo root (inside the target specification repo), after step 10.
@@ -115,6 +117,9 @@ for f in modules/ROOT/partials/definitions/*.adoc modules/ROOT/partials/effectiv
       FS = "\t"
       while ((getline line < mapfile) > 0) {
         split(line, kv, "\t"); target[kv[1]] = kv[2]
+        # bmm-publisher >= #43 writes {class_aom2_c_object} for aom2.c_object.adoc
+        k = kv[1]; gsub(/\./, "_", k)
+        if (!(k in target)) target[k] = kv[2]
       }
       FS = " "
     }
