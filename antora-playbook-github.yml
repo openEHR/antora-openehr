@@ -7,6 +7,7 @@ antora:
     - require: './src/extensions/patch-asciidoctor-bibtex-lines.js'
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']
+    - require: './src/extensions/rewrite-legacy-spec-links.js'
 
 site:
   title: openEHR Specifications (Local Build)
