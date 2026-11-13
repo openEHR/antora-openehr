@@ -23,41 +23,29 @@
 
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Specifications</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
-              openEHR specification
-            </a>
-            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
-              openEHR portal
-            </a>
-            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
-              openEHR CKM
-            </a>
-          </div>
-        </div>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Community</a>
-          <div class="navbar-dropdown is-right">
-            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
-              Issue trackers
-            </a>
-            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
-              Discourse Forum
-            </a>
-            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
-              Wiki
-            </a>
-            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
-              GitHub
-            </a>
-          </div>
-        </div>
-
+        {{!-- Discuss: opens a new Discourse topic, title empty, body with a link to this page,
+              in the Discourse category of this spec (Specifications if there is none). --}}
+        <a id="discuss-link" class="navbar-item" href="https://discourse.openehr.org/new-topic?category_id=6" target="_blank" rel="noopener"
+           data-component="{{page.component.name}}" data-component-title="{{page.component.title}}" data-version="{{page.componentVersion.displayVersion}}">Discuss</a>
+        <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank" rel="noopener">CKM</a>
+        <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank" rel="noopener">Portal</a>
       </div>
+      <script>
+      (function () {
+        // Discourse category ids (discourse.openehr.org/categories.json): 6 = Specifications
+        var CATEGORY = { RM: 42, AM: 40, QUERY: 43, LANG: 60, TERM: 59, SM: 82, 'ITS-REST': 41, ITS: 41,
+          PROC: 27, CDS: 27, CNF: 73 }
+        var a = document.getElementById('discuss-link')
+        if (!a) return
+        var d = a.dataset
+        var page = document.title.split(' :: ')[0]
+        var spec = d.componentTitle ? d.componentTitle + (d.version ? ' ' + d.version : '') + ': ' + page : page
+        a.href = 'https://discourse.openehr.org/new-topic?category_id=' + (CATEGORY[d.component] || 6) +
+          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')
+
+')
+      })()
+      </script>
     </div>
   </nav>
 </header>

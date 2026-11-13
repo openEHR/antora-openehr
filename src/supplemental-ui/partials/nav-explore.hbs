@@ -14,7 +14,8 @@
         {{#each ./versions}}
         <li class="version
           {{~#if (and (eq .. @root.page.component) (eq this @root.page.componentVersion))}} is-current{{/if~}}
-          {{~#if (eq this ../latest)}} is-latest{{/if}}">
+          {{~#if (eq this ../latest)}} is-latest{{/if~}}
+          {{~#if (eq ./version 'development')}} is-development{{/if}}">
           <a href="{{{relativize (versionLink .. this)}}}">{{./displayVersion}}
             {{~#if (eq this ../latest)}}{{#unless (eq ./version 'development')}} <span class="version-badge is-latest">latest</span>{{/unless}}{{/if}}</a>
         </li>
