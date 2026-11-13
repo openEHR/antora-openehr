@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../../../ui/css/openehr.css">
     <link rel="stylesheet" href="../../../../ui/css/tabs.css">
     <link rel="stylesheet" href="../../../../ui/css/extra.css">
+    <link rel="stylesheet" href="../../../../ui/css/theme-navy.css">
 <link rel="icon" href="../../../../ui/img/favicon.ico" type="image/x-icon">
   </head>
   <body class="article">
@@ -41,41 +42,25 @@
 
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Specifications</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank">
-              openEHR specification
-            </a>
-            <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank">
-              openEHR portal
-            </a>
-            <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank">
-              openEHR CKM
-            </a>
-          </div>
-        </div>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Community</a>
-          <div class="navbar-dropdown is-right">
-            <a class="navbar-item" href="https://openehr.atlassian.net/secure/Dashboard.jspa?selectPageId=10190" target="_blank">
-              Issue trackers
-            </a>
-            <a class="navbar-item" href="https://discourse.openehr.org/" target="_blank">
-              Discourse Forum
-            </a>
-            <a class="navbar-item" href="https://specifications.openehr.org/wiki/display/spec/Specifications+Home" target="_blank">
-              Wiki
-            </a>
-            <a class="navbar-item" href="https://github.com/openEHR" target="_blank">
-              GitHub
-            </a>
-          </div>
-        </div>
-
+        <a id="discuss-link" class="navbar-item" href="https://discourse.openehr.org/new-topic?category_id=6" target="_blank" rel="noopener"
+           data-component="AM" data-component-title="Archetype Model" data-version="1.4.0">Discuss</a>
+        <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank" rel="noopener">CKM</a>
+        <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank" rel="noopener">Portal</a>
       </div>
+      <script>
+      (function () {
+        // Discourse category ids (discourse.openehr.org/categories.json): 6 = Specifications
+        var CATEGORY = { RM: 42, AM: 40, QUERY: 43, LANG: 60, TERM: 59, SM: 82, 'ITS-REST': 41, ITS: 41,
+          PROC: 27, CDS: 27, CNF: 73 }
+        var a = document.getElementById('discuss-link')
+        if (!a) return
+        var d = a.dataset
+        var page = document.title.split(' :: ')[0]
+        var spec = d.componentTitle ? d.componentTitle + (d.version ? ' ' + d.version : '') + ': ' + page : page
+        a.href = 'https://discourse.openehr.org/new-topic?category_id=' + (CATEGORY[d.component] || 6) +
+          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')\n\n')
+      })()
+      </script>
     </div>
   </nav>
 </header>
@@ -363,7 +348,7 @@
     <li class="component is-current">
       <div class="title"><a href="../../../Release-2.3.0/">Archetype Model</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../development/ADL2/syntax_spec/">development</a>
         </li>
         <li class="version is-latest">
@@ -380,7 +365,7 @@
     <li class="component">
       <div class="title"><a href="../../../../BASE/Release-1.2.0/">Base Model</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../../BASE/development/">development</a>
         </li>
         <li class="version is-latest">
@@ -394,7 +379,7 @@
     <li class="component">
       <div class="title"><a href="../../../../CDS/development/">Clinical Decision Support</a></div>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-latest is-development">
           <a href="../../../../CDS/development/">development</a>
         </li>
       </ul>
@@ -402,7 +387,7 @@
     <li class="component">
       <div class="title"><a href="../../../../CNF/development/">Conformance Specifications</a></div>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-latest is-development">
           <a href="../../../../CNF/development/">development</a>
         </li>
       </ul>
@@ -410,7 +395,7 @@
     <li class="component">
       <div class="title"><a href="../../../../LANG/Release-1.0.0/">Generic Languages</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../../LANG/development/">development</a>
         </li>
         <li class="version is-latest">
@@ -421,7 +406,7 @@
     <li class="component">
       <div class="title"><a href="../../../../TERM/Release-3.0.0/">openEHR Terminology</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../../TERM/development/">development</a>
         </li>
         <li class="version is-latest">
@@ -432,7 +417,7 @@
     <li class="component">
       <div class="title"><a href="../../../../PROC/development/">Process Model</a></div>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-latest is-development">
           <a href="../../../../PROC/development/">development</a>
         </li>
       </ul>
@@ -440,7 +425,7 @@
     <li class="component">
       <div class="title"><a href="../../../../QUERY/Release-1.0.1/">Query Languages</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../../QUERY/development/">development</a>
         </li>
         <li class="version is-latest">
@@ -451,7 +436,7 @@
     <li class="component">
       <div class="title"><a href="../../../../RM/Release-1.1.0/">Reference Model</a></div>
       <ul class="versions">
-        <li class="version">
+        <li class="version is-development">
           <a href="../../../../RM/development/">development</a>
         </li>
         <li class="version is-latest">
@@ -465,7 +450,7 @@
     <li class="component">
       <div class="title"><a href="../../../../ITS-REST/development/">REST API specifications</a></div>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-latest is-development">
           <a href="../../../../ITS-REST/development/">development</a>
         </li>
       </ul>
@@ -473,7 +458,7 @@
     <li class="component">
       <div class="title"><a href="../../../../SM/development/">Service Model</a></div>
       <ul class="versions">
-        <li class="version is-latest">
+        <li class="version is-latest is-development">
           <a href="../../../../SM/development/">development</a>
         </li>
       </ul>
@@ -494,6 +479,21 @@
     <li><a href="./">Syntax Specification</a></li>
   </ul>
 </nav>
+<div class="report-problem">
+  <a id="report-problem-link" href="https://openehr.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10041&amp;issuetype=6" target="_blank" rel="noopener" title="Report a problem in this specification (Jira SPECPR)">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20 8h-2.81a5.985 5.985 0 0 0-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a6.002 6.002 0 0 0-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
+    <span>Report a spec issue</span>
+  </a>
+</div>
+<script>
+(function () {
+  var a = document.getElementById('report-problem-link')
+  if (!a) return
+  var title = document.title.split(' :: ')[0]
+  a.href += '&summary=' + encodeURIComponent('[' + title + '] ') +
+    '&description=' + encodeURIComponent('Page: ' + location.href.split('#')[0] + (location.hash ? '\nSection: ' + location.hash : '') + '\n\nProblem:\n')
+})()
+</script>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
