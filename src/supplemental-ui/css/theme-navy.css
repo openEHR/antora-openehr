@@ -1,0 +1,51 @@
+/* ============================================
+   Navy theme: openEHR navy and orange, reference-manual look.
+   Loaded after all other stylesheets. Tables keep the legacy style from openehr.css.
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+html{font-size:16px}
+body{background:#f3f5f8;color:#1b2533;font-family:'IBM Plex Sans',sans-serif}
+.header .navbar,.navbar{background:#0d2340!important;border-bottom:3px solid #f26531;box-shadow:none}
+.navbar-item,.navbar-link{color:#dbe4f0!important}
+.navbar-brand .navbar-item:first-child{color:#fff!important;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem}
+.navbar-dropdown{background:#0d2340!important;border:1px solid #1f3a5f}
+#search-input{border:0;border-radius:4px;background:#1c3657;color:#fff}
+#search-input::placeholder{color:#9fb3cc}
+.nav-container,.nav,.nav-menu,.nav-panel-explore{background:#e8edf3!important}
+.nav-link{color:#2c3d55}
+.nav-item.is-current-page>.nav-link{color:#0d2340;font-weight:700;box-shadow:inset 3px 0 0 #f26531;padding-left:.5rem}
+.nav-menu h3.title,.nav-panel-explore .context .title{color:#0d2340;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem}
+.toolbar{background:#fff;border-bottom:1px solid #dfe5ec;box-shadow:none}
+.doc{background:#fff;padding:2rem 2.5rem!important;margin:1.2rem 0;border:1px solid #dfe5ec;border-radius:4px;max-width:56rem;line-height:1.65}
+.doc h1,.doc h2,.doc h3,.doc h4{color:#0d2340;font-weight:700}
+.doc h1.page{font-size:2.1rem;padding-bottom:.6rem;border-bottom:3px solid #0d2340}
+.doc h2{font-size:1.45rem;margin-top:2.6rem;padding-left:.7rem;border-left:5px solid #f26531}
+.doc h3{font-size:1.2rem}
+.doc a,.doc a:hover{color:#1557a6}
+.doc code{font-family:'IBM Plex Mono',monospace;font-size:.86em;background:#eef2f7;color:#0d2340;padding:.05em .3em;border-radius:3px}
+.doc pre.highlight,.doc .listingblock pre{background:#0d2340!important;color:#e6edf6!important;border:0;border-left:4px solid #f26531;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.82rem}
+.doc pre.highlight code{background:none;color:inherit}
+.doc .admonitionblock>table{border:1px solid #c9d3df!important;border-left:5px solid #1557a6!important;background:#f3f7fc!important}
+.toc .toc-menu a.is-active{color:#0d2340;font-weight:600;border-left-color:#f26531}
+.version-badge{border-radius:3px;text-transform:uppercase;letter-spacing:.05em;font-size:.68em}
+.version-badge.is-latest{background:#1f7a3a}
+.version-badge.is-development{background:#f26531}
+
+/* navbar: no hover highlight on the site title and the search field; dark navy hover elsewhere */
+.navbar-brand .navbar-item:first-child:hover,
+.navbar-item.search:hover {
+  background-color: transparent !important;
+}
+.navbar-link:hover,
+.navbar-end .navbar-item:hover,
+.navbar-dropdown .navbar-item:hover {
+  background-color: #1c3657 !important;
+  color: #fff !important;
+}
+
+/* "<Spec> only" search filter next to the search field */
+#search-field .filter {
+  background: #1c3657 !important;
+  border-color: #1c3657 !important;
+  color: #dbe4f0 !important;
+}
