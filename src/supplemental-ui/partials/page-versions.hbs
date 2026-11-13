@@ -1,13 +1,2 @@
-{{#with page.versions}}
-<div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">{{#if (eq @root.page.componentVersion.version 'development')}}<span class="version-badge is-development">development</span>{{else}}{{@root.page.componentVersion.displayVersion}}{{#if (eq @root.page.componentVersion @root.page.component.latest)}} <span class="version-badge is-latest">latest</span>{{/if}}{{/if}}</button>
-  <div class="version-menu">
-    {{#each this}}
-    <a class="version
-      {{~#if (eq ./version @root.page.version)}} is-current{{/if~}}
-      {{~#if ./missing}} is-missing{{/if}}" href="{{{relativize ./url}}}">{{./displayVersion}}
-      {{~#if (eq ./version @root.page.component.latest.version)}}{{#unless (eq ./version 'development')}} <span class="version-badge is-latest">latest</span>{{/unless}}{{/if}}</a>
-    {{/each}}
-  </div>
-</div>
-{{/with}}
+{{!-- The version menu at the top right is not used: versions are switched in the explore panel
+     at the bottom left, which keeps the reader on the same page (see helpers/versionLink.js). --}}
