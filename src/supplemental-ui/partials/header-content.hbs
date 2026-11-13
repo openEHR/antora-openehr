@@ -41,9 +41,7 @@
         var page = document.title.split(' :: ')[0]
         var spec = d.componentTitle ? d.componentTitle + (d.version ? ' ' + d.version : '') + ': ' + page : page
         a.href = 'https://discourse.openehr.org/new-topic?category_id=' + (CATEGORY[d.component] || 6) +
-          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')
-
-')
+          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')\n\n')
       })()
       </script>
     </div>
