@@ -48,22 +48,101 @@
 
 /* ============================================
    Table Styling (for specifications)
+   As on the legacy site (specifications.openehr.org/releases, styles/openehr.css):
+   light grey grid, every header cell blue (legacy skyblue #87ceeb, softened),
+   even rows tinted, short cell text in Helvetica, paragraphs in Georgia.
+   Text as large as the body text (the Antora UI default is .83333rem).
    ============================================ */
 
 .doc table.tableblock {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
+  font-size: inherit;
+  background: #fff;
+}
+
+.doc table.tableblock,
+.doc table.tableblock > * > tr > * {
+  border: 0 solid #dedede;
+}
+
+.doc table.frame-all {
+  border-width: 1px;
+}
+
+.doc table.grid-all > * > tr > * {
+  border-width: 0 1px 1px 0;
+}
+
+.doc table.grid-all > * > tr > :last-child {
+  border-right-width: 0;
+}
+
+.doc table.grid-all > tbody > tr:last-child > * {
+  border-bottom-width: 0;
+}
+
+.doc table.grid-rows > * > tr > * {
+  border-width: 0 0 1px 0;
+}
+
+.doc table.grid-all > thead th,
+.doc table.grid-rows > thead th {
+  border-bottom-width: 1px;
+}
+
+.doc table.tableblock td,
+.doc table.tableblock th {
+  padding: 0.5625em 0.625em;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.doc table.tableblock > tbody > tr:nth-of-type(even) {
+  background: #f8f8f7;
 }
 
 .doc table.tableblock th {
-  background-color: var(--openehr-light);
-  border: 1px solid var(--openehr-primary);
-  padding: 8px;
+  background: #c4e4f1;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
 }
 
-.doc table.tableblock td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.doc table.tableblock th * {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.doc table.tableblock p.tableblock {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1em;
+}
+
+.doc table.tableblock td .paragraph p {
+  font-family: "Georgia", "Times", serif;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+.doc table.tableblock td:nth-child(2) p.tableblock strong,
+.doc table.tableblock td:nth-child(2) div.paragraph p strong {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 0.94em;
+}
+
+.doc table.tableblock :not(pre) > code {
+  font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  font-size: 0.875em;
+  color: rgba(0, 0, 0, 0.9);
+  background: #f7f7f8;
+  border-radius: 4px;
+  padding: 0.1em 0.5ex;
+}
+
+.doc table.tableblock a {
+  color: #2156a5;
+  text-decoration: underline;
 }
 
 /* ============================================
