@@ -194,3 +194,9 @@ h1 .spec-status {
 }
 .version-badge.is-latest { background-color: #2e7d32; }
 .version-badge.is-development { margin-left: 0; background-color: #e65100; }
+
+/* ====== Version menu: entries left-aligned (UI default is right) ====== */
+.page-versions .version-menu {
+    align-items: flex-start;
+    padding-left: 1rem;
+}
