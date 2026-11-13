@@ -28,7 +28,7 @@
         <a id="discuss-link" class="navbar-item" href="https://discourse.openehr.org/new-topic?category_id=6" target="_blank" rel="noopener"
            data-component="{{page.component.name}}" data-component-title="{{page.component.title}}" data-version="{{page.componentVersion.displayVersion}}">Discuss</a>
         <a class="navbar-item" href="https://ckm.openehr.org/ckm/" target="_blank" rel="noopener">CKM</a>
-        <a class="navbar-item" href="https://specifications.openehr.org/" target="_blank" rel="noopener">Portal</a>
+        <a class="navbar-item" href="https://specifications.openehr.org/releases/UML/development/index.html" target="_blank" rel="noopener">Portal</a>
       </div>
       <script>
       (function () {
@@ -41,9 +41,7 @@
         var page = document.title.split(' :: ')[0]
         var spec = d.componentTitle ? d.componentTitle + (d.version ? ' ' + d.version : '') + ': ' + page : page
         a.href = 'https://discourse.openehr.org/new-topic?category_id=' + (CATEGORY[d.component] || 6) +
-          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')
-
-')
+          '&body=' + encodeURIComponent('Spec: [' + spec + '](' + location.href.split('#')[0] + (location.hash || '') + ')\n\n')
       })()
       </script>
     </div>
