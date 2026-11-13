@@ -200,3 +200,31 @@ h1 .spec-status {
     align-items: flex-start;
     padding-left: 1rem;
 }
+
+/* ====== Explore panel (bottom left): development versions in orange ====== */
+.nav-panel-explore .component .version.is-development a {
+    background: #f26531;
+    color: #fff;
+    opacity: 1;
+}
+
+/* ====== Toolbar (top right): report a problem in Jira SPECPR ====== */
+.toolbar .report-problem {
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: .8125rem;
+    white-space: nowrap;
+}
+.toolbar .report-problem a {
+    display: inline-flex;
+    align-items: center;
+    gap: .35em;
+    color: #b2470e;
+    text-decoration: none;
+}
+.toolbar .report-problem a:hover {
+    text-decoration: underline;
+}
+@media screen and (max-width: 768px) {
+    .toolbar .report-problem span { display: none; }
+}
