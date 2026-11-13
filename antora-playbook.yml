@@ -4,6 +4,7 @@ antora:
       index_latest_only: true
       index_by_heading: true
       snippet_length: 80
+    - require: './src/extensions/scoped-search-index.js'
     - require: './src/extensions/patch-asciidoctor-bibtex-lines.js'
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']

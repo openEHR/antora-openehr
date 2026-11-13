@@ -1,0 +1,17 @@
+{{!-- Replaces the partial of @antora/lunr-extension: loads the search index of the current version
+      (see src/extensions/scoped-search-index.js) and names that scope in the search box. --}}
+<script src="{{{uiRootPath}}}/js/vendor/lunr.js"></script>
+{{#if env.SITE_SEARCH_LANGUAGES}}
+<script src="{{{uiRootPath}}}/js/vendor/lunr-languages.js"></script>
+{{/if}}
+<script src="{{{uiRootPath}}}/js/search-ui.js" id="search-ui-script" data-site-root-path="{{{siteRootPath}}}" data-snippet-length="80" data-stylesheet="{{{uiRootPath}}}/css/search.css"></script>
+{{#if (eq page.componentVersion.version 'development')}}
+<script async src="{{{siteRootPath}}}/search-index-development.js"></script>
+<script>document.getElementById('search-input').placeholder = 'Search development'</script>
+{{else if (and page.component (ne page.componentVersion.version page.component.latest.version))}}
+<script async src="{{{siteRootPath}}}/search-index-{{page.component.name}}-{{page.componentVersion.version}}.js"></script>
+<script>document.getElementById('search-input').placeholder = 'Search {{page.component.name}} {{page.componentVersion.displayVersion}}'</script>
+{{else}}
+<script async src="{{{siteRootPath}}}/search-index.js"></script>
+<script>document.getElementById('search-input').placeholder = 'Search latest releases'</script>
+{{/if}}
