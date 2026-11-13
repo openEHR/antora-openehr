@@ -6,11 +6,12 @@ antora:
       snippet_length: 80
     - require: './src/extensions/scoped-search-index.js'
     - require: './src/extensions/patch-asciidoctor-bibtex-lines.js'
+    - require: './src/extensions/display-versions.js'
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']
 
 site:
-  title: openEHR Specifications (Local Build)
+  title: openEHR Specifications
   url: https://sebastian-iancu.github.io/antora-openehr/
 #  url: http://localhost:8080
   start_page: BASE::index.adoc
