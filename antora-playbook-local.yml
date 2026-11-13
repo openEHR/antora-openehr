@@ -9,6 +9,7 @@ antora:
     - require: './src/extensions/display-versions.js'
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']
+    - require: './src/extensions/resolve-class-links.js'
 
 site:
   title: openEHR Specifications (Local Build)
