@@ -179,3 +179,18 @@ h1 .spec-status {
     border: none;
     padding: 0.3rem 0.5rem;
 }
+
+/* ====== Version badges (nav-explore, page-versions partials) ====== */
+.version-badge {
+    display: inline-block;
+    margin-left: 0.35em;
+    padding: 0 0.45em;
+    border-radius: 0.6em;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1.5;
+    vertical-align: middle;
+    color: #fff;
+}
+.version-badge.is-latest { background-color: #2e7d32; }
+.version-badge.is-development { margin-left: 0; background-color: #e65100; }

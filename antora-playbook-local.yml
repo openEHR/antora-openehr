@@ -6,6 +6,7 @@ antora:
       snippet_length: 80
     - require: './src/extensions/scoped-search-index.js'
     - require: './src/extensions/patch-asciidoctor-bibtex-lines.js'
+    - require: './src/extensions/display-versions.js'
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']
 
