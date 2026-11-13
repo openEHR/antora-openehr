@@ -21,11 +21,7 @@ content:
     - url: https://github.com/openEHR/specifications-BASE
       branches: 
         - development
-        - 'release/1.0.2'
-        - 'release/1.0.3'
-        - 'release/1.0.4'
-        - 'release/1.1.0'
-        - 'release/1.2.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -34,10 +30,7 @@ content:
     - url: https://github.com/openEHR/specifications-RM
       branches:
         - development
-        - 'release/1.0.2'
-        - 'release/1.0.3'
-        - 'release/1.0.4'
-        - 'release/1.1.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -46,11 +39,7 @@ content:
     - url: https://github.com/openEHR/specifications-AM
       branches:
         - development
-        - 'release/1.4.0'
-        - 'release/2.0.6'
-        - 'release/2.1.0'
-        - 'release/2.2.0'
-        - 'release/2.3.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
