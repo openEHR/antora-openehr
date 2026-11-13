@@ -85,16 +85,24 @@ my (%id_page, %title, %page_title, %id_title, %page_anchor);   # id -> {page}, t
 sub index_file {
   my ($f, $page) = @_;
   my ($inblock, $pending, $first) = (0, undef, 1);
+  # A figure or table id takes its block title (".Title") as link text; without it a link
+  # from another page shows the bare id. @bids: ids set on the block before its title.
+  my ($btitle, @bids);
   for my $line (slurp($f)) {
     (my $l = $line) =~ s/\r?\n$//;
-    if ($l =~ /^(-{4,}|\.{4,}|\+{4,}|`{3,})\s*$/) { $inblock = !$inblock; next }
+    if ($l =~ /^(-{4,}|\.{4,}|\+{4,}|`{3,})\s*$/) { $inblock = !$inblock; ($btitle, @bids) = (); next }
     next if $inblock;
+    if ($l =~ /^\.([^.\s].*)$/) { $btitle = clean($1); $id_title{$_} //= $btitle for @bids; next }
+    my @ids;
     while ($l =~ /\[\[([A-Za-z_][\w:.\-]*)(?:,[^\]]*)?\]\]|\[#([A-Za-z_][\w:.\-]*)[\].,%]|anchor:([A-Za-z_][\w:.\-]*)\[/g) {
-      my $id = $1 // $2 // $3; $id_page{$id}{$page} = 1;
+      my $id = $1 // $2 // $3; $id_page{$id}{$page} = 1; push @ids, $id;
       $pending = $id if $l =~ /^\[(?:\[[^\]]+\]|#[^\]]+)\]\s*$/;
     }
     # id= in block or macro attribute lists: [id=x, ...], image::a.svg[id=x, ...]
-    while ($l =~ /[\[,]\s*id=["\x27]?([A-Za-z_][\w:.\-]*)/g) { $id_page{$1}{$page} = 1 }
+    while ($l =~ /[\[,]\s*id=["\x27]?([A-Za-z_][\w:.\-]*)/g) { $id_page{$1}{$page} = 1; push @ids, $1 }
+    if ($l =~ /^\[/) { push @bids, @ids; $id_title{$_} //= $btitle for grep { defined $btitle } @ids }
+    elsif ($l =~ /^\w+::/) { $id_title{$_} //= $btitle for grep { defined $btitle } @ids; ($btitle, @bids) = () }
+    else { ($btitle, @bids) = () }
     if ($l =~ /^= (\S.*)$/ && $first && $f eq $page) {
       my $t = clean($1);
       $page_title{norm($t)}{$page} = 1;
