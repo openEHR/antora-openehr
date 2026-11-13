@@ -49,3 +49,9 @@ body{background:#f3f5f8;color:#1b2533;font-family:'IBM Plex Sans',sans-serif}
   border-color: #1c3657 !important;
   color: #dbe4f0 !important;
 }
+
+/* narrow screens: the UI bundle gives the opened burger menu a white background, which hides the light navbar links */
+@media screen and (max-width:1023.5px){
+  .navbar-menu{background:#0d2340!important;border-bottom:3px solid #f26531}
+  .navbar-menu .navbar-link:hover,.navbar-menu a.navbar-item:hover{background:#1c3657!important;color:#fff!important}
+}
