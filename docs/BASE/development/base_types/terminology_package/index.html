@@ -467,6 +467,9 @@
 <li id="_tabs_1_effective" class="tab">
 <p>Effective</p>
 </li>
+<li id="_tabs_1_example" class="tab">
+<p>Example</p>
+</li>
 <li id="_tabs_1_bmm" class="tab">
 <p>BMM</p>
 </li>
@@ -583,6 +586,23 @@
 </tbody>
 </table>
 </div>
+<div id="_tabs_1_example--panel" class="tabpanel" aria-labelledby="_tabs_1_example">
+<div class="paragraph">
+<p>The SNOMED CT concept for systolic blood pressure, with its preferred term.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "_type": "CODE_PHRASE",
+  "terminology_id": {
+    "value": "SNOMED-CT"
+  },
+  "code_string": "271649006",
+  "preferred_term": "Systolic blood pressure"
+}</code></pre>
+</div>
+</div>
+</div>
 <div id="_tabs_1_bmm--panel" class="tabpanel" aria-labelledby="_tabs_1_bmm">
 <div class="listingblock">
 <div class="content">
@@ -670,7 +690,8 @@
 <script defer src="../../../../ui/js/vendor/highlight.js"></script>
 <script src="../../../../ui/js/vendor/lunr.js"></script>
 <script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script async src="../../../../search-index-development.js"></script>
+<script>document.getElementById('search-input').placeholder = 'Search development'</script>
 <script src="../../../../ui/js/medium-zoom.min.js"></script>
 <script src="../../../../ui/js/zoom.js"></script>
 <script async src="../../../../ui/js/tabs.js"></script>

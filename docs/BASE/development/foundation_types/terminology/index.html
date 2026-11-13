@@ -480,6 +480,9 @@
 <li id="_tabs_1_effective" class="tab">
 <p>Effective</p>
 </li>
+<li id="_tabs_1_example" class="tab">
+<p>Example</p>
+</li>
 <li id="_tabs_1_bmm" class="tab">
 <p>BMM</p>
 </li>
@@ -644,6 +647,23 @@ other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Orde
 </tbody>
 </table>
 </div>
+<div id="_tabs_1_example--panel" class="tabpanel" aria-labelledby="_tabs_1_example">
+<div class="paragraph">
+<p>The ISO 639-1 term for English, made of the code and its text.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "_type": "TERMINOLOGY_TERM",
+  "concept": {
+    "terminology_id": "ISO_639-1",
+    "code_string": "en"
+  },
+  "text": "English"
+}</code></pre>
+</div>
+</div>
+</div>
 <div id="_tabs_1_bmm--panel" class="tabpanel" aria-labelledby="_tabs_1_bmm">
 <div class="listingblock">
 <div class="content">
@@ -694,6 +714,9 @@ other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Orde
 </li>
 <li id="_tabs_2_effective" class="tab">
 <p>Effective</p>
+</li>
+<li id="_tabs_2_example" class="tab">
+<p>Example</p>
 </li>
 <li id="_tabs_2_bmm" class="tab">
 <p>BMM</p>
@@ -885,6 +908,20 @@ other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Orde
 </tbody>
 </table>
 </div>
+<div id="_tabs_2_example--panel" class="tabpanel" aria-labelledby="_tabs_2_example">
+<div class="paragraph">
+<p>The ISO 639-1 code for English, as used for the language of an archetype or template.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "_type": "TERMINOLOGY_CODE",
+  "terminology_id": "ISO_639-1",
+  "code_string": "en"
+}</code></pre>
+</div>
+</div>
+</div>
 <div id="_tabs_2_bmm--panel" class="tabpanel" aria-labelledby="_tabs_2_bmm">
 <div class="listingblock">
 <div class="content">
@@ -978,7 +1015,8 @@ other: <code><a href="../primitive_types/#_ordered_class" class="xref page">Orde
 <script defer src="../../../../ui/js/vendor/highlight.js"></script>
 <script src="../../../../ui/js/vendor/lunr.js"></script>
 <script src="../../../../ui/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="80" data-stylesheet="../../../../ui/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script async src="../../../../search-index-development.js"></script>
+<script>document.getElementById('search-input').placeholder = 'Search development'</script>
 <script src="../../../../ui/js/medium-zoom.min.js"></script>
 <script src="../../../../ui/js/zoom.js"></script>
 <script async src="../../../../ui/js/tabs.js"></script>
