@@ -1,0 +1,49 @@
+/* ============================================
+   Modern theme (alternative to the navy theme, not in use): product-docs look,
+   Inter font, soft surfaces, dark code blocks. Loaded after all other stylesheets.
+   Tables keep the legacy style from openehr.css.
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+html{font-size:16px}
+body{background:#fff;color:#1a2228;font-family:Inter,system-ui,sans-serif}
+.header .navbar,.navbar{background:rgba(255,255,255,.92)!important;backdrop-filter:blur(8px);border-bottom:1px solid #e8ecef;box-shadow:none}
+.navbar-item,.navbar-link{color:#33414a!important;font-weight:500}
+.navbar-brand .navbar-item:first-child{font-weight:700;color:#0b1a22!important}
+.navbar-brand .navbar-item:first-child::before{content:"";display:inline-block;width:22px;height:22px;margin-right:10px;border-radius:6px;background:linear-gradient(135deg,#00758f,#00a3b4)}
+.navbar-dropdown{background:#fff!important;border:1px solid #e8ecef;border-radius:10px;box-shadow:0 12px 32px rgba(15,30,40,.12)}
+.navbar-burger span{background:#1a2228}
+#search-input{border:1px solid #e1e6ea;border-radius:8px;background:#f5f7f9;color:#1a2228;padding:.35rem .7rem}
+.nav-container,.nav,.nav-menu,.nav-panel-explore{background:#f7f9fa!important}
+.nav{border-right:1px solid #eef1f3}
+.nav-link{color:#45545e;border-radius:6px;padding:.15rem .4rem}
+.nav-link:hover{background:#eaf0f2;color:#0b1a22}
+.nav-item.is-current-page>.nav-link{background:#e1f1f4;color:#005f74;font-weight:600}
+.toolbar{background:#fff;border-bottom:1px solid #eef1f3;box-shadow:none}
+.doc{font-size:1rem;line-height:1.7;max-width:54rem;color:#2a353c}
+.doc h1,.doc h2,.doc h3,.doc h4{color:#0b1a22;font-weight:700;letter-spacing:-.01em}
+.doc h1.page{font-size:2.3rem;letter-spacing:-.02em}
+.doc h2{font-size:1.5rem;margin-top:3rem}
+.doc a,.doc a:hover{color:#007c96;text-decoration:none}
+.doc a:hover{text-decoration:underline}
+.doc code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:#f0f3f5;border-radius:4px;padding:.1em .35em;color:#0b1a22}
+.doc pre.highlight,.doc .listingblock pre{background:#0f1b24!important;color:#e3eaef!important;border:0;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.82rem}
+.doc pre.highlight code{background:none;color:inherit}
+.doc .admonitionblock>table{border:0!important;border-left:4px solid #0092a8!important;border-radius:8px;background:#eef8fa!important}
+.doc .admonitionblock td{background:transparent!important}
+.toc .toc-menu a{color:#5a6a73}
+.toc .toc-menu a.is-active{color:#007c96;font-weight:600;border-left-color:#007c96}
+.version-badge{border-radius:999px}
+.version-badge.is-latest{background:#e3f5e8;color:#16692f}
+.version-badge.is-development{background:#fff0e3;color:#a64600}
+
+/* navbar: no hover highlight on the site title and the search field */
+.navbar-brand .navbar-item:first-child:hover,
+.navbar-item.search:hover {
+  background-color: transparent !important;
+}
+.navbar-link:hover,
+.navbar-end .navbar-item:hover,
+.navbar-dropdown .navbar-item:hover {
+  background-color: #eaf0f2 !important;
+  color: #0b1a22 !important;
+}
