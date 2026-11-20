@@ -16,7 +16,7 @@
           {{~#if (and (eq .. @root.page.component) (eq this @root.page.componentVersion))}} is-current{{/if~}}
           {{~#if (eq this ../latest)}} is-latest{{/if~}}
           {{~#if (eq ./version 'development')}} is-development{{/if}}">
-          <a href="{{{relativize (versionLink .. this)}}}">{{./displayVersion}}
+          <a href="{{{relativize (versionLink .. this)}}}"{{#if (isSamePageVersion .. this)}} data-same-page{{/if}}>{{./displayVersion}}
             {{~#if (eq this ../latest)}}{{#unless (eq ./version 'development')}} <span class="version-badge is-latest">latest</span>{{/unless}}{{/if}}</a>
         </li>
         {{/each}}
@@ -26,3 +26,12 @@
     {{/each}}
   </ul>
 </div>
+<script>
+  // Version switch: keep the section (#...) when the link opens the same page in another version.
+  // If that section does not exist there, the browser simply shows the top of the page.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.nav-panel-explore a[data-same-page]')
+    if (!a || !location.hash || a.hash) return
+    a.hash = location.hash
+  })
+</script>
