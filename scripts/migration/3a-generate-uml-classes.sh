@@ -23,10 +23,10 @@ STAGING_ROOT="modules/ROOT/partials/Adoc"
 # SVG tree → modules/ROOT/images/*. **plantUML/** and **images/** under Adoc are not copied into partials/plantUML
 # (images/ is handled separately; plantUML/ is staging-only and removed with Adoc/).
 #
-# Pin default tag; override with BMM_PUBLISHER_IMAGE e.g. ghcr.io/openehr/bmm-publisher:0.12.0
+# Pin default tag; override with BMM_PUBLISHER_IMAGE e.g. ghcr.io/openehr/bmm-publisher:0.13.0
 # 0.8.0+ is required: dependencies are passed with `-d` (loaded for cross-refs, not exported).
 # Set BMM_PUBLISHER_AS_ROOT=1 to omit --user (not recommended; leaves root-owned files on mounts).
-DOCKER_IMAGE="${BMM_PUBLISHER_IMAGE:-ghcr.io/openehr/bmm-publisher:0.12.0}"
+DOCKER_IMAGE="${BMM_PUBLISHER_IMAGE:-ghcr.io/openehr/bmm-publisher:0.13.0}"
 ROOT_IMAGES_DIR="modules/ROOT/images"
 
 # Optional local BMM JSON overlays (merged on top of the image's /app/resources):

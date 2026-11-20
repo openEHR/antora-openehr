@@ -60,7 +60,7 @@ make validate-structure REPO=specifications-BASE
 Notes:
 - Migration runs on the `development` branch of the target spec repo by default. Override with `MIGRATION_BRANCH=<branch>` if needed; the script will refuse to run if the branch doesn't exist locally (run step 4 first).
 - The migration creates ~3 git checkpoint commits in the spec repo. Set `AUTO_COMMIT_CHECKPOINTS=0` to disable.
-- UML class partials are regenerated via the Docker image `ghcr.io/openehr/bmm-publisher:0.7.0` (override with `BMM_PUBLISHER_IMAGE`). Local BMM JSON overlays can be supplied via `BMM_RESOURCES_OVERLAY=/path/to/dir` or by placing files under `<repo>/computable/BMM/*.bmm.json`.
+- UML class partials are regenerated via the Docker image `ghcr.io/openehr/bmm-publisher:0.13.0` (override with `BMM_PUBLISHER_IMAGE`). Local BMM JSON overlays can be supplied via `BMM_RESOURCES_OVERLAY=/path/to/dir` or by placing files under `<repo>/computable/BMM/*.bmm.json`.
 
 To run class generation by itself (without a full migration):
 ```bash
@@ -107,7 +107,7 @@ make migrate-all && make validate-all
 - npm install fails → verify Node.js version (use 18 LTS if possible)
 - "antora.yml not found" → run a migration for that repository first
 - Images or includes broken → follow the adjustments in `MIGRATION-GUIDE.md`
-- UML class generation fails → verify Docker can pull `ghcr.io/openehr/bmm-publisher:0.7.0` and re-run migration
+- UML class generation fails → verify Docker can pull `ghcr.io/openehr/bmm-publisher:0.13.0` and re-run migration
 
 More details: see Troubleshooting sections in `MIGRATION-GUIDE.md` and `QUICK-REFERENCE.md`.
 
