@@ -111,6 +111,9 @@ MODULES="$("$SCRIPT_DIR/1-analyze-structure.sh")"
 # Step 2: Create Antora directory structure
 "$SCRIPT_DIR/2-create-antora-structure.sh" $MODULES
 
+# Step 2a: Hand-written class examples (development only), used by step 3a
+"$SCRIPT_DIR/2a-copy-class-examples.sh" "$COMPONENT_NAME" "$MIGRATION_BRANCH"
+
 # Step 3: Move UML diagram assets into ROOT
 "$SCRIPT_DIR/3-move-uml.sh"
 
