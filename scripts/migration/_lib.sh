@@ -271,9 +271,11 @@ rm_rf_repo_path() {
 
 # -------------------------------------------------------------------
 # git_force_push_current_branch [branch]
-#   Force-push current branch to origin after generated migration commits.
-#   Uses --force-with-lease by default so remote changes made by someone else
-#   are not overwritten silently. Override flags with GIT_FORCE_PUSH_FLAGS.
+#   Push the generated migration commits, only when asked to.
+#   Off by default: set MIGRATION_PUSH=1 to push. Never pushes master, main,
+#   development or release/* (shared branches: open a PR or push a normal
+#   commit on top instead). Uses --force-with-lease; override flags with
+#   GIT_FORCE_PUSH_FLAGS.
 # -------------------------------------------------------------------
 git_force_push_current_branch() {
   local branch="${1:-}"
@@ -286,6 +288,21 @@ git_force_push_current_branch() {
   if [ -z "$branch" ] || [ "$branch" = "HEAD" ]; then
     echo "Error: cannot force-push detached HEAD" >&2
     return 1
+  fi
+
+  case "$branch" in
+    master|main|development|release/*)
+      echo "→ Not pushing $branch: shared branch, never force-pushed by scripts."
+      echo "  Review the local commits, then push them on top of origin/$branch or open a PR."
+      echo ""
+      return 0
+      ;;
+  esac
+
+  if [ "${MIGRATION_PUSH:-0}" != "1" ]; then
+    echo "→ Not pushing $branch (set MIGRATION_PUSH=1 to push)."
+    echo ""
+    return 0
   fi
 
   echo "→ Force-pushing $branch to origin ($flags)"
