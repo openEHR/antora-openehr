@@ -10,6 +10,7 @@ antora:
     - require: './src/extensions/load-global-vars.js'
       var_files: ['./resources/global-vars.yml']
     - require: './src/extensions/resolve-class-links.js'
+    - require: './src/extensions/rewrite-legacy-spec-links.js'
 
 site:
   title: openEHR Specifications
@@ -23,8 +24,7 @@ content:
     - url: repos/specifications-BASE
       branches:
         - development
-        - 'release/1.1.0'
-        - 'release/1.2.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -33,8 +33,7 @@ content:
     - url: repos/specifications-RM
       branches:
         - development
-        - 'release/1.0.4'
-        - 'release/1.1.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -43,9 +42,7 @@ content:
     - url: repos/specifications-AM
       branches:
         - development
-        - 'release/1.4.0'
-        - 'release/2.2.0'
-        - 'release/2.3.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -54,7 +51,7 @@ content:
     - url: repos/specifications-LANG
       branches:
         - development
-        - 'release/1.0.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -71,7 +68,7 @@ content:
     - url: repos/specifications-QUERY
       branches:
         - development
-        - 'release/1.0.1'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
@@ -112,7 +109,7 @@ content:
     - url: repos/specifications-TERM
       branches:
         - development
-        - 'release/3.0.0'
+        - 'release/*'
       version:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development

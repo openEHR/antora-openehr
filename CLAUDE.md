@@ -132,6 +132,7 @@ antora-openehr/
 │   │   ├── 13-finalise-landing-pages.sh   # Landing pages + abstract injection
 │   │   └── 14-remove-legacy-docs-html.sh
 │   ├── resources/abstracts/     # Per-component landing-page abstracts (BASE.adoc, RM.adoc, …) consumed by step 13
+│   ├── resources/class-examples/ # Hand-written canonical JSON examples per class (RM/, BASE/), copied by step 2a
 │   ├── check-class-map.py       # Checks class_* in global-vars.yml against the pages that include each class partial
 │   ├── commit-updated-grammars.sh
 │   ├── create-release-branches.sh
@@ -251,6 +252,7 @@ Standard AsciiDoc with Antora extensions. Follow existing patterns in the codeba
 - **UML class regeneration**: step 3a (`3a-generate-uml-classes.sh`) runs the `ghcr.io/openehr/bmm-publisher` Docker image to produce ROOT class partials. Override the image with `BMM_PUBLISHER_IMAGE=…` (default pinned to `:0.7.0`). The container runs as host UID:GID by default; set `BMM_PUBLISHER_AS_ROOT=1` to drop `--user` (not recommended — leaves root-owned files on the bind mount). Local BMM JSON overlays can be supplied via `BMM_RESOURCES_OVERLAY=/path/to/dir` or by placing files under `<repo>/computable/BMM/*.bmm.json`. The publisher's nested `Adoc/<id>/` output is **promoted** into `modules/ROOT/partials/*` (and SVGs into `images/uml/`); nested bind-mounts on `/app/output/Adoc/…` would trigger the publisher's writability check and abort.
 - **AsciiDoc extension load order**: in the playbook, `patch-asciidoctor-bibtex-lines.js` MUST be registered **before** the `@ayowel/asciidoctor-bibtex-js` extension — its `playbookBuilt`-stage monkey-patch type-guards `TreeProcessor.search_and_flag_inline_macros` / `process_inline_macros` against non-string lines, preventing crashes on lines emitted by other processors.
 - **Landing-page abstracts**: step 13 reads `scripts/resources/abstracts/<COMPONENT>.adoc` for module abstracts and (when present) updates `manifest.json.summary` for matching modules. Abstract files are organized by `// @SECTION` blocks (e.g., `@overview`, `@spec:foundation_types`).
+- **Class examples**: the per-class JSON examples are kept in `scripts/resources/class-examples/<COMPONENT>/<class>.adoc`, not in the spec repos, because a re-run of the migration removes `modules/`. Step 2a copies them to `modules/ROOT/partials/examples/` on the `development` branch only (`CLASS_EXAMPLES=1` forces, `0` skips), and step 3a passes that folder to bmm-publisher (`--examples-dir`, 0.13.0+) for the Example tab. Edit examples here until the migration is final.
 - **Shared helpers**: `scripts/migration/_lib.sh` is sourced by `main-migrate-repo.sh` and steps 3, 3a, 4, 6, 7, 8 (chapter-list extraction, `strip_master_prefix`, `git_move_preserve_history`, `rm_rf_repo_path`, BMM id helpers, etc.). Editing any consumer? Check `_lib.sh` first.
 
 ---
