@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://syntaric.github.io/openehr-federation-spec/federation-aql/1.1/_attachments/options-root.schema.json",
+  "title": "Federation gateway self-description (OPTIONS {base}/)",
+  "description": "The response body of OPTIONS {base}/ at a federation gateway conforming to 'Federation Tier with AQL' §7a.2 / N30.\n\nUnlike the AQL result envelope, this structure has NO upstream standard: openEHR specifies no gateway self-description resource, so nothing here is inherited and every member is normative in that specification alone. That is precisely why it needs a schema more than the envelope does. It is versioned with the specification and carries no version marker of its own beyond federation.spec_version.",
+
+  "$comment": "Spec §7a.2 (rest-facade.adoc), N30, CP-23. Changing this schema and changing §7a.2 are the same change; see CONTRIBUTING.md.",
+
+  "type": "object",
+  "required": ["federation", "endpoints"],
+
+  "$comment_top_level": "`endpoints` is a SIBLING of `federation`, not nested inside it.",
+  "additionalProperties": true,
+
+  "properties": {
+
+    "federation": {
+      "title": "Gateway self-description",
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "spec_version",
+        "aql",
+        "dedup",
+        "timeout",
+        "completeness",
+        "paging",
+        "aggregates",
+        "definition",
+        "localization",
+        "its_rest"
+      ],
+      "$comment": "`auth` is deliberately NOT required: §13.1 says a gateway with no JWKS location omits the key rather than inventing one. Everything else in this list is a behaviour N30 requires be declared, so its absence is a conformance failure, not a deployment choice.",
+
+      "properties": {
+
+        "id": {
+          "description": "N30. The federation's own identifier.",
+          "type": "string",
+          "minLength": 1
+        },
+
+        "spec_version": {
+          "description": "§7a.2. The version of this specification the gateway implements, in major.minor form. Patch releases are editorial and do not change the wire contract, so a gateway implementing 0.3.1 reports \"0.3\". A client MUST NOT match on a patch component - and the pattern below makes a three-component value a schema failure rather than something a client is left to tolerate.",
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+
+        "aql": {
+          "description": "§8. AQL-level federation behaviour. The accepted targeting mechanisms are deliberately absent: both the in-AQL directive and the openEHR-federation-endpoint header are mandatory at every conformant gateway (N35), so there is nothing to declare (§7a.2).",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["fan_out"],
+          "properties": {
+            "fan_out": { "type": "boolean" }
+          }
+        },
+
+
+        "dedup": {
+          "description": "§10, N15. The deduplication policy. Default MUST be 'none' (N15); a gateway offering version-identity dedup lists it in modes and names the request header that selects it.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["default", "modes"],
+          "properties": {
+            "default": { "type": "string" },
+            "modes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1
+            },
+            "request_header": { "type": "string" }
+          }
+        },
+
+        "timeout": {
+          "description": "§11.5, N38. The timeout budget in force, so it is discoverable rather than inferable.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["per_node_ms", "overall_ms", "policy"],
+          "properties": {
+            "per_node_ms": { "type": "integer", "minimum": 0 },
+            "overall_ms": { "type": "integer", "minimum": 0 },
+            "policy": { "type": "string" }
+          }
+        },
+
+        "completeness": {
+          "description": "§11.4, N37. ALL-OR-NOTHING MUST be the default: a query in which an in-scope node was asked and did not answer fails (504/424) rather than returning partial rows. A gateway offering the opt-in BEST-EFFORT mode MUST declare it here and MUST say how a client selects it per request.\n\nThe polarity of this object was reversed by the SEC amendments: up to 0.9.0 `default` was \"best-effort\" and the declared, opt-in mode was named by `all_or_nothing`. It is now `best_effort` that is declared.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["default", "best_effort"],
+          "properties": {
+            "default": {
+              "description": "N37. The strategy in force when a request selects none. The only conformant value is \"all-or-nothing\"; the enum is closed here rather than left open because a gateway declaring \"best-effort\" as its default is declaring non-conformance, which a schema can catch and a reader might not.",
+              "type": "string",
+              "enum": ["all-or-nothing"]
+            },
+            "best_effort": {
+              "description": "N37. Whether the opt-in best-effort mode (partial rows, complete: false, HTTP 200) is offered at all. A gateway declaring false MUST reject `openEHR-federation-completeness: partial` rather than silently ignore it.",
+              "type": "boolean"
+            },
+            "opt_in": {
+              "description": "N37/§11.4. How best-effort is selected per request. Required whenever best_effort is true - see the conditional below.",
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "header": { "type": "string" },
+                "value": { "type": "string" }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "$comment": "N37/§11.4: best-effort MUST be selected per request, so a gateway offering it has to say how it is selected. This is the same conditional that used to guard `all_or_nothing`, inverted with the default.",
+              "if": {
+                "properties": { "best_effort": { "const": true } },
+                "required": ["best_effort"]
+              },
+              "then": { "required": ["opt_in"] }
+            }
+          ]
+        },
+
+        "paging": {
+          "description": "§11.6.2, N39. The OFFSET > 0 strategy: either rejected, or served from a materialised cursor.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["offset_strategy"],
+          "properties": {
+            "offset_strategy": { "type": "string" }
+          }
+        },
+
+        "aggregates": {
+          "description": "§11.6.3. Which decomposable aggregates the gateway supports across nodes, if any. An empty list is a valid and meaningful declaration - it says 'none' explicitly rather than leaving a client to guess.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["decomposable"],
+          "properties": {
+            "decomposable": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+
+        "definition": {
+          "description": "§12.6/N43 and §12.7/N44. What the gateway does with the definition area. Templates are single-node-routed with optional fan-out upload; stored queries are either single-node-routed too, or held in a gateway registry.\n\nThe three booleans are independent: a gateway may hold stored queries without distributing them (registry true, fan_out false), distribute nothing at all, or fan out templates while routing stored queries to one node.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["fan_out_template_upload"],
+          "$comment": "Only fan_out_template_upload is required: it is the N43 behaviour every gateway has an answer to. stored_query_registry and stored_query_fan_out describe an OPTIONAL facility (N44), and a gateway that predates it or declines it omits them - absence means 'not offered'. Requiring them would make a conformant pre-registry OPTIONS body fail.",
+          "properties": {
+            "fan_out_template_upload": {
+              "description": "§12.6, N43. Whether a single PUT of a template is applied to all member nodes.",
+              "type": "boolean"
+            },
+            "stored_query_registry": {
+              "description": "§12.7, N44. Whether the gateway offers a federated stored-query registry: it is authoritative for the definition, versions it immutably, and expands it into an ordinary fan-out when invoked by name. Absent or false means stored queries follow N43's single-node routing.",
+              "type": "boolean"
+            },
+            "stored_query_fan_out": {
+              "description": "§12.7, N44. Whether the gateway also distributes stored-query definitions to member nodes, on N43's template-upload terms (opt-in, per-node reported, non-atomic). Independent of stored_query_registry, though distributing a definition the gateway is not authoritative for is not a shape this specification describes - see the conditional below.",
+              "type": "boolean"
+            }
+          },
+          "allOf": [
+            {
+              "$comment": "§12.7/N44: fan-out of a stored-query DEFINITION is a facility of the registry - the registry is what holds the authoritative copy that gets distributed and that a node's copy can be checked against (§12.7 drift). Declaring fan_out without the registry describes distributing definitions with no authoritative source, which N44 does not specify and a client could not reason about.",
+              "if": {
+                "properties": { "stored_query_fan_out": { "const": true } },
+                "required": ["stored_query_fan_out"]
+              },
+              "then": {
+                "properties": { "stored_query_registry": { "const": true } },
+                "required": ["stored_query_registry"]
+              }
+            }
+          ]
+        },
+
+        "localization": {
+          "description": "§14.1. What the gateway does when localization is unavailable - 'closed' (fail) or 'open' (proceed). A deployment's answer is a policy decision and MUST be declared.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["on_failure"],
+          "properties": {
+            "on_failure": { "type": "string" }
+          }
+        },
+
+        "auth": {
+          "description": "§13.1. The JWKS location. OPTIONAL as a member: a gateway with none configured omits the key rather than inventing a value.",
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "jwks_uri": { "type": "string", "format": "uri" }
+          }
+        },
+
+        "its_rest": {
+          "description": "§7a.1, N30/N32. Which ITS-REST areas the gateway exposes and how each behaves. Unsupported areas MUST be declared here, not discovered by a 501.",
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["query", "ehr", "definition", "demographic"],
+          "properties": {
+            "query": { "type": "string" },
+            "ehr": { "type": "string" },
+            "definition": { "type": "string" },
+            "demographic": {
+              "$comment": "N32: the DEMOGRAPHIC API MUST NOT be federated. It is either unsupported, or routed to a single explicitly chosen node.",
+              "type": "string",
+              "not": { "const": "federated" }
+            }
+          }
+        }
+      }
+    },
+
+    "endpoints": {
+      "description": "§7a.2, N30. The member endpoints behind the gateway - the same identifiers usable in a directive (§8). This list is federation membership information, not patient data: it MUST NOT be gated on a patient identifier.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/memberEndpoint" }
+    }
+  },
+
+  "$defs": {
+
+    "memberEndpoint": {
+      "title": "Member endpoint (OPTIONS)",
+      "description": "A member of the federation, as the gateway's standing configuration describes it. This is NOT a meta.federation.endpoints[] entry: that describes what happened to one query, this describes the federation's standing configuration. See $defs/membershipStatus.",
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "organisation", "status"],
+
+      "properties": {
+        "id": {
+          "description": "MUST (N30). The endpoint_id, usable in a FROM ENDPOINT directive or the openEHR-federation-endpoint header.",
+          "type": "string",
+          "minLength": 1
+        },
+
+        "organisation": {
+          "description": "MUST (N30, N20). The managing Organization.",
+          "type": "string"
+        },
+
+        "status": {
+          "description": "MUST (N30). Membership and health. See $defs/membershipStatus for why this is not an enum.",
+          "$ref": "#/$defs/membershipStatus"
+        },
+
+        "node_id": {
+          "description": "SHOULD (§7a.2). The owning node; distinguishes two endpoints of the same node.",
+          "type": "string"
+        },
+
+        "system_id": {
+          "description": "The node's openEHR system_id, where known.",
+          "type": "string"
+        },
+
+        "product": {
+          "description": "SHOULD (§7a.2). Product name, as a SEPARATE field from version - matching §9.5, so the two documents' shapes agree.",
+          "type": "string"
+        },
+
+        "version": {
+          "description": "SHOULD (§7a.2). Product version, as a separate field.",
+          "type": "string"
+        },
+
+        "latency_ms_p50": {
+          "description": "An AGGREGATE over recent requests, not this-request measurement - contrast meta.federation.endpoints[].latency_ms in §9.5, which is per-query. The statistic is named in the field so the two cannot be confused (§7a.2).",
+          "type": "integer",
+          "minimum": 0
+        },
+
+        "url": {
+          "description": "The CDR base URL.",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+
+      "not": {
+        "$comment": "A guard, not a vocabulary. 'not-localized' is a per-query §11.1 outcome and is meaningless as a membership status: no node is permanently 'not returned by localization'. Its presence here is a sure sign the two vocabularies have been crossed, which is the exact defect §7a.2's endpoint-membership-status paragraph exists to prevent - so it is worth failing on even though the field is otherwise open.",
+        "properties": { "status": { "const": "not-localized" } },
+        "required": ["status"]
+      }
+    },
+
+    "membershipStatus": {
+      "title": "Membership / health status (§7a.2)",
+      "description": "DELIBERATELY AN UNCONSTRAINED STRING, and modelled as a distinct type from the per-query status of §11.1 so that no implementer reads that closed enum into this field by default.\n\nThis specification defines no closed vocabulary here (§7a.2): membership status is a membership-lifecycle concept and this release does not specify that lifecycle (§12b, §18). 'active' is the conventional value for a member in service. A client MUST NOT assume a fixed set.\n\nContrast federated-result-set.schema.json#/$defs/endpointQueryStatus, which IS a closed seven-value enum. The asymmetry is the point: one vocabulary is fixed by this specification and the other is not.",
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

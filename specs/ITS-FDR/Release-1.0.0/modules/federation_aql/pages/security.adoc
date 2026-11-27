@@ -1,0 +1,76 @@
+= 13. Authentication & Authorization
+
+[[identity-conveyance]]
+== 13.1 Identity conveyance (client → gateway → node)
+
+* The client MUST authenticate to the Federation Tier (xref:requirements.adoc#n25[N25]). The Tier authenticates onward to each node and MUST propagate the client's identity. Per the White Paper, the source server needs it both to write appropriate audit records and to make appropriate security decisions about what records are made available.
+* The default mechanism is *OAuth 2.0* (RFC 6749) using the *client-credentials* grant with a *signed JWT client assertion* (RFC 7523 §2.2, `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer`): a node hosts an OAuth token endpoint that authenticates the gateway via that assertion, with the gateway's signing keys published as a *JWKS* (RFC 7517) resolvable by the node. A regional federated-identity stack MAY be used instead (xref:annex-b-dutch-gf.adoc[Annex B]).
+* [[jwks-discovery]]*The JWKS must be discoverable, not merely published.* The gateway MUST report the JWKS location as `federation.auth.jwks_uri` in `+OPTIONS {base}/+` (xref:rest-facade.adoc#options-root[§7a.2]), so a node can obtain the keys it verifies against without an out-of-band arrangement. This specification does not mandate where the key set is hosted, and a deployment may serve it from wherever its PKI already lives. It mandates only that the gateway says where that is. _(xref:requirements.adoc#n25[N25], xref:requirements.adoc#n30[N30].)_
+
+[NOTE]
+====
+*End-user scoping is not yet specified.* The exchange above authenticates the gateway as a service. It does not by itself convey an end-user. Where a node's release decision depends on _who_ is asking and not only on _which system_, a deployment needs an additional mechanism. The candidates are OAuth 2.0 *Token Exchange* (RFC 8693, conveying the end-user as `subject_token` with the gateway as `actor_token`) or an OpenID Connect `id_token` conveyed alongside the client assertion. This specification mandates neither yet, and a future revision is expected to settle it (xref:future.adoc[§18]). Until then, deployments requiring end-user-scoped authorization SHOULD follow their regional stack (xref:annex-b-dutch-gf.adoc[Annex B]).
+
+This note covers the specific case, and <<authn-deployment-decisions,§13.4>> is the general frame around it. Even a deployment needing no end-user conveyance still has to settle who authenticates the end user and where that trust stops (<<authn-end-user,§13.4>>); "nothing is conveyed" is an acceptable answer only if the deployment reached it on purpose.
+====
+
+[NOTE]
+====
+Deployments that also expose FHIR endpoints will find *SMART App Launch: Backend Services* a compatible profile of this exchange: the same RFC 7523 client assertion, with FHIR-specific scopes and discovery layered on top. Conformance to this specification neither requires nor implies SMART conformance, and the FHIR-specific parts (`system/…` scopes, `.well-known/smart-configuration`, CapabilityStatement) do not apply to an openEHR CDR.
+====
+
+== 13.2 Per-node authorization and consent
+
+*Consent is enforced at the node.* Each node performs its own authorization and consent/opt-out checks before releasing data. Each participant is responsible for checking consent or opt-out before providing health information about a given patient (xref:requirements.adoc#n27[N27]). The check is unconditional: a node MUST perform it whether or not the gateway, a localization service or a consent service already formed a view upstream. A node MUST NOT treat its own appearance in a localization result as evidence that consent was given.
+
+Access decisions requiring information not visible to the gateway MUST be delegated to the source CDR; the gateway MUST NOT be the sole authority for releasing sensitive data (xref:requirements.adoc#n26[N26]).
+
+=== 13.2.1 Optional pre-filtering, and why it is not the gate
+
+Some deployments can answer the consent question before dispatch, from a consent service that is either standalone or folded into localization. Where such a service exists the gateway MAY use its decision to drop nodes at Step 1 and MUST report them as `consent-denied` (xref:requirements.adoc#n27a[N27a], xref:partial-results.adoc#endpoint-status[§11.1]). The pre-filter is an efficiency and data-minimisation measure: it avoids a query that would be refused anyway and avoids disclosure to a node that the patient was asked about.
+
+The pre-filter does not substitute for the node's check, for three reasons:
+
+. *Not every federation has one.* A pure record-locator (IHE XCPD ITI-55) reports which communities hold data and says nothing about release. A deployment with no consent service is fully conformant, and Step 1 simply carries no consent signal.
+. *The upstream view can be stale or incomplete.* Consent can be withdrawn between Step 1 and dispatch, and a node routinely holds local consent state, care-relationship context and data-sensitivity classifications no central service sees.
+. *Only the node knows what it is about to release.* Consent is frequently scoped to a data category, a purpose of use or a requesting organization, and that scope can only be applied against the actual data in hand (xref:requirements.adoc#n26[N26]).
+
+[IMPORTANT]
+====
+A federation MUST NOT be designed so that consent is enforced only by a localization or consent service upstream of the nodes. Localization answers _where data might be_; consent answers _whether it may be released_. A deployment that collapses the two has no enforcement point left when the localizer is wrong, stale, bypassed, or, in a directed query (xref:endpoint-directive.adoc[§8]), not consulted at all.
+====
+
+A directed query makes the last point concrete: `FROM ENDPOINT` selects the node set independently of patient resolution (xref:requirements.adoc#n11[N11]), so localization need never run. If consent rode only on localization, a directed query would bypass it entirely. Under xref:requirements.adoc#n27[N27] it does not: the node checks regardless of how it came to be addressed.
+
+== 13.3 Regional realisation
+
+A deployment MAY realise this handoff with a regional authentication/authorization/consent stack instead of the plain RFC 7523 exchange of <<identity-conveyance,§13.1>>, provided xref:requirements.adoc#n24[N24]–N27 still hold. The Dutch Generic-Functions realisation profiles that exchange, keeping the same OAuth 2.0 + RFC 7523 base and adding a Verifiable Presentation in the authorization grant, sender-constrained tokens (DPoP), policy-based authorization and a national consent service. It is documented in xref:annex-b-dutch-gf.adoc[Annex B (§B.4–§B.6)]. A second and more recent Dutch track, arriving at different technical answers for BgZ/eOverdracht, is documented separately in xref:annex-b-dutch-gf.adoc#harmonised-bgz-authn[Annex B §B.4a]. A Dutch deployment should establish which one applies to it, since the two do not compose.
+
+[#authn-deployment-decisions]
+== 13.4 What a deployment MUST settle
+
+This specification does not prescribe a concrete authentication solution. The right one depends on which authentic sources of organization identity exist, which legal regime applies, what PKI the participants already run, and what the national programme has already chosen, so any single answer written here would be wrong for most deployments.
+
+§13.1 to §13.3 leave those choices open. This section fixes the questions a deployment is not allowed to leave unanswered. A deployment that chooses badly can still be reviewed; a deployment that never notices it chose cannot be, so each item below obliges the deployment to decide and to record the decision. None of the items mandates a mechanism.
+
+A deployment MUST document its answer to each of the following. _(xref:requirements.adoc#n25[N25], xref:conformance.adoc#cp-39[CP-39].)_
+
+* [[authn-which-identity]]*Which identity is verified across the trust boundary.* This specification's model has the gateway and each node authenticate as organizations or services, not as clinicians (<<identity-conveyance,§13.1>>). A deployment MUST state whose identity is asserted at the boundary, by whom, and against which authentic source of organization identity it is checked. "The systems trust each other" does not satisfy this item; naming a register that says which organization an identifier belongs to does.
+* [[authn-end-user]]*Who authenticates the end user, and where that trust stops.* The requesting organization authenticates its own clinicians, within its own domain, under its own obligations. The source node does not re-authenticate them, and MAY rely on the requester's assertion that it did. The exchange rests on this division, and a deployment MUST state it explicitly. The unstated version gets misread in both directions: as "the source checks the clinician too", which it cannot, or as "nobody checks the clinician", when its own organization must.
+* [[authn-purpose-of-use]]*Purpose of use.* A node cannot make an authorization decision without knowing why the data is being requested. The same request from the same organization about the same patient may be permitted for treatment and refused for research. A deployment MUST define how the purpose, or the legal basis, is conveyed on the request, and MUST NOT rely on a node inferring it from the query, because the query says what is being asked for and never what for. (Purpose of use is the input against which xref:requirements.adoc#n26[N26]'s delegated decision and xref:requirements.adoc#n27[N27]'s consent gate are made: the node decides, and it cannot decide on information it was not given.)
+* [[authn-token-binding]]*What the token is bound to.* Whether access tokens are bearer or sender-constrained; and - separately - whether transport identity is or is not treated as application-layer organization identity. These are two decisions and a deployment MUST make both.
+* [[authn-residual-risk]]*What the technique does not cover.* Some risk is necessarily carried outside the transaction, and a deployment MUST be explicit about the split. Typically that means admission requirements up front (who is allowed to join, and on what evidence), audit and supervision on an ongoing basis, and logging and liability after the fact. A deployment MUST say which risks it addresses technically and which it addresses by agreement. The unstated version reads as though the protocol covered everything, which no protocol does.
+
+[NOTE]
+.The federated trust model
+====
+The list above follows the *federated trust model*, and the obligations fall where they do because of it. In that model each participant is responsible for authenticating its own users and systems within its own domain, and only organization identity is verified across the organizational boundary. No party re-checks another party's internal authentication at the border, because it cannot: it has no relationship with the other party's staff, no view of their employment status, and no standing to evaluate their login.
+
+Participants therefore accept each other's authentication on those terms. No technical re-check can make that safe; the surrounding structure does: mandatory security norms, admission requirements before a participant joins, audits and supervision while it participates, and logging and liability after the fact, sufficient that a request can be traced back to the person or system that made it, at the organization that made it.
+
+The model is informative here. xref:annex-b-dutch-gf.adoc[Annex B §B.4a] documents one worked realisation of it.
+====
+
+This section leaves every specific profile out of the normative body on purpose, because FAPI 2.0 and Rich Authorization Requests are one national programme's answers to <<authn-token-binding,token binding>> and <<authn-purpose-of-use,purpose of use>> (xref:annex-b-dutch-gf.adoc[Annex B §B.4a]), and no answer is universal. The obligation here is to answer each question, with no requirement to answer it as that programme did.
+
+This specification does not mandate sender-constraining (DPoP, RFC 9449) in the base profile; that is a property of the GF realisation. Deployments crossing organizational trust boundaries SHOULD consider whether bearer-token replay is an acceptable risk in their setting. That question is the <<authn-token-binding,token-binding>> decision above, and a deployment has to record its answer either way.

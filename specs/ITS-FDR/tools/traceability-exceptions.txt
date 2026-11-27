@@ -1,0 +1,23 @@
+# Requirements deliberately not named by any conformance point, with the reason.
+#
+# tools/traceability.sh --assert fails on any requirement scored by neither a CP
+# nor a test track unless it appears here. The allowlist is the point: it makes
+# "add a conformance point, or state that it is deliberately unscored and why"
+# a recorded decision rather than something that quietly never happened.
+#
+# Format: <N-id> — <reason>   (one per line; blank lines and # comments ignored)
+#
+# The list is currently empty: as of 0.3.1 every requirement N1–N43 (+N27a,
+# +N42a) is named by at least one conformance point. Two decisions are worth
+# recording even though neither needs an entry here:
+#
+#   N9      — not given a dedicated conformance point. Its content is that the
+#             Tier MUST additionally apply N39's merge rules, and CP-32 already
+#             asserts exactly that; a separate CP would duplicate it. N9 is
+#             therefore named in CP-32's Requirements cell and counts as
+#             directly scored. (F-002 in the UNIO review of v0.3.)
+#   Track 8 — no conformance point scores it, deliberately: its subject matter
+#             MAY be deferred (§18) and the track is marked provisional in
+#             §16.3. This script checks requirement coverage, not track
+#             coverage, so it needs no entry - but a future check that also
+#             swept tracks would need one. (F-011 in the same review.)

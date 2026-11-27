@@ -1,0 +1,55 @@
+= 12b. Federation membership: admitting a node
+
+Membership is a governance concern, not a request-handling one, so this section sits apart from the routing rules that consume it. A gateway enforces §12 on every request; a federation operator applies this section once per node, before that node ever serves a request. Several failures the gateway can only detect and refuse (an `ehr_id` collision, xref:follow-up-routing.adoc#ehr-id-collision[§12.5.2]) are ones admission can prevent, and that is a second reason to keep the two apart.
+
+This specification fixes what the conditions must cover. It does not prescribe who administers them, how a federation is constituted, or what contractual and legal instruments carry them. Those vary by region and belong to the federation's own governance (a regional example is in xref:annex-b-dutch-gf.adoc[Annex B]).
+
+== 12b.1 The admission act
+
+* [[admission-conditions]]A federation MUST define *admission conditions* that a candidate node satisfies before it is accepted as a member, and MUST NOT admit a node that does not satisfy them. Those conditions MUST cover, at minimum, the identifier-integrity rules of §12b.2. _(xref:requirements.adoc#n42a[N42a].)_
+* Admission is performed by the federation operator on a node (xref:terminology.adoc#node-id[§ The four identifiers]), the unit of membership, trust and audit. It is evaluated neither per request nor per endpoint: admitting a node admits the node, and its endpoints are then registered against it (xref:requirements.adoc#n20[N20], xref:addressing.adoc[§15]).
+* [[admission-evidence]]A federation SHOULD verify the conditions with a conformance test (xref:testing.adoc[§16], track 11) and not by attestation alone, because identifier-generation behaviour in particular is cheap to test and expensive to discover in production.
+* On admission the federation MUST record the node in the registry with its `node_id`, its `system_id`, and its endpoints (xref:requirements.adoc#n21[N21]). The registry entry is the operative record of membership, and the gateway routes on it.
+
+[#identifier-conditions]
+== 12b.2 Identifier-integrity conditions (normative)
+
+These conditions make routing safe. Each maps to a failure that is silent, or nearly so, if nothing prevents it.
+
+[cols="2,3,2"]
+|===
+| Condition | Requirement | Failure it prevents
+
+| *`ehr_id` generation*
+| `ehr_id` s MUST be generated as version-4 UUIDs, or by another scheme with equivalent collision resistance and no coordination requirement. A node that issues sequential, short, or deployment-local `ehr_id` s MUST NOT be admitted without remediation.
+| Two nodes issuing the same `ehr_id` to different patients. Such a scheme, not chance, is the realistic source of a collision (xref:follow-up-routing.adoc#ehr-id-collision[§12.5.2]).
+
+| *No reuse*
+| A node MUST NOT re-issue or reuse an `ehr_id`, including across restores, migrations and test-data resets.
+| An `ehr_id` that resolved to patient A yesterday resolving to patient B today, with cached bindings and stored result rows still pointing at it.
+
+| *No adoption of foreign `ehr_id` s*
+| Where a node ingests EHRs from elsewhere it MUST either issue a fresh local `ehr_id`, or be explicitly registered as a holder of the origin node's `ehr_id` space. It MUST NOT silently adopt a foreign `ehr_id` as its own.
+| The `ehr_id` analogue of the imported-composition hazard (xref:deduplication.adoc#update-routing-hazard[§10.3]), and the most plausible way a real collision arises in practice.
+
+| *`system_id` uniqueness*
+| A node's openEHR `system_id` MUST be unique across the federation and MUST NOT be shared with another node (xref:terminology.adoc#system-id[§ The four identifiers]).
+| Ambiguous `creating_system_id` routing (xref:follow-up-routing.adoc[§12.2]), meaning a follow-up write delivered to the wrong CDR.
+
+| *`ehr_id` exchange*
+| The node's environment MUST be able to resolve a patient identifier to that node's local `ehr_id` (xref:identity-resolution.adoc#node-obligation[§5.5]). Who provides it - the node, its organization's MPI, a regional service - is immaterial.
+| A node that is a member on paper but unreachable by an undirected query, because nothing can turn a patient into its `ehr_id`.
+|===
+
+A gateway that maintains an `ehr_id` → node index SHOULD treat an index insert colliding with an existing entry from another node as an integrity alarm, so that a collision surfaces early and not at request time. The index is a backstop; admission control remains necessary.
+
+== 12b.3 What this section does not settle
+
+The conditions above are the identifier-integrity subset, the ones this specification fixes because a specific routing failure depends on them. They are not a complete admission checklist. A federation's full conditions will also cover:
+
+* *Trust and authentication* - how the node authenticates the gateway and vice versa (xref:security.adoc[§13], xref:requirements.adoc#n25[N25]).
+* *Registry and addressing entries* - the endpoints, connection types and base URLs the node must supply (xref:addressing.adoc[§15], xref:requirements.adoc#n19[N19]).
+* *Consent handling* - the node's obligation to check consent before releasing data, independently of any upstream filtering (xref:requirements.adoc#n27[N27], xref:security.adoc[§13.2]).
+* *Conformance evidence* - which profile the node claims and against what (xref:testing.adoc[§16], xref:conformance.adoc[§17]).
+
+Each is specified in its own section, but they are not gathered here into a single admission profile. *Membership revocation* (what happens to registry entries, cached bindings, in-flight queries and the audit trail when a node leaves or is suspended) is not addressed at all in v1. Both are recorded as future work (xref:future.adoc[§18]).

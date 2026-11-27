@@ -57,6 +57,16 @@ make preview
 # Visit http://localhost:8080
 ```
 
+### ITS-FDR gates
+
+ITS-FDR (Federation Tier with AQL) lives in this repo under `specs/ITS-FDR/` and is never migrated.
+After a build, run its own gates: prose § references, requirement traceability, in-page anchors, and JSON examples against the published schemas.
+
+```bash
+make build-local
+make check-fdr                    # or: make check-fdr BUILD_DIR=<output dir>
+```
+
 ### Using Docker as a provider for node/npm
 
 ```bash

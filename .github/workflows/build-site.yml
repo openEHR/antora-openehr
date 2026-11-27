@@ -61,6 +61,11 @@ jobs:
             echo "- log lines with WARN or ERROR: $(grep -cE '\"level\":\"(warn|error)\"|WARN|ERROR' antora.log || true)"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # ITS-FDR (specs/ITS-FDR, authored natively in Antora) brings its own gates:
+      # prose § references, requirement traceability, in-page anchors, JSON examples vs schemas.
+      - name: Check ITS-FDR
+        run: make check-fdr BUILD_DIR=site
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

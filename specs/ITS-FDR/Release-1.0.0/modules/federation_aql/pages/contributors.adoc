@@ -1,0 +1,12 @@
+= 21. Contributors / License
+
+This specification builds on _Proposal for Federation Tier with AQL_ (openEHR International Federation Working Group, 2025-08-20). The original contributors are acknowledged:
+
+[quote]
+____
+Erik Vermeulen (corresponding), Sebastian Iancu, Reshma Menon, Severin Kohler, Matija Polajnar, Seref Arikan, Alastair Allen, Henrik Thiess, Simon Gash, Jon Reed, Ian McNicoll, Joost Holslag, John Meredith.
+____
+
+This specification was prepared in the context of the *RSO Zuid-Limburg* distributed openEHR deployment, informed by the MPI advisory (_Identity management in a distributed openEHR architecture_, I. Schoonbrood, 2026), the HL7 _Intermediaries White Paper_, the HL7 FHIR _Hybrid / Intermediary Exchange_ IG, and the Dutch _Generic Functions for data exchange_ IG.
+
+*License:* Creative Commons Zero v1.0 Universal (CC0)

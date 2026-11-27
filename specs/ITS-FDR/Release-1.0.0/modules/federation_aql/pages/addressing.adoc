@@ -1,0 +1,16 @@
+= 15. Addressing / Endpoint discovery
+
+Addressing turns an organization/node identifier into a reachable PIX Manager + CDR URL. It is a separate concern from the record-locator (xref:localization.adoc[§14]).
+
+== 15.1 Normative
+
+* The Tier MUST be able to turn an organization/node identifier (from localization, xref:localization.adoc[§14], or from a directed `FROM ENDPOINT`, xref:endpoint-directive.adoc[§8]) into the concrete endpoints it needs: the community's PIX Manager (for xref:identity-resolution.adoc[§5] resolution) and the CDR base URL (for fan-out and follow-up). *Proposed binding: IHE mCSD* (Mobile Care Services Discovery) for this addressing/directory function.
+* The registry (xref:requirements.adoc#n21[N21]) is the local materialisation of this mapping: Organizations ↔ Endpoints ↔ `system_id`/`creating_system_id` ↔ CDR base URLs.
+
+== 15.2 The `connectionType` reconciliation
+
+An openEHR Query API endpoint is not a FHIR REST endpoint. A directory built on mCSD, or any FHIR `Endpoint` registry, offers `connectionType` codes such as `hl7-fhir-rest` and `dicom-wado-rs`, none of which denote an openEHR AQL endpoint. xref:requirements.adoc#n19[N19] therefore requires a defined openEHR code such as `openehr-rest-query`, or a bound system value; an informal string does not satisfy it. A federation registry reusing mCSD `Endpoint` resources MUST use (or register) an openEHR-specific `connectionType` for the AQL endpoints and MUST NOT rely on `hl7-fhir-rest` to denote an openEHR Query API. _(The Dutch GF directory, whose example endpoints carry `hl7-fhir-rest`, is one instance of this - see xref:annex-b-dutch-gf.adoc[Annex B §B.2].)_
+
+== 15.3 Regional realisation
+
+An mCSD-based national provider directory with a master source and separate write/read directory roles is one way to satisfy §15.1. The Dutch Generic-Functions realisation (GF-Addressing) is documented in xref:annex-b-dutch-gf.adoc[Annex B (§B.2)].

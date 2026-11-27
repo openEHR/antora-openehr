@@ -1,7 +1,7 @@
 .PHONY: help build build-local build-github clean preview all \
         install create-branches migrate-repo validate-structure clone-repos \
         generate-uml-classes-repo generate-uml-classes-all \
-        commit-updated-grammars check-class-map
+        commit-updated-grammars check-class-map check-fdr
 
 # Default target
 .DEFAULT_GOAL := help
@@ -217,6 +217,32 @@ validate-structure: ## Validate Antora structure in a repository (usage: make va
 
 check-class-map: ## Check class_* in global-vars.yml against the class partials each repo's latest release includes
 	@python3 scripts/check-class-map.py --repos $(REPOS_DIR)
+
+# ITS-FDR is authored natively in Antora under specs/ (not migrated). Its own CI
+# gates, vendored from the source repo, run against the source pages and the built site.
+FDR_DIR   := specs/ITS-FDR
+FDR_SPEC  := $(CURDIR)/$(FDR_DIR)/Release-1.0.0
+FDR_SITE  := $(CURDIR)/$(BUILD_DIR)/ITS-FDR/Release-1.0.0
+FDR_ENV   := SPEC_REPO=$(FDR_SPEC) \
+             SPEC_PAGES=$(FDR_SPEC)/modules/federation_aql/pages \
+             SPEC_SCHEMAS=$(FDR_SPEC)/modules/federation_aql/attachments \
+             AJV=$(CURDIR)/node_modules/.bin/ajv
+
+check-fdr: ## Run the ITS-FDR gates (prose refs, traceability, anchors, schemas); needs a build
+	@if [ ! -d "$(FDR_SITE)" ]; then \
+		echo "$(RED)Error: $(FDR_SITE) not found. Run 'make build-local' first.$(NC)"; \
+		exit 1; \
+	fi
+	@echo "$(CYAN)ITS-FDR: prose section references$(NC)"
+	@$(FDR_ENV) $(FDR_DIR)/tools/check-refs.sh
+	@echo "$(CYAN)ITS-FDR: requirement traceability$(NC)"
+	@mkdir -p $(BUILD_DIR)
+	@$(FDR_ENV) $(FDR_DIR)/tools/traceability.sh --assert $(CURDIR)/$(BUILD_DIR)/its-fdr-traceability.tsv
+	@echo "$(CYAN)ITS-FDR: in-page anchors$(NC)"
+	@$(FDR_ENV) $(FDR_DIR)/tools/check-anchors.sh $(FDR_SITE)
+	@echo "$(CYAN)ITS-FDR: JSON examples against the published schemas$(NC)"
+	@$(FDR_ENV) $(FDR_DIR)/tools/check-schemas.sh
+	@echo "$(GREEN)ITS-FDR gates passed.$(NC)"
 
 
 validate-all: ## Validate Antora structure in all repositories

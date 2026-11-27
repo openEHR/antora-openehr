@@ -1,0 +1,48 @@
+= 14. Localization / Record Locator
+
+Localization, identity resolution and consent are three separate questions, and this specification keeps them separate:
+
+* *Localization* answers _"which nodes might hold this patient's data"_, an undirected discovery step.
+* *Identity resolution* answers _"what is this patient's local `ehr_id` at a given node?"_, the cross-reference of xref:identity-resolution.adoc[§5].
+* *Consent* answers _"may this node release that data to this requester?"_ The node enforces it (xref:requirements.adoc#n27[N27], xref:security.adoc[§13.2]); the localizer does not.
+
+A localization result is a set of candidates to consider, never a set of nodes cleared to answer. xref:localization.adoc#consent-aware-localization[§14.3] covers the deployments that do bundle the two.
+
+== 14.1 Normative
+
+* For an undirected query, the Tier MUST consume a node list from a localization / record-locator service (xref:requirements.adoc#n4[N4]). It SHOULD use one when available and MAY fall back to ask-all-known-nodes (xref:reference-flow.adoc[§4.3]) when none is present.
+* The locator's internals are out of scope (xref:requirements.adoc#n4[N4]). This spec requires only the interface: give the Tier a set of candidate nodes.
+* *Proposed binding: IHE XCPD* (Cross-Community Patient Discovery, ITI-55) for locating communities that hold the patient's data
+* A localization service *MUST NOT* be relied upon as the federation's consent-enforcement point (xref:requirements.adoc#n27[N27]). A Tier MUST remain correct when the localizer returns a node the patient has not consented to disclosure from - the node refuses, and that refusal is the enforcement.
+* [[localizer-unavailable]]*When a configured localizer does not answer, the default is fail-closed.* The gateway MUST treat the candidate set as empty: it dispatches to no node, reports every registry member as `not-localized` (xref:partial-results.adoc#endpoint-status[§11.1]) carrying the localization error, and MUST NOT fall back to asking all known nodes. A deployment MAY offer fail-open-to-ask-all instead, which MUST be declared in `+OPTIONS {base}/+` as `federation.localization.on_failure` with the value `"closed"` (default) or `"ask-all"` (xref:rest-facade.adoc#options-root[§7a.2]). _(xref:requirements.adoc#n4[N4].)_
++
+--
+Two distinctions this rule depends on:
+
+*The ask-all fallback of xref:reference-flow.adoc[§4.3] is a different case.* That fallback covers a deployment with no localizer configured at all, where asking every known node is the normal and intended node-selection mechanism, and it is unchanged. This rule covers the case where a localizer is configured, the deployment relies on it to narrow the node set, and it did not answer. Silently widening to the whole federation would query nodes the localizer might legitimately have excluded, and where the localizer is consent-aware (xref:localization.adoc#consent-aware-localization[§14.3]) it would do so with consent-adjacent effect. A deployment that wants that widening declares it; no deployment should get it by accident during an outage.
+
+*The outage MUST be visible in the `error` field, not in `meta.federation.complete`.* Under fail-closed every node is `not-localized`, and a `not-localized` node is not in scope, so `meta.federation.complete` stays `true`, and under the all-or-nothing default of xref:partial-results.adoc#all-or-nothing[§11.4] the query does not fail either (xref:partial-results.adoc#in-scope[§11.1], xref:requirements.adoc#n37[N37]). Both are correct for the same reason: no node the gateway meant to ask failed to answer, because by the time the candidate set was empty there was no node it meant to ask. The cost is that neither `complete` nor the HTTP status can carry this signal. The gateway MUST therefore report the localization failure as the `error` on each reported endpoint, and SHOULD carry it in `meta.federation` too, so "the localizer is down" never looks the same as "this patient has no data anywhere".
+
+This rule and the all-or-nothing default of xref:partial-results.adoc#all-or-nothing[§11.4] follow the same principle: localization fails closed, and completeness now fails closed too. Both refuse to present an answer the gateway cannot vouch for as one it can. They signal it differently because localization has no in-scope node to fail on and so reports through `error`, while completeness has one and reports through the status code.
+--
+
+== 14.2 Localizer kinds (informative examples)
+
+Several kinds of service can satisfy N4: community-discovery services (IHE XCPD), demographic-registration services (which orgs registered the patient's demographics), dedicated location services (where the patient was treated/diagnosed, or care-team members), document-sharing registries (IHE XDS for pointer/document localization), consent-based localization (endpoints where the patient gave active consent), care-team-based localization (nodes manage their own care-team lists), and location-discovery services (using demographics to infer places holding data). Each returns a list of places potentially holding relevant data; variants include a central registry, a decentral registry, or no registry (pure discovery).
+
+These differ in what their answer means. Most answer a pure where-question and carry no consent signal at all: XCPD ITI-55 reports which communities hold data and says nothing about permission to release it. Consent-based localization is the exception, since its node list is already filtered by consent, so the two answers arrive together. That is a property of that localizer kind, not of localization in general; xref:localization.adoc#consent-aware-localization[§14.3] sets out what a Tier may infer from it.
+
+[#consent-aware-localization]
+== 14.3 Consent-aware localizers (and their limits)
+
+A localization service MAY return a consent decision alongside the node list, or may have applied one already in choosing what to return. Where it does:
+
+* The Tier MAY pre-filter on that decision and MUST report dropped nodes as `consent-denied` (xref:requirements.adoc#n27a[N27a], xref:partial-results.adoc#endpoint-status[§11.1]).
+* The Tier MUST NOT infer the converse. A node present in a consent-aware localization result is a node to ask, not a node cleared to answer; the node still applies xref:requirements.adoc#n27[N27]. Absence may mean "no consent"; presence does not mean "consent granted" - only that nothing upstream ruled it out.
+* A deployment MUST NOT be built such that removing the consent-aware localizer removes consent enforcement. It is a filter in front of the gate, not the gate (xref:security.adoc[§13.2.1]).
+
+This bundling is a deployment property that the normative body does not assume. Because N27 puts the obligation on the node, a region whose localizer is consent-aware (see the Dutch Mitz/OTV realisation in xref:annex-b-dutch-gf.adoc[Annex B §B.1, §B.6]) and a region whose localizer is a plain record-locator are both conformant, and a gateway written against this specification MUST work in either without change.
+
+== 14.4 Regional realisation
+
+A national record-localization service backed by per-holder metadata registers and keyed on a pseudonymised patient id is one way to satisfy N4. Some such services also check consent as part of the lookup (xref:localization.adoc#consent-aware-localization[§14.3]). The Dutch Generic-Functions realisation (GF-Localization), where localization and the Mitz consent check are closely coupled, is documented in xref:annex-b-dutch-gf.adoc[Annex B (§B.1)].

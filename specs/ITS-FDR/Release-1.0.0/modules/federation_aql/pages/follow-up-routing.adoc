@@ -1,0 +1,125 @@
+= 12. Routing follow-up queries (reads & writes)
+
+== 12.1 The four White-Paper approaches, mapped to openEHR
+
+The Intermediaries White Paper enumerates four ways a façade can determine which source server owns a resource so it can route a follow-up request. Mapped to openEHR:
+
+[cols="1,2,2"]
+|===
+| WP approach | What it is | Verdict for openEHR
+
+| *#1 - ask all servers*
+| Broadcast the follow-up; all but the owner return 404.
+| *Fallback only.* Works because openEHR uids are UUID-based, but wasteful; the WP notes it is not seen in production.
+
+| *#2 - re-identify everything*
+| Façade keeps a persistent id-mapping table and rewrites ids in and out.
+| *Available for full-masking deployments*, but it rewrites identifiers - undesirable for openEHR uids.
+
+| *#3 - system prefixes*
+| Prefix a 1–3 char code onto ids to encode the source.
+| *Discouraged for uids* - prefixing would corrupt the `object_id::creating_system_id::version_tree_id` structure of an `OBJECT_VERSION_ID`.
+
+| *#4 - microservices + `fullUrl`*
+| A per-source sub-path; source encoded in the returned URL.
+| *Recommended*, combined with the openEHR-native key below.
+|===
+
+This spec recommends #4 (per-node sub-paths) combined with the openEHR-native `creating_system_id`. Approach #2 stays available for deployments wanting full identifier masking, #1 is the fallback, and #3 is discouraged for uids. (The Tier MAY still use short codes for _endpoint_ addressing, just never inside a uid.)
+
+== 12.2 The openEHR-native routing key
+
+Every openEHR `VERSION` carries an `OBJECT_VERSION_ID = object_id '::' creating_system_id '::' version_tree_id`. The `creating_system_id` identifies the system that created the version, which is the CDR that owns it. So:
+
+* A result row including a `c/uid/value`, a `COMPOSITION`/`VERSION` uid, already contains the owning system id, and no uid is ever rewritten (xref:requirements.adoc#n22[N22]). The uid identifies the owner. The node a follow-up request reaches is located by the path `ehr_id` (<<ehr-id-route-order,§12.5.1>>), because every ITS-REST version read and write is EHR-scoped.
+* The Tier's registry (xref:requirements.adoc#n21[N21]) maps `creating_system_id`/`system_id` → CDR base URL. The registry MUST include every observed `creating_system_id`, not just node `system_id`s, because a CDR can ingest versions created elsewhere (imported compositions, xref:deduplication.adoc[§10.2]).
+
+== 12.3 Follow-up reads (normative)
+
+ITS-REST addresses every version read under an EHR (`+{base}/v1/ehr/{ehr_id}/composition/{uid}+`, `+{base}/v1/ehr/{ehr_id}/versioned_composition/{versioned_object_uid}/version/{version_uid}+`), so a follow-up read of a specific `COMPOSITION`/`VERSION` is an EHR-scoped request, and the Tier locates its node in the order of <<ehr-id-route-order,§12.5.1>> (xref:requirements.adoc#n22[N22]). The `creating_system_id` parsed from the uid is step 4 of that order and is consulted only when the explicit target, the binding and the index have named no node.
+
+The Tier forwards the read to the located node and returns what that node holds. If that node holds an imported copy (xref:deduplication.adoc[§10.2]), the client receives the copy. The Tier MUST set `openEHR-federation-system-id` on the response (xref:rest-facade.adoc#write-headers[§7a.3]), and a client detects a copy when that value differs from the `creating_system_id` in the uid it requested. Reading the original needs the owner's own `ehr_id` for the patient, which a query row from the owner carries (opt-in dedup keeps the originating copy, xref:deduplication.adoc[§10.2]). openEHR uids MUST NOT be mutated in the request or the response.
+
+== 12.4 Follow-up writes (normative)
+
+* A *versioned write* (a `CONTRIBUTION`/commit against an existing object) is located like any EHR-scoped request, in the order of <<ehr-id-route-order,§12.5.1>>, and MUST then pass the control test: the located node MUST be the single controlling CDR, the one whose `system_id` equals the `creating_system_id` of the target object. If it is not, the Tier MUST reject the write with `409 Conflict` naming the controlling system, without forwarding it (xref:deduplication.adoc#copy-write-reject[§10.3]), and MUST NOT redirect it to the owner under the holder's `ehr_id`. The Tier MUST reject (400) a write it cannot unambiguously locate (xref:requirements.adoc#n23[N23]).
+* *New-object creation* MUST target an explicitly chosen node - named via `FROM ENDPOINT` or the equivalent `openEHR-federation-endpoint` header (xref:endpoint-directive.adoc[§8]). Creating a new object that spans multiple nodes is disallowed in v1 (xref:scope.adoc[§2.3]), matching the White Paper's "Handling new records" caution that a façade needs a definite rule and multi-server references might not be allowed.
+* On every write, the Tier MUST convey the authenticated client identity to the target CDR (xref:requirements.adoc#n24[N24], xref:security.adoc[§13]).
+* A write derived from a de-duplicated row is routed by these same rules, and MUST NOT be sent to a node that merely holds an imported copy - see the hazard in xref:deduplication.adoc#update-routing-hazard[§10.3].
+* The explicitly chosen node for a new object MAY be named by the `FROM ENDPOINT` directive, by the `openEHR-federation-endpoint` header, or by the request path (xref:endpoint-directive.adoc#header-alternative[§8.4]); for a non-AQL write the header or path is the only available mechanism.
+
+[#ehr-id-routing]
+== 12.5 Routing `+{base}/v1/ehr/{ehr_id}/…+` and the `ehr_id` collision problem
+
+Every ITS-REST resource below `+{base}/v1/ehr/{ehr_id}+` is addressed by an `ehr_id` in the path. Unlike an `OBJECT_VERSION_ID`, an `ehr_id` is a bare `HIER_OBJECT_ID` and carries no system component. It is meaningless outside the CDR that issued it (xref:terminology.adoc[§ Key terms]). So a `+PUT {base}/v1/ehr/7f4c…/composition/…+` arriving at a gateway is, on its face, ambiguous.
+
+=== 12.5.1 How the gateway resolves it (normative)
+
+* [[ehr-id-route-order]]The gateway MUST determine the owning node for a path `ehr_id` in this priority order, for every request under `+{base}/v1/ehr/{ehr_id}/…+` including version reads and versioned writes, and MUST NOT skip to a later step while an earlier one yields an unambiguous answer:
++
+--
+. An *explicit target* on the request, the `openEHR-federation-endpoint` header (xref:endpoint-directive.adoc#header-alternative[§8.4]). Step 1 is the unambiguous case and is *RECOMMENDED* for all clients doing follow-ups: `meta.federation.row_endpoints[]` attributes every row to its `endpoint_id` (xref:result-set.adoc#row-endpoints[§9.5.1]), and a query that projected ENDPOINT attributes also carries it as a column (xref:result-set.adoc#endpoint-attributes[§9.3]), so for a row from one endpoint the client already knows the answer and should say so.
+. A *resolution binding* the gateway holds for this client session, the `{node, ehr_id}` set from a preceding Step-1 resolution (xref:identity-resolution.adoc[§5.2]).
+. The gateway's *`ehr_id` → node index*, where it maintains one.
+. If the path carries an `OBJECT_VERSION_ID` (a version read or a versioned write), the node whose `system_id` equals its *`creating_system_id`*, looked up in the registry (§12.2).
+. An *ask-all* probe (`+GET {base}/v1/ehr/{ehr_id}+` at each member node), for *reads only*.
+--
++
+_(xref:requirements.adoc#n41[N41].)_
+* [[ehr-id-not-creating-system]]The gateway MUST NOT forward a path `ehr_id` to a node chosen by `creating_system_id` while steps 1–3 named a different node, because an `ehr_id` is meaningful only at the node that issued it: forwarded to another node it yields a `404` or, on an `ehr_id` collision, another patient's EHR. In the imported-copy case the two differ, and the located node is the holder. A read then returns the holder's copy (§12.3), and a write fails the control test with `409` (§12.4). _(xref:requirements.adoc#n41[N41].)_
+* [[ehr-id-write-explicit]]For writes, ask-all MUST NOT be used to disambiguate. If steps 1–4 do not yield exactly one node, the gateway MUST reject with `400` and require an explicit target, because a write destination is not something to find by trial. _(xref:requirements.adoc#n41[N41].)_
+
+=== 12.5.2 When two nodes claim the same `ehr_id`
+
+Because `ehr_id` values are node-local, nothing in openEHR prevents two CDRs from holding the same `ehr_id` for two different patients. Since `ehr_id` s are UUIDs this is vanishingly rare in practice, but it remains possible.
+
+* [[ehr-id-collision]]If an ask-all probe (§12.5.1 step 5) finds the same `ehr_id` at more than one node, the gateway MUST NOT choose between them. It MUST fail the request with `409 Conflict`, listing the claiming endpoints, and MUST raise this as an operational incident to the federation operator, because a collision is a federation integrity defect and not a routine client error. _(xref:requirements.adoc#n42[N42].)_
+* The gateway MUST NOT use "the node where this patient resolved" to break a collision tie unless resolution produced exactly one candidate. A collision between two nodes where the patient resolves at both is the case where guessing is most dangerous.
+* A collision detected on a read is equally reportable, because returning either node's data would mean returning an unidentified patient's record.
+
+=== 12.5.3 Prevention belongs to membership
+
+Rules for joining a federation, which prevent these collisions in the first place, are set out in xref:membership.adoc#identifier-conditions[§12b.2].
+
+[#definition-routing]
+== 12.6 Definitions, templates and stored queries
+
+An application that stores a template at one node and then commits a `COMPOSITION` against that template at another node gets a validation failure, because the second node has never seen the template. A transparent façade hits this failure mode easily, since the client believes it is talking to one repository.
+
+* [[definition-single-node]]A gateway MUST route each `+{base}/v1/definition/…+` request (template upload/retrieval, stored-query management) to a single, explicitly chosen node (xref:rest-facade.adoc[§7a.1]). It MUST NOT pick a node implicitly, and it MUST NOT present a union of nodes' templates as though it were one catalogue, because a client cannot act on a catalogue whose entries live in different places. _(xref:requirements.adoc#n43[N43].)_
+* [[template-fanout]]A gateway MAY support *fan-out template upload*: a single `PUT` of an OPT/ADL template is applied to all member nodes (or to a named subset), so that a subsequent `COMPOSITION` commit validates wherever it lands. If offered, it MUST be:
++
+--
+. *opt-in and explicit*: a distinct request (RECOMMENDED: `openEHR-federation-endpoint: *`, or an explicit multi-endpoint list), never the default reading of a plain `PUT`;
+. *reported per node*: the response MUST carry a per-endpoint outcome in the same shape as `meta.federation.endpoints[]` (xref:result-set.adoc#endpoint-meta[§9.5]), so the client sees exactly where the template now exists;
+. *not presented as atomic*, because a broadcast is not a transaction. If some nodes accept and others fail, the gateway MUST return a partial-success status (`207`-style per-endpoint reporting, or `200` with the per-endpoint outcomes and `meta.federation.complete = false`) and MUST NOT roll back the successes. It MUST NOT report overall success while any node failed;
+. *declared* in `+OPTIONS {base}/+` (xref:rest-facade.adoc#options-root[§7a.2]).
+--
++
+_(xref:requirements.adoc#n43[N43].)_
+* Template upload is the only fan-out write this specification permits, and it is permitted because a template is idempotent, identical across nodes, and not patient data. None of that holds for a `COMPOSITION`. The v1 prohibition on creating clinical objects across multiple nodes is unchanged (xref:requirements.adoc#n23[N23], xref:scope.adoc[§2.3]): a fanned-out `COMPOSITION` create would produce N distinct objects with N distinct uids, all purporting to be one clinical fact.
+* Where fan-out upload is not supported, the deployment MUST have another way to keep templates consistent, whether out-of-band template distribution or a shared template repository. A gateway SHOULD surface a template-missing validation failure from a node as a node-reported error (xref:partial-results.adoc#http-status-mapping[§11.2]) instead of masking it.
+* A *stored query* is the other artefact under `+{base}/v1/definition/…+`, and single-node routing serves it less well than it serves a template. <<stored-query-registry,§12.7>> offers a gateway an additive alternative: hold the definition itself, and fan the query out at execution time.
+
+[#stored-query-registry]
+== 12.7 A federated stored-query registry (optional)
+
+A stored query is a *named artefact*: a client `PUT` s an AQL definition once and afterwards invokes it by name (`+POST {base}/v1/query/{qualified_query_name}+`). At a single CDR this works as expected. At a gateway routed under <<definition-single-node,§12.6>> it does not, for two reasons.
+
+First, under §12.6 a stored query lives at one node, because that is where the `PUT` was routed, so invoking it by name returns that node's rows through a façade that claims to answer for the federation (xref:requirements.adoc#n1[N1]). A federated AQL query cannot be invoked by name at all, so openEHR's only mechanism for naming a query is unavailable to the federation. Second, two nodes can hold different definitions under the same name and answer the same `POST` differently, and nothing in §12.6 detects or exposes that drift.
+
+A gateway MAY close this by holding the definitions itself.
+
+* [[registry-authoritative]]*A gateway MAY offer a federated stored-query registry.* If it does, the gateway is authoritative for the definition. A `+PUT {base}/v1/definition/query/{qualified_query_name}/{version}+` stores the AQL at the gateway, and a `+POST {base}/v1/query/{qualified_query_name}+` (ITS-REST stored-query execution) expands that stored AQL and fans it out under the ordinary rules of xref:aql-facade.adoc[§7] (subject resolution, per-node `ehr_id` scoping, combine and annotate) exactly as if the client had submitted the text inline. Offering the registry MUST be declared in `+OPTIONS {base}/+` (xref:rest-facade.adoc#options-root[§7a.2]). _(xref:requirements.adoc#n44[N44].)_
+* [[stored-query-versioning]]*Versioning is mandatory.* ITS-REST already versions stored queries with a semver path segment, and the registry MUST reuse it instead of inventing a parallel one. A stored version is immutable: a gateway MUST NOT overwrite a definition in place, and MUST refuse a second `PUT` to a `+{name}/{version}+` pair it already holds. Changing a definition means a new version. Immutability makes two things possible: a result can be reproduced, because the definition that produced it still exists unaltered, and a drift check has a fixed definition for a node's copy to be compared against. _(xref:requirements.adoc#n44[N44].)_
+* [[stored-query-fanout]]*Fan-out of the definition to nodes is OPTIONAL, and follows the template-upload model of <<template-fanout,§12.6>> exactly.* Where a gateway distributes a stored-query definition to member nodes, that distribution MUST be *opt-in and explicit*, MUST be *reported per node* in the `meta.federation.endpoints[]` shape (xref:result-set.adoc#endpoint-meta[§9.5]), MUST NOT be *presented as atomic* (partial success reported as partial, successes never rolled back, overall success never reported while a node failed), and MUST be *declared* in `+OPTIONS {base}/+`. These are the four conditions of §12.6's template fan-out, cited by reference so that the two cannot drift apart. A stored-query definition is distributed on the same terms as a template, for the same reason: it is idempotent, identical across nodes, and carries no patient data.
++
+Definition fan-out is a facility of the registry, and a gateway MUST NOT offer it without offering the registry. The registry holds the authoritative copy that gets distributed, and it is what a node's copy is checked against (<<stored-query-drift,drift>>, below). Distributing definitions with no authoritative source is not a configuration this specification describes, and `+OPTIONS {base}/+` MUST NOT declare it. _(xref:requirements.adoc#n44[N44], xref:requirements.adoc#n43[N43].)_
+* *Why a definition may legitimately need to exist at the nodes too.* Fan-out is optional, but a node may execute a query by name locally, outside any federated request, and a deployment may want the definition auditable at the point of execution and not only at the gateway that dispatched it.
++
+--
+* [[fanout-endpoint-targeted-refused]]*A stored query whose AQL carries a `FROM ENDPOINT` or `ORGANISATION` directive MUST NOT be fanned out, however, with or without a node list.* A list names members of the federation and is meaningless at a node, and both forms are syntax a node cannot parse: a node has no endpoint registry, no notion of the other members, and no way to honour or even parse the directive, which is a federation-only AQL extension (xref:endpoint-directive.adoc[§8.1]). A gateway MUST refuse to fan such a definition out, with an error saying why, instead of distributing a query the recipient cannot execute. It MAY still store it at the registry and execute it federated; the directive exists for that case. _(xref:requirements.adoc#n44[N44].)_
+--
+* [[stored-query-drift]]*Drift.* Fanning definitions out introduces a hazard that §12.6 did not have: the registry's copy and a node's copy of the same `+{name}/{version}+` can diverge, through a failed distribution, a local `PUT` at the node, a restore, or a node admitted after the distribution ran. The gateway SHOULD be able to report, per node, whether that node's copy matches the registry version. It MUST NOT silently execute against a node whose copy differs from the definition it is answering under. It has two acceptable options: dispatch the registry's AQL (the definition the client named, which is the safe default and what <<registry-authoritative,the registry model>> implies), or report the divergence. It must not dispatch a node's differing copy and present the result as the named query's answer. Divergence is the only failure mode the registry adds beyond §12.6, and nothing surfaces it unless the deployment checks for it. _(xref:requirements.adoc#n44[N44].)_
+* [[registry-not-offered]]*Where the registry is not offered*, <<definition-single-node,§12.6>> is unchanged and governs: `+{base}/v1/definition/…+` routes to a single explicitly chosen node, no merged catalogue is presented, and a stored query is that node's. A gateway is fully conformant without a registry.
+* [[stored-query-name]]*`name` in the result set.* xref:result-set.adoc#its-rest-relationship[§9.1] notes that ITS-REST's `name` member carries `+[{namespace}::]{query-name}+` and SHOULD be emitted when answering a stored query. Under the registry a gateway MUST emit it, naming the gateway's stored query, the definition the client invoked, and never a node's copy. A client that got rows back for a name it did not ask for cannot detect that from the envelope unless the gateway says which name it answered. _(xref:requirements.adoc#n44[N44].)_

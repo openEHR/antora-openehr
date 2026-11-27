@@ -1,0 +1,46 @@
+= 2. Scope & Non-Goals
+
+== 2.1 In scope
+
+. The *façade contract*: accepting a conformant openEHR AQL query that MAY identify the patient by `ehr_status/subject`, and behaving as a technically transparent intermediary (xref:aql-facade.adoc[§7], xref:requirements.adoc#n1[§6/N1–N2]).
+. The *REST surface*: the openEHR ITS-REST API as a whole, read and write - which parts fan out, which are routed to a single node, and which are explicitly not supported (notably DEMOGRAPHIC, and template management, which stays single-node-routed) - plus base-URL/prefix neutrality and gateway self-description via `OPTIONS` (xref:rest-facade.adoc[§7a], xref:requirements.adoc#n28[§6/N28–N32]).
+. An *optional gateway-held stored-query registry*: a gateway MAY be authoritative for a federated stored query, version it immutably, expand it into a fan-out when invoked by name, and optionally distribute the definition to nodes (xref:follow-up-routing.adoc#stored-query-registry[§12.7], xref:requirements.adoc#n44[N44]). The registry is the only part of Definition management the specification federates; the template lifecycle is not (xref:future.adoc[§18]).
+. *Identifier hygiene at dispatch*: a node receives the `ehr_id` and no directly identifying patient identifier, in any carrier (xref:identity-resolution.adoc#identifier-hygiene[§5.4], xref:requirements.adoc#n33[§6/N33]).
+. The *two/three-step execution model*: resolve `subject → {node, ehr_id}`, fan out standard AQL keyed on `ehr_id`, then combine/annotate (xref:reference-flow.adoc[§4], xref:requirements.adoc[§6], xref:aql-facade.adoc[§7]).
+. The *optional AQL extension* (`FROM ENDPOINT …` / `ORGANISATION …`) for pinning a query to named systems and surfacing provenance - decoupled from patient resolution (xref:endpoint-directive.adoc[§8]).
+. The *result-set shape* and origin metadata (xref:result-set.adoc[§9]), *de-duplication* policy (xref:deduplication.adoc[§10]) and *partial-results / unresponsive-endpoint* handling (xref:partial-results.adoc[§11]).
+. *Follow-up read and write routing*, provenance-honest: the path `ehr_id` locates the node and `creating_system_id` is the control test for writes - including `ehr_id` collision handling (xref:follow-up-routing.adoc[§12]), on the routing-key rules of xref:identifiers.adoc[§12a].
+. *Completeness semantics*: all-or-nothing as the default with opt-in best-effort, an explicit timeout structure, and correct cross-node `ORDER BY`/`LIMIT`/aggregate handling (xref:partial-results.adoc[§11.4–§11.6]).
+. The *identifier-integrity conditions for admitting a node* to a federation - membership-level prevention of the routing failures §12 can only detect (xref:membership.adoc[§12b]). Broader admission criteria and the membership lifecycle are not settled here (xref:membership.adoc[§12b.3], xref:future.adoc[§18]).
+. *Authentication/authorization handoff* from client → gateway → node (xref:security.adoc[§13]).
+. The *bindings* that make the above concrete: IHE PIXm/PDQm/XCPD/PMIR/mCSD as the proposed binding (xref:identity-resolution.adoc[§5], xref:localization.adoc[§14], xref:addressing.adoc[§15], xref:annex-a-ihe.adoc[Annex A]), and the Dutch Generic Functions as a regional alternative (xref:annex-b-dutch-gf.adoc[Annex B]).
+. A *Connectathon-style test approach* and a consolidated, testable *conformance-point* list (xref:testing.adoc[§16], xref:conformance.adoc[§17]).
+
+== 2.2 Referenced out (consciously out of scope)
+
+The Federation Tier consumes these services through the named profiles, and their internals belong to those profiles and not to this document:
+
+* *Identity-resolution mechanics* - how an MPI/PIX Manager cross-references identifiers, and how a demographic match is computed. This spec requires _that_ resolution happens via an identifier cross-reference service and _that_ it happens outside AQL. It does not define the matching algorithm (xref:identity-resolution.adoc[§5], xref:localization.adoc[§14]).
+* *Localization / record-locator internals* - how a locator decides which communities hold data. The spec requires the Tier to consume a node list. It does not build the locator.
+* *Transport security and the trust framework* - TLS, mTLS, certificate/PKI and network trust are assumed and bound via the security profiles (xref:security.adoc[§13], xref:annex-b-dutch-gf.adoc[Annex B]). This document specifies the identity conveyance on top of them, not the transport itself.
+* *The demographic service / MPI data model* - owned by the identity/demographic profiles (xref:annex-a-ihe.adoc[Annex A]), not here.
+* *Audit* - left out on purpose. This specification does two audit-relevant things: it requires the gateway to convey the authenticated client identity on every routed follow-up so that a node can write its own audit records (xref:requirements.adoc#n24[N24], xref:security.adoc[§13.1]), and it fixes which identifier a governance event is about (xref:identifiers.adoc[§12a]). It does not specify an audit event model, what must be recorded, retention, or a federation-wide audit trail, and it binds neither ATNA nor any other audit profile. Audit stays each participant's own obligation under its own governance. A federation that wants a common audit model must define one alongside this specification (xref:future.adoc[§18]).
+
+== 2.3 Non-goals (in v1)
+
+* A *federation cannot itself be a node of another federation* (federation-of-federations is deferred; xref:future.adoc[§18]).
+* *New-object creation spanning multiple nodes* is disallowed in v1; a new object MUST target one explicitly chosen node (xref:follow-up-routing.adoc[§12]/xref:requirements.adoc#n23[N23]). The single exception is optional template broadcast, which is idempotent and carries no patient data (xref:follow-up-routing.adoc#definition-routing[§12.6]/xref:requirements.adoc#n43[N43]).
+* *Cross-node `OFFSET` pagination* is not guaranteed. Where it is not supported the gateway rejects (not approximates) (xref:partial-results.adoc#offset-limit[§11.6.2]); `ORDER BY` + `LIMIT` is made correct at the Tier (xref:requirements.adoc#n39[N39]), and a general stable-pagination solution is deferred (xref:future.adoc[§18]).
+* *Federated demographics.* The openEHR DEMOGRAPHIC API is not federated; identity lives in an MPI/demographic service reached through the identity binding (xref:rest-facade.adoc[§7a.1], xref:requirements.adoc#n32[N32]).
+* *Convergence of imported copies.* A write reaches the owning CDR only; propagating it to nodes holding imported copies is not specified (xref:deduplication.adoc#update-routing-hazard[§10.3], xref:future.adoc[§18]).
+
+== 2.4 Specification vs. realisation (a document convention)
+
+This document keeps the specification separate from a regional realisation of it:
+
+* The *normative body (§1–§18)* defines the federation model in terms of abstract roles (localization / record locator, addressing / directory, identifier cross-reference, authentication, authorization, consent) and their proposed IHE binding (PIXm, PDQm, XCPD, PMIR, mCSD - see xref:annex-a-ihe.adoc[Annex A]). It names a profile as the proposed binding and, at most, gives a one-line illustrative example of a role. It does not describe any specific product, national service, or deployment in detail.
+* *Concrete, region-specific detail* lives in xref:annex-b-dutch-gf.adoc[Annex B] (informative): the Dutch Generic Functions (Mitz/OTV, NVI, LRZa, `did:web`/VC/DPoP, Rego/`mitz_consent`, pseudonymised-BSN localization) and worked product examples such as the ACP/Vitaly flow on a pseudonymised id.
+
+So when the body says "a localization service returns candidate nodes (proposed binding: IHE XCPD)," the _how_ for a given region, say a record-locator lookup, is in Annex B and does not appear inline. A different region can supply a different Annex B without touching §1–§18.
+
+The same reasoning keeps localization and consent apart (xref:localization.adoc[§14], xref:security.adoc[§13.2]) even though some regions bundle them. The Dutch realisation couples localization with the Mitz consent check, and Annex B describes it that way because that is what Mitz does. The normative body cannot assume it, because a region whose localizer is a plain record-locator has to be conformant too. The body therefore places consent enforcement at the node (xref:requirements.adoc#n27[N27]) and treats Step-1 pre-filtering as an optional regional capability (xref:requirements.adoc#n27a[N27a]).

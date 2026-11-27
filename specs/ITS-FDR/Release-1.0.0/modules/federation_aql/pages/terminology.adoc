@@ -1,0 +1,68 @@
+= Reader's guide and terminology
+
+== Key terms
+
+* *Federation* - the virtual CDR: a governed set of member nodes together with the gateway(s) that front them, operating under one trust and membership framework. A federation has exactly one membership boundary regardless of how many gateways implement it. When this document says "the federation returns X", it means the virtual repository as a whole.
+* *Federation Tier* - the architectural layer between the Application tier and the Node tier. It is a role and not a deployable unit; it is filled by one or more gateways.
+* *Gateway* - a software component that implements the Federation Tier role: it presents an openEHR Query API, resolves patient identity, fans a query out to member nodes, combines results, and routes follow-ups. A federation has one gateway in the centralized topology and one per node in the distributed topology; in both cases every gateway fronts the same membership.
+* *Façade* - the client-facing contract a gateway presents: a conformant openEHR Query API that hides federation from the client. Façade AQL (what the client sends) as opposed to node AQL (what the gateway dispatches). "Façade" names the interface, not the box.
+* *Node* - a participating system in openEHR federated architecture: an openEHR *CDR*
+* *`subject`* - the patient identifier a client places in `ehr_status/subject/external_ref/id/value` (e.g. a directly identifying identifier or a pseudonymised id). At the façade this is input for identity resolution only, and it MUST NOT reach a node (xref:identity-resolution.adoc#identifier-hygiene[§5.4]).
+* *Directly identifying identifier* - any externally issued identifier that names a specific person on its own: a national or civic identifier (social-security number, national health number, citizen-service number), or an equally identifying business or logical identifier (patient-administration number, insurance number, case number). The property that matters is direct identifiability outside the node, not who issues it. Defined in xref:identity-resolution.adoc#directly-identifying-identifier[§5.1]; a specific national scheme is named only in the informative xref:annex-b-dutch-gf.adoc[Annex B].
+* *`ehr_id`* - a per-CDR `HIER_OBJECT_ID` identifying one `EHR`. It is meaningless across CDRs, carries no system component, and is the key federated queries actually run on. It is also the only patient-locating value a node should receive.
+* *`+{base}+`* - the deployment's openEHR ITS-REST base URL, from which all paths in this document are written. No prefix is mandated (xref:requirements.adoc#n28[N28]).
+
+[#the-four-identifiers]
+== The four identifiers
+
+Four identifiers circulate in a federation and are easy to confuse. Three are federation concepts owned by the registry; one is an openEHR RM concept owned by the data. They are defined here because the whole document depends on telling them apart. Which one routes which request is normative and is specified in xref:identifiers.adoc[§12a].
+
+[cols="1,2,2,1"]
+|===
+| Identifier | Owned by | What it identifies | Stable?
+
+| [[node-id]]*`node_id`*
+| The federation (registry)
+| A member of the federation - one participating organization's CDR deployment as a unit of membership, trust and governance. A node has 1..* `Endpoint` s and normally exactly one openEHR `system_id`. `node_id` is a governance handle: it is what a membership decision (xref:membership.adoc[§12b]), an audit trail or an operational incident is about.
+| Yes, for the life of the membership.
+
+| [[endpoint-id]]*`endpoint_id`*
+| The federation (registry)
+| A reachable interface of a node - one base URL with one connection type (xref:requirements.adoc#n19[N19]). One node MAY expose several (e.g. a public and an intra-regional endpoint, or two connection types). `endpoint_id` is the identifier used in the `FROM ENDPOINT` directive and the endpoint header (xref:endpoint-directive.adoc[§8]) and returned as the `endpoint_id` row attribute (xref:result-set.adoc#endpoint-attributes[§9.3]).
+| Yes; re-addressing a node MUST NOT change it.
+
+| [[system-id]]*`system_id`*
+| openEHR RM (the node)
+| `EHR.system_id` - the logical EHR-management system in which an `EHR` was created. It is an openEHR-native value, present in the data, not assigned by the federation. It answers _"which system considers itself the home of this EHR?"_
+| Yes; changing it breaks openEHR identity and MUST NOT be done to reflect federation membership.
+
+| [[creating-system-id]]*`creating_system_id`*
+| openEHR RM (the data)
+| The middle segment of an `OBJECT_VERSION_ID` (`object_id::creating_system_id::version_tree_id`) - the system that created that specific VERSION. It is a property of a version, not of a node or an EHR.
+| Immutable: it is baked into the uid.
+|===
+
+How they relate:
+
+....
+federation
+ └── node_id "node_1"                (membership, governance)
+      ├── endpoint_id "node_1-pub"   (https://ehr.hospital-a.example/openehr)
+      ├── endpoint_id "node_1-rso"   (https://internal.hospital-a.example/openehr)
+      └── system_id "cdr1.rso.nl"    (openEHR: the home system of EHRs created here)
+                └── VERSION uid  8849…::cdr1.rso.nl::1   creating_system_id = cdr1.rso.nl
+                └── VERSION uid  6ba7…::cdr9.other.nl::3 creating_system_id = cdr9.other.nl  ← imported
+....
+
+The asymmetries that matter:
+
+* *`node_id` : `endpoint_id`* is 1..*. Addressing selects an endpoint; governance and audit speak of a node. `meta.federation.endpoints[]` (xref:result-set.adoc[§9]) is keyed on `endpoint_id`, and SHOULD also carry the owning `node_id`.
+* *`system_id` ≠ `endpoint_id`*. A `system_id` is not routable on its own; it becomes routable only through the registry (xref:requirements.adoc#n21[N21]).
+* *`creating_system_id` ≠ `system_id` of the holding node.* A CDR can hold versions created elsewhere (imported compositions, xref:deduplication.adoc[§10.2]). Of the three asymmetries this one has the largest consequences, and xref:identifiers.adoc[§12a] is largely about what follows from it.
+
+[#requirement-language]
+== Requirement language
+
+The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHALL*, *SHALL NOT*, *SHOULD*, *SHOULD NOT*, *RECOMMENDED*, *NOT RECOMMENDED*, *MAY* and *OPTIONAL* are to be interpreted as described in RFC 2119 / RFC 8174. The full set is adopted on purpose: RFC 2119 treats these terms as a unit, and defining only the subset a document happens to use leaves the force of the rest formally unestablished.
+
+A note on *bindings.* Where this specification names an IHE profile (PIXm, PDQm, XCPD, PMIR, mCSD) for a role, that is a proposed binding. The requirement that the role be filled is normative; the specific profile named to fill it is a proposal open to review. Regional alternatives are documented in xref:annex-b-dutch-gf.adoc[Annex B].

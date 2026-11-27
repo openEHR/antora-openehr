@@ -1,0 +1,41 @@
+= 19. Informative Annex A - IHE binding (proposed bindings, informative detail)
+
+This annex collects the IHE profiles named as proposed bindings. The requirements are normative (xref:identity-resolution.adoc[§5], xref:security.adoc[§13]–xref:addressing.adoc[§15]). The specific profiles are proposed, and the transaction detail here is informative. The mapping follows the MPI advisory §4.
+
+== A.1 PIXm - Patient Identifier Cross-reference for Mobile
+
+* *Role:* cross-reference a patient identifier from one domain to another without relying on a single shared identifier across domains. It underlies xref:identity-resolution.adoc[§5] (`subject → local ehr_id`). The advisory summarises PIXm as "translating / linking within a community."
+* *Transactions:* query via *ITI-83* (_Mobile Patient Identifier Cross-reference Query_, the `$ihe-pix` operation) with `sourceIdentifier=<patientId>` and `targetSystem=<the domain's ehr_id system>`. Identity feed via *ITI-104* (_Patient Identity Feed FHIR_) seeds the cross-reference with, for example, a local id or an openEHR id.
+* *Used by:* xref:requirements.adoc#n3[N3] (resolution), Step 1 (xref:reference-flow.adoc[§4]).
+
+== A.2 PDQm - Patient Demographics Query for Mobile
+
+* *Role:* find or confirm _which person_ is meant from demographics (name, birth date, location) before identifier mapping, or "searching within a community." An optional input to XCPD matching.
+* *Transactions:* *ITI-78* (_Mobile Patient Demographics Query_) and *ITI-119* (_Patient Demographics Match_).
+* *Used by:* xref:reference-flow.adoc[§4.2] (optional demographic step feeding localization), xref:localization.adoc[§14].
+
+== A.3 XCPD - Cross-Community Patient Discovery
+
+* *Role:* discover which communities hold data about the patient and translate identifiers across them, or "cross-community discovery." The proposed localization binding (xref:localization.adoc[§14]/xref:requirements.adoc#n4[N4]).
+* *Transaction:* *ITI-55* (_Cross Gateway Patient Discovery_). The response conveys the patient's local identifier(s) and home community.
+* *Used by:* xref:requirements.adoc#n4[N4] (localization), Step 1.1 (xref:reference-flow.adoc[§4.2]).
+* *Not a consent binding.* ITI-55 answers a discovery question, which communities hold the patient, and carries no consent decision. Consent is enforced at the node (xref:requirements.adoc#n27[N27]). A deployment wanting Step-1 pre-filtering needs a consent service alongside XCPD, not XCPD itself (xref:security.adoc[§13.2.1]).
+
+== A.4 PMIR - Patient Master Identity Registry
+
+* *Role:* manage patient identities in a network, covering create, update, merge and split and distributing identity events (FHIR-based, no HL7v2-ADT dependency), or "identity management."
+* *Transactions:* *ITI-93* (_Mobile Patient Identity Feed_) and *ITI-94* (subscriptions/notifications).
+* *Used by:* the identity-lifecycle hooks (xref:future.adoc[§18]) and test track 8. Referenced by xref:requirements.adoc#n3[N3] as the source of identity changes that resolution must respect.
+
+== A.5 mCSD - Mobile Care Services Discovery
+
+* *Role:* the addressing/directory function, turning an organization or node into its reachable endpoints (PIX Manager, CDR base URL). The proposed addressing binding (xref:addressing.adoc[§15]/xref:requirements.adoc#n21[N21]).
+* *Used by:* xref:addressing.adoc[§15], the registry (xref:requirements.adoc#n21[N21]).
+
+== A.6 XDS - Cross-Enterprise Document Sharing (informative)
+
+* *Role:* an example document/pointer localization mechanism. Informative only; one of several ways to satisfy xref:requirements.adoc#n4[N4] (xref:localization.adoc[§14.2]).
+
+== A.7 End-to-end (advisory §4.5) in IHE terms
+
+`ITI-104 (seed)` → `[PDQm ITI-78/119]` → `XCPD ITI-55 (locate community + local id)` → `PIXm ITI-83 (→ local openEHR ehr_id)` → standard openEHR AQL by `ehr_id` → (on identity change) `PMIR ITI-93/94`. See the MPI advisory §4.5 for the table and the `$ihe-pix` citation note.

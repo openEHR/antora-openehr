@@ -1,0 +1,107 @@
+= 16. Testing (Connectathon approach)
+
+== 16.1 Actors
+
+[cols="1,3"]
+|===
+| Actor | Role
+
+| *Federation Tier (Gateway)*
+| System under test for the gateway profile; presents the openEHR Query API, resolves identity, fans out, combines, routes follow-ups.
+
+| *Node (openEHR CDR + Query API)*
+| System under test for the node profile; runs standard AQL scoped to an `ehr_id`; never receives `subject`.
+
+| *PIX Manager*
+| Resolves `sourceIdentifier → targetSystem` (local `ehr_id`) via PIXm `$ihe-pix` (ITI-83); seeded by ITI-104.
+
+| *Localization service* (optional)
+| Returns candidate nodes (XCPD ITI-55; or a regional service). MAY additionally return a consent decision if the deployment under test is consent-aware (xref:localization.adoc#consent-aware-localization[§14.3]).
+
+| *Consent service* (optional)
+| Supplies the Step-1 pre-filter decision where a deployment has one (xref:requirements.adoc#n27a[N27a]). Absent in a minimal conformant deployment; consent is then enforced at the nodes alone.
+
+| *Client (Consumer)*
+| Drives queries and follow-ups; verifies it needs no federation-specific syntax.
+|===
+
+== 16.2 Two conformance profiles
+
+A system declares conformance to one or both profiles (mirroring the Exchange-Routing IG's two CapabilityStatements, "Intermediary" and "Destination Server"):
+
+* *Federation-Gateway* - implements the transparent façade and the ITS-REST surface, Step-1 resolution, query-side identifier hygiene, fan-out, combine/annotate, dedup policy, completeness/timeout semantics, follow-up read/write routing, and auth conveyance (xref:requirements.adoc#n1[N1]–N43).
+* *Federation-Node* - implements a standard openEHR Query API and ITS-REST scoped by `ehr_id`, passes through node-level errors, honours per-node authorization/consent, never requires `subject`, and satisfies the federation's admission conditions (xref:membership.adoc#identifier-conditions[§12b.2]).
+
+*The Federation-Node profile is thin because the specification's scope stops at a node's interface; the asymmetry with the gateway profile is a scope boundary.* A node must be invocable on `ehr_id` alone, must not require `subject`, must enforce consent before it releases data, and must meet the identifier-integrity conditions of §12b.2. The specification does not cover node internals: it does not mandate where a directly identifying identifier is stored (xref:requirements.adoc#n34[N34]), does not constrain what a node holds (xref:requirements.adoc#n5[N5]), and leaves the wider admission profile unsettled (xref:membership.adoc[§12b.3]), so that a federation can admit CDRs it did not design.
+
+The thin profile has a consequence for scoring. A conformance point marked `Node` or `Operator` in xref:conformance.adoc[§17] is scored against that actor. CP-18, CP-19 and CP-27 are node obligations; CP-20 and CP-33a are operator obligations verified at admission or in the registry; and a gateway is not marked down for any of them. A fuller node profile is a candidate for a future release (xref:future.adoc[§18]).
+
+== 16.3 Test tracks
+
+[cols="1,2,5,2"]
+|===
+| # | Track | Asserts | Key requirements
+
+| [[track-1]]1
+| *Transparency*
+| An unmodified openEHR client queries the gateway with a plain patient AQL and gets a single-CDR-shaped result (no endpoint columns unless selected); `columns[]` is the same for the same query however the nodes responded (xref:conformance.adoc#cp-35[CP-35]). Every response carries `meta.federation.row_endpoints[]` aligned with `rows`: assert it for a plain fan-out, after `ORDER BY` + `LIMIT`, for a `DISTINCT` row returned by two nodes, for a decomposed `COUNT` where offered, after opt-in dedup, and as `[]` on a failing `504` (xref:conformance.adoc#cp-42[CP-42]).
+| xref:requirements.adoc#n1[N1], xref:requirements.adoc#n2[N2], xref:requirements.adoc#n17[N17], xref:requirements.adoc#n18[N18], xref:requirements.adoc#n45[N45]
+
+| [[track-2]]2
+| *subject → ehrId resolution*
+| The gateway resolves `subject` to per-node `ehr_id` and dispatches AQL keyed on `ehr_id`; assert nodes never receive `subject` by inspecting node-side AQL. Run the same query in both carriers, `EHR_STATUS.subject.external_ref` and an `ENTRY`-level `subject` `PARTY_IDENTIFIED`/`DV_IDENTIFIER` predicate. Both MUST resolve and return the same rows (xref:conformance.adoc#cp-38[CP-38]), since neither is optional.
+| xref:requirements.adoc#n3[N3], xref:requirements.adoc#n5[N5], xref:requirements.adoc#n7[N7], xref:requirements.adoc#n33[N33]
+
+| [[track-3]]3
+| *Directed / endpoint pin*
+| `FROM ENDPOINT [...]` (and `ORGANISATION [...]`) select the node set; `not-resolved` list members are reported, not errored; per-node scope stays the resolved `ehr_id`. List-less `FROM ENDPOINT p`: with ENDPOINT projections the rows equal the undirected result plus the label columns, without projections they equal it exactly; non-localized members are `not-localized`; with the header the header's set applies and no `400` is raised; `FROM ORGANISATION o` without a list and `[ ]` are rejected `400` (xref:conformance.adoc#cp-41[CP-41]).
+| xref:requirements.adoc#n10[N10], xref:requirements.adoc#n11[N11], xref:requirements.adoc#n35[N35], xref:endpoint-directive.adoc[§8]
+
+| [[track-4]]4
+| *Partial results*
+| Unresponsive / `node-error` / `not-resolved` / `consent-denied` / `not-localized` nodes appear in `meta.federation.endpoints[]` with the right status from xref:partial-results.adoc#endpoint-status[§11.1] (and an `OperationOutcome` warning/incomplete for FHIR consumers); "found nowhere" → 200 + empty rows; status codes per xref:partial-results.adoc#http-status-mapping[§11.2] - assert a node timeout under the default strategy yields `504` (a node answering `500` yields `424` and is reported `node-error`, not `offline`; one of each yields `504`), that the failing response still carries the `meta.federation` envelope naming the failed node, and that `200` with flagged partial rows appears only when `openEHR-federation-completeness: partial` was requested against a gateway offering it. Assert the two carve-outs survive the default: all-`not-resolved` → `200` + empty rows, and a `consent-denied` node → `200` with the remaining rows, both with `complete: false` and neither a `424` (xref:partial-results.adoc#not-resolved-carve-out[§11.3]). Assert also that registry members localization did not name are reported `not-localized` and do not clear `meta.federation.complete`.
+| xref:requirements.adoc#n6[N6], xref:requirements.adoc#n16[N16], xref:partial-results.adoc[§11]
+
+| [[track-5]]5
+| *Dedup + DISTINCT*
+| Default pass-through leaves duplicates; `DISTINCT` and `ORDER BY` work at the Tier; opt-in `object_id` dedup keeps the originating copy for an imported composition.
+| xref:requirements.adoc#n13[N13], xref:requirements.adoc#n15[N15]
+
+| [[track-6]]6
+| *Follow-up read/write routing*
+| A follow-up read/write for a row is located by the path `ehr_id` (xref:follow-up-routing.adoc#ehr-id-route-order[§12.5.1]); uids are unchanged; a write to an existing object hits exactly the controlling CDR; an unroutable write is rejected. Assert the imported-copy cases: a read addressed with the holder's `ehr_id` returns the holder's copy, with `openEHR-federation-system-id` naming the holder and so differing from the uid's `creating_system_id`; a write addressed with the holder's `ehr_id` is rejected `409` naming the owner, and the owner is never called. Assert also that with no explicit target, binding or index a version read reaches the owner through `creating_system_id` (step 4), and that an explicit target contradicting the binding is followed (step 1).
+| xref:requirements.adoc#n21[N21], xref:requirements.adoc#n22[N22], xref:requirements.adoc#n23[N23], xref:requirements.adoc#n36[N36], xref:requirements.adoc#n41[N41]
+
+| [[track-7]]7
+| *Auth conveyance + consent-deny*
+| The gateway authenticates onward and conveys client identity (OAuth 2.0 client-credentials with an RFC 7523 signed JWT client assertion, verified against the gateway's JWKS, whose location the gateway publishes in `+OPTIONS {base}/+` as `federation.auth.jwks_uri` - xref:security.adoc#jwks-discovery[§13.1]; or the deployment's regional equivalent); sensitive-data decisions are delegated to the node. Consent is exercised in three configurations: (a) no consent service - a node denies on consent and the row set and `meta.federation.endpoints[]` reflect it; (b) consent service present - a node dropped at Step 1 is reported `consent-denied` and is never dispatched to; (c) the disagreement case - localization returns a node, the node denies anyway, and the query still succeeds with that node reported. A directed query (`FROM ENDPOINT`, no localization) MUST still be consent-checked at the node.
+| xref:requirements.adoc#n24[N24], xref:requirements.adoc#n25[N25], xref:requirements.adoc#n26[N26], xref:requirements.adoc#n27[N27], xref:requirements.adoc#n27a[N27a]
+
+| [[track-8]]8
+| *PMIR merge/split (ITI-93/94)* _(provisional)_
+| An identity merge/split at the identity source propagates so a subsequent federated query resolves the surviving identity. _(Hooks reserved; full propagation MAY be deferred, xref:future.adoc[§18].)_
+| xref:requirements.adoc#n3[N3], xref:future.adoc[§18]
+
+| [[track-9]]9
+| *REST surface & self-description*
+| An unmodified openEHR client, configured only with the registry base URL, performs a read and a write through the gateway - no `/rest/openehr` or other prefix assumed; both EHR addressing forms work; `+OPTIONS {base}/+` describes the surface and lists the endpoints behind the gateway; write responses carry the acting-endpoint headers with `Location`/`ETag` untouched; DEMOGRAPHIC behaves as declared; `definition` routes to one node (and, if offered, template broadcast reports per node and never reports a partial failure as success). Where a gateway declares `definition.stored_query_registry`, additionally: a definition `PUT` at the gateway is invocable by name and fans out across members, the response carries the ITS-REST `name` member, a repeat `PUT` to the same `+{name}/{version}+` is refused, an endpoint-targeted definition, with or without a node list, is refused for fan-out, and a declared definition fan-out reports a one-node rejection as a partial success (xref:conformance.adoc#cp-40[CP-40]).
+| xref:requirements.adoc#n28[N28]–N32, xref:requirements.adoc#n43[N43], xref:requirements.adoc#n44[N44]
+
+| [[track-10]]10
+| *Identifier leakage (adversarial)*
+| The same directly identifying identifier is supplied four ways in the query surface (`external_ref` predicate, `PARTY_IDENTIFIED`/`DV_IDENTIFIER` predicate, `SELECT` projection, and query string or header), and node-side capture is inspected for any occurrence of the value in the dispatched AQL, path, query string or headers. Zero occurrences is a pass, and so is a `400` rejection. A forwarded value is a fail, including in a logged or echoed query. A converse check also applies: a `COMPOSITION` committed with a `DV_IDENTIFIER` in its content MUST arrive at the node byte-identical, so a gateway that strips or rewrites a write body fails this track. The track also asserts the node is invocable on `ehr_id` alone.
+| xref:requirements.adoc#n33[N33], xref:requirements.adoc#n34[N34], xref:requirements.adoc#n5[N5]
+
+| [[track-11]]11
+| *Integrity: `ehr_id` collision & admission conditions*
+| _Gateway:_ a deliberately seeded duplicate `ehr_id` across two nodes - a harness-injected fixture; it does not represent a conformant node state, and creating it is the test harness operator's responsibility, since xref:membership.adoc#identifier-conditions[§12b.2] forbids a node from reaching this state on its own - yields `409` and an incident, never a served row or an applied write; a write to an ambiguous path `ehr_id` is rejected and never probed. _Node, at admission:_ candidate nodes are checked against the identifier-integrity conditions of xref:membership.adoc#identifier-conditions[§12b.2] (UUID-v4 generation, no reuse, no adoption of foreign `ehr_id` s, federation-unique `system_id`, and a working patient-identifier → `ehr_id` exchange).
+| xref:requirements.adoc#n41[N41], xref:requirements.adoc#n42[N42], xref:requirements.adoc#n42a[N42a]
+|===
+
+*Track 8 is provisional.* Its subject matter, full propagation of PMIR identity merges and splits, MAY be deferred to a future release (xref:future.adoc[§18]), and the track is numbered here so the hooks have somewhere to be asserted once it is not. It is accordingly the only track that no conformance point in xref:conformance.adoc[§17] scores. A claim of "passes tracks 1–11" is not weakened by its omission, and a scorer should not read its absence as a gap. Equally, a deferred item should not be taken to carry the same weight as the tracks around it.
+
+Tracks 10 and 11 are adversarial, designed to fail a gateway that is merely plausible. Track 10 in particular should be run with node-side wire capture and not the gateway's own logs, because a gateway that sanitises its logs but not its dispatches passes the wrong test. The track cuts both ways: it fails a gateway that leaks an identifier into a dispatched query, and a gateway that takes it upon itself to rewrite a commit body.
+
+== 16.4 Process
+
+Run a peer-to-peer test matrix (each Gateway against each Node, each Node against each PIX Manager), with Gazelle-style pass/fail logging per test track and conformance point. Each executed test records the conformance points it exercised (xref:conformance.adoc[§17]), so coverage is auditable.

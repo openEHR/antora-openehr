@@ -106,6 +106,12 @@ content:
         release/(?<version>+({0..9}).+({0..9}).+({0..9})): Release-$<version>
         development: development
 
+    # ITS-FDR: authored natively in Antora, kept in this repo under specs/ (never migrated).
+    # Each specs/ITS-FDR/Release-*/antora.yml supplies its own version.
+    - url: .
+      branches: HEAD
+      start_paths: specs/ITS-FDR/Release-*
+
     # TERM Component - Terminology Support
     - url: repos/specifications-TERM
       branches:
