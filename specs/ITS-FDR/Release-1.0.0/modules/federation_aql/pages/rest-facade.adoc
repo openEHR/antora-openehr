@@ -1,0 +1,111 @@
+= 7a. The REST façade (openEHR ITS-REST)
+
+The federation surface is not limited to AQL. A gateway presents the openEHR ITS-REST API as a whole, reads and writes, so that an application written against a single CDR can be pointed at the gateway unchanged (xref:requirements.adoc#n1[N1]). AQL (xref:aql-facade.adoc[§7]) is the part of that surface where fan-out happens. The rest is routed to a single node (xref:follow-up-routing.adoc[§12]).
+
+Transparency is only credible if the boundaries are stated, so this section says both what a gateway MUST expose and what it is not expected to federate.
+
+== 7a.1 What the façade federates
+
+[cols="2,1,3"]
+|===
+| ITS-REST area | Federated? | Behaviour at the gateway
+
+| `+{base}/v1/query/aql+` (Query)
+| *Yes - fan-out*
+| The subject → `ehr_id` rewrite and multi-node fan-out of xref:aql-facade.adoc[§7]. AQL is the only fan-out read in v1.
+
+| `+{base}/v1/ehr/{ehr_id}+` and `+{base}/v1/ehr/{ehr_id}/…+` (EHR, EHR_STATUS, COMPOSITION, DIRECTORY, CONTRIBUTION, VERSIONED_*)
+| *Yes - single-node routing*
+| Routed to exactly one node by the rules of xref:follow-up-routing.adoc[§12]. `+{ehr_id}+` in the path is a node-local identifier, so the gateway MUST resolve which node it belongs to before forwarding (xref:follow-up-routing.adoc[§12.5]).
+
+| `+{base}/v1/definition/template/…+` (Definition / ADL templates)
+| *Partially - not federated in v1*
+| A gateway MAY expose these, but MUST route each request to a single, explicitly chosen node (xref:follow-up-routing.adoc[§12.6]). It MUST NOT silently pick a node, and MUST NOT present a merged view of templates across nodes as if it were one repository. Fan-out of template upload is OPTIONAL and discussed in xref:follow-up-routing.adoc[§12.6].
+
+| `+{base}/v1/definition/query/…+` (stored queries)
+| *Either - single-node-routed, or gateway-held*
+| Two behaviours, and a gateway declares which. By default, as for templates: routed to a single explicitly chosen node (xref:follow-up-routing.adoc#definition-single-node[§12.6]). Alternatively, a gateway MAY offer a *federated stored-query registry* (xref:follow-up-routing.adoc#stored-query-registry[§12.7]) in which the gateway is authoritative for the definition, versions it immutably, and expands it into an ordinary fan-out when it is invoked by name. The registry is the only way a federated query becomes invocable by name at all. Distributing the definition to nodes is a further option again. All of it is declared under xref:requirements.adoc#n30[N30].
+
+| `+{base}/v1/demographic/…+` (DEMOGRAPHIC)
+| *No - out of scope*
+| The federation model keeps demographics outside the CDR on purpose (xref:identity-resolution.adoc[§5.1]); identity is resolved by an MPI / demographic service through the identity binding (xref:identity-resolution.adoc[§5.2], xref:annex-a-ihe.adoc[Annex A]). A gateway MUST NOT federate the openEHR DEMOGRAPHIC API. If it does not expose it at all, it MUST answer `501 Not Implemented`; if it proxies it to a single node, it MUST do so under xref:follow-up-routing.adoc[§12.6] single-node rules and MUST declare this (xref:conformance.adoc[§17]).
+
+|===
+
+
+== 7a.2 Declaring the surface: `OPTIONS`
+
+A client (and a test harness) needs a machine-readable answer to _"what does this gateway actually do, and what is behind it?"_.
+
+[NOTE]
+====
+*This body has no ITS-REST counterpart.* Unlike the AQL result envelope, which is an openEHR `RESULT_SET` and inherits most of its contract from ITS-REST Release-1.1.0 (xref:result-set.adoc#its-rest-relationship[§9.1]), the `+OPTIONS {base}/+` body is defined entirely by this specification. openEHR specifies no gateway self-description resource, so there is no upstream document to defer to, nothing here is inherited, and every key below is normative only in this specification.
+
+The body is therefore versioned with this specification, and `federation.spec_version` is its only version marker. Its contract is xref:attachment$options-root.schema.json[`options-root.schema.json`], published alongside this specification and validated against the example below in CI.
+====
+
+* [[options-root]]A gateway MUST implement `+OPTIONS {base}/+` returning a description of the federation surface: the ITS-REST areas it supports (per §7a.1 above), which are federated vs. single-node-routed, which are unsupported, the dedup mode (xref:deduplication.adoc[§10]), and the gateway's timeout policy (xref:partial-results.adoc[§11.5]). _(xref:requirements.adoc#n30[N30].)_
+* The response MUST include the member endpoints behind the gateway - the same identifiers usable in a directive (xref:endpoint-directive.adoc[§8]) - each with at least `id`, `organisation`, and `status`, and SHOULD include the owning `node_id` (xref:terminology.adoc#node-id[§ The four identifiers]). It SHOULD include `product` and `version` as separate fields, matching xref:result-set.adoc#endpoint-meta[§9.5], and a representative latency where the gateway tracks one.
+* [[endpoint-membership-status]]An endpoint's `status` here is membership and health information, meaning whether this member is in service. It is not the per-query status vocabulary of xref:partial-results.adoc#endpoint-status[§11.1]. The two answer different questions: this one describes the federation's standing configuration, `meta.federation.endpoints[]` describes what happened to one query. A value such as `not-localized` means nothing here, and `active` here does not predict `active` there.
+* This specification does not define a closed vocabulary for the membership status. It is a free-form string whose values a deployment chooses, and a client MUST NOT assume a fixed set. `active` is the conventional value for a member in service, and the schema treats the field as an unconstrained string so that no implementer reads the §11.1 enum into it by default. Fixing a vocabulary here is deferred (xref:future.adoc[§18]), because it is a membership-lifecycle question and this release does not specify that lifecycle (xref:membership.adoc[§12b]).
+* Latency reported here is an aggregate over recent requests, not the per-query measurement of xref:result-set.adoc#endpoint-meta[§9.5]; a gateway reporting one SHOULD name the statistic in the field (e.g. `latency_ms_p50`) so the two are not confused.
+* The response MUST additionally declare every behaviour this specification requires be declared under xref:requirements.adoc#n30[N30]: whether the opt-in best-effort completeness mode is offered, and how it is selected (xref:requirements.adoc#n37[N37]; all-or-nothing is the default and needs no declaration beyond `completeness.default`), the `OFFSET > 0` strategy (xref:requirements.adoc#n39[N39]), which decomposable aggregates are supported if any (xref:partial-results.adoc#aggregation-and-ordering[§11.6.3]), whether fan-out template upload is offered (xref:requirements.adoc#n43[N43]), whether the stored-query registry and the fan-out of stored-query definitions are offered (xref:requirements.adoc#n44[N44], xref:follow-up-routing.adoc#stored-query-registry[§12.7]), the behaviour when localization is unavailable (xref:localization.adoc[§14.1]), and the JWKS location (xref:security.adoc#jwks-discovery[§13.1]).
+* The accepted patient-resolution input predicates are not declared here, on purpose. Both carriers, `EHR_STATUS.subject.external_ref` and an `ENTRY`-level `subject` `PARTY_IDENTIFIED`/`DV_IDENTIFIER` predicate, are mandatory at every conformant gateway (xref:identity-resolution.adoc#party-identified-resolution-input[§5.4.3], xref:requirements.adoc#n33[N33]). There is nothing for a deployment to vary and nothing for a client to discover, and a key declaring them would invite the variation that the requirement removes.
+* [[targeting-not-declared]]The accepted targeting mechanisms are omitted for the same reason. Both the in-AQL `FROM ENDPOINT` directive and the `openEHR-federation-endpoint` header are mandatory at every conformant gateway (xref:endpoint-directive.adoc#endpoint-header[§8.4], xref:requirements.adoc#n35[N35]), so the only conformant declaration is "both" and a client learns nothing by reading it. The `aql` object therefore carries no `endpoint_directive` or `endpoint_header` key. `fan_out` remains, because it describes what the gateway does with an untargeted query and says nothing about which mechanisms it accepts.
+* The endpoint list is federation membership information and contains no patient data. It MUST NOT be gated on a patient identifier, and it MUST be subject to the gateway's normal authentication (xref:security.adoc[§13]). A deployment MAY restrict the detail returned to unauthenticated callers.
+* `OPTIONS` on a sub-path (e.g. `+OPTIONS {base}/v1/ehr/{ehr_id}+`) SHOULD return the HTTP methods allowed for that resource, per ordinary HTTP semantics.
+* [[definition-area-split]]Note that `its_rest.definition` describes the area as a whole while `definition.stored_query_registry` describes one artefact within it, and the two can legitimately differ. The example below declares templates single-node-routed and stored queries held at the gateway registry, which is the expected shape for a gateway that adopted xref:follow-up-routing.adoc#stored-query-registry[§12.7] without changing template handling. The `its_rest` values are free-form descriptions of behaviour and a client MUST NOT parse them as a closed vocabulary. A client tests the `definition` object's booleans programmatically.
+* `federation.spec_version` carries the version of this specification the gateway implements, in `major.minor` form. Patch releases are editorial and do not change the wire contract, so a gateway implementing 1.0.0 reports `"1.0"` and would still report `"1.0"` at any later 1.0 patch release. A client MUST NOT match on a patch component. A minor release may change the wire contract and so does move this value: 0.4.0 did, by correcting `rows` to the ITS-REST array form. 0.9.0 changed no wire structure, but it was a minor release and so moved the value too, from `"0.4"` to `"0.9"`. The field identifies which release a gateway was built against, and a client pinning an older value should be told the document has moved on. `"1.0"` is the first value that identifies the amended contract unambiguously: the SEC amendments changed the wire contract within the 0.9.x line, so `"0.9"` may denote either the pre-amendment or the amended shape.
+
+.Example `OPTIONS /` response body
+[source,json]
+----
+{
+  "federation": {
+    "id": "rso-zl",
+    "spec_version": "1.0",
+    "aql": { "fan_out": true },
+    "dedup": {
+      "default": "none",
+      "modes": ["none", "version-identity"],
+      "request_header": "openEHR-federation-dedup"
+    },
+    "timeout": { "per_node_ms": 5000, "overall_ms": 15000, "policy": "all-or-nothing" },
+    "completeness": {
+      "default": "all-or-nothing",
+      "best_effort": true,
+      "opt_in": { "header": "openEHR-federation-completeness", "value": "partial" }
+    },
+    "paging": { "offset_strategy": "reject" },
+    "aggregates": { "decomposable": ["COUNT", "SUM", "MIN", "MAX"] },
+    "definition": {
+      "fan_out_template_upload": false,
+      "stored_query_registry": true,
+      "stored_query_fan_out": false
+    },
+    "localization": { "on_failure": "closed" },
+    "auth": { "jwks_uri": "https://gw.rso.nl/.well-known/jwks.json" },
+    "its_rest": {
+      "query": "federated",
+      "ehr": "routed",
+      "definition": "routed-single-node; stored queries at the gateway registry",
+      "demographic": "unsupported"
+    }
+  },
+  "endpoints": [
+    { "id": "node_1", "node_id": "node_1", "system_id": "cdr1.rso.nl", "organisation": "Org A",
+      "status": "active", "product": "VendorX CDR", "version": "3.4.1", "latency_ms_p50": 120 },
+    { "id": "node_2", "node_id": "node_2", "system_id": "cdr2.rso.nl", "organisation": "Org B",
+      "status": "active", "product": "VendorY", "version": "2026.1", "latency_ms_p50": 310 }
+  ]
+}
+----
+
+== 7a.3 Write responses carry provenance in headers
+
+An AQL result set carries provenance in `meta.federation.endpoints[]` (xref:result-set.adoc[§9]). A write has no such envelope. `+POST {base}/v1/ehr/{ehr_id}/composition+` returns a `201` with `Location` and `ETag`, and nothing else.
+
+* [[write-headers]]On every request the gateway routed or dispatched to a single node - including `POST`, `PUT` and `DELETE` - the gateway MUST return the acting endpoint's identifier in the `openEHR-federation-endpoint` response header, and SHOULD return the node's `system_id` in `openEHR-federation-system-id`. On a routed read the gateway MUST return `openEHR-federation-system-id`, because a client detects an imported copy by comparing it with the requested uid (next bullet). _(xref:requirements.adoc#n31[N31], xref:result-set.adoc#response-headers[§9.6].)_
+* On a routed version read, `openEHR-federation-system-id` is also how a client tells a copy: a value that differs from the `creating_system_id` in the requested uid means the located node holds an imported copy (xref:follow-up-routing.adoc[§12.3]).
+* The gateway MUST pass the node's `Location` and `ETag` through unmodified, because openEHR uids are never rewritten (xref:requirements.adoc#n22[N22]). The `ETag` of a commit is an `OBJECT_VERSION_ID` and so already carries the `creating_system_id`. The headers above are a convenience and an audit aid; they do not replace it.
+* These headers SHOULD also be set on federated AQL responses, listing the endpoints that contributed, but `meta.federation.endpoints[]` stays the normative carrier there (xref:partial-results.adoc#endpoint-status[§11.1]).

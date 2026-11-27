@@ -33,6 +33,10 @@
     "js-yaml": "^4.1.1",
     "medium-zoom": "^1.1.0"
   },
+  "devDependencies": {
+    "ajv-cli": "5.0.0",
+    "ajv-formats": "3.0.1"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"

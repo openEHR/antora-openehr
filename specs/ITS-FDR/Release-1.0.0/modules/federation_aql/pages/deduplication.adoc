@@ -1,0 +1,38 @@
+= 10. Deduplication
+
+== 10.1 Default: pass-through + provenance
+
+By default the Tier MUST *not* deduplicate (xref:requirements.adoc#n15[N15]). In line with the White Paper, where it is normal for the façade to pass duplicates to the client, and with SQL semantics, duplicate rows come back unless the client filters them with `DISTINCT`. Where data may legitimately appear via multiple endpoints, through sharding or caching, the client SHOULD add ENDPOINT provenance columns (xref:result-set.adoc#endpoint-attributes[§9.3]) so rows become distinguishable; the list-less directive adds them without pinning the node set (xref:endpoint-directive.adoc#listless-directive[§8.1]). Each row's endpoints are also listed in `meta.federation.row_endpoints[]` (xref:result-set.adoc#row-endpoints[§9.5.1]).
+
+== 10.2 Opt-in VERSION-identity dedup (the imported-composition case)
+
+The Tier SHOULD offer an opt-in dedup mode keyed on the openEHR `object_id` (the first segment of the `OBJECT_VERSION_ID`). This addresses the imported-composition case: an imported `COMPOSITION` retains its original `VERSION` uid (its `feed_audit.originating_system_id` records where it came from), so the same `object_id` appearing under two different `creating_system_id`s is the import signature of one logical version present in two CDRs.
+
+Rules for this mode:
+
+* Group rows by `object_id`; within a group, keep the originating copy and record the suppressed endpoints in `meta.federation.dedup` (xref:result-set.adoc#federation-meta[§9.1]). The retained-copy rule MUST be deterministic - prefer the copy whose `creating_system_id` equals the `object_id`'s originating system.
+* The mode actually applied MUST be recorded in `meta.federation.dedup.mode`, so a client can tell a pass-through result from a de-duplicated one without comparing row counts it cannot know. When rows were suppressed, `suppressed_rows` carries how many and `suppressed_endpoints[]` the `endpoint_id`s whose copies were dropped, as `federated-result-set.schema.json` defines them (§10.3).
+* The mode SHOULD be scoped to latest-version queries; a version-history query MUST keep distinct rows (different `version_tree_id`s are genuinely different versions).
+
+[#update-routing-hazard]
+== 10.3 The update hazard: deduping a row you then want to write to
+
+De-duplication and follow-up writes interact badly, and the interaction stays silent when it goes wrong.
+
+*The scenario.* A `COMPOSITION` created at CDR-A is imported into CDR-B. Both hold a version whose uid is `8849…::cdr-a::1`: the same `object_id` and the same `creating_system_id`, because an import retains the original uid (§10.2). CDR-B also records, in `feed_audit.originating_system_id`, that the copy came from CDR-A. A federated query returns two rows, opt-in dedup (§10.2) collapses them to one and keeps the originating copy, and the client then wants to update it.
+
+*What must happen.* The write goes to CDR-A, the system whose `system_id` equals the target version's `creating_system_id` (xref:follow-up-routing.adoc[§12.4], xref:identifiers.adoc#route-write[§12a.1]), addressed with CDR-A's own `ehr_id` for the patient. A write addressed with CDR-B's `ehr_id` is located at CDR-B (xref:follow-up-routing.adoc#ehr-id-route-order[§12.5.1]) and rejected with `409`. CDR-B holds a copy. Committing a new version there would either be rejected by CDR-B, which does not control that version's trunk, or worse, create a divergent version of the same `object_id` in a second CDR: two systems each believing they hold version 2 of the same object, with no merge path.
+
+*The rules:*
+
+* [[dedup-write-target]]After dedup, the surviving row MUST still identify the originating endpoint. A write derived from that row is located by its path `ehr_id` like any versioned write (xref:follow-up-routing.adoc#ehr-id-route-order[§12.5.1]), and the target version's `creating_system_id` decides whether the write is admissible: the located node's `system_id` MUST equal it. The gateway does not re-target the write to the node `creating_system_id` names. _(xref:requirements.adoc#n36[N36].)_
+* [[copy-write-reject]]A gateway MUST NOT route a versioned write to a node that merely holds a copy. If the node located for the write is one whose `system_id` differs from the version's `creating_system_id`, the gateway MUST reject the write with `409 Conflict` and an error identifying the controlling system. It MUST NOT fall back to writing at the holder, and MUST NOT redirect the write to the owner under the holder's `ehr_id`, because that `ehr_id` means nothing at the owner. _(xref:requirements.adoc#n36[N36].)_
+* [[suppressed-visible]]Suppression MUST remain visible. When dedup drops rows, the gateway MUST record the suppressed endpoints in `meta.federation.dedup.suppressed_endpoints[]` and the count in `suppressed_rows` (§10.2), so a client can tell that other copies exist and that a write it issues will not update them.
+* *Copies do not converge.* This specification does not define propagation of an update back to importing nodes. After a successful write at the owner, CDR-B still holds the old version and will do so until it re-imports. A gateway MUST NOT present the write as having updated the federation as a whole. Reconciling imported copies is out of scope for v1 (xref:future.adoc[§18]).
+
+§10.2 requires the retained-copy rule to be deterministic and to prefer the originating copy because a dedup mode that keeps an arbitrary copy would turn the first rule into a coin flip.
+
+== 10.4 Stated limits
+
+* This dedup does not merge independently authored but equal data (two clinicians recording the same fact in two CDRs are two distinct `object_id`s). That is a clinical-reconciliation problem and not a federation one; the White Paper notes determining duplicate records this way is extremely difficult.
+* Content-hash dedup is explicitly not mandated.

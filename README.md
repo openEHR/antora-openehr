@@ -36,6 +36,7 @@ Why Antora:
 - `scripts/` — migration and validation helpers
 - `examples/` — before/after structure samples
 - `repos/` — the place where specification repos are cloned for local builds
+- `specs/` — components authored natively in Antora (ITS-FDR); a content source of the playbooks, never migrated. See `specs/ITS-FDR/README.md`; run its gates with `make check-fdr` after a build.
 
 See `QUICK-REFERENCE.md` for a concise command cheat sheet and `MIGRATION-GUIDE.md` for details of the migration model and structure.
 
@@ -65,6 +66,9 @@ antora-openehr-migration/
 │       │   └── 1..13 + 3a/4a step scripts
 │       ├── create-release-branches.sh
 │       └── validate-structure.sh
+│
+├── 📘 Native Antora components (never migrated)
+│   └── specs/ITS-FDR/            # Federation Tier with AQL; gates: make check-fdr
 │
 ├── 🧩 Source
 │   └── src/

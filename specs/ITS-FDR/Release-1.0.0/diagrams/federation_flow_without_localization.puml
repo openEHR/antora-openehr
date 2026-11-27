@@ -1,0 +1,29 @@
+@startuml federation_flow_without_localization
+title Federation reference flow - Variant B (no localization service, ask-all)
+
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 260
+skinparam wrapWidth 260
+skinparam ParticipantPadding 12
+skinparam BoxPadding 10
+autonumber
+
+actor "Consumer" as C
+participant "openEHR Federation\n(gateway)" as F
+participant "PIX Manager\n(per known community)" as P
+participant "CDR + Query API\n(per node)" as D
+
+C -> F : AQL, patient by ehr_status/subject = 123
+note over F : No localization service - ask all known communities
+
+loop per known community (ask-all)
+  F -> P : PIXm $ihe-pix (ITI-83)\nsourceIdentifier=123, targetSystem=ehrId
+  P --> F : local ehr_id if it exists, else not-found
+end
+
+group per node with a resolved ehr_id
+  F -> D : standard AQL  WHERE e/ehr_id/value = <local ehr_id>
+  D --> F : rows
+end
+F --> C : combined result set + meta\n(not-resolved nodes listed)
+@enduml

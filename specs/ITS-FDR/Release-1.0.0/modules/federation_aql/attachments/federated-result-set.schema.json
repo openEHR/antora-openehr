@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://syntaric.github.io/openehr-federation-spec/federation-aql/1.1/_attachments/federated-result-set.schema.json",
+  "title": "Federated openEHR AQL result set",
+  "description": "The response body of POST {base}/v1/query/aql at a federation gateway conforming to 'Federation Tier with AQL' §9.\n\nThis is an openEHR ITS-REST RESULT_SET, not a federation-specific structure. The definitions under $defs/itsRest are a constrained restatement of the ITS-REST Release-1.1.0 Query API schemas (computable/OAS/query-validation.openapi.yaml: ResultSet, ResultSetMetadata, ResultSetColumn, ResultSetRow, QueryName, AQL), inlined rather than $ref'd by URL so that validation is self-contained and CI does not depend on a third-party site being reachable. ITS-REST governs those members; where this schema and ITS-REST could be read differently on an inherited member, ITS-REST governs (§9.1).\n\nWhat this specification adds, and what this schema is therefore normative for, is the single unprefixed `meta.federation` object and the five members inside it: complete, endpoints, row_endpoints, timeout and dedup.",
+
+  "$comment": "Bound to openEHR ITS-REST Release-1.1.0 (19 July 2026). Spec §9.1 (result-set.adoc), N17, CP-35. Re-verify against the upstream OpenAPI before rebinding to a later release.",
+
+  "type": "object",
+  "required": ["rows"],
+  "properties": {
+    "meta": { "$ref": "#/$defs/federatedResultSetMetadata" },
+    "name": { "$ref": "#/$defs/itsRest/queryName" },
+    "q": { "$ref": "#/$defs/itsRest/aql" },
+    "columns": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/itsRest/resultSetColumn" }
+    },
+    "rows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/itsRest/resultSetRow" }
+    }
+  },
+
+  "$defs": {
+
+    "itsRest": {
+      "$comment": "Inlined from ITS-REST Release-1.1.0. Do not add federation-specific constraints here; add them at the federation level so the provenance of each rule stays legible.",
+
+      "queryName": {
+        "title": "QueryName",
+        "$comment": "ITS-REST QueryName. Stored queries only: [{namespace}::]{query-name}.",
+        "type": "string"
+      },
+
+      "aql": {
+        "title": "AQL",
+        "$comment": "ITS-REST AQL. At a gateway this is the client's submitted AQL, not a per-node rewrite.",
+        "type": "string"
+      },
+
+      "resultSetColumn": {
+        "title": "RESULT_SET_COLUMN",
+        "$comment": "ITS-REST RESULT_SET_COLUMN: `name` required, `path` optional, and no other members are defined. `name` is the AQL alias, or a '#0'-style positional index where the AQL supplied none. In a federation `columns[]` is always the gateway's own rendering of the client's AQL and never a node's (§9.2, N17, CP-35) - a constraint no schema can check, because both renderings are well-formed.",
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      },
+
+      "resultSetRow": {
+        "title": "RESULT_SET_ROW",
+        "$comment": "ITS-REST RESULT_SET_ROW is an ARRAY of values, positionally matching columns[]: rows[n][i] is the value of columns[i]. It is NOT an object keyed by column name. Values may be JSON primitives or openEHR RM objects such as {\"_type\": \"DV_TEXT\", \"value\": \"...\"}. Versions of this specification before 0.4.0 carried an example showing objects; that example was wrong and this is the corrected, ITS-REST-conformant form.",
+        "type": "array"
+      }
+    },
+
+    "federatedResultSetMetadata": {
+      "title": "Federated ResultSetMetadata",
+      "description": "An ITS-REST ResultSetMetadata carrying this specification's federation additions. ITS-REST declares ResultSetMetadata with additionalProperties: true, which is precisely what makes these additions conformant rather than a deviation (§9.1).\n\nThe federation contributes exactly ONE member here - `federation` - and everything it adds lives inside it. Releases up to 0.9.0 carried `complete`, `endpoints`, `timeout` and `dedup` flat on `meta`; they are now nested (§9.1).",
+      "type": "object",
+
+      "$comment": "additionalProperties stays true: openEHR left this object open and the federation must not close it. Unknown keys are therefore accepted by design.",
+      "additionalProperties": true,
+
+      "required": ["federation"],
+
+      "properties": {
+        "_href": { "type": "string", "format": "uri", "$comment": "ITS-REST" },
+        "_type": { "type": "string", "$comment": "ITS-REST" },
+        "_schema_version": { "type": "string", "$comment": "ITS-REST" },
+        "_created": { "type": "string", "format": "date-time", "$comment": "ITS-REST" },
+        "_generator": { "type": "string", "$comment": "ITS-REST" },
+        "_executed_aql": { "type": "string", "$comment": "ITS-REST" },
+
+        "federation": { "$ref": "#/$defs/federationMeta" }
+      }
+    },
+
+    "federationMeta": {
+      "title": "meta.federation",
+      "description": "Everything this specification adds to `meta`, in one namespace (§9.1). Grouped rather than flat so that (a) a reader can tell at a glance which members the federation owns, (b) a future openEHR `meta` member cannot silently collide with a federation key of the same name, and (c) the extension is self-describing on the wire.\n\nThe object is UNPREFIXED: the `_` prefix is reserved to openEHR, so `_federation` is non-conformant, as are `_complete` and `_endpoints` (§9.1, N17, CP-35).",
+      "type": "object",
+
+      "$comment": "Open like `meta` itself: a deployment may carry additional federation-level diagnostics here (e.g. the §11.6.4 cursor handle, or the §14.1 localization error). Closing it would forbid the very extensions §11.6.4 and §14.1 ask for.",
+      "additionalProperties": true,
+
+      "required": ["complete", "endpoints", "row_endpoints"],
+
+      "properties": {
+        "complete": {
+          "description": "Federation addition (§11.4, N37). True only when every IN-SCOPE node reached status 'active'. A node reported 'excluded' or 'not-localized' was never in scope and does not clear this flag. Answers 'did every node I asked answer?', not 'did I ask every node?'.\n\nUnder the all-or-nothing default of §11.4 a node that was ASKED and did not answer (offline, time-out) or answered with an error FAILS the query (504/424), and the failing response still carries this envelope with complete: false. But `false` on a 200 is NOT a violation of that default: 'not-resolved' and 'consent-denied' clear this flag without failing the query (§11.3 carve-out), as does any status under an opted-into best-effort request. A client MUST read this flag rather than infer coverage from the status code.",
+          "type": "boolean"
+        },
+
+        "endpoints": {
+          "description": "Federation addition (§9.5, §11.1, N16, N40). The per-node record of what happened, and the normative carrier for coverage information. Every in-scope node appears, whether or not it contributed rows, as do nodes reported 'excluded' or 'not-localized'.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/endpointOutcome" }
+        },
+
+        "row_endpoints": {
+          "description": "Federation addition (§9.5.1, N45). Per-row attribution, index-aligned with `rows`: row_endpoints[i] lists the endpoint_ids that contributed rows[i]. Every entry is a non-empty array, [\"node_1\"] for a single-source row; a row merged by federation-level DISTINCT, GROUP BY or a decomposed aggregate lists every contributor once, in the order of `endpoints`. After dedup the entry names the surviving copy's endpoint. A response with no rows, including a failing 504/424, carries [].",
+          "$comment": "JSON Schema cannot assert that row_endpoints and rows have equal length, or that every value appears as an endpoints[].id. Both are prose obligations (§9.5.1), checked on the spec's own example by tools/check-schemas.sh.",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+
+        "timeout": {
+          "description": "Federation addition (§11.5, N38). The effective timeout budget in force for this request. SHOULD be present.",
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "per_node_ms": { "type": "integer", "minimum": 0 },
+            "overall_ms": { "type": "integer", "minimum": 0 },
+            "policy": { "type": "string" }
+          }
+        },
+
+        "dedup": {
+          "description": "Federation addition (§10, N15). The deduplication policy applied to this result set, and the endpoints whose rows it suppressed (§10.3). 'none' is the default; a gateway that suppressed rows records the mode it used.",
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mode": { "type": "string" },
+            "suppressed_rows": { "type": "integer", "minimum": 0 },
+            "suppressed_endpoints": {
+              "description": "SHOULD, when rows were suppressed (§10.3, N36). The endpoint_ids whose copies were dropped, so a client can tell that other copies exist and that a write it issues will not update them.",
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "endpointOutcome": {
+      "title": "meta.federation.endpoints[] entry",
+      "description": "What happened to one endpoint during this query (§9.5). Obligation levels are those of the §9.5 field table and N40.",
+      "type": "object",
+
+      "$comment": "Open, like meta itself: a deployment may carry additional diagnostic fields.",
+      "additionalProperties": true,
+
+      "required": ["id", "status"],
+      "$comment_required": "`latency_ms` is MUST (N40) for every node that was ASKED, which is a conditional the allOf below expresses; it cannot be an unconditional requirement because a node reported 'excluded' or 'not-localized' was never asked and so was never timed.",
+
+      "properties": {
+        "id": {
+          "description": "MUST (N40). The endpoint_id: the stable registry identifier of the endpoint that was addressed.",
+          "type": "string",
+          "minLength": 1
+        },
+
+        "status": {
+          "description": "MUST (N16, N40). The PER-QUERY outcome vocabulary of §11.1. This is a closed set, and is deliberately NOT the membership/health vocabulary of the OPTIONS body (§7a.2): 'not-localized' is meaningful here and meaningless there, and 'active' in one does not predict 'active' in the other.",
+          "$ref": "#/$defs/endpointQueryStatus"
+        },
+
+        "latency_ms": {
+          "description": "MUST (N40, §11.5). Wall-clock time the GATEWAY observed for its request to this endpoint. For a 'time-out' endpoint, the elapsed time at abandonment. The gateway's own measurement, never the node's self-report.",
+          "type": "integer",
+          "minimum": 0
+        },
+
+        "node_id": {
+          "description": "SHOULD (N40). The owning node; distinguishes two endpoints of the same node.",
+          "type": "string"
+        },
+
+        "system_id": {
+          "description": "SHOULD (N40). The node's openEHR system_id, where known.",
+          "type": "string"
+        },
+
+        "organisation": {
+          "description": "SHOULD (N20, N40). The managing Organization.",
+          "type": "string"
+        },
+
+        "error": {
+          "description": "MUST when status is an error (§11.2, N40). The node-reported or gateway-reported error. See the conditional below: it is required for the statuses that denote a failed interaction.",
+          "type": ["string", "object"]
+        },
+
+        "product": {
+          "description": "SHOULD (N40). The node's product name, as the gateway knows it. Absent when unknown; a gateway MUST NOT invent it.",
+          "type": "string"
+        },
+
+        "version": {
+          "description": "SHOULD (N40). The node's product version. Absent when unknown; a gateway MUST NOT invent it.",
+          "type": "string"
+        },
+
+        "row_count": {
+          "description": "SHOULD (N40). Rows this endpoint contributed BEFORE federation-level DISTINCT, dedup (§10) and LIMIT (§11.6). Makes suppression auditable.",
+          "type": "integer",
+          "minimum": 0
+        },
+
+        "url": {
+          "description": "MAY (§9.5). The CDR base URL; may be omitted from rows and left here.",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+
+      "allOf": [
+        {
+          "$comment": "N40: `error` is required when `status` denotes a failed interaction. 'excluded' and 'not-localized' are not failures - the node was never asked - and 'active' succeeded, so none of the three requires an error. 'node-error' (§11.1) is the node's own failure and always has one to carry. 'consent-denied' is excluded from the requirement because it may be set by a gateway-side consent pre-filter (§13.2.1) where no node error exists.",
+          "if": {
+            "properties": {
+              "status": { "enum": ["offline", "time-out", "node-error", "not-resolved"] }
+            },
+            "required": ["status"]
+          },
+          "then": { "required": ["error"] }
+        },
+        {
+          "$comment": "N40: `latency_ms` is the gateway's own wall-clock measurement of ITS request to this endpoint, so it is required exactly when a request was actually dispatched — 'active' (answered), 'offline' (attempted, unreachable), 'time-out' (attempted, abandoned; the elapsed time at abandonment per §11.5) and 'node-error' (answered with a failure). It is NOT required for the statuses decided BEFORE dispatch: 'excluded' and 'not-localized' were never in scope (§11.1), and 'not-resolved' and a pre-filtered 'consent-denied' (§13.2.1) are settled during Step-1 identity resolution, before any node query exists to time. Requiring a number for those would force a gateway to invent one, which is the opposite of what N40 wants.",
+          "if": {
+            "properties": {
+              "status": { "enum": ["active", "offline", "time-out", "node-error"] }
+            },
+            "required": ["status"]
+          },
+          "then": { "required": ["latency_ms"] }
+        }
+      ]
+    },
+
+    "endpointQueryStatus": {
+      "title": "Per-query endpoint status (§11.1)",
+      "description": "The closed status set of §11.1 / N16. This is the one place 'not-localized' becomes mechanically checkable, which is what a conformance harness needs. 'node-error' is the node that was reached and answered with a failure (424 under the default strategy, §11.4); it is deliberately distinct from 'offline' (504) so the two recoveries stay distinguishable in the envelope.",
+      "type": "string",
+      "enum": [
+        "active",
+        "offline",
+        "time-out",
+        "node-error",
+        "not-resolved",
+        "consent-denied",
+        "excluded",
+        "not-localized"
+      ],
+      "$comment": "active: queried and responded. offline: known node, not reachable. time-out: reachable, no response within budget. not-resolved: no local ehr_id for the patient at this node. consent-denied: consent did not permit inclusion. excluded: a decision removed it. not-localized: nothing selected it - the node was never asked and no decision was made about it."
+    }
+  }
+}

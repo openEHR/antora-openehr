@@ -1,0 +1,19 @@
+# ITS-FDR: Federation Tier with AQL, release 1.0.0.
+#
+# Authored natively in Antora; ported from syntaric/openehr-federation-spec
+# at b40a29a (see ../README.md for what changed).
+# Not a migration target: no scripts/migration step reads this directory.
+name: ITS-FDR
+title: Federation Tier with AQL
+# Shown as "1.0.0" in the version menus (src/extensions/display-versions.js).
+version: Release-1.0.0
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/federation_aql/nav.adoc
+asciidoc:
+  attributes:
+    # spec-status and spec-date are verbatim from the source descriptor.
+    spec-version: '1.0.0'
+    spec-status: 'Approved by the openEHR SEC'
+    spec-date: '2026-11-01'

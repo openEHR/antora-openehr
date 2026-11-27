@@ -1,0 +1,29 @@
+= 4. Reference flow: `subject → ehr_id → standard AQL`
+
+This section walks the end-to-end flow that the SPECIFICATION (xref:requirements.adoc[§6]) formalises, in terms of the abstract roles a conforming deployment must fill and the proposed IHE binding for each. Two variants are shown: with a localization service and without one. A concrete regional realisation, including a walkthrough on a pseudonymised identifier with no directly identifying identifier in the CDR, is in xref:annex-b-dutch-gf.adoc[Annex B] (informative), kept out of the normative body on purpose.
+
+== 4.1 Steps
+
+* *Step 0 - Façade API.* The gateway exposes a conformant openEHR Query API (`+POST {base}/v1/query/aql+`, where `+{base}+` is the deployment's ITS-REST base URL - no prefix is mandated, xref:requirements.adoc#n28[N28]). The client MAY identify the patient with `WHERE e/ehr_status/subject/external_ref/id/value = <patientId>` and MUST NOT need any federation-specific syntax.
+* *Step 1 - Patient resolution (outside AQL).* The gateway extracts `<patientId>` (and its issuing namespace) and resolves it to a set of `{node, local ehr_id}` using three abstract services (proposed IHE binding named; regional realisations in xref:annex-b-dutch-gf.adoc[Annex B]):
+. *Localization* (undirected queries) - a _localization / record-locator service_ returns candidate source communities. *Proposed binding: IHE XCPD.* _(A localization query MAY, for example, be a national record-locator lookup; in some regions the localizer is consent-aware and its list is already consent-filtered - xref:localization.adoc#consent-aware-localization[§14.3], xref:annex-b-dutch-gf.adoc[Annex B].)_
+. *Addressing* - an _addressing / directory service_ resolves each community to its local PIX Manager and CDR base URLs. *Proposed binding: IHE mCSD.*
+. *Cross-reference* - an _identifier cross-reference service_ maps `<patientId>` to the local `ehr_id` (or _not-found_) per node. *Proposed binding: IHE PIXm* `$ihe-pix` with `sourceIdentifier=<patientId>` and `targetSystem=<the domain's ehr_id system>`.
+* *Step 2 - Fan-out.* For each node with a resolved `ehr_id`, the gateway dispatches standard, non-federated AQL scoped to that `ehr_id`.
+* *Step 3 - Combine + annotate.* The gateway concatenates rows, applies federation `DISTINCT`/`ORDER BY`, re-injects the requested subject value into rows if the façade AQL SELECTed it (the value is the _input_, not read from a CDR), adds endpoint-provenance columns if requested, and emits `meta.federation.endpoints[]` (including any `not-resolved` / `consent-denied` / `not-localized` / unresponsive nodes, each with a status from xref:partial-results.adoc#endpoint-status[§11.1]).
+
+== 4.2 Variant A - with a localization service
+
+.Reference flow, Variant A - with a localization service. Source: `diagrams/federation_flow_with_localization.puml`.
+image::federation_flow_with_localization.png[Federation reference flow with a localization service]
+
+== 4.3 Variant B - without a localization service
+
+With no localization service, the gateway skips localization and addressing and asks all known nodes' PIX Managers directly (an _ask-all_ localization fallback; xref:localization.adoc[§14]/xref:requirements.adoc#n4[N4]). Every node that returns a local `ehr_id` is queried. The rest are reported in `meta.federation.endpoints[]` as `not-resolved`.
+
+.Reference flow, Variant B - no localization service (ask-all). Source: `diagrams/federation_flow_without_localization.puml`.
+image::federation_flow_without_localization.png[Federation reference flow without a localization service]
+
+== 4.4 The demographic input MAY be pseudonymised
+
+Nothing in this flow requires `<patientId>` to be a directly identifying identifier (xref:identity-resolution.adoc#directly-identifying-identifier[§5.1]). Because Step 1 resolves whatever identifier the client presents to a per-node `ehr_id` outside AQL, the presented identifier MAY be a pseudonymised id, and nodes need store no directly identifying identifier in the CDR. Requirement xref:requirements.adoc#n5[N5] rests on that principle. A worked example on a pseudonymised identifier is in xref:annex-b-dutch-gf.adoc#pseudonymised-walkthrough[Annex B §B.7].

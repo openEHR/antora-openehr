@@ -1,0 +1,114 @@
+= 8. Endpoint targeting (`FROM ENDPOINT` and the endpoint header)
+
+A query can be pinned to named nodes in two ways, and this specification supports both on purpose (§8.4): in the AQL (the `FROM ENDPOINT` directive, §8.1) and beside the AQL (the `openEHR-federation-endpoint` request header, §8.4). They are semantically equivalent. The directive can also be written without a node list, in which case it binds the ENDPOINT alias for provenance projections and pins nothing (§8.1).
+
+== 8.1 Semantics
+
+* [[directive-form]]`FROM ENDPOINT p [ "node_1", "node_2", … ]` is a federation-only, optional directive, of the form `FROM ENDPOINT <alias> [ "<endpoint_id>", … ] CONTAINS …` in which the list is optional. A list that is present MUST be non-empty, and the gateway MUST reject an empty list `[ ]` with `400`.
+** *With a list*, the directive selects the node set, which is exactly the listed endpoints, and the query is _directed_ (xref:requirements.adoc#n11[N11]).
+** [[listless-directive]]*Without a list* (`FROM ENDPOINT p CONTAINS …`), the directive only binds the alias `p`, so the query can project ENDPOINT attributes (xref:result-set.adoc#endpoint-attributes[§9.3]). The node set comes from localization exactly as for an undirected query (xref:requirements.adoc#n4[N4]/xref:requirements.adoc#n10[N10]), and the query remains _undirected_ for every rule that distinguishes the two, including the undirected-aggregate rule of xref:partial-results.adoc#aggregate-block[§11.6.3]. _(xref:requirements.adoc#n10[N10].)_
+** When the directive is absent, the node set likewise comes from localization.
+* The directive is orthogonal to patient resolution. Per-node scope is always the resolved `ehr_id` (xref:requirements.adoc#n7[N7]/xref:requirements.adoc#n11[N11]). A directed + subject query means _"find this patient, but only in these systems."_ List members where the patient is `not-resolved` are simply reported in `meta.federation.endpoints[]` with status `not-resolved`, not errored. When a list is present, registry members it did not name SHOULD be reported `excluded`, meaning a decision was made about them. That differs from `not-localized`, which belongs to the undirected case where localization simply did not name a node (xref:partial-results.adoc#endpoint-status[§11.1]). A list-less directive makes no such decision, so a registry member outside the localized set is reported `not-localized` and never `excluded`.
+* Endpoint identifiers in the directive MUST be the stable registry identifiers of Endpoints (xref:requirements.adoc#n19[N19]), not URLs. This keeps the client decoupled from physical addresses, which the registry owns (xref:addressing.adoc[§15]).
+* A coarser selector `ORGANISATION o [ … ]` MAY be used; the gateway expands each organization to its Endpoints via the registry (an Organization manages 1..* Endpoints; each Endpoint has exactly one managing Organization, xref:requirements.adoc#n20[N20]). It binds its alias as `ENDPOINT` does, with the same attribute set (xref:result-set.adoc#endpoint-attributes[§9.3]), and each row's values describe the endpoint that produced it. Its list is mandatory. `FROM ORGANISATION o CONTAINS …` without a list would select nothing that the list-less `ENDPOINT` form does not, and `p/organisation` already projects the organization, so the gateway MUST reject it with `400`.
+
+== 8.2 Directed clients and the transparency trade-off
+
+A client using either targeting mechanism has opted out of transparency, knowingly: it now knows about nodes. Undirected clients, which are the default, never see this.
+
+A client using the list-less directive sees node identifiers in its rows but does not choose nodes. It opts into provenance and leaves node selection to localization: localization, consent and completeness behave exactly as for an undirected query (xref:partial-results.adoc#endpoint-status[§11.1], xref:partial-results.adoc#completeness-flag[§11.4]). A client that only needs to know which endpoint a row came from does not need the directive at all, because `meta.federation.row_endpoints[]` attributes every row of every response (xref:result-set.adoc#row-endpoints[§9.5.1]). The directive is for a label that must be a named column of the row.
+
+== 8.3 Examples (provenance columns, directed and list-less)
+
+[source,sql]
+----
+SELECT
+  p/id  AS endpoint_id,
+  p/system_id AS system_id,
+  c/uid/value AS composition_id
+FROM ENDPOINT p [ "node_1", "node_2", "node_3" ]
+  CONTAINS EHR e CONTAINS COMPOSITION c
+WHERE e/ehr_status/subject/external_ref/id/value = '12345'
+----
+
+The gateway resolves `subject = '12345'` to a local `ehr_id` per listed endpoint, runs standard AQL keyed on each `ehr_id`, and annotates rows with `endpoint_id` and `system_id` (both drawn from the registry / the resolving node, xref:result-set.adoc[§9]).
+
+The list-less form asks for the same labels without choosing the nodes:
+
+[source,sql]
+----
+SELECT
+  p/id AS endpoint_id,
+  p/organisation AS organisation,
+  o/data[at0001]/events[at0006]/time/value AS time,
+  o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic
+FROM ENDPOINT p
+  CONTAINS EHR e CONTAINS COMPOSITION c
+  CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v2]
+WHERE e/ehr_status/subject/external_ref/id/value = '12345'
+----
+
+The gateway localizes the patient exactly as for the same query without `ENDPOINT p` and returns the same blood-pressure rows, each labelled with the `endpoint_id` and `organisation` of the endpoint that produced it. Registry members localization did not name are reported `not-localized`.
+
+[#header-alternative]
+== 8.4 Targeting outside the AQL: the endpoint header (normative)
+
+Putting the node set inside the query text carries a cost that only shows up in real deployments: it changes the query. That matters in two situations, both of which happen in practice.
+
+* *Stored / persisted AQL.* A stored query (`+{base}/v1/definition/query/…+`), a query saved in a report definition, or a query held in an application's source is a fixed artefact. If targeting lives in the AQL text, retargeting means rewriting and re-storing the artefact, and a stored query that is federated for one caller and pinned for another needs two copies. With the header, one stored query serves both.
++
+The argument turned from a convenience into a necessity once a gateway could hold stored queries itself (xref:follow-up-routing.adoc#stored-query-registry[§12.7]). Under a registry that also distributes definitions to nodes, a definition carrying `FROM ENDPOINT` cannot be fanned out at all: the targeting means nothing at a node, and §12.7 requires the gateway to refuse it (xref:follow-up-routing.adoc#fanout-endpoint-targeted-refused[§12.7]). The header is therefore the only way a distributable stored query can be pinned by its caller. Targeting that sits beside the query survives distribution, because it never travels with the definition.
+* *Interactive tools.* An EHR-explorer-style application lets a user compose AQL by hand and then tick which nodes to run it against. Splicing `FROM ENDPOINT [...]` into user-authored AQL means parsing and rewriting the user's text, which is fragile and shows up to the user as a query they did not write.
+
+Therefore:
+
+* [[endpoint-header]]*A gateway MUST support both mechanisms.* It MUST accept the node set carried outside the AQL - as the `openEHR-federation-endpoint` request header - and it MUST accept the in-AQL `FROM ENDPOINT` directive of §8.1. A client MUST support at least one and MAY support either. _(xref:requirements.adoc#n35[N35].)_
+* The out-of-AQL mechanism is a header, and only a header. The node set MUST NOT travel as a query parameter, and a gateway MUST NOT define `?endpoint=` or `?organisation=` as a targeting mechanism. Keeping it in the header means targeting never varies the request URI, so it cannot silently change cache keys, stored-query URLs, or the ITS-REST paths of xref:rest-facade.adoc[§7a].
+* Both carry the same values: stable registry endpoint identifiers (xref:requirements.adoc#n19[N19]), never URLs (§8.1). The header value is a comma-separated list of those identifiers.
++
+[source,http]
+----
+POST {base}/v1/query/aql
+openEHR-federation-endpoint: node_1, node_2, node_3
+Content-Type: application/json
+
+{ "q": "SELECT c/uid/value AS composition_id FROM EHR e CONTAINS COMPOSITION c
+        WHERE e/ehr_status/subject/external_ref/id/value = '12345'" }
+----
++
+The equivalent organization-level selector is the `openEHR-federation-organisation` header, expanded through the registry exactly as in §8.1.
+* The header form applies to any federated request, not only AQL - including the single-node routing of xref:rest-facade.adoc[§7a] and the explicit write target required by xref:follow-up-routing.adoc[§12.4]. The AQL directive, by construction, applies only to AQL. That reach is a second reason the header cannot simply be dropped in favour of the directive.
+* Because support for both is mandatory, a gateway does not declare which mechanisms it accepts: the only conformant answer is "both", so there is nothing for a client to discover (xref:rest-facade.adoc#targeting-not-declared[§7a.2]).
+
+=== 8.4.1 Precedence and conflict
+
+* [[targeting-precedence]]"Both" here means the AQL directive and the header, the only two mechanisms that exist (§8.4). If both appear in one request, the gateway MUST NOT silently merge them or silently prefer one. If the two node sets are identical, the request proceeds. If they differ, the gateway MUST reject with `400` and an error naming both sets, so that it never guesses which one the client meant. _(xref:requirements.adoc#n35[N35].)_
+* [[listless-with-header]]A list-less directive names no node set, so it never conflicts with the header. With both present, the header's node set applies and the directive's alias is bound. Only two lists that differ are a `400`. _(xref:requirements.adoc#n35[N35].)_
+* An endpoint identifier unknown to the registry MUST be rejected with `400`, under either mechanism. An endpoint that is known but where the patient is `not-resolved` is reported, not errored (§8.1).
+
+== 8.5 Why not standardise on one
+
+Both mechanisms stay in the specification because they fail in opposite directions:
+
+[cols="1,2,2"]
+|===
+| | `FROM ENDPOINT` (in AQL) | `openEHR-federation-endpoint` header (outside AQL)
+
+| Self-contained
+| *Yes* - the query text is the whole request; it can be logged, replayed and diffed as one artefact.
+| No - the request is the query plus its context.
+
+| Requires AQL grammar extension
+| *Yes* - this is a federation-only extension to AQL, and a node would reject it.
+| No - the AQL stays exactly conformant, which also lets the gateway forward it unchanged.
+
+| Works for stored / user-authored queries
+| Poorly - retargeting rewrites the artefact (§8.4).
+| *Yes* - one stored query, many targetings.
+
+| Works for non-AQL requests (writes, ITS-REST)
+| No.
+| *Yes* (xref:rest-facade.adoc[§7a], xref:follow-up-routing.adoc[§12.4]).
+|===
+
+The gateway therefore carries the cost of supporting both, and the client picks the one that suits it.

@@ -54,6 +54,7 @@ make migrate-all          # Migrate all repositories to Antora structure
 make generate-uml-classes-all  # Regenerate ROOT UML class partials via bmm-publisher (Docker)
 make validate-all         # Validate all repositories
 make check-class-map      # Check class_* in global-vars.yml against the spec repos' class includes
+make check-fdr            # ITS-FDR gates (prose § refs, traceability, anchors, schemas); needs a build
 make build-local          # Build the site using antora-playbook-local.yml
 make preview              # Start local server at http://localhost:8080
 
@@ -104,7 +105,8 @@ There are **no automated tests**. Verification is manual:
 1. Run `make build-local` and check for build errors (also review `build.log`).
 2. Run `make preview` and inspect the generated HTML at `http://localhost:8080`.
 3. Run `make validate-structure REPO=<repo>` to validate Antora directory structure.
-4. After changing `class_*` entries in `resources/global-vars.yml`, or after a new release, run `make check-class-map`. It reads each repo's newest `release/*` branch, where unversioned xrefs go, and reports entries that miss the page including the class partial, with a suggested entry.
+4. After changing anything under `specs/ITS-FDR/`, run `make build-local` then `make check-fdr` (the spec's own gates: prose § references, requirement traceability, in-page anchors of the built site, JSON examples against the published schemas).
+5. After changing `class_*` entries in `resources/global-vars.yml`, or after a new release, run `make check-class-map`. It reads each repo's newest `release/*` branch, where unversioned xrefs go, and reports entries that miss the page including the class partial, with a suggested entry.
 
 ---
 
@@ -147,6 +149,9 @@ antora-openehr/
 ├── caddy/
 │   └── Caddyfile                # Caddy config for test profile
 ├── repos/                       # Cloned specification repos (local builds)
+├── specs/                       # Components authored natively in Antora; a playbook content source, NEVER migrated
+│   └── ITS-FDR/                 # Federation Tier with AQL (README.md = provenance; LICENSE CC0; tools/ = vendored gates)
+│       └── Release-1.0.0/       # antora.yml + modules/ROOT (landing) + modules/federation_aql (spec, verbatim)
 ├── examples/                    # Before/after structure samples
 ├── docs/                        # Placeholder for GitHub published docs
 └── build/                       # Generated output (gitignored)
@@ -253,6 +258,7 @@ Standard AsciiDoc with Antora extensions. Follow existing patterns in the codeba
 - **AsciiDoc extension load order**: in the playbook, `patch-asciidoctor-bibtex-lines.js` MUST be registered **before** the `@ayowel/asciidoctor-bibtex-js` extension — its `playbookBuilt`-stage monkey-patch type-guards `TreeProcessor.search_and_flag_inline_macros` / `process_inline_macros` against non-string lines, preventing crashes on lines emitted by other processors.
 - **Landing-page abstracts**: step 13 reads `scripts/resources/abstracts/<COMPONENT>.adoc` for module abstracts and (when present) updates `manifest.json.summary` for matching modules. Abstract files are organized by `// @SECTION` blocks (e.g., `@overview`, `@spec:foundation_types`).
 - **Class examples**: the per-class JSON examples are kept in `scripts/resources/class-examples/<COMPONENT>/<class>.adoc`, not in the spec repos, because a re-run of the migration removes `modules/`. Step 2a copies them to `modules/ROOT/partials/examples/` on the `development` branch only (`CLASS_EXAMPLES=1` forces, `0` skips), and step 3a passes that folder to bmm-publisher (`--examples-dir`, 0.13.0+) for the Example tab. Edit examples here until the migration is final.
+- **Native Antora components (`specs/`)**: `specs/<COMPONENT>/` holds components authored natively in Antora; it is a content source of the playbooks (`url: .`, `branches: HEAD`, `start_paths: specs/<COMPONENT>/Release-*`), never migrated; edit there. ITS-FDR's spec text is a copy of `syntaric/openehr-federation-spec` at `b40a29a`, published here as release 1.0.0 (only the spec's own release numbers were changed), and must not be edited here except by the spec's editors/SEC; see `specs/ITS-FDR/README.md`. A new release is a new sibling `Release-x.y.z/` directory. `make check-fdr` runs its vendored gates (`tools/*.sh`, driven by `SPEC_REPO`/`SPEC_PAGES`/`SPEC_SCHEMAS`/`AJV`).
 - **Shared helpers**: `scripts/migration/_lib.sh` is sourced by `main-migrate-repo.sh` and steps 3, 3a, 4, 6, 7, 8 (chapter-list extraction, `strip_master_prefix`, `git_move_preserve_history`, `rm_rf_repo_path`, BMM id helpers, etc.). Editing any consumer? Check `_lib.sh` first.
 
 ---
@@ -262,6 +268,8 @@ Standard AsciiDoc with Antora extensions. Follow existing patterns in the codeba
 The project manages these openEHR specification repos (cloned into `repos/`):
 
 `specifications-BASE`, `specifications-RM`, `specifications-AM`, `specifications-LANG`, `specifications-SM`, `specifications-QUERY`, `specifications-PROC`, `specifications-CDS`, `specifications-CNF`, `specifications-ITS-REST`, `specifications-TERM`
+
+One more component is kept **in this repo**, not in `repos/`: **ITS-FDR** (Federation Tier with AQL) under `specs/ITS-FDR/`, ITS zone next to ITS-REST. It is not in `SPECS_REPOS` and no migration step touches it.
 
 ---
 

@@ -1,0 +1,125 @@
+@startuml federation_three_tiers
+title The three tiers - centralized and distributed gateway topologies
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 200
+skinparam roundcorner 6
+skinparam shadowing false
+skinparam ArrowFontSize 11
+skinparam NoteFontSize 11
+skinparam DefaultTextAlignment center
+skinparam NoteBackgroundColor #FFF8DC
+skinparam NoteBorderColor #C8B560
+hide stereotype
+skinparam rectangle {
+  BackgroundColor<<panel>> #FFFFFF
+  BorderColor<<panel>> #FFFFFF
+  BackgroundColor<<tier>> #F4F7FA
+  BorderColor<<tier>> #7A8B9A
+  BackgroundColor<<fed>> #EAF3EA
+  BorderColor<<fed>> #4E8A4E
+  BorderThickness<<fed>> 2
+  BackgroundColor<<gw>> #DCE9F5
+  BorderColor<<gw>> #35618E
+  BackgroundColor<<node>> #FDF1DC
+  BorderColor<<node>> #B5842E
+  BackgroundColor<<svc>> #F0E6F2
+  BorderColor<<svc>> #7B5E86
+}
+
+' ═════════════════════════════════════════════════════════════
+' Panel 1 - centralized gateway
+' ═════════════════════════════════════════════════════════════
+rectangle "= CENTRALIZED\n" <<panel>> as P1 {
+
+  rectangle "**Application tier**" <<tier>> as A1 {
+    rectangle "Client application\n//sends façade AQL · consumes combined result//\n//initiates follow-up reads / writes//" as C1
+  }
+
+  rectangle "**Federation** - the virtual CDR\n//governed membership boundary//" <<fed>> as F1 {
+
+    rectangle "**Federation Tier**" <<tier>> as FT1 {
+      rectangle "**Gateway**\nfaçade API · resolve · fan-out\ncombine / annotate · route follow-ups" <<gw>> as G1
+    }
+
+    rectangle "**Node tier**" <<tier>> as N1 {
+      rectangle "**Node**\nCDR + AQL API" <<node>> as NC1
+      rectangle "**Node**\nCDR + AQL API" <<node>> as NB1
+      rectangle "**Node**\nCDR + AQL API" <<node>> as NA1
+    }
+  }
+
+  rectangle "**Step-1 services**\n//outside AQL · outside the federation//" <<svc>> as S1 {
+    rectangle "**Localization**\n//candidate nodes//\n" <<svc>> as L1
+    rectangle "**Addressing**\n//PIX Mgr +//\n//CDR base URLs//" <<svc>> as AD1
+    rectangle "**Cross-reference**\n//patientId →//\n//local ehr_id//" <<svc>> as X1
+    L1 -[hidden]right- AD1
+    AD1 -[hidden]right- X1
+  }
+
+  C1 -down-> G1 : **Step 0**\nfaçade AQL
+  G1 -up[#35618E,dashed]-> C1 : **Step 3**\ncombined rows\n+ meta
+  G1 -right-> S1 : **Step 1**\nresolve subject →\n{node, ehr_id}
+
+  G1 -down-> NA1
+  G1 -down-> NB1 : **Step 2**\nstandard AQL\nby ehr_id
+  G1 -down-> NC1
+
+  note bottom of N1
+    **No `subject` crosses this line.**
+    A node receives only a local `ehr_id` and runs
+    ordinary, non-federated AQL - it need not know
+    it is part of a federation. //(N2, N5)//
+  end note
+}
+'
+'' ═════════════════════════════════════════════════════════════
+'' Panel 2 - distributed gateway
+'' ═════════════════════════════════════════════════════════════
+'rectangle "= DISTRIBUTED\n//a gateway per node - same federation, same membership//" <<panel>> as P2 {
+'
+'  rectangle "**Application tier** " <<tier>> as A2 {
+'    rectangle "Client application\n//may enter at any gateway//" as C2
+'  }
+'
+'  rectangle "**Federation** - the virtual CDR\n//one boundary · one membership · N gateways//" <<fed>> as F2 {
+'
+'    rectangle "**Federation Tier** " <<tier>> as FT2 {
+'      rectangle "**Gateway A**" <<gw>> as G2A
+'      rectangle "**Gateway B**" <<gw>> as G2B
+'      rectangle "**Gateway C**" <<gw>> as G2C
+'      G2A -[hidden]right- G2B
+'      G2B -[hidden]right- G2C
+'    }
+'
+'    rectangle "**Node tier** " <<tier>> as N2 {
+'      rectangle "**Node A**\nCDR + AQL API" <<node>> as NA2
+'      rectangle "**Node B**\nCDR + AQL API" <<node>> as NB2
+'      rectangle "**Node C**\nCDR + AQL API" <<node>> as NC2
+'      NA2 -[hidden]right- NB2
+'      NB2 -[hidden]right- NC2
+'    }
+'  }
+'
+'  C2 -down-> G2A : façade AQL\n//(entry point)//
+'
+'  G2A -down-> NA2
+'  G2A -down-> NB2
+'  G2A -down-> NC2
+'
+'  G2B -down[#999999,dashed]-> NB2
+'  G2C -down[#999999,dashed]-> NC2
+'
+'  note bottom of N2
+'    The **entry** gateway fans out across the **same** node set
+'    any other gateway would. Gateways B and C are idle for
+'    this query (dashed) but are peers, not a second tier.
+'    This is a choice about **where the Federation-Tier role runs** —
+'    **not** a second federation boundary. Federation-of-federations
+'    is out of scope in v1. //(§3.3)//
+'  end note
+'}
+'
+'P1 -[hidden]right- P2
+
+@enduml

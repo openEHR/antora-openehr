@@ -1,0 +1,199 @@
+= 20. Informative Annex B - Dutch Generic Functions binding (regional alternative)
+
+This annex documents a regional alternative to the IHE bindings: the *Netherlands - Generic Functions for data exchange* Implementation Guide (Nuts `nl-generic-functions-ig`, v0.3.0, published by Stichting Nuts, package `fhir.nl.gf#0.3.0` on FHIR R4). A Dutch deployment MAY satisfy the normative requirements using these Generic Functions in place of (or alongside) the IHE profiles. The IG's narrative pages are titled _Localization, Care Services Directory, Routing, Consent, Identification, Authentication, Authorization_; in prose the functions are referred to as GF-Localization, GFA (Addressing), GF-Identification, GF-Authentication, GF-Authorization and GF-Consent.
+
+[NOTE]
+.Localization and consent are coupled in this annex on purpose, and only here
+====
+The Dutch Generic Functions bundle localization with the consent check. The NVI lookup is followed by a `HEAD` against the data holder whose status already reflects consent (§B.1), and Mitz answers a closed allow/deny question and does not expose consents for inspection (§B.6). This annex describes that coupling because it is what the Dutch stack actually does.
+
+It is not the model of the normative body, which keeps the two apart: localization yields candidates (xref:requirements.adoc#n4[N4]), consent is enforced at the node (xref:requirements.adoc#n27[N27]), and Step-1 pre-filtering, which is what Mitz provides here, is optional (xref:requirements.adoc#n27a[N27a], xref:localization.adoc#consent-aware-localization[§14.3]). A Dutch deployment therefore has both the Mitz pre-filter and each node's own check before it releases data, and Mitz does not discharge the latter.
+====
+
+== B.1 GF-Localization (satisfies N4 / §14)
+
+* One national *Medical Record Localization Service*, the *NVI* (_Nationale Verwijs Index_), indexed per data holder by a *Local Metadata Register (LMR)* (the IG allows reusing a data holder's FHIR interface as its LMR).
+* The localization record is a `DocumentReference` (profile _NL-GF-Localization-DocumentReference_) stating "provider X has data of type Y for patient Z"; the patient is identified by a *pseudonymised BSN* (NamingSystem `http://fhir.nl/fhir/NamingSystem/pseudo-bsn`), the type is fixed to LOINC `55188-7` ("Patient data Document"), and the custodian is a *URA*.
+* *Consent is checked with an HTTP `HEAD`* request against the data holder. The HTTP status, `200 OK` for instance, reveals whether the holder has data for the patient and whether consent permits exposure.
+* BSN pseudonymisation uses a national *Pseudonymization Service* (polymorphic pseudonyms; Logius BSNk-pp).
+
+== B.2 GF-Addressing (satisfies N21 / §15)
+
+* The IG's *"Care Services Directory"* follows *IHE mCSD*, using the *LRZa* (_Landelijke Register Zorgaanbieders_) as the master source (the "Root Administration Directory").
+* It distinguishes an *Administration Directory* (write side, where an Update Client syncs via FHIR `_history` + `_since`) from a *Query Directory* (read side), a naming refinement over mCSD's single "Directory."
+* Profiles include _NL-GF-Organization_, _NL-GF-Endpoints_, _NL-GF-HealthcareService_, _NL-GF-Location_, _NL-GF-PractitionerRole_. The Administration Directory requires *mTLS* with qualified (PKIoverheid) certificates.
+* *Reconciliation note (xref:addressing.adoc[§15.2]):* GF `Endpoint`s use `connectionType = hl7-fhir-rest`, and one example uses `dicom-wado-rs`. An openEHR Query API endpoint MUST use a defined openEHR `connectionType` such as `openehr-rest-query`, not `hl7-fhir-rest` (xref:requirements.adoc#n19[N19], xref:conformance.adoc#cp-20[CP-20]).
+
+== B.3 GF-Identification (supports §5, §15)
+
+* Authentic sources: *patient* by BSN (BRP/RvIG), pseudonymised via `pseudo-bsn`; *practitioner* by UZI/DEZI number (CIBG Dezi-register); *care provider* by *URA* number (CIBG URA-register); *non-care-provider organizations* (e.g. EHR vendors) by *KvK* number (`http://www.kvk.nl/`); care-provider roles by Nictiz role codes (`2.16.840.1.113883.2.4.15.1060`). *Data objects* each get a globally resolvable URL - aligning with the openEHR practice of resolvable version uids (xref:follow-up-routing.adoc[§12]).
+
+== B.4 GF-Authentication (satisfies N24, N25 / §13.1)
+
+* *A profile of the base exchange.* GF-Authentication uses the same *OAuth 2.0* + *RFC 7523* foundation as xref:security.adoc#identity-conveyance[§13.1] and specialises it in two ways: RFC 7523 appears in both roles (authorization grant _and_ client-authentication assertion), and the resulting access tokens are sender-constrained. A node able to verify the base RFC 7523 client assertion is verifying the same construct here, with additional GF-specific claims and validation.
+* Based on *OAuth 2.0* with the *RFC 7523* JWT authorization-grant + client-authentication-assertion extension (transaction *GFI-004*). The JWT authorization grant carries a *Verifiable Presentation*; the client-authentication assertion conveys the client's own identity.
+* Entity identifiers are `did:web` Decentralized Identifiers (DID 1.0; secured by DNSSEC/HTTPS; transaction *GFI-001*); claims are *Verifiable Credentials 1.1* issued via OpenID4VCI 1.0 (*GFI-002*), with a Bitstring Status List for revocation (*GFI-003*).
+* Access tokens are sender-constrained with DPoP (RFC 9449, _Demonstrating Proof-of-Possession at the Application Layer_; transaction *GFI-005*). DPoP is a GF addition; the base profile in xref:security.adoc#identity-conveyance[§13.1] does not require sender-constraining.
+* GF-Authentication is the regional realisation of the White Paper's *Conformance Point #2* (signed-JWT identity conveyance).
+
+[#harmonised-bgz-authn]
+== B.4a Harmonised BgZ/eOverdracht authentication (VWS, July 2026)
+
+*§B.4a is a national track distinct from, and not a refinement of, the Nuts Generic-Functions profile of §B.4.* The two arrive at different technical answers to the same question. §B.4 authenticates with RFC 7523 in both roles, `did:web` entity identifiers, Verifiable Credentials and DPoP; the track described here authenticates with `private_key_jwt` under FAPI 2.0, URA organization identifiers from the UZI register, and RAR-carried attributes. A Dutch deployment SHOULD establish which of the two applies to it. Because they are not silently mergeable, this annex documents them separately.
+
+The source is a VWS memo, *Harmonisatie van authenticatie en autorisatie voor de gegevensuitwisselingen BgZ en eOverdracht*, **concept v0.9, 13 July 2026**. Everything in this subsection is informative and attributed to that memo. See the caveat at the end: it is a direction, not a ratified standard.
+
+=== B.4a.1 Legal frame
+
+* Each care provider is itself responsible for authenticating its own clinicians and systems, as an independent controller under the AVG (GDPR) and the Wabvpz. The memo says plainly that the source-holding provider is therefore not responsible for authenticating the exchange partner's clinicians or systems, and may rely on the partner's assertion that it did so.
+* Across the organizational boundary, only the counterpart organization's identity is verified. The source-holding provider is responsible for that.
+* The organization identity is legally anchored: the *URA* (_UZI-RegisterAbonneenummer_) from the *UZI register* under the Wabvpz is the system-wide unique organization identifier, and the memo requires it in both BgZ and eOverdracht.
+* For eOverdracht and a BgZ referral, a starting treatment relationship is required but need not be recorded in writing. The WGBO provides the legal basis, and the patient's consent is taken to be already contained in their agreement to the referral. A separate consent check at the referring provider is therefore not needed for these cases.
+* The memo also notes that the forthcoming *Dezi* regime changes the provider-internal authentication of clinicians (it places requirements on the local login means) but does not change this division of responsibility, and therefore does not change the inter-provider exchange.
+
+The memo's frame is the *federated trust model* named in xref:security.adoc#authn-deployment-decisions[§13.4]: each participant authenticates its own, the boundary verifies organizations, and mandatory norms (NEN 7510/7512/7513), admission requirements, ongoing audit and supervision, and logging and liability afterwards make the trust non-optional and suffice to establish retrospectively which clinician or system at the other provider requested the data.
+
+=== B.4a.2 Technical choices
+
+* *OAuth 2.0* as the baseline.
+* The *FAPI 2.0* security profile on top of it: asymmetric client authentication (no shared secrets), sender-constrained access tokens, mandatory transport security, and strict token/request validation (`iss`, `aud`, `exp`, and a unique `jti` against replay).
+* The client-credentials flow: there is no interactive user in the exchange, because the clinician is already authenticated within their own domain and the exchange is system-to-system.
+* *`private_key_jwt`* for client authentication in place of an mTLS client certificate, which decouples organization identity from the transport certificate on purpose. The memo's reasoning is the trap xref:security.adoc#authn-token-binding[§13.4] names: a Veilig-Netwerk transport certificate is not solely for provider identification and may be held by a service provider, so it does not always identify the care provider itself. `private_key_jwt` is independent of the transport and survives that case, and existing infrastructure already supports it. The memo cites the Nuts node, which publishes public keys at a web endpoint.
+* *Both the token request and the access token are signed by the issuing organization* and verified via that organization's *JWKS* endpoint. Because mTLS was dropped as the authentication means, signing the access token keeps the organization identity (URA) cryptographically verifiable at every point in the chain.
+* *mTLS remains required at the transport layer*, provisionally on UZI server certificates or PKIoverheid certificates, pending whatever the GIS Veilig Netwerk ultimately requires. The memo separates transport trust from application trust and keeps both.
+
+=== B.4a.3 Purpose of use via Rich Authorization Requests
+
+The client-credentials flow carries no healthcare-specific information of its own, so the healthcare attributes travel in an *RFC 9396 Rich Authorization Requests* `authorization_details` object. The memo prefers RAR over the IHE JWT IUA extension and the FHIR UDAP B2B Authorization Extension Object because RAR is generic and extensible and avoids creating yet another system-specific extension. It also notes that IHE IUA itself names RAR as a development direction.
+
+The memo's example shape:
+
+[source,json]
+----
+{
+  "authorization_details": [
+    {
+      "type": "nl-gis-v1",
+      "purpose_of_use": "http://terminology.hl7.org/CodeSystem/v3-ActReason|TREAT",
+      "locations": ["https://fhir.zorgaanbieder-b.nl/fhir"],
+      "locations_organization_id": "urn:oid:2.16.528.1.1007.3.3.12345678"
+    }
+  ]
+}
+----
+
+For the query use case (§B.4a.4) the organization type is added:
+
+[source,json]
+----
+{
+  "authorization_details": [
+    {
+      "type": "nl-gis-v1",
+      "subject_organisation_type": "https://www.cbs.nl/standaard-bedrijfsindeling|8610",
+      "purpose_of_use": "http://terminology.hl7.org/CodeSystem/v3-ActReason|TREAT",
+      "locations": ["https://fhir.zorgaanbieder-b.nl/fhir"],
+      "locations_organization_id": "urn:oid:2.16.528.1.1007.3.3.12345678"
+    }
+  ]
+}
+----
+
+Only the organization identity (URA) is cryptographically verifiable this way. The purpose - and, for a query, the organization type - travels as a declaration by the requesting organization, which is responsible and liable for it.
+
+=== B.4a.4 Relevance to this specification
+
+The memo's in-scope case is directed sending between two providers, preceded by a referral or transfer, which a federated AQL query is not. The matching case is the one the memo looks ahead to: the query use case (_bevraging_), a data request with no prior referral and therefore no implied consent. An undirected federated query (xref:aql-facade.adoc[§7]) has that shape, and the memo's own analysis of it is directly relevant here.
+
+The memo names two open items for it:
+
+. *Organization type must travel*, so the source can run a consent and legal-basis check against Mitz. Some categories of provider may request another category's medical data only with explicit consent. `subject_organisation_type` above carries it, and it is the input that xref:requirements.adoc#n27[N27]'s node-side consent gate and the optional Step-1 Mitz pre-filter of xref:requirements.adoc#n27a[N27a] / §B.6 need in order to decide at all. The memo states that the source-holding provider is not responsible for authenticating the requesting provider's organization type, and that the type therefore need not be signed by an authentic source of organization types. It travels as a declaration, like the purpose.
+. *Establishing the treatment relationship at query time* needs its own analysis. Because it cannot be inferred from a prior referral, the memo expects an additional security measure will be needed to establish and secure the patient–provider treatment relationship at the moment of the request, depending on the care application, and says outright that how it is derived or established requires separate work. This specification does not settle it either.
+
+The memo also notes that other purposes and legal bases - emergency/vital interest, a citizen/PGO request, a research request - can use the same authorization protocol with a different `purpose_of_use` value, each with its own basis and consent requirements to be worked out.
+
+[IMPORTANT]
+.Status of this source
+====
+The memo is concept v0.9, dated 13 July 2026. It is a direction of travel answering an escalation, not a ratified standard, and nothing in §B.4a should be read as settled or as a conformance requirement. In particular it is not a second normative binding. xref:security.adoc#authn-deployment-decisions[§13.4] states the obligations, and this subsection illustrates one national programme's answers to them.
+====
+
+== B.5 GF-Authorization (satisfies N26, N27 / §13.2)
+
+* *Policy-Based Access Control (PBAC)*, with policies that SHALL be expressed in the Rego policy language, for unambiguity and automated testing. Implementers need not run Rego in production, but the outcome SHALL match the specified policy. (The IG names Rego, not "Open Policy Agent"; its reference decision point is the "Knooppunt PDP.")
+* The policy *Context* includes `mitz_consent`, a boolean saying whether the Mitz consent check allows sharing. The decision output is the Rego `allow` boolean, with optional non-normative `reasons[]`.
+* Authoritative inputs: PKIoverheid certs, CIBG-Dezi, CIBG-LRZa, Vektis (org type), VZVZ-Mitz (consent), Nictiz qualifications; Subject/Resource/Action/Context data model with a Policy Information Point (PIP).
+
+== B.6 GF-Consent (realises N27a / §13.2.1; N27 still applies at the node)
+
+* *Mitz* is leading for the national catalogue of consent preferences (the _Mitz afsprakenstelsel_), commonly called the *OTV* (_Online ToestemmingsVoorziening_).
+* Mitz answers a *closed authorization question* (_Gesloten Autorisatievraag_) with an allow/deny policy decision; Mitz consents cannot be queried directly. Mitz is the regional realisation of the optional Step-1 consent pre-filter (xref:requirements.adoc#n27a[N27a]).
+* Also defined: *DHTV* (_dossierhouderstoestemmingsvoorziening_, a local explicit-consent store, reusing IHE PCF Consent Recorder/Registry actors) and *implicit* consent (_Veronderstelde Toestemming_, NEN 7517).
+
+[#pseudonymised-walkthrough]
+== B.7 Worked example - a pseudonymised identifier through Step 1
+
+xref:reference-flow.adoc[§4.4] and xref:identity-resolution.adoc[§5.3] state that the identifier a client presents MAY be a pseudonymised one, and that a node therefore need store no directly identifying identifier in the CDR (xref:requirements.adoc#n5[N5]). This section walks that claim through concretely, on the Dutch stack. It is informative: it illustrates the normative model and adds nothing to it.
+
+The scenario: a clinician's application queries the federation for a patient it knows by BSN, the Dutch citizen-service number, which is a directly identifying identifier (xref:identity-resolution.adoc#directly-identifying-identifier[§5.1]). Two nodes hold data for this patient. Neither stores the BSN.
+
+Who pseudonymises is a deployment choice, and this walkthrough has to pick one to stay concrete. Here the application exchanges the BSN for a pseudonym before it calls the gateway, so the gateway never holds the BSN. The other arrangement, where the client presents the BSN and the gateway exchanges it, is equally conformant; see the note at the end. Everything from Step 1a onwards is identical either way.
+
+*Step 0 - the façade query.* Having exchanged the BSN for a pseudonymised BSN at the national Pseudonymization Service (§B.1), the application submits ordinary AQL naming only that pseudonym:
+
+[source,sql]
+----
+SELECT c/uid/value AS composition_id, c/context/start_time/value AS start_time
+FROM EHR e CONTAINS COMPOSITION c
+WHERE e/ehr_status/subject/external_ref/id/value = 'pbsn:8f2a...c41'
+----
+
+The identifier's issuing namespace is `http://fhir.nl/fhir/NamingSystem/pseudo-bsn`. Nothing about this query is federation-specific (xref:requirements.adoc#n1[N1], xref:requirements.adoc#n2[N2]).
+
+*Step 1a - localization.* The gateway asks the NVI which data holders hold data for `pbsn:8f2a...c41` (§B.1). The NVI is indexed on the pseudonym, not the BSN. It returns two custodians by URA, and a `HEAD` against each reflects the Mitz consent state (§B.1, §B.6), which this deployment uses as the optional Step-1 pre-filter (xref:requirements.adoc#n27a[N27a]). Both pass. Registry members the NVI did not return are reported `not-localized` (xref:partial-results.adoc#endpoint-status[§11.1]).
+
+*Step 1b - addressing.* The Care Services Directory (§B.2) resolves each URA to its endpoints: a PIX Manager and a CDR base URL.
+
+*Step 1c - cross-reference.* For each node the gateway calls PIXm `$ihe-pix` with `sourceIdentifier=pbsn:8f2a...c41` and `targetSystem` set to that node's `ehr_id` system. Each PIX Manager returns the node's local `ehr_id`:
+
+[cols="1,2,2"]
+|===
+| Node | Presented identifier | Returned `ehr_id`
+
+| `node_1` (URA 12345678)
+| `pbsn:8f2a...c41`
+| `7d8e...a19`
+
+| `node_2` (URA 87654321)
+| `pbsn:8f2a...c41`
+| `b3c1...5f0`
+|===
+
+The two `ehr_id` s are unrelated values: an `ehr_id` is meaningless across CDRs (xref:terminology.adoc[§ Key terms]).
+
+*Step 2 - dispatch.* Each node receives standard, non-federated AQL keyed on its own `ehr_id`. The pseudonym is consumed at the gateway and does not survive into the dispatched query, its path, its query string or its headers (xref:requirements.adoc#n33[N33], xref:identity-resolution.adoc#identifier-hygiene[§5.4]):
+
+[source,sql]
+----
+SELECT c/uid/value AS composition_id, c/context/start_time/value AS start_time
+FROM EHR e[ehr_id/value='7d8e...a19'] CONTAINS COMPOSITION c
+----
+
+*Step 3 - combine.* The gateway concatenates the rows and emits `meta.federation.endpoints[]`. Had the façade query SELECTed `subject`, the value returned would be the re-injected input `pbsn:8f2a...c41` - not a value read from either CDR (xref:requirements.adoc#n5[N5]).
+
+*What this demonstrates.* At no point does a node receive, store or return the BSN, and it never receives the pseudonym either, because the pseudonym is a resolution input consumed before dispatch. The only patient-locating value reaching a node is its own local `ehr_id`. N5's claim is only this: the federation requires no directly identifying identifier in `EHR_STATUS.subject` at any node.
+
+[NOTE]
+.The gateway MAY hold the BSN instead - this is a deployment choice, not a conformance one
+====
+In the variant above the application pseudonymises, so the gateway never sees a BSN. A deployment MAY equally have the client present the BSN and the gateway exchange it at the Pseudonymization Service during Step 1. That arrangement is the ordinary façade case of xref:aql-facade.adoc[§7]: a client identifies the patient the openEHR-idiomatic way, and the gateway consumes that identifier in resolution.
+
+Both are conformant, because the normative constraints are about what reaches a node, not about what a client may hand a gateway:
+
+* xref:requirements.adoc#n5[N5] constrains what the federation may require a node to store. It does not say a gateway may not receive a directly identifying identifier.
+* xref:requirements.adoc#n33[N33] and xref:identity-resolution.adoc#identifier-hygiene[§5.4] require the gateway to consume and strip such an identifier, or reject the query, so it never appears in the dispatched AQL, path, query string or headers. A gateway that receives a BSN and discharges N33 is as conformant as one that never receives it.
+
+The two differ in privacy posture, a deployment decision with real consequences. Pseudonymising at the application keeps the directly identifying identifier out of the gateway's trust boundary entirely, at the cost of putting the Pseudonymization Service in front of every client. Pseudonymising at the gateway centralises that integration, at the cost of the gateway becoming a system that processes BSNs, with the logging, retention and audit obligations that follow under its own governance. Neither is mandated here.
+====
+
+Two further limits apply. First, this constrains what the federation may require of a node; a node remains free to hold a BSN for its own purposes under its own governance (xref:requirements.adoc#n34[N34]). Second, the pseudonymisation itself is out of scope - this specification leaves the properties of the pseudonym to the Pseudonymization Service (§B.1).

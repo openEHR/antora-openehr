@@ -1,0 +1,228 @@
+= 11. Unresponsive endpoints & partial results
+
+[#endpoint-status]
+== 11.1 Primary carrier: `meta.federation.endpoints[]`
+
+Every node that was in scope MUST appear in `meta.federation.endpoints[]` with a status (and an error where relevant), whether or not it contributed rows (xref:requirements.adoc#n16[N16]). A registry member that was not in scope SHOULD appear as well, as `excluded` or `not-localized`, so that a client sees the whole federation and not a list silently truncated to the nodes that were asked; a gateway that omits them MUST NOT emit them under any other status. Unresponsive nodes MUST NOT contribute rows. The status set is:
+
+[cols="1,3"]
+|===
+| status | Meaning
+
+| `active`
+| Queried and responded.
+
+| `offline`
+| Known node, not reachable.
+
+| `time-out`
+| Reachable but did not respond within the gateway timeout.
+
+| `node-error`
+| Reached and answered, but with a failure instead of a result set: an HTTP error status, a malformed body, or a response the gateway could not use. The node's own error is carried in `error`. This is neither `offline`, because the node was reached, nor `active`, because nothing usable came back.
+
+| `not-resolved`
+| The cross-reference service returned no local `ehr_id` for the patient at this node (xref:identity-resolution.adoc[§5], xref:requirements.adoc#n6[N6]).
+
+| `consent-denied`
+| Consent did not permit this node's inclusion. Set either by an optional Step-1 consent pre-filter (xref:requirements.adoc#n27a[N27a], xref:security.adoc[§13.2.1]) or by the node itself refusing on consent grounds (xref:requirements.adoc#n27[N27]); deployments without a consent service use it only in the latter sense.
+
+| `excluded`
+| Excluded by a decision about this node: a directive that did not name it, say a directed `FROM ENDPOINT` set it is absent from, or an operator policy that removed it. Some authority acted, in contrast to `not-localized`, where none did.
+
+| `not-localized`
+| A registry member that localization did not return as a candidate for this query (xref:localization.adoc[§14]). The node was never asked, and nothing decided about it: no directive, no operator policy, no consent decision. An undirected query produces this status routinely and it is not a failure: a localizer naming three of nine members leaves six `not-localized`.
+|===
+
+The difference between the last two matters for audit. `excluded` records that something ruled the node out; `not-localized` records that nothing ruled it in. Neither means the node was asked and declined, which is `consent-denied`.
+
+The three statuses that describe an attempted request are likewise distinct on purpose. `offline` means no connection; `time-out` means a connection but no answer in time; `node-error` means an answer that was a failure. They map to different HTTP statuses under the default strategy (<<all-or-nothing,§11.4>>) and call for different recoveries, so a gateway MUST NOT fold a node error into `offline` or report it as `active` with an `error` attached.
+
+[[in-scope]]*What "in scope" means.* A node is *in scope* for a query if node selection put it there, whether localization named it or a directive did. A node reported `excluded` or `not-localized` was never in scope: one because a decision removed it before selection completed, the other because nothing selected it. Both are reported, so a client sees the whole federation picture and not a silently truncated list, but neither clears `meta.federation.complete` (<<completeness-flag,§11.4>>, xref:requirements.adoc#n37[N37]), because a query is not incomplete for failing to ask a node it never intended to ask. Every other status describes a node that was in scope and did not reach `active`, and so does clear the flag.
+
+*Which statuses fail the query.* Under the all-or-nothing default of <<all-or-nothing,§11.4>>, an in-scope node not reaching `active` does more than clear a flag: it fails the query (`504` or `424`). That consequence does not extend to every in-scope status, and the distinction is normative:
+
+[cols="1,1,3"]
+|===
+| status | In scope? | Consequence
+
+| `active`
+| yes
+| Contributed; nothing to report.
+
+| `offline`, `time-out`
+| yes
+| *Fails the query* under the default strategy, with `504` (<<all-or-nothing,§11.4>>). The node was asked and did not answer.
+
+| `node-error`
+| yes
+| *Fails the query* under the default strategy, with `424` (<<all-or-nothing,§11.4>>). The node was asked and answered with a failure.
+
+| `not-resolved`
+| yes
+| Clears `complete`; does not fail the query (<<not-resolved-carve-out,§11.3>>, xref:requirements.adoc#n6[N6]). "No local `ehr_id` here" is an answer.
+
+| `consent-denied`
+| yes
+| Clears `complete`; does not fail the query (<<not-resolved-carve-out,§11.3>>), because a refusal is a decision; the node did not fail to answer.
+
+| `excluded`, `not-localized`
+| no
+| Neither clears `complete` nor fails the query. Nothing was asked.
+|===
+
+[#http-status-mapping]
+== 11.2 HTTP status mapping (aligned with Exchange-Routing)
+
+The Tier maps errors as follows, aligning with the Exchange-Routing IG's exception table, which separates *intermediary-reported* from *destination-reported* exceptions.
+
+This table maps conditions that fail the request. Under the default all-or-nothing completion strategy (<<all-or-nothing,§11.4>>) a single in-scope node that was asked and did not answer does fail the request. Where a caller opted into best-effort with `openEHR-federation-completeness: partial`, the same condition is reported in `meta.federation.endpoints[]` and the request succeeds. The rows below that concern a single node's failure therefore name the completion strategy they assume. Where the two could be read differently, §11.4 governs: it is the more specific treatment, xref:requirements.adoc#n37[N37] restates it in the normative requirement set, and a client can be written against it.
+
+Two in-scope statuses are absent from this table and do not fail the request in either mode: `not-resolved` and `consent-denied` (<<not-resolved-carve-out,§11.3>>), because a node that answered "not this patient" or "not to you" has answered.
+
+[cols="3,1,2"]
+|===
+| Condition | HTTP | Origin
+
+| Patient/endpoint *cannot be resolved* to a destination
+| *404*
+| intermediary (gateway)
+
+| Node *connection timed out* or is unreachable (no response), under the *default all-or-nothing strategy* (xref:partial-results.adoc#all-or-nothing[§11.4])
+| *504*
+| intermediary (gateway); the failing response still carries `meta.federation.endpoints[]` with the node reported `time-out`/`offline` and `meta.federation.complete: false` (xref:partial-results.adoc#failure-carries-envelope[§11.4])
+
+| Node returned an *error*, under the *default all-or-nothing strategy* (xref:partial-results.adoc#all-or-nothing[§11.4])
+| *424*
+| intermediary (gateway); the node is reported `node-error` with its own error carried per endpoint, and the envelope is still present (xref:partial-results.adoc#failure-carries-envelope[§11.4])
+
+| Node *connection timed out* (no response), where *best-effort was opted into* (`openEHR-federation-completeness: partial`, xref:partial-results.adoc#best-effort[§11.4])
+| *200*
+| intermediary (gateway); the node is reported `time-out` in `meta.federation.endpoints[]` and `meta.federation.complete` is `false`
+
+| Gateway *internal error*
+| *500*
+| intermediary (gateway)
+
+| Node returned *not found* for the submitted path/resource
+| *404*
+| node (passed through)
+
+| *Invalid request* (e.g. bad AQL, un-reducible subject predicate, xref:aql-facade.adoc[§7.1])
+| *400*
+| gateway or node
+
+| Node *internal error*
+| *500*
+| node (passed through)
+
+| `ehr_id` *claimed by more than one node*, or a versioned write whose controlling system is not reachable (xref:requirements.adoc#n36[N36], xref:requirements.adoc#n42[N42])
+| *409*
+| intermediary (gateway)
+
+| An ITS-REST area the gateway does not expose (xref:requirements.adoc#n32[N32])
+| *501*
+| intermediary (gateway)
+|===
+
+A node's internal error maps to `500` and passes through, matching the Exchange-Routing IG's destination-reported column. The error is the destination's, and `502 Bad Gateway` would pin it on the intermediary. A gateway MAY separate the two in the per-endpoint `error` field, which carries per-node detail.
+
+== 11.3 "Patient found nowhere" is not a 404 - and not a 424
+
+If no node resolves the patient, so every endpoint is `not-resolved`, the correct response is HTTP 200 with an empty `rows` array and an explanatory `meta`, not a 404. A 404 is reserved for a gateway that cannot resolve a request to _any_ destination at all. The split keeps "the patient legitimately has no record in this federation" apart from "the request was unroutable."
+
+[IMPORTANT]
+.`not-resolved` is a legitimate empty answer, not a failed dependency
+====
+[[not-resolved-carve-out]]The all-or-nothing default of <<all-or-nothing,§11.4>> does not override this rule, although a naive reading of that default would break it.
+
+`not-resolved` is an in-scope status. It clears `meta.federation.complete`, and always has (xref:partial-results.adoc#in-scope[§11.1]). Read mechanically, "any in-scope node not reaching `active` fails the query" would turn every query for a patient the federation does not hold into a `424`, and every query where one node simply has no record for that patient into a failure. That is wrong twice over: it would make "this patient has no record here" look identical to "this node is broken", and it would fail the overwhelmingly common case of a patient whose data sits at three of nine members.
+
+*The carve-out, normatively:* a node reported `not-resolved` MUST NOT, on its own, fail the query. The cross-reference service answered "no local `ehr_id` here", and an answer is not an outage. A query in which every in-scope node is `not-resolved` MUST return `200` with empty `rows`, exactly as this section has always required, and a query in which some nodes are `not-resolved` and the rest reached `active` MUST return `200` with those rows. In both cases `meta.federation.complete` is `false`, because the gateway did not get an answer about the patient from every node it asked, and a client that cares can see which.
+
+This agrees with xref:requirements.adoc#n6[N6], which has always said `not-resolved` MUST NOT fail the whole query, and the new default leaves it alone. The statuses that do fail the query under <<all-or-nothing,§11.4>> describe a node that was asked and did not answer, or answered with an error: `offline`, `time-out` and `node-error`. `consent-denied` is likewise not a failure, because a node refusing on consent grounds has answered (see below).
+====
+
+A `consent-denied` node follows the same logic for the same reason. Consent is the node's gate (xref:requirements.adoc#n27[N27]), a refusal is a decision, not an outage, and a query MUST NOT fail because one node declined to release data it holds. Like `not-resolved` it clears `meta.federation.complete`, so the client is told coverage was incomplete, but it does not produce a `424`. A federation in which one patient's opt-out at one node failed every query about them would be unusable, and would leak that opt-out through the error.
+
+== 11.4 All-or-nothing is the default completion strategy (normative)
+
+A fan-out has to decide what to do when some nodes answer. This specification fixes that decision, because a client cannot interpret a result set without knowing which rule produced it.
+
+* [[all-or-nothing]]*The default strategy is all-or-nothing:* if an in-scope node (xref:partial-results.adoc#in-scope[§11.1]) was asked and did not answer - status `offline` or `time-out` - or answered with an error - status `node-error` - the gateway MUST fail the query instead of returning the rows it did obtain. The status is `504` where the cause is a timeout or unreachability and `424 Failed Dependency` where a node returned an error. Where one fan-out has both kinds, `504` takes precedence, because an unanswered node is an unknown and a retry or a `partial` request is the client's cheapest recovery, whereas a node error needs no retry to be read. The two in-scope statuses that represent an answer - `not-resolved` and `consent-denied` - do not fail the query; see the carve-out in <<not-resolved-carve-out,§11.3>> and the table in xref:partial-results.adoc#in-scope[§11.1]. _(xref:requirements.adoc#n37[N37].)_
++
+--
+*Why this is the default.* A partial clinical answer that looks exactly like a complete one is a safety hazard, and the hazard is asymmetric. A clinician who does not know a node was missing may reasonably conclude the data does not exist, that there is no allergy, no prior admission, no anticoagulant, and act on that absence. The flag of <<completeness-flag>> makes incompleteness detectable but not detected: it relies on every client, in every rendering path, checking a boolean nothing forces it to read. Failing closed removes the dependence on that discipline: a client that asked for the federation's answer and cannot be given it is told so.
+
+The same reasoning makes localization fail closed (xref:localization.adoc#localizer-unavailable[§14.1]), so that a degraded federation is visible as degraded instead of appearing empty.
+--
+* [[completeness-flag]]The gateway MUST make coverage machine-detectable, not merely inferable by scanning statuses. `meta.federation` MUST carry a `complete` boolean, `true` only when every in-scope node reached status `active`. A node reported `not-localized` (xref:partial-results.adoc#endpoint-status[§11.1]) was never in scope for this query and does not clear `meta.federation.complete`. Localization normally names only a subset of the federation; that is not an incomplete answer, and a flag that went false on nearly every undirected query would tell a client nothing. `complete` answers _"did every node I asked answer?"_, not _"did I ask every node?"_ The flag is required in both modes, and under neither is it redundant with the HTTP status: on the default strategy `false` appears on a failing response, and also on a `200` where the only in-scope statuses short of `active` were `not-resolved` or `consent-denied` (<<not-resolved-carve-out,§11.3>>). A client MUST therefore read the flag instead of inferring coverage from the status code. For FHIR-facing consumers, incompleteness also surfaces as an `OperationOutcome` warning (xref:conformance.adoc#cp-12[CP-12]). _(xref:requirements.adoc#n37[N37].)_
+* [[failure-carries-envelope]]*A failing response MUST still carry the diagnostic envelope.* A `504` or `424` under the default strategy MUST carry `meta.federation.endpoints[]` with the per-node status of every in-scope node, and `meta.federation.complete: false`. A client has to be able to see which node failed and why, so it can retry, route around it, raise it with the operator, or decide a `partial` answer would do after all. That only works if the error body keeps the envelope instead of collapsing to a bare status line. Of the requirements in this section, this one is the most likely to be dropped in implementation, and a gateway that drops it turns a diagnosable outage into an opaque one. _(xref:requirements.adoc#n37[N37], xref:conformance.adoc#cp-30[CP-30].)_
+* [[best-effort]]A deployment MAY offer best-effort as an opt-in mode, in which the gateway returns the rows it obtained from the nodes that answered within the timeout budget (§11.5), reports every other node in `meta.federation.endpoints[]` with its status, sets `meta.federation.complete: false`, and responds `200`. If offered it MUST be selected per request - the `openEHR-federation-completeness: partial` request header - and MUST be declared in `+OPTIONS {base}/+` (xref:rest-facade.adoc#options-root[§7a.2]). _(xref:requirements.adoc#n37[N37].)_
++
+--
+*Why the mode still exists.* A flagged partial answer can be more useful than no answer. A clinician who can see four of five records, and can see that the fifth system is down, is better served than one who gets an error, provided the missing coverage is shown to them and not merely present in the payload. Whether that trade-off is acceptable depends on the deployment and its clients, so the mode remains available and is opt-in: a caller that asks for `partial` has declared that it will handle a partial answer.
+
+Compared with earlier releases only the default changed: a client that sends no completeness header gets the all-or-nothing behaviour.
+--
+* The `openEHR-federation-completeness` header carries `all`, the default and now implicit, or `partial`. A gateway MUST accept `all` explicitly even though it is the default, so a client can state its requirement without relying on the default. A gateway that does not offer best-effort MUST reject `partial` instead of silently ignoring it.
+* Both strategies apply to reads. Neither applies to writes: a write is routed to exactly one node (xref:follow-up-routing.adoc[§12.4]) and either succeeds or fails there. There is no partial write in v1.
+* A node that returns an error, as opposed to not answering, is treated the same way for completeness purposes. It contributes no rows, appears as `node-error` with the node's error, and clears `meta.federation.complete`, failing the query with `424` under the default or being reported under `partial`.
+
+[#timeouts]
+== 11.5 Timeouts (normative)
+
+Timeouts are in scope. Leaving them to implementers would make the completeness semantics of §11.4 untestable, and a client cannot set its own deadline against a gateway whose behaviour it cannot predict. This specification fixes the decision structure and its visibility; the numbers are a deployment matter.
+
+* [[timeout-budget]]A gateway MUST operate with (a) a *per-node timeout* and (b) an *overall query budget*, and MUST apply both. When a node exceeds the per-node timeout, the gateway MUST abandon that node, mark it `time-out` in `meta.federation.endpoints[]`, and continue with the rest. When the overall budget expires, the gateway MUST stop waiting for all outstanding nodes, mark each `time-out`, and return what it has under §11.4. _(xref:requirements.adoc#n38[N38].)_
+* [[timeout-declared]]The values in force MUST be discoverable: `+OPTIONS {base}/+` reports `timeout.per_node_ms` and `timeout.overall_ms` (xref:rest-facade.adoc#options-root[§7a.2]), and every response MUST report, per endpoint, the elapsed time the gateway observed (xref:result-set.adoc#endpoint-meta[§9.5]). _(xref:requirements.adoc#n38[N38].)_
+* [[client-deadline]]A client MAY request a shorter budget with the standard `Prefer: wait=<seconds>` header. The gateway MUST honour a shorter client budget and MUST NOT extend beyond its own overall budget on a client's request, since a client cannot lengthen the gateway's deadline. The effective budget MUST be reported in `meta.federation.timeout`.
+* The gateway MUST NOT let a node's timeout cascade: abandoning a node MUST NOT abort in-flight requests to other nodes.
+* *What a client can rely on.* A conformant gateway answers within its declared overall budget, plus combining time. A `200` means every node it asked that holds the patient answered, unless the client opted into best-effort, in which case the answer may be partial and `meta.federation.complete` says so. `meta.federation.complete` and `meta.federation.endpoints[]` identify which nodes are missing and why, including on a `504`/`424` (xref:partial-results.adoc#failure-carries-envelope[§11.4]). A `time-out` or `node-error` node means *unknown*, never *no data*, and a client MUST NOT read such an endpoint as an empty result; the per-endpoint status set exists so that these cases stay distinguishable.
++
+A client MUST NOT assume that a `200` with `complete: false` cannot happen. It happens whenever `not-resolved` or `consent-denied` cleared the flag without failing the query (<<not-resolved-carve-out,§11.3>>). In that case the gateway is reporting incomplete coverage as §11.3 requires, and has not violated the default.
+* A node that answers after being abandoned MUST be ignored; the gateway MUST NOT emit rows outside the response it already returned. (An async request, §11.7, is the supported way to wait longer.)
+
+[#aggregation-and-ordering]
+== 11.6 Ordering, `LIMIT`, and aggregation across nodes (normative)
+
+`ORDER BY`, `LIMIT`/`OFFSET` and aggregate functions each execute inside a node (xref:requirements.adoc#n9[N9]), so their results cannot be taken at face value across a fan-out. The three cases have three different answers.
+
+=== 11.6.1 `ORDER BY` + `LIMIT` - re-executed at the Tier
+
+A federated `LIMIT n` cannot be pushed down as `LIMIT n` and then concatenated. Taking the first `n` rows of each node's locally ordered set and concatenating them yields a set that is neither globally ordered nor the global top `n`.
+
+* [[limit-reorder]]For a query with `ORDER BY` and `LIMIT n` and no `OFFSET`, the gateway MUST dispatch `LIMIT n` to each node, then apply the `ORDER BY` across the merged rows, and finally apply `LIMIT n` to the merged, re-ordered set. Dispatching `n` per node makes this correct, because under a total order the global top `n` is necessarily contained in the union of the per-node top `n`. _(xref:requirements.adoc#n39[N39].)_
+* The gateway MUST apply `ORDER BY` at the Tier whenever more than one node contributed rows, even if it also pushed it down (xref:requirements.adoc#n13[N13]). Pushing down is an optimisation; the merge at the Tier produces the true order.
+* `meta.federation.row_endpoints[]` (xref:result-set.adoc#row-endpoints[§9.5.1]) is aligned with the rows after this re-ordering and truncation, and never with a node's own row set.
+* Ordering MUST be deterministic. Where the `ORDER BY` keys tie, the gateway MUST break the tie on a stable secondary key (RECOMMENDED: `endpoint_id`, then uid), so repeating a query returns rows in the same order.
+
+=== 11.6.2 `OFFSET` - not correct across nodes
+
+* [[offset-limit]]`LIMIT n OFFSET k` with `k > 0` cannot be made correct by the same trick, because the global rows `k…k+n` are not contained in the per-node rows `k…k+n`. A gateway MUST NOT silently push `OFFSET` down and present the result as a correct global page. It MUST either
++
+--
+. reject the query with `400` and an error stating that offset-based paging is not supported across a fan-out; or
+. compute the page correctly by retrieving `k + n` rows per node, merging, ordering and slicing - permitted only where the gateway can bound `k + n` (it MUST reject when it cannot); or
+. serve the page from a materialised, ordered result it is holding for that query (§11.6.4).
+--
++
+Whichever it does, it MUST declare which in `+OPTIONS {base}/+`. _(xref:requirements.adoc#n39[N39].)_
+* The rule above is the concrete form of the "cross-node pagination is not guaranteed" non-goal (xref:scope.adoc[§2.3]). Not guaranteed means the gateway may not be silently wrong: it must refuse or be correct, never approximate.
+
+=== 11.6.3 Aggregates - the query is wrong, not the gateway
+
+`COUNT`, `SUM`, `AVG`, `MIN`, `MAX` fanned out and concatenated produce one row per node instead of a single aggregate. Summing them is right for `COUNT`/`SUM`, wrong for `AVG`, and right by accident for `MIN`/`MAX` only if the gateway knows to re-apply the function instead of concatenating.
+
+* [[aggregate-block]]Per xref:requirements.adoc#n14[N14] an undirected aggregate MUST be blocked. The gateway MUST reject it with `400` and an error saying why, namely that the aggregate cannot be computed correctly across the fan-out, and SHOULD suggest the two supported alternatives: pin the query to one node (xref:endpoint-directive.adoc[§8]), or select the underlying rows and aggregate in the application. Returning per-node aggregate rows as if they were the answer is forbidden, because it is the only failure mode here that a client cannot detect. _(xref:requirements.adoc#n39[N39].)_
+* A directed single-node aggregate is permitted and dispatched unchanged (xref:requirements.adoc#n14[N14]).
+* A gateway MAY also support *decomposable* aggregates over multiple nodes: `COUNT` and `SUM` by summing the per-node results, `MIN`/`MAX` by re-applying across them. The result must be exactly correct, and the aggregate must not be combined with `DISTINCT`, `GROUP BY` on a dimension that spans nodes, or de-duplication (§10), any of which breaks decomposability. `AVG` MUST NOT be decomposed this way unless the gateway also retrieves the per-node counts. A gateway supporting this MUST declare which functions in `+OPTIONS {base}/+`. A gateway that does not support it falls under the rule above, unchanged.
+* `GROUP BY` follows the same logic. Groups from different nodes with the same key MUST be merged at the Tier, or the query MUST be rejected, because emitting the same group key twice is a wrong answer.
+
+=== 11.6.4 Materialised result sets (optional)
+
+A gateway MAY hold an ordered, merged result set for a bounded period and serve `OFFSET`-based pages from it, as a cursor. If it does, `meta.federation` MUST carry the cursor handle and its expiry, and the gateway MUST NOT re-run the fan-out mid-cursor, because a page served from a re-run is not a page of the same result. The facility is OPTIONAL, and a deployment can use it to offer honest cross-node pagination today. A general solution is deferred (xref:future.adoc[§18]).
+
+== 11.7 Asynchronous long-running queries (optional)
+
+For long fan-outs, the Tier MAY support the Exchange-Routing async pattern: the client sends `Prefer: respond-async`, the Tier replies *202 Accepted* with a `Content-Location` polling URL, and the client polls until *200 OK* with the result. The pattern is OPTIONAL and does not change the result envelope (xref:result-set.adoc[§9]). Async is the supported way to exceed the synchronous budget of §11.5. It does not exempt the gateway from that budget on ordinary requests.

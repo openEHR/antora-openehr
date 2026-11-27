@@ -1,0 +1,38 @@
+@startuml federation_flow_with_localization
+title Federation reference flow - Variant A (with a localization service)
+
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 260
+skinparam wrapWidth 260
+skinparam ParticipantPadding 12
+skinparam BoxPadding 10
+autonumber
+
+actor "Consumer\n(Application tier)" as C
+participant "openEHR Federation\n(gateway)" as F
+participant "Localization service\n(proposed: IHE XCPD)" as L
+participant "Addressing / directory\n(proposed: IHE mCSD)" as A
+participant "PIX Manager\n(per community)" as P
+participant "CDR + Query API\n(per node)" as D
+
+C -> F : AQL, patient by ehr_status/subject = 123 (e.g. BSN)
+note over F : Phase 0 - façade accepts openEHR AQL
+
+F -> L : Localization (e.g. XCPD ITI-55)
+L --> F : source communities where the patient\nexists AND has consent
+F -> A : Addressing (e.g. mCSD) - resolve PIX Managers + CDR base URLs
+A --> F : per-community PIX Manager + CDR URL
+
+loop per candidate community
+  F -> P : PIXm $ihe-pix (ITI-83)\nsourceIdentifier=123, targetSystem=ehrId
+  P --> F : local ehr_id (or not-found)
+end
+note over F : Phase 1 done - set of {node, ehr_id, consent}
+
+group per node with a resolved ehr_id AND consent granted
+  F -> D : standard AQL  WHERE e/ehr_id/value = <local ehr_id>
+  D --> F : rows (no subject involved)
+end
+note over F : Phase 3 - combine, DISTINCT / ORDER BY,\nre-inject subject if SELECTed, endpoint provenance, meta.endpoints[]
+F --> C : combined result set {q, columns, rows} + meta
+@enduml

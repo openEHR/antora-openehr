@@ -1,0 +1,43 @@
+= 7. AQL at the federation façade
+
+The model rests on keeping two distinct AQL surfaces apart:
+
+* *Façade AQL* - what the client sends to the Federation Tier. It MAY identify the patient with `WHERE e/ehr_status/subject/external_ref/id/value = <patientId>`. This is standard openEHR AQL. The gateway interprets the subject predicate and does not forward it.
+* *Node AQL* - what the gateway dispatches to each node. It is standard, non-federated AQL, scoped to that node's resolved `ehr_id`, and contains no subject predicate.
+
+== 7.1 The rewrite rule (normative)
+
+For each node with a resolved `ehr_id`, the gateway produces the node AQL from the façade AQL by:
+
+. *Substituting the patient predicate* - replace `e/ehr_status/subject/external_ref/id/value = <patientId>` with `e/ehr_id/value = '<resolvedEhrId>'` (equivalently, scope via `FROM EHR e[ehr_id/value='<resolvedEhrId>']`, or send the query to `+POST {base}/v1/query/aql+` with the `ehr_id` query parameter / `openehr-ehr-id` header set to the resolved value). All three are legitimate single-EHR scopings; the canonical form in this spec is the `WHERE e/ehr_id/value = …` predicate (xref:rest-facade.adoc[§7a.2], xref:requirements.adoc#n29[N29]).
+. *Stripping every other patient identifier* - any remaining directly identifying identifier, wherever it sits (`PARTY_IDENTIFIED`/`DV_IDENTIFIER` predicates, an `ENTRY`-level `subject`, a projection path, a parameter, a header), MUST be consumed by resolution and removed, or the query rejected. The node receives the `ehr_id` and nothing else that identifies the patient (xref:identity-resolution.adoc#identifier-hygiene[§5.4], xref:requirements.adoc#n33[N33]).
+. *Forwarding everything else unchanged* - all other `WHERE` terms go to the node verbatim, and execute within it (xref:requirements.adoc#n9[N9]). `LIMIT`/`OFFSET` and `ORDER BY` are the exception: they execute per node *and* are re-applied at the Tier, under the rules of xref:partial-results.adoc#aggregation-and-ordering[§11.6]. Forwarding `LIMIT` verbatim is correct; forwarding `OFFSET` verbatim is not.
+. *Re-injecting the subject column if selected* - if the façade AQL SELECTs the subject path (`e/ehr_status/subject/external_ref/id/value`), the gateway MUST add that column back to each row as a constant `STRING` equal to the resolution input `<patientId>`. The value is the _input_, not something read from the CDR, since nodes may not store it. _(xref:requirements.adoc#n5[N5].)_
+
+*Reduction constraint.* If a façade AQL cannot be reduced to a single `ehr_id` scope per node - say multiple subject predicates OR'd together with non-subject terms, so that no single resolved `ehr_id` covers the request - the gateway MUST reject the query with HTTP 400 instead of guessing.
+
+== 7.2 Before → after example
+
+*Façade AQL received* (patient identified the openEHR-idiomatic way):
+
+[source,sql]
+----
+SELECT c/uid/value AS composition_id, c/context/start_time/value AS start_time
+FROM EHR e CONTAINS COMPOSITION c
+WHERE e/ehr_status/subject/external_ref/id/value = '12345'
+  AND c/archetype_node_id = 'openEHR-EHR-COMPOSITION.encounter.v1'
+----
+
+*Node AQL dispatched* (canonical form: `ehr_id` in `WHERE`; the gateway MAY instead scope via `FROM EHR e[ehr_id/value=…]` or the `ehr_id` request parameter):
+
+[source,sql]
+----
+SELECT c/uid/value AS composition_id, c/context/start_time/value AS start_time
+FROM EHR e CONTAINS COMPOSITION c
+WHERE e/ehr_id/value = '550e8400-e29b-41d4-a716-446655440000'
+  AND c/archetype_node_id = 'openEHR-EHR-COMPOSITION.encounter.v1'
+----
+
+Here `'550e8400-…'` is the `ehr_id` the cross-reference service resolved for `subject = '12345'` at that particular node. A different node would receive a different `ehr_id`. Because `composition_id` is a `c/uid/value`, it is an `OBJECT_VERSION_ID` and already carries the `creating_system_id` that names its owner for follow-ups (xref:follow-up-routing.adoc[§12]). No uid rewriting is needed.
+
+If the façade AQL had also SELECTed `e/ehr_status/subject/external_ref/id/value AS patient_id`, the gateway would re-inject `patient_id = '12345'` (the input) into every row, even though no node stores it.

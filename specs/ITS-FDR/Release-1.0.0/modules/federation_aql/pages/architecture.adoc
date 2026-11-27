@@ -1,0 +1,20 @@
+= 3. Architecture & Tiers
+
+== 3.1 The three tiers
+
+The federation is a layered, distributed system:
+
+* *Application tier* - end-user applications. They send AQL and consume the combined result set, interpret and present results, and initiate follow-up reads/writes (xref:follow-up-routing.adoc[§12]).
+* *Federation Tier* - the technically transparent intermediary. It (a) accepts a conformant openEHR Query API request, (b) resolves the patient identifier to `{node, ehr_id}` outside AQL, (c) dispatches standard AQL keyed on `ehr_id`, (d) combines and annotates results, and (e) routes follow-up reads/writes to the owning node. It maintains the registry (organizations, endpoints, and `system_id`/`creating_system_id` → CDR base URLs) that makes routing possible (xref:requirements.adoc#n21[§6/N21]).
+* *Node tier* - a member openEHR CDR and its Query (AQL) API. A node runs ordinary openEHR queries scoped to a single `EHR`, and does not need to know it is part of a federation.
+
+.The three tiers - centralized and distributed gateway topologies. Source: `diagrams/federation_three_tiers.puml`.
+image::federation_three_tiers.png[The three tiers - centralized and distributed gateway topologies]
+
+== 3.2 Transparent-intermediary principle
+
+The gateway follows the transparent-intermediary model of the Intermediaries White Paper: the intermediary performs the search across the servers and collates the response, so the client need not know about the multiple contributing sources. Two consequences are normative here:
+
+* The client interface MUST be a conformant openEHR Query API, and a conformant ITS-REST surface generally (xref:requirements.adoc#n1[§6/N1], xref:rest-facade.adoc[§7a]). The client neither sends nor needs any federation-specific syntax to run a basic patient query or a follow-up.
+* Transparency is conditional on completeness. When a node is dropped (unresponsive, timed out, answered with an error, not-resolved, consent-denied) or was never asked (not-localized), the gateway MUST make that visible in metadata (xref:partial-results.adoc#endpoint-status[§11.1]). Where a node it asked did not answer, the default strategy is to fail the query (xref:partial-results.adoc#all-or-nothing[§11.4]), so that a partial answer is never presented as a whole one and the consumer is not silently misled. An explicit `meta.federation.complete` flag accompanies every response, including a failing one. A best-effort mode returning flagged partial rows is available, but only to a client that asks for it.
+* Transparency is bounded. Where the gateway cannot behave as a single repository (federated demographics, cross-node object creation, `OFFSET` paging, undirected aggregates) it MUST say so via `OPTIONS` (xref:rest-facade.adoc#options-root[§7a.2]) or refuse the request instead of returning an approximation the client cannot detect, because a wrong answer fails transparency worse than an honest refusal does.

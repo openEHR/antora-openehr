@@ -1,0 +1,10 @@
+= Federation Tier with AQL
+
+[.spec-meta-line]
+Status: [.spec-status.spec-status-trial]#TRIAL#  Release: [.release-tag]#{page-component-version}#
+
+This specification adds a *Federation Tier* to openEHR querying, so that a client can run one query across *multiple distributed CDRs* as though they were a single repository.
+
+== Specifications
+
+* xref:federation_aql:index.adoc[Federation Tier with AQL] [.spec-status.spec-status-trial]#TRIAL#
